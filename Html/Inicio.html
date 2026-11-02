@@ -13,8 +13,7 @@
         </div>
         <span class="material-symbols-outlined text-[18px] text-outline hidden md:inline-block">expand_more</span>
     </button>
-
-    <!-- POSICIONAMIENTO JUSTO DEBAJO DEL BOTÓN DE USUARIO -->
+    <!-- Contenedor donde se inyectará la Sidebar.html -->
     <div id="sidebar-container" class="hidden absolute right-0 top-full mt-2 z-50"></div>
 </div>
 
@@ -34,7 +33,7 @@
 <span class="font-label-md text-label-md text-tertiary" id="current-live-date">Viernes, 23 de octubre de 2026</span>
 </div>
 <h1 class="font-headline-lg text-headline-lg text-on-surface">
-            Bienvenido al Portal Corporativo <span class="text-primary font-bold">HidroVen</span>
+            Bienvenido al Portal Corporativo <span class="text-primary font-bold">HidroVen Lara</span>
 </h1>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
             Centro neurálgico de gestión, sistemas administrativos, monitoreo hidrológico e interconexión del personal del sector agua.
@@ -496,12 +495,11 @@
 
 <script src="/sidebar.js"></script>
 
-
-
-
-
-
-
+<!-- AGREGAR ESTE DIV AL FINAL DE INICIO.HTML, ANTES DE </BODY> -->
+<!-- Este es el overlay: una capa oscura fija que cubre toda la pantalla.
+     Está oculta por defecto ('hidden'), tiene z-index 40 (debajo del menú z-50).
+     Al hacer clic en ella, ejecuta toggleSidebar() para cerrar el menú. -->
+<div id="sidebar-overlay" class="hidden fixed inset-0 bg-transparent z-40 pointer-events-none" onclick="toggleSidebar()"></div>
 
 
 

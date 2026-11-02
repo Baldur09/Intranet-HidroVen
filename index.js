@@ -70,3 +70,8 @@ app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 app.use(express.static('Html')); // O el nombre de la carpeta donde guardas tus archivos HTML y JS
+
+// Ruta para el Panel de Control (Dashboard)
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Html', 'Dashboard.html'));
+});
