@@ -1,0 +1,58 @@
+<header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+  <div class="h-20 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+    
+    <!-- Logo y Marca -->
+    <div class="flex items-center gap-3 flex-shrink-0">
+      <a class="flex items-center gap-2" data-path="inicio" href="/inicio">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2CdV707OrJYdRNnBMoMvB6rpSiIGRa4z9a2x8d3MLv5AybIWSsacNOM17WIfNrd8XWes2LWUdEfGP7VktbkzClv5490ZMpPRLwaTS_EKV-b_-bAb4SQFfOEA_4e9rROEpPlh66K8NxKdCV1p4u9Ip33o1Bmu7RqaYqkJlrPdJQ68uy0v9dN6AyokKxSvzh2xdwH-d-tJPJfTzZtdItOznOfKfFM8hOa60XfLbMY2nH_tf0e-SXLQPFv7cLeEWzFY_9Q" alt="HidroVen" class="h-8 sm:h-9 w-auto object-contain">
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-base sm:text-lg text-primary tracking-tight font-bold leading-none">HidroVen</span>
+          <span class="font-label-caps text-[10px] text-tertiary tracking-wider uppercase mt-1">Portal Intranet</span>
+        </div>
+      </a>
+      
+      <!-- Buscador de Escritorio -->
+      <div class="hidden xl:flex items-center relative w-56 2xl:w-64 ml-2">
+        <span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span>
+        <input class="w-full pl-9 pr-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface placeholder-outline focus:outline-none focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="Buscar..." type="text">
+      </div>
+    </div>
+
+    <!-- Menú de Navegación de Escritorio -->
+    <nav class="hidden lg:flex items-center gap-1" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg">
+      <a class="px-3 py-2 rounded-lg text-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="inicio" href="/inicio">Inicio</a>
+      <a class="px-3 py-2 rounded-lg text-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="aplicaciones" href="#">Aplicaciones</a>
+      <a class="px-3 py-2 rounded-lg text-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="nosotros" href="/inicio#nosotros">Nosotros</a>
+      <a class="px-3 py-2 rounded-lg text-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all whitespace-nowrap" data-path="enlaces-interes" href="/inicio#enlaces-interes">Enlaces de Interés</a>
+    </nav>
+
+    <!-- Zona Derecha: Correo, Perfil y Menú Móvil -->
+    <div class="flex items-center gap-2 flex-shrink-0">
+      
+      <!-- Botón Correo Zimbra -->
+      <a class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary transition-all text-sm font-semibold" href="https://correo.hidroven.gob.ve" rel="noopener" target="_blank">
+        <span class="material-symbols-outlined text-[18px]">mail</span>
+        <span class="hidden md:inline">Zimbra</span>
+      </a>
+
+      <!-- Botón de Perfil de Usuario y Contenedor Sidebar -->
+      <div class="relative">
+        <button id="btn-perfil-user" onclick="toggleSidebar()" type="button" class="flex items-center gap-2 p-1 sm:px-2 rounded-lg hover:bg-surface-container-high transition-colors text-left cursor-pointer">
+          <div class="relative shrink-0">
+            <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA5IpAJJWUsts4XlDNcAHL2g1XCh-pBUaUwhr7Rns08wLG13X0xnB3anAabnpODIU9mZa5h-HUFb_JYtEixRGsYzL-7Ueyl6FnLdjHibKg3aS3TS-RnrKUKQAM1RUKLjfEsmXpacULT0b4KTosozI0Jp29QMd84Bqrw8Fm4OhlFoljG5vrgtj50BMhQ-4vkU_qtxXHGQHV3MGcWFAZshfJFMVipeNs0r2FGqUKnRtic1eR5XwE_4MG">
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary-container ring-2 ring-surface"></span>
+          </div>
+          <div class="hidden md:flex flex-col text-left">
+            <span class="font-label-md text-xs text-on-surface font-semibold leading-tight whitespace-nowrap">Ing. Luis Salazar</span>
+            <span class="font-label-caps text-[10px] text-tertiary whitespace-nowrap">Gerencia Operativa</span>
+          </div>
+          <span class="material-symbols-outlined text-[18px] text-outline hidden md:inline-block">expand_more</span>
+        </button>
+        
+        <!-- Contenedor simple sin clases de animación -->
+        <div id="sidebar-container" class="hidden absolute right-0 top-full mt-2 z-50"></div>
+      </div>
+
+    </div>
+  </div>
+</header>
