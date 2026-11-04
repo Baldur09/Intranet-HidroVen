@@ -75,3 +75,7 @@ app.get('/partials/sidebar.ejs', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+// Ruta para la pantalla de Gestión de Usuarios (renderiza usuarios.ejs)
+app.get('/usuarios', (req, res) => {
+    res.render('usuarios');
+});

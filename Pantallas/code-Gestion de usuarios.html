@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+
+<html class="h-auto min-h-screen" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HidroVen - Centro de Aplicaciones</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary": "#00687a",
+            "background": "#f7f9fb",
+            "on-background": "#191c1e",
+            "inverse-surface": "#2d3133",
+            "inverse-on-surface": "#eff1f3",
+            "tertiary": "#545c72",
+            "surface-container": "#eceef0",
+            "surface-container-lowest": "#ffffff",
+            "primary": "#006194",
+            "primary-container": "#007bb9",
+            "primary-fixed": "#cce5ff",
+            "on-primary": "#ffffff",
+            "on-surface": "#191c1e",
+            "on-surface-variant": "#3f4850",
+            "outline": "#707881",
+            "surface-container-high": "#e6e8ea",
+            "surface-container-highest": "#e0e3e5",
+            "surface-container-low": "#f2f4f6",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "secondary-container": "#57dffe",
+            "on-secondary-fixed-variant": "#004e5c",
+            "secondary-fixed": "#acedff",
+            "tertiary-fixed": "#dae2fd"
+          },
+          fontFamily: {
+            "headline-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "display-hero": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "label-lg": ["Inter", "sans-serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "label-caps": ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    html, body {
+      min-height: 100%;
+      height: auto;
+      overflow-y: auto !important;
+      scroll-behavior: smooth;
+    }
+  </style>
+<meta content="web_standard" name="shell-type"/></head>
+<body class="bg-background text-on-surface antialiased font-body-md flex flex-col min-h-screen">
+<!-- Encabezado Unificado Superior -->
+<header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-surface-container shadow-sm"><div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 h-16"><div class="flex items-center gap-6 lg:gap-8 flex-shrink-0"><a class="flex items-center gap-2.5" data-path="inicio" href="#"><img alt="HidroVen" class="h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwiltRJAhLfCooQEPL6xOazZux70iNdWxpLSpBVQ7v64sFUdOepB2uxYYjdjRhqasN-4Ozy0ECCW0K-_lDSClPwAKbGBAfrEClezSI8fIBxpDxK3JsjgRIFWiaqGaTzX1BNUaFOPXK3evKD-Iwnjqol2mbpBZeEV9zFu0dsS2ktAbajukApttZmrgEAt3foDhPJcb-VL24GxAKc3Nx_mSkUUtD9-nzmKENxBmX6jOEGHYgmEemPJdS"/><div class="flex flex-col"><span class="font-headline-sm text-base lg:text-lg font-bold text-[#006194] tracking-tight leading-none">HIDROVEN</span><span class="text-[10px] tracking-wider uppercase font-semibold text-tertiary mt-1">PORTAL INTRANET</span></div></a><div class="hidden xl:flex items-center relative w-72 lg:w-80"><span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span><input class="w-full pl-10 pr-4 py-2 bg-surface-container-low rounded-lg text-body-sm text-on-surface placeholder-outline focus:outline-none focus:ring-2 focus:ring-[#006194] focus:bg-white border-none transition-all" placeholder="Buscar aplicaciones, documentos o extensiones..." type="text"/></div></div><nav class="hidden lg:flex items-center gap-1.5 lg:gap-2"><a class="px-3.5 py-2 rounded-lg font-label-lg text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="inicio" href="#">Inicio</a><a class="px-3.5 py-2 rounded-lg font-label-lg text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="aplicaciones" href="#">Aplicaciones</a><a class="px-3.5 py-2 rounded-lg font-label-lg text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="nosotros" href="#nosotros">Nosotros</a><a class="px-3.5 py-2 rounded-lg font-label-lg text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors whitespace-nowrap" data-path="enlaces-interes" href="#enlaces-interes">Enlaces de Interés</a></nav><div class="flex items-center gap-3 sm:gap-4 flex-shrink-0"><a class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-[#006194] hover:text-[#006194] transition-all font-label-lg text-sm font-semibold" href="https://correo.hidroven.gob.ve" rel="noopener" target="_blank"><span class="material-symbols-outlined text-[18px]">mail</span><span class="hidden sm:inline">Correo Zimbra</span></a><button class="flex items-center gap-2 pl-2 sm:pl-3 border-l border-surface-container cursor-pointer select-none bg-transparent border-t-0 border-r-0 border-b-0 text-left p-0" type="button"><div class="relative"><img alt="Profile" class="w-9 h-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA5IpAJJWUsts4XlDNcAHL2g1XCh-pBUaUwhr7Rns08wLG13X0xnB3anAabnpODIU9mZa5h-HUFb_JYtEixRGsYzL-7Ueyl6FnLdjHibKg3aS3TS-RnrKUKQAM1RUKLjfEsmXpacULT0b4KTosozI0Jp29QMd84Bqrw8Fm4OhlFoljG5vrgtj50BMhQ-4vkU_qtxXHGQHV3MGcWFAZshfJFMVipeNs0r2FGqUKnRtic1eR5XwE_4MG"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span></div><div class="hidden md:flex flex-col text-left"><span class="text-sm font-bold text-on-surface leading-tight">Ing. Luis Salazar</span><span class="text-[11px] text-tertiary">Gerencia Operativa</span></div><span class="material-symbols-outlined text-outline text-[18px] hidden md:inline-block">expand_more</span></button></div></div></header>
+<!-- Contenido Principal -->
+<main class="w-full flex-1 py-8 pt-20"><div class="flex flex-col w-full">
+<div class="max-w-[1320px] w-full mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+<!-- Navegación de Migas de Pan (Breadcrumbs) -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md pt-2">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">domain</span>
+<span class="">Portal Intranet</span>
+</a>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="hover:text-primary transition-colors">Dashboard</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="text-primary font-semibold">Gestión de Usuarios</span>
+</nav>
+<!-- Encabezado de Página con Acciones Principales -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+<div class="space-y-1">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">manage_accounts</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Gestión de Usuarios</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+              Administración centralizada de cuentas de empleados, asignación de roles, gerencias y control de accesos institucionales.
+            </p>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-2.5">
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary transition-all font-label-lg text-label-lg shadow-sm hover:shadow cursor-pointer flex-shrink-0 whitespace-nowrap" id="btn-abrir-modal">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span class="">Añadir Usuario</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface transition-all font-label-lg text-label-lg cursor-pointer flex-shrink-0 whitespace-nowrap" id="btn-editar-rapido">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+<span class="">Editar Usuario</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-surface-container-low hover:bg-error-container text-on-surface hover:text-error transition-all font-label-lg text-label-lg cursor-pointer flex-shrink-0 whitespace-nowrap" id="btn-eliminar-seleccion">
+<span class="material-symbols-outlined text-[18px]">person_off</span>
+<span class="">Desactivar / Baja</span>
+</button>
+</div>
+</div>
+<!-- Indicadores Numéricos y Métricas (KPIs) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Tarjeta: Total Usuarios -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between">
+<div class="space-y-1">
+<span class="font-label-caps text-label-caps uppercase text-tertiary">Total Registrados</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-total-usuarios">348</span>
+<span class="font-body-sm text-body-sm text-tertiary">cuentas</span>
+</div>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[26px]">badge</span>
+</div>
+</div>
+<!-- Tarjeta: Inactivos / Suspendidos -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between">
+<div class="space-y-1">
+<span class="font-label-caps text-label-caps uppercase text-tertiary">Inactivos / Bajas</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-inactivos">22</span>
+<span class="font-body-sm text-body-sm text-tertiary">cuentas</span>
+</div>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[26px]">person_off</span>
+</div>
+</div>
+</div>
+<!-- Barra de Búsqueda, Filtrado Dinámico y Herramientas -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm space-y-3">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+<!-- Campo Buscador -->
+<div class="md:col-span-4 relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-busqueda" placeholder="Buscar por nombre, cédula (V-...) o correo..." type="text"/>
+</div>
+<!-- Filtro Gerencia -->
+<div class="md:col-span-3">
+<select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-gerencia">
+<option value="todas">Todas las Gerencias</option>
+<option value="Gerencia Operativa">Gerencia Operativa</option>
+<option value="Sistemas y TI">Sistemas y TI</option>
+<option value="Administración y Finanzas">Administración y Finanzas</option>
+<option value="Comercialización">Comercialización</option>
+<option value="Presidencia">Presidencia</option>
+</select>
+</div>
+<!-- Filtro Rol -->
+<div class="md:col-span-2">
+<select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-rol">
+<option value="todos">Todos los Roles</option>
+<option value="Administrador">Administrador</option>
+<option value="Operativo">Operativo</option>
+<option value="Consulta / Estándar">Consulta / Estándar</option>
+</select>
+</div>
+<!-- Filtro Estado -->
+<div class="md:col-span-2">
+<select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-estado">
+<option value="todos">Todos los Estados</option>
+<option value="Activo">Activos</option>
+<option value="Inactivo">Inactivos</option>
+</select>
+</div>
+<!-- Botón Refrescar / Exportar -->
+<div class="md:col-span-1 flex items-center justify-end gap-1">
+</div>
+</div>
+</div>
+<!-- Contenedor Principal: Tabla de Personal Institucional -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-tertiary font-label-caps text-label-caps uppercase">
+<th class="py-3.5 px-4" scope="col">Empleado</th>
+<th class="py-3.5 px-4" scope="col">Cédula de Identidad</th>
+<th class="py-3.5 px-4" scope="col">Gerencia / Departamento</th>
+<th class="py-3.5 px-4" scope="col">Rol Institucional</th>
+<th class="py-3.5 px-4" scope="col">Estado</th>
+<th class="py-3.5 px-4 text-center min-w-[140px]" scope="col">Acciones</th>
+</tr>
+</thead>
+<tbody class="text-body-md font-body-md divide-y-0" id="tabla-usuarios-cuerpo">
+<!-- Fila 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group" data-cedula="V-14.892.301" data-correo="lsalazar@hidroven.gob.ve" data-estado="Activo" data-gerencia="Gerencia Operativa" data-id="1" data-nombre="Ing. Luis Salazar" data-rol="Administrador">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed text-primary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
+                    LS
+                  </div>
+<div class="min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Ing. Luis Salazar</span>
+<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">lsalazar@hidroven.gob.ve</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-mono text-on-surface usuario-cedula">V-14.892.301</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span class="">Gerencia Operativa</span></span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-primary text-on-primary usuario-rol-badge">
+                  Administrador
+                </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Activo
+                </span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center justify-center gap-2 text-on-surface-variant">
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
+<span class="material-symbols-outlined text-[22px]">edit</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
+<span class="material-symbols-outlined text-[22px]">visibility</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja" type="button">
+<span class="material-symbols-outlined text-[22px]">toggle_on</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group" data-cedula="V-16.442.908" data-correo="crivas@hidroven.gob.ve" data-estado="Activo" data-gerencia="Sistemas y TI" data-id="2" data-nombre="Ing. Carmen Rivas" data-rol="Administrador">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-secondary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
+                    CR
+                  </div>
+<div class="min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Ing. Carmen Rivas</span>
+<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">crivas@hidroven.gob.ve</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-mono text-on-surface usuario-cedula">V-16.442.908</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span class="">Sistemas y TI</span></span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-primary text-on-primary usuario-rol-badge">
+                  Administrador
+                </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Activo
+                </span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center justify-center gap-2 text-on-surface-variant">
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
+<span class="material-symbols-outlined text-[22px]">edit</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
+<span class="material-symbols-outlined text-[22px]">visibility</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja" type="button">
+<span class="material-symbols-outlined text-[22px]">toggle_on</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group" data-cedula="V-12.771.604" data-correo="mpena@hidroven.gob.ve" data-estado="Activo" data-gerencia="Administración y Finanzas" data-id="3" data-nombre="Lcdo. Marcos Peña" data-rol="Operativo">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container text-tertiary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
+                    MP
+                  </div>
+<div class="min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Lcdo. Marcos Peña</span>
+<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">mpena@hidroven.gob.ve</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-mono text-on-surface usuario-cedula">V-12.771.604</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span class="">Administración y Finanzas</span></span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed text-on-secondary-fixed-variant usuario-rol-badge">
+                  Operativo
+                </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Activo
+                </span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center justify-center gap-2 text-on-surface-variant">
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
+<span class="material-symbols-outlined text-[22px]">edit</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
+<span class="material-symbols-outlined text-[22px]">visibility</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja" type="button">
+<span class="material-symbols-outlined text-[22px]">toggle_on</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group" data-cedula="V-11.230.155" data-correo="egomez@hidroven.gob.ve" data-estado="Activo" data-gerencia="Presidencia" data-id="4" data-nombre="Dra. Elena Gómez" data-rol="Administrador">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-tertiary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
+                    EG
+                  </div>
+<div class="min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Dra. Elena Gómez</span>
+<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">egomez@hidroven.gob.ve</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-mono text-on-surface usuario-cedula">V-11.230.155</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span class="">Presidencia</span></span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-primary text-on-primary usuario-rol-badge">
+                  Administrador
+                </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Activo
+                </span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center justify-center gap-2 text-on-surface-variant">
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
+<span class="material-symbols-outlined text-[22px]">edit</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
+<span class="material-symbols-outlined text-[22px]">visibility</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja" type="button">
+<span class="material-symbols-outlined text-[22px]">toggle_on</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 5 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group" data-cedula="V-18.905.112" data-correo="rmendoza@hidroven.gob.ve" data-estado="Activo" data-gerencia="Gerencia Operativa" data-id="5" data-nombre="Tec. Rafael Mendoza" data-rol="Operativo">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container text-tertiary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
+                    RM
+                  </div>
+<div class="min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Tec. Rafael Mendoza</span>
+<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">rmendoza@hidroven.gob.ve</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-mono text-on-surface usuario-cedula">V-18.905.112</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span class="">Gerencia Operativa</span></span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed text-on-secondary-fixed-variant usuario-rol-badge">
+                  Operativo
+                </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Activo
+                </span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center justify-center gap-2 text-on-surface-variant">
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
+<span class="material-symbols-outlined text-[22px]">edit</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
+<span class="material-symbols-outlined text-[22px]">visibility</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja" type="button">
+<span class="material-symbols-outlined text-[22px]">toggle_on</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 6 (Inactivo) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group opacity-85" data-cedula="V-20.103.882" data-correo="avillalobos@hidroven.gob.ve" data-estado="Inactivo" data-gerencia="Comercialización" data-id="6" data-nombre="Tsu. Ana Villalobos" data-rol="Consulta / Estándar">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-outline font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
+                    AV
+                  </div>
+<div class="min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Tsu. Ana Villalobos</span>
+<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">avillalobos@hidroven.gob.ve</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-mono text-outline usuario-cedula">V-20.103.882</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 text-outline usuario-gerencia"><span class="">Comercialización</span></span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-surface-container-high text-tertiary usuario-rol-badge">
+                  Consulta / Estándar
+                </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-error-container text-on-error-container usuario-estado-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                  Inactivo
+                </span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center justify-center gap-2 text-on-surface-variant">
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
+<span class="material-symbols-outlined text-[22px]">edit</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
+<span class="material-symbols-outlined text-[22px]">visibility</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-desactivar" title="Gestionar estado" type="button">
+<span class="material-symbols-outlined text-[22px]">toggle_off</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 7 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group" data-cedula="V-17.521.409" data-correo="jortiz@hidroven.gob.ve" data-estado="Activo" data-gerencia="Sistemas y TI" data-id="7" data-nombre="Ing. José Ortiz" data-rol="Operativo">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container text-tertiary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
+                    JO
+                  </div>
+<div class="min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Ing. José Ortiz</span>
+<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">jortiz@hidroven.gob.ve</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-mono text-on-surface usuario-cedula">V-17.521.409</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span class="">Sistemas y TI</span></span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed text-on-secondary-fixed-variant usuario-rol-badge">
+                  Operativo
+                </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Activo
+                </span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center justify-center gap-2 text-on-surface-variant">
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
+<span class="material-symbols-outlined text-[22px]">edit</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
+<span class="material-symbols-outlined text-[22px]">visibility</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja" type="button">
+<span class="material-symbols-outlined text-[22px]">toggle_on</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pie de Tabla: Paginación y Resumen -->
+</div>
+</div>
+<!-- ========================================================= -->
+<!-- MODAL 1: AÑADIR USUARIO INSTITUCIONAL (PRESERVADO)         -->
+<!-- ========================================================= -->
+<div class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-inverse-surface/60 backdrop-blur-sm transition-all" id="modal-nuevo-usuario"><div class="bg-surface-container-lowest w-full max-w-xl rounded-xl shadow-xl overflow-hidden flex flex-col max-h-[85vh]">
+<!-- Cabecera Compacta -->
+<div class="px-5 py-3.5 bg-surface-container flex items-center justify-between border-b border-surface-container-high">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-sm font-bold text-on-surface leading-tight">Añadir Nuevo Usuario</h2>
+<p class="text-[11px] text-on-surface-variant leading-none">Registro y alta técnica de personal en el sistema.</p>
+</div>
+</div>
+<button aria-label="Cerrar modal" class="p-1 rounded-md hover:bg-surface-container-high text-outline hover:text-on-surface transition-colors cursor-pointer" id="btn-cerrar-modal-x" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Formulario Compacto 2 Columnas -->
+<form class="p-4 sm:p-5 overflow-y-auto space-y-3.5 flex-1 text-left" id="form-crear-usuario">
+<!-- Fila 1: Nombres y Apellidos -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-nombres">Nombres <span class="text-error">*</span></label>
+<input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-nombres" placeholder="Ej. Carlos Eduardo" required="" type="text"/>
+</div>
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-apellidos">Apellidos <span class="text-error">*</span></label>
+<input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-apellidos" placeholder="Ej. Martínez Rangel" required="" type="text"/>
+</div>
+</div>
+<!-- Fila 2: Cédula y Correo Corporativo -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-cedula">Cédula <span class="text-error">*</span></label>
+<div class="flex gap-1.5">
+<select class="w-16 px-2 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="select-nacionalidad">
+<option value="V">V-</option>
+<option value="E">E-</option>
+</select>
+<input class="w-full flex-1 px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm font-mono text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-cedula" placeholder="18.490.221" required="" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-correo">Correo Corporativo <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full pl-3 pr-28 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-correo" placeholder="usuario" required="" type="text"/>
+<span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-tertiary text-[11px] select-none">@hidroven.gob.ve</span>
+</div>
+</div>
+</div>
+<!-- Fila 3: Extensión y Gerencia -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-extension">Extensión telefónica</label>
+<input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm font-mono text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-extension" placeholder="Ej. 4410" type="text"/>
+</div>
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="select-gerencia">Gerencia / Departamento <span class="text-error">*</span></label>
+<select class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="select-gerencia" required="">
+<option value="">Seleccione Gerencia...</option>
+<option value="Gerencia Operativa">Gerencia Operativa</option>
+<option value="Sistemas y TI">Sistemas y TI</option>
+<option value="Administración y Finanzas">Administración y Finanzas</option>
+<option value="Presidencia">Presidencia</option>
+<option value="Comercialización">Comercialización</option>
+</select>
+</div>
+</div>
+<!-- Fila 4: Rol Institucional y Contraseña Provisional -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="select-rol">Rol de Sistema <span class="text-error">*</span></label>
+<select class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="select-rol" required="">
+<option value="Operativo">Operativo</option>
+<option value="Administrador">Administrador</option>
+<option value="Consulta / Estándar">Consulta / Estándar</option>
+</select>
+</div>
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-password-temp">Clave Provisional</label>
+<input class="w-full px-3 py-1.5 bg-surface-container rounded-lg text-body-sm text-tertiary font-mono select-all focus:outline-none cursor-not-allowed border-none" disabled="" id="input-password-temp" readonly="" type="text" value="HidroVen.2026*Defecto"/>
+</div>
+</div>
+<!-- Opciones de Seguridad y Nota Compacta -->
+<div class="pt-1 space-y-2">
+<div class="flex items-center gap-2">
+<input checked="" class="rounded text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer h-3.5 w-3.5" id="check-cambio-password" type="checkbox"/>
+<label class="text-[11px] text-on-surface select-none cursor-pointer" for="check-cambio-password">Exigir actualización de contraseña en el primer inicio de sesión</label>
+</div>
+<div class="p-2.5 bg-surface-container-low rounded-lg flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[18px] flex-shrink-0">info</span>
+<span class="text-[11px] leading-tight">Se aplicarán los protocolos institucionales de LDAP y Zimbra automáticamente.</span>
+</div>
+</div>
+</form>
+<!-- Pie Compacto -->
+<div class="px-5 py-2.5 bg-surface-container flex items-center justify-end gap-2 border-t border-surface-container-high">
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface transition-colors font-label-md text-xs cursor-pointer" id="btn-cerrar-modal" type="button">
+      Cancelar
+    </button>
+<button class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary transition-all font-label-md text-xs shadow-sm cursor-pointer" form="form-crear-usuario" id="btn-guardar-usuario" type="submit">
+<span class="material-symbols-outlined text-[16px]">save</span>
+<span class="">Registrar Usuario</span>
+</button>
+</div>
+</div></div>
+<!-- ========================================================= -->
+<!-- MODAL 2: EDITAR USUARIO (CON BUSCADOR Y PRECARGA DE DATOS) -->
+<!-- ========================================================= -->
+<div class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-inverse-surface/60 backdrop-blur-sm transition-all" id="modal-editar-usuario"><div class="bg-surface-container-lowest w-full max-w-xl rounded-xl shadow-xl overflow-hidden flex flex-col max-h-[85vh]">
+<!-- Cabecera Compacta -->
+<div class="px-5 py-3.5 bg-surface-container flex items-center justify-between border-b border-surface-container-high">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">manage_accounts</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-sm font-bold text-on-surface leading-tight">Editar Usuario Institucional</h2>
+<p class="text-[11px] text-on-surface-variant leading-none">Modifique credenciales, gerencia o estado del empleado.</p>
+</div>
+</div>
+<button aria-label="Cerrar modal" class="p-1 rounded-md hover:bg-surface-container-high text-outline hover:text-on-surface transition-colors cursor-pointer" id="btn-cerrar-modal-editar-x" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Buscador Superior Rápido y Compacto -->
+<div class="px-5 py-2.5 bg-surface-container-low border-b border-surface-container-high">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">person_search</span>
+<input autocomplete="off" class="w-full pl-8 pr-8 py-1.5 bg-surface-container-lowest border border-surface-container-high rounded-lg text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary border-primary transition-all" id="editar-buscar-usuario" placeholder="Buscar usuario por nombre, cédula o correo..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface hidden p-0.5" id="btn-limpiar-busqueda-editar" type="button">
+<span class="material-symbols-outlined text-[16px]">clear</span>
+</button>
+<div class="absolute left-0 right-0 top-full mt-1 bg-surface-container-lowest rounded-xl shadow-lg border border-surface-container-high max-h-48 overflow-y-auto hidden z-20" id="lista-coincidencias-editar"></div>
+</div>
+</div>
+<!-- Formulario de Edición Compacto en 2 Columnas -->
+<form class="p-4 sm:p-5 overflow-y-auto space-y-3.5 flex-1 text-left" id="form-editar-usuario">
+<input id="editar-user-id" type="hidden" value="1"/>
+<!-- Fila 1: Nombres y Apellidos -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="editar-nombres">Nombres <span class="text-error">*</span></label>
+<input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="editar-nombres" required="" type="text" value="Luis Antonio"/>
+</div>
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="editar-apellidos">Apellidos <span class="text-error">*</span></label>
+<input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="editar-apellidos" required="" type="text" value="Salazar Rodríguez"/>
+</div>
+</div>
+<!-- Fila 2: Cédula y Correo Corporativo -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="editar-cedula">Cédula <span class="text-error">*</span></label>
+<input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm font-mono text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="editar-cedula" required="" type="text" value="V-14.892.301"/>
+</div>
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="editar-correo">Correo Corporativo <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full pl-3 pr-28 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="editar-correo" required="" type="text" value="lsalazar"/>
+<span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-tertiary text-[11px] select-none">@hidroven.gob.ve</span>
+</div>
+</div>
+</div>
+<!-- Fila 3: Gerencia y Rol -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="editar-gerencia">Gerencia / Departamento <span class="text-error">*</span></label>
+<select class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="editar-gerencia" required="">
+<option value="Gerencia Operativa">Gerencia Operativa</option>
+<option value="Sistemas y TI">Sistemas y TI</option>
+<option value="Administración y Finanzas">Administración y Finanzas</option>
+<option value="Presidencia">Presidencia</option>
+<option value="Comercialización">Comercialización</option>
+</select>
+</div>
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="editar-rol">Rol Institucional <span class="text-error">*</span></label>
+<select class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="editar-rol" required="">
+<option value="Administrador">Administrador</option>
+<option value="Operativo">Operativo</option>
+<option value="Consulta / Estándar">Consulta / Estándar</option>
+</select>
+</div>
+</div>
+<!-- Fila 4: Estado de la Cuenta Slim -->
+<div class="p-3 bg-surface-container-low rounded-lg flex items-center justify-between gap-3">
+<div>
+<span class="text-xs font-semibold text-on-surface block">Estado de la Cuenta</span>
+<span class="text-[11px] text-tertiary">Permite acceso al correo Zimbra y portal.</span>
+</div>
+<div class="flex items-center gap-3">
+<label class="inline-flex items-center gap-1.5 cursor-pointer">
+<input checked="" class="text-primary focus:ring-primary h-3.5 w-3.5" name="editar-estado-radio" type="radio" value="Activo"/>
+<span class="text-xs font-medium text-on-surface">Activo</span>
+</label>
+<label class="inline-flex items-center gap-1.5 cursor-pointer">
+<input class="text-error focus:ring-error h-3.5 w-3.5" name="editar-estado-radio" type="radio" value="Inactivo"/>
+<span class="text-xs font-medium text-tertiary">Inactivo</span>
+</label>
+</div>
+</div>
+</form>
+<!-- Pie Compacto -->
+<div class="px-5 py-2.5 bg-surface-container flex items-center justify-end gap-2 border-t border-surface-container-high">
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface transition-colors font-label-md text-xs cursor-pointer" id="btn-cerrar-modal-editar" type="button">
+      Cancelar
+    </button>
+<button class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary transition-all font-label-md text-xs shadow-sm cursor-pointer" form="form-editar-usuario" id="btn-guardar-edicion" type="submit">
+<span class="material-symbols-outlined text-[16px]">save</span>
+<span class="">Guardar Cambios</span>
+</button>
+</div>
+</div></div>
+<!-- ========================================================= -->
+<!-- MODAL 3: DESACTIVAR / BAJA LÓGICA INSTITUCIONAL             -->
+<!-- ========================================================= -->
+<div class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-inverse-surface/60 backdrop-blur-sm transition-all" id="modal-desactivar-usuario"><div class="bg-surface-container-lowest w-full max-w-lg rounded-xl shadow-xl overflow-hidden flex flex-col max-h-[85vh]">
+<!-- Cabecera Compacta Alerta -->
+<div class="px-5 py-3.5 bg-error-container/40 flex items-center justify-between border-b border-error-container/60">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-error text-on-error flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">person_off</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-sm font-bold text-on-error-container leading-tight">Desactivar / Baja de Personal</h2>
+<p class="text-[11px] text-tertiary leading-none">Baja lógica en directorio y suspensión de accesos.</p>
+</div>
+</div>
+<button aria-label="Cerrar modal" class="p-1 rounded-md hover:bg-error-container/60 text-outline hover:text-on-surface transition-colors cursor-pointer" id="btn-cerrar-modal-desactivar-x" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Contenido Compacto -->
+<div class="p-4 sm:p-5 overflow-y-auto space-y-3.5 flex-1 text-left">
+<!-- Buscador Rápido de Baja -->
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="baja-buscar-usuario">Empleado a tramitar baja</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input autocomplete="off" class="w-full pl-8 pr-4 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-error border-none transition-all" id="baja-buscar-usuario" placeholder="Buscar por cédula (V-...) o nombre..." type="text"/>
+<div class="absolute left-0 right-0 top-full mt-1 bg-surface-container-lowest rounded-xl shadow-lg border border-surface-container-high max-h-40 overflow-y-auto hidden z-20" id="lista-coincidencias-baja"></div>
+</div>
+</div>
+<!-- Tarjeta Resumen Compacta -->
+<div class="p-3 bg-surface-container-low rounded-lg border border-surface-container flex items-center gap-3" id="tarjeta-resumen-baja">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-primary font-bold text-xs flex items-center justify-center flex-shrink-0" id="baja-avatar-iniciales">LS</div>
+<div class="min-w-0 flex-1">
+<h4 class="font-headline-sm text-xs font-bold text-on-surface truncate" id="baja-nombre-empleado">Ing. Luis Salazar</h4>
+<div class="flex items-center gap-2 text-[11px] text-tertiary mt-0.5">
+<span class="font-mono font-medium text-on-surface" id="baja-cedula-empleado">V-14.892.301</span>
+<span class="">•</span>
+<span class="truncate" id="baja-gerencia-empleado">Gerencia Operativa</span>
+</div>
+<span class="text-[11px] text-outline block truncate" id="baja-correo-empleado">lsalazar@hidroven.gob.ve</span>
+</div>
+</div>
+<!-- Advertencia Slim -->
+<div class="p-2.5 bg-amber-50 border border-amber-200 rounded-lg flex items-start gap-2 text-amber-900">
+<span class="material-symbols-outlined text-amber-600 text-[18px] flex-shrink-0 mt-0.5">warning</span>
+<span class="text-[11px] leading-tight">El registro permanecerá en la base de datos para trazabilidad histórica, inactivando las credenciales de correo Zimbra.</span>
+</div>
+<!-- Motivo y Observaciones Compactas -->
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="select-motivo-baja">Motivo de la baja <span class="text-error">*</span></label>
+<select class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-error border-none" id="select-motivo-baja">
+<option value="Fin de contrato laboral">Fin de contrato laboral</option>
+<option value="Renuncia voluntaria">Renuncia voluntaria</option>
+<option value="Jubilación">Jubilación</option>
+<option value="Traslado institucional">Traslado institucional</option>
+<option value="Suspensión preventiva administrativa">Suspensión preventiva administrativa</option>
+<option value="Revocación de accesos por seguridad">Revocación de accesos por seguridad</option>
+</select>
+</div>
+<div>
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="textarea-notas-baja">Observaciones o acta administrativa</label>
+<textarea class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-error resize-none border-none" id="textarea-notas-baja" placeholder="Ej. Acta DRH-2026/041 emitida por Recursos Humanos..." rows="2"></textarea>
+</div>
+</div>
+<!-- Pie Compacto -->
+<div class="px-5 py-2.5 bg-surface-container flex items-center justify-end gap-2 border-t border-surface-container-high">
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface transition-colors font-label-md text-xs cursor-pointer" id="btn-cerrar-modal-desactivar" type="button">
+      Cancelar
+    </button>
+<button class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-error hover:bg-red-700 text-on-error transition-all font-label-md text-xs shadow-sm cursor-pointer" id="btn-confirmar-baja" type="button">
+<span class="material-symbols-outlined text-[16px]">person_off</span>
+<span class="">Confirmar Desactivación</span>
+</button>
+</div>
+</div></div>
+<!-- Toast Notification Flotante (Retroalimentación al Guardar) -->
+<div class="fixed bottom-6 right-6 z-50 items-center gap-3 px-4 py-3 bg-inverse-surface text-inverse-on-surface rounded-xl shadow-xl transition-all hidden" id="toast-notificacion">
+<span class="material-symbols-outlined text-secondary-container text-[22px]" id="toast-icono" style="animation-delay: 0ms;">check_circle</span>
+<span class="font-body-md text-body-md" id="toast-mensaje">Lista de usuarios sincronizada con el directorio central.</span>
+</div>
+<!-- ========================================================= -->
+<!-- JAVASCRIPT: GESTIÓN CENTRALIZADA DE MODALES, TABLA Y FILTROS -->
+<!-- ========================================================= -->
+<script>
+  (function() {
+    // Dataset simulado y sincronizado con la tabla
+    let usuariosDB = [
+      { id: 1, nombres: 'Luis Antonio', apellidos: 'Salazar Rodríguez', nombreCompleto: 'Ing. Luis Salazar', cedula: 'V-14.892.301', correo: 'lsalazar@hidroven.gob.ve', gerencia: 'Gerencia Operativa', rol: 'Administrador', estado: 'Activo' },
+      { id: 2, nombres: 'Carmen Beatriz', apellidos: 'Rivas Medina', nombreCompleto: 'Ing. Carmen Rivas', cedula: 'V-16.442.908', correo: 'crivas@hidroven.gob.ve', gerencia: 'Sistemas y TI', rol: 'Administrador', estado: 'Activo' },
+      { id: 3, nombres: 'Marcos José', apellidos: 'Peña Gil', nombreCompleto: 'Lcdo. Marcos Peña', cedula: 'V-12.771.604', correo: 'mpena@hidroven.gob.ve', gerencia: 'Administración y Finanzas', rol: 'Operativo', estado: 'Activo' },
+      { id: 4, nombres: 'Elena María', apellidos: 'Gómez Farías', nombreCompleto: 'Dra. Elena Gómez', cedula: 'V-11.230.155', correo: 'egomez@hidroven.gob.ve', gerencia: 'Presidencia', rol: 'Administrador', estado: 'Activo' },
+      { id: 5, nombres: 'Rafael Alberto', apellidos: 'Mendoza Pérez', nombreCompleto: 'Tec. Rafael Mendoza', cedula: 'V-18.905.112', correo: 'rmendoza@hidroven.gob.ve', gerencia: 'Gerencia Operativa', rol: 'Operativo', estado: 'Activo' },
+      { id: 6, nombres: 'Ana Victoria', apellidos: 'Villalobos Soto', nombreCompleto: 'Tsu. Ana Villalobos', cedula: 'V-20.103.882', correo: 'avillalobos@hidroven.gob.ve', gerencia: 'Comercialización', rol: 'Consulta / Estándar', estado: 'Inactivo' },
+      { id: 7, nombres: 'José David', apellidos: 'Ortiz Alvarado', nombreCompleto: 'Ing. José Ortiz', cedula: 'V-17.521.409', correo: 'jortiz@hidroven.gob.ve', gerencia: 'Sistemas y TI', rol: 'Operativo', estado: 'Activo' }
+    ];
+
+    let usuarioSeleccionadoActual = usuariosDB[0];
+
+    // Elementos de Notificación
+    const toast = document.getElementById('toast-notificacion');
+    const toastMensaje = document.getElementById('toast-mensaje');
+    const toastIcono = document.getElementById('toast-icono');
+
+    function mostrarToast(texto, tipo = 'success') {
+      if (!toast) return;
+      toastMensaje.textContent = texto;
+      if (tipo === 'error') {
+        toastIcono.textContent = 'error';
+        toastIcono.className = 'material-symbols-outlined text-red-400 text-[22px]';
+      } else {
+        toastIcono.textContent = 'check_circle';
+        toastIcono.className = 'material-symbols-outlined text-secondary-container text-[22px]';
+      }
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 4000);
+    }
+
+    // ==========================================
+    // 1. MODAL: AÑADIR USUARIO
+    // ==========================================
+    const modalCrear = document.getElementById('modal-nuevo-usuario');
+    const btnAbrirCrear = document.getElementById('btn-abrir-modal');
+    const btnCerrarCrear = document.getElementById('btn-cerrar-modal');
+    const btnCerrarCrearX = document.getElementById('btn-cerrar-modal-x');
+    const formCrear = document.getElementById('form-crear-usuario');
+    const btnGenerarClave = document.getElementById('btn-generar-clave');
+    const inputPassword = document.getElementById('input-password-temp');
+    const btnTogglePassword = document.getElementById('btn-toggle-password');
+    const iconoTogglePassword = document.getElementById('icono-toggle-password');
+    const tablaCuerpo = document.getElementById('tabla-usuarios-cuerpo');
+
+    function abrirModalCrear() {
+      if (modalCrear) {
+        modalCrear.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function cerrarModalCrear() {
+      if (modalCrear) {
+        modalCrear.classList.add('hidden');
+        document.body.style.overflow = '';
+        if (formCrear) formCrear.reset();
+        if (inputPassword) {
+          inputPassword.type = 'password';
+          inputPassword.value = 'HidroVen.2026*Temp';
+        }
+        if (iconoTogglePassword) {
+          iconoTogglePassword.textContent = 'visibility';
+        }
+      }
+    }
+
+    if (btnAbrirCrear) btnAbrirCrear.addEventListener('click', abrirModalCrear);
+    if (btnCerrarCrear) btnCerrarCrear.addEventListener('click', cerrarModalCrear);
+    if (btnCerrarCrearX) btnCerrarCrearX.addEventListener('click', cerrarModalCrear);
+    if (modalCrear) {
+      modalCrear.addEventListener('click', (e) => {
+        if (e.target === modalCrear) cerrarModalCrear();
+      });
+    }
+
+    if (btnTogglePassword && inputPassword && iconoTogglePassword) {
+      btnTogglePassword.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (inputPassword.type === 'password') {
+          inputPassword.type = 'text';
+          iconoTogglePassword.textContent = 'visibility_off';
+        } else {
+          inputPassword.type = 'password';
+          iconoTogglePassword.textContent = 'visibility';
+        }
+      });
+    }
+
+    if (btnGenerarClave && inputPassword) {
+      btnGenerarClave.addEventListener('click', (e) => {
+        e.preventDefault();
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!#%*';
+        let nuevaClave = 'HV.' + Array.from({length: 8}, () => chars.charAt(Math.floor(Math.random() * chars.length))).join('') + '*';
+        inputPassword.value = nuevaClave;
+      });
+    }
+
+    if (formCrear) {
+      formCrear.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nombres = document.getElementById('input-nombres').value.trim();
+        const apellidos = document.getElementById('input-apellidos').value.trim();
+        const nac = document.getElementById('select-nacionalidad').value;
+        const cedula = document.getElementById('input-cedula').value.trim();
+        const correo = document.getElementById('input-correo').value.trim();
+        const gerencia = document.getElementById('select-gerencia').value;
+        const rol = document.getElementById('select-rol').value;
+
+        if (!nombres || !cedula || !correo || !gerencia) {
+          alert('Por favor complete los campos obligatorios del formulario.');
+          return;
+        }
+
+        const iniciales = (nombres.charAt(0) + (apellidos.charAt(0) || '')).toUpperCase() || 'US';
+        const nombreCompleto = nombres + ' ' + apellidos;
+        const cedulaCompleta = nac + '-' + cedula;
+        const correoCompleto = correo.includes('@') ? correo : (correo + '@hidroven.gob.ve');
+        const nuevoId = Date.now();
+
+        const nuevoUsuario = {
+          id: nuevoId,
+          nombres,
+          apellidos,
+          nombreCompleto,
+          cedula: cedulaCompleta,
+          correo: correoCompleto,
+          gerencia,
+          rol,
+          estado: 'Activo'
+        };
+        usuariosDB.unshift(nuevoUsuario);
+
+        if (tablaCuerpo) {
+          const nuevaFila = document.createElement('tr');
+          nuevaFila.className = 'hover:bg-surface-container-low/50 transition-colors group';
+          nuevaFila.dataset.id = nuevoId;
+          nuevaFila.dataset.nombre = nombreCompleto;
+          nuevaFila.dataset.cedula = cedulaCompleta;
+          nuevaFila.dataset.correo = correoCompleto;
+          nuevaFila.dataset.gerencia = gerencia;
+          nuevaFila.dataset.rol = rol;
+          nuevaFila.dataset.estado = 'Activo';
+
+          nuevaFila.innerHTML = `
+            <td class="py-4 px-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary-fixed text-primary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
+                  ${iniciales}
+                </div>
+                <div class="min-w-0">
+                  <span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">${nombreCompleto}</span>
+                  <span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">${correoCompleto}</span>
+                </div>
+              </div>
+            </td>
+            <td class="py-4 px-4 font-mono text-on-surface usuario-cedula">${cedulaCompleta}</td>
+            <td class="py-4 px-4">
+              <span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia">
+                <span>${gerencia}</span>
+              </span>
+            </td>
+            <td class="py-4 px-4">
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-primary text-on-primary usuario-rol-badge">
+                ${rol}
+              </span>
+            </td>
+            <td class="py-4 px-4">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
+                <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Activo
+              </span>
+            </td>
+            <td class="py-4 px-4">
+              <div class="flex items-center justify-center gap-2 text-on-surface-variant">
+                <button type="button" class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario">
+                  <span class="material-symbols-outlined text-[22px]">edit</span>
+                </button>
+                <button type="button" class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría">
+                  <span class="material-symbols-outlined text-[22px]">visibility</span>
+                </button>
+                <button type="button" class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja">
+                  <span class="material-symbols-outlined text-[22px]">toggle_on</span>
+                </button>
+              </div>
+            </td>
+          `;
+          tablaCuerpo.prepend(nuevaFila);
+          enlazarEventosFila(nuevaFila);
+        }
+
+        cerrarModalCrear();
+        mostrarToast('Usuario registrado exitosamente en la base de datos');
+      });
+    }
+
+    // ==========================================
+    // 2. MODAL: EDITAR USUARIO
+    // ==========================================
+    const modalEditar = document.getElementById('modal-editar-usuario');
+    const btnAbrirEditarRapido = document.getElementById('btn-editar-rapido');
+    const btnCerrarEditar = document.getElementById('btn-cerrar-modal-editar');
+    const btnCerrarEditarX = document.getElementById('btn-cerrar-modal-editar-x');
+    const formEditar = document.getElementById('form-editar-usuario');
+    const inputBuscadorEditar = document.getElementById('editar-buscar-usuario');
+    const listaResultadosEditar = document.getElementById('lista-coincidencias-editar');
+    const btnLimpiarBusquedaEditar = document.getElementById('btn-limpiar-busqueda-editar');
+
+    // Campos formulario edición
+    const editId = document.getElementById('editar-user-id');
+    const editNombres = document.getElementById('editar-nombres');
+    const editApellidos = document.getElementById('editar-apellidos');
+    const editCedula = document.getElementById('editar-cedula');
+    const editCorreo = document.getElementById('editar-correo');
+    const editGerencia = document.getElementById('editar-gerencia');
+    const editRol = document.getElementById('editar-rol');
+    const radiosEstado = document.getElementsByName('editar-estado-radio');
+
+    function precargarDatosEdicion(u) {
+      if (!u) return;
+      usuarioSeleccionadoActual = u;
+      editId.value = u.id;
+      
+      const partes = u.nombreCompleto ? u.nombreCompleto.replace(/^(Ing\.|Lcdo\.|Tec\.|Dra\.|Tsu\.)\s*/, '').split(' ') : ['',''];
+      editNombres.value = u.nombres || partes[0] || '';
+      editApellidos.value = u.apellidos || partes.slice(1).join(' ') || '';
+      editCedula.value = u.cedula || '';
+      
+      const emailLocal = (u.correo || '').split('@')[0];
+      editCorreo.value = emailLocal;
+      if (editGerencia) editGerencia.value = u.gerencia || 'Gerencia Operativa';
+      if (editRol) editRol.value = u.rol || 'Operativo';
+
+      radiosEstado.forEach(r => {
+        r.checked = (r.value === u.estado);
+      });
+
+      if (inputBuscadorEditar) {
+        inputBuscadorEditar.value = `${u.nombreCompleto || u.nombres} (${u.cedula})`;
+        if (btnLimpiarBusquedaEditar) btnLimpiarBusquedaEditar.classList.remove('hidden');
+      }
+      if (listaResultadosEditar) listaResultadosEditar.classList.add('hidden');
+    }
+
+    function abrirModalEditar(usuarioPredefinido) {
+      if (modalEditar) {
+        modalEditar.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        if (usuarioPredefinido) {
+          precargarDatosEdicion(usuarioPredefinido);
+        } else {
+          precargarDatosEdicion(usuariosDB[0]);
+        }
+      }
+    }
+
+    function cerrarModalEditar() {
+      if (modalEditar) {
+        modalEditar.classList.add('hidden');
+        document.body.style.overflow = '';
+        if (listaResultadosEditar) listaResultadosEditar.classList.add('hidden');
+      }
+    }
+
+    if (btnAbrirEditarRapido) {
+      btnAbrirEditarRapido.addEventListener('click', () => abrirModalEditar());
+    }
+    if (btnCerrarEditar) btnCerrarEditar.addEventListener('click', cerrarModalEditar);
+    if (btnCerrarEditarX) btnCerrarEditarX.addEventListener('click', cerrarModalEditar);
+    if (modalEditar) {
+      modalEditar.addEventListener('click', (e) => {
+        if (e.target === modalEditar) cerrarModalEditar();
+      });
+    }
+
+    // Buscador interactivo en modal edición
+    if (inputBuscadorEditar && listaResultadosEditar) {
+      inputBuscadorEditar.addEventListener('input', () => {
+        const query = inputBuscadorEditar.value.trim().toLowerCase();
+        if (btnLimpiarBusquedaEditar) {
+          if (query.length > 0) btnLimpiarBusquedaEditar.classList.remove('hidden');
+          else btnLimpiarBusquedaEditar.classList.add('hidden');
+        }
+
+        if (query.length === 0) {
+          listaResultadosEditar.classList.add('hidden');
+          return;
+        }
+
+        const filtrados = usuariosDB.filter(u => 
+          (u.nombreCompleto && u.nombreCompleto.toLowerCase().includes(query)) ||
+          (u.nombres && u.nombres.toLowerCase().includes(query)) ||
+          (u.apellidos && u.apellidos.toLowerCase().includes(query)) ||
+          (u.cedula && u.cedula.toLowerCase().includes(query)) ||
+          (u.correo && u.correo.toLowerCase().includes(query))
+        );
+
+        if (filtrados.length === 0) {
+          listaResultadosEditar.innerHTML = `
+            <div class="p-3 text-body-sm text-outline text-center">No se encontraron empleados coincidentes</div>
+          `;
+        } else {
+          listaResultadosEditar.innerHTML = filtrados.map(u => `
+            <button type="button" class="w-full text-left p-3 hover:bg-surface-container-low transition-colors flex items-center justify-between gap-3 border-b border-surface-container last:border-0 item-coincidencia-editar" data-id="${u.id}">
+              <div>
+                <span class="font-label-lg text-label-lg text-on-surface block">${u.nombreCompleto || (u.nombres + ' ' + u.apellidos)}</span>
+                <span class="text-body-sm text-outline">${u.cedula} • ${u.gerencia}</span>
+              </div>
+              <span class="text-label-caps font-semibold px-2 py-0.5 rounded ${u.estado === 'Activo' ? 'bg-secondary-fixed text-on-secondary-fixed-variant' : 'bg-error-container text-on-error-container'}">${u.estado}</span>
+            </button>
+          `).join('');
+
+          listaResultadosEditar.querySelectorAll('.item-coincidencia-editar').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const uid = btn.dataset.id;
+              const usuarioEncontrado = usuariosDB.find(x => String(x.id) === String(uid));
+              if (usuarioEncontrado) precargarDatosEdicion(usuarioEncontrado);
+            });
+          });
+        }
+        listaResultadosEditar.classList.remove('hidden');
+      });
+
+      if (btnLimpiarBusquedaEditar) {
+        btnLimpiarBusquedaEditar.addEventListener('click', () => {
+          inputBuscadorEditar.value = '';
+          inputBuscadorEditar.focus();
+          btnLimpiarBusquedaEditar.classList.add('hidden');
+          listaResultadosEditar.classList.add('hidden');
+        });
+      }
+    }
+
+    if (formEditar) {
+      formEditar.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const idActual = editId.value;
+        const index = usuariosDB.findIndex(x => String(x.id) === String(idActual));
+        const nuevoNombreComp = editNombres.value.trim() + ' ' + editApellidos.value.trim();
+        const nuevoCorreo = editCorreo.value.trim().includes('@') ? editCorreo.value.trim() : (editCorreo.value.trim() + '@hidroven.gob.ve');
+        let nuevoEstado = 'Activo';
+        radiosEstado.forEach(r => { if (r.checked) nuevoEstado = r.value; });
+
+        if (index !== -1) {
+          usuariosDB[index].nombres = editNombres.value.trim();
+          usuariosDB[index].apellidos = editApellidos.value.trim();
+          usuariosDB[index].nombreCompleto = nuevoNombreComp;
+          usuariosDB[index].cedula = editCedula.value.trim();
+          usuariosDB[index].correo = nuevoCorreo;
+          usuariosDB[index].gerencia = editGerencia.value;
+          usuariosDB[index].rol = editRol.value;
+          usuariosDB[index].estado = nuevoEstado;
+        }
+
+        // Actualizar visualmente la fila en la tabla si existe
+        const filaTarget = document.querySelector(`tr[data-id="${idActual}"]`);
+        if (filaTarget) {
+          filaTarget.dataset.nombre = nuevoNombreComp;
+          filaTarget.dataset.cedula = editCedula.value.trim();
+          filaTarget.dataset.correo = nuevoCorreo;
+          filaTarget.dataset.gerencia = editGerencia.value;
+          filaTarget.dataset.rol = editRol.value;
+          filaTarget.dataset.estado = nuevoEstado;
+
+          const elNombre = filaTarget.querySelector('.usuario-nombre');
+          if (elNombre) elNombre.textContent = nuevoNombreComp;
+          const elCorreo = filaTarget.querySelector('.usuario-correo');
+          if (elCorreo) elCorreo.textContent = nuevoCorreo;
+          const elCedula = filaTarget.querySelector('.usuario-cedula');
+          if (elCedula) elCedula.textContent = editCedula.value.trim();
+          const elGerencia = filaTarget.querySelector('.usuario-gerencia span:last-child');
+          if (elGerencia) elGerencia.textContent = editGerencia.value;
+          const elRol = filaTarget.querySelector('.usuario-rol-badge');
+          if (elRol) elRol.textContent = editRol.value;
+
+          const elEstado = filaTarget.querySelector('.usuario-estado-badge');
+          if (elEstado) {
+            if (nuevoEstado === 'Activo') {
+              elEstado.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge';
+              elEstado.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Activo';
+              filaTarget.classList.remove('opacity-85');
+            } else {
+              elEstado.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-error-container text-on-error-container usuario-estado-badge';
+              elEstado.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Inactivo';
+              filaTarget.classList.add('opacity-85');
+            }
+          }
+        }
+
+        cerrarModalEditar();
+        mostrarToast(`Cambios de ${nuevoNombreComp} sincronizados en la base de datos`);
+      });
+    }
+
+    // ==========================================
+    // 3. MODAL: DESACTIVAR / BAJA LÓGICA
+    // ==========================================
+    const modalDesactivar = document.getElementById('modal-desactivar-usuario');
+    const btnAbrirDesactivarTop = document.getElementById('btn-eliminar-seleccion');
+    const btnCerrarDesactivar = document.getElementById('btn-cerrar-modal-desactivar');
+    const btnCerrarDesactivarX = document.getElementById('btn-cerrar-modal-desactivar-x');
+    const btnConfirmarBaja = document.getElementById('btn-confirmar-baja');
+    const inputBuscadorBaja = document.getElementById('baja-buscar-usuario');
+    const listaResultadosBaja = document.getElementById('lista-coincidencias-baja');
+
+    // Elementos resumen tarjeta baja
+    const bajaAvatar = document.getElementById('baja-avatar-iniciales');
+    const bajaNombre = document.getElementById('baja-nombre-empleado');
+    const bajaCedula = document.getElementById('baja-cedula-empleado');
+    const bajaGerencia = document.getElementById('baja-gerencia-empleado');
+    const bajaCorreo = document.getElementById('baja-correo-empleado');
+    const selectMotivo = document.getElementById('select-motivo-baja');
+    const textareaNotas = document.getElementById('textarea-notas-baja');
+
+    let usuarioBajaActual = usuariosDB[0];
+
+    function precargarBaja(u) {
+      if (!u) return;
+      usuarioBajaActual = u;
+      const iniciales = (u.nombreCompleto || u.nombres || 'US').replace(/^(Ing\.|Lcdo\.|Tec\.|Dra\.|Tsu\.)\s*/, '').slice(0, 2).toUpperCase();
+      if (bajaAvatar) bajaAvatar.textContent = iniciales;
+      if (bajaNombre) bajaNombre.textContent = u.nombreCompleto || (u.nombres + ' ' + u.apellidos);
+      if (bajaCedula) bajaCedula.textContent = u.cedula || '';
+      if (bajaGerencia) bajaGerencia.textContent = u.gerencia || '';
+      if (bajaCorreo) bajaCorreo.textContent = u.correo || '';
+      if (inputBuscadorBaja) inputBuscadorBaja.value = `${u.nombreCompleto || u.nombres} (${u.cedula})`;
+      if (listaResultadosBaja) listaResultadosBaja.classList.add('hidden');
+    }
+
+    function abrirModalDesactivar(usuarioTarget) {
+      if (modalDesactivar) {
+        modalDesactivar.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        if (usuarioTarget) {
+          precargarBaja(usuarioTarget);
+        } else {
+          precargarBaja(usuariosDB[0]);
+        }
+      }
+    }
+
+    function cerrarModalDesactivar() {
+      if (modalDesactivar) {
+        modalDesactivar.classList.add('hidden');
+        document.body.style.overflow = '';
+        if (listaResultadosBaja) listaResultadosBaja.classList.add('hidden');
+        if (textareaNotas) textareaNotas.value = '';
+      }
+    }
+
+    if (btnAbrirDesactivarTop) {
+      btnAbrirDesactivarTop.addEventListener('click', () => abrirModalDesactivar());
+    }
+    if (btnCerrarDesactivar) btnCerrarDesactivar.addEventListener('click', cerrarModalDesactivar);
+    if (btnCerrarDesactivarX) btnCerrarDesactivarX.addEventListener('click', cerrarModalDesactivar);
+    if (modalDesactivar) {
+      modalDesactivar.addEventListener('click', (e) => {
+        if (e.target === modalDesactivar) cerrarModalDesactivar();
+      });
+    }
+
+    // Buscador interactivo en modal de baja
+    if (inputBuscadorBaja && listaResultadosBaja) {
+      inputBuscadorBaja.addEventListener('input', () => {
+        const query = inputBuscadorBaja.value.trim().toLowerCase();
+        if (query.length === 0) {
+          listaResultadosBaja.classList.add('hidden');
+          return;
+        }
+
+        const filtrados = usuariosDB.filter(u => 
+          (u.nombreCompleto && u.nombreCompleto.toLowerCase().includes(query)) ||
+          (u.nombres && u.nombres.toLowerCase().includes(query)) ||
+          (u.cedula && u.cedula.toLowerCase().includes(query))
+        );
+
+        if (filtrados.length === 0) {
+          listaResultadosBaja.innerHTML = `
+            <div class="p-3 text-body-sm text-outline text-center">No se encontraron empleados</div>
+          `;
+        } else {
+          listaResultadosBaja.innerHTML = filtrados.map(u => `
+            <button type="button" class="w-full text-left p-3 hover:bg-surface-container-low transition-colors flex items-center justify-between gap-3 border-b border-surface-container last:border-0 item-coincidencia-baja" data-id="${u.id}">
+              <div>
+                <span class="font-label-lg text-label-lg text-on-surface block">${u.nombreCompleto}</span>
+                <span class="text-body-sm text-outline">${u.cedula} • ${u.gerencia}</span>
+              </div>
+              <span class="text-label-caps font-semibold px-2 py-0.5 rounded ${u.estado === 'Activo' ? 'bg-secondary-fixed text-on-secondary-fixed-variant' : 'bg-error-container text-on-error-container'}">${u.estado}</span>
+            </button>
+          `).join('');
+
+          listaResultadosBaja.querySelectorAll('.item-coincidencia-baja').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const uid = btn.dataset.id;
+              const usuarioEncontrado = usuariosDB.find(x => String(x.id) === String(uid));
+              if (usuarioEncontrado) precargarBaja(usuarioEncontrado);
+            });
+          });
+        }
+        listaResultadosBaja.classList.remove('hidden');
+      });
+    }
+
+    if (btnConfirmarBaja) {
+      btnConfirmarBaja.addEventListener('click', () => {
+        if (!usuarioBajaActual) return;
+        const motivo = selectMotivo ? selectMotivo.value : 'Fin de contrato';
+        const index = usuariosDB.findIndex(x => String(x.id) === String(usuarioBajaActual.id));
+        if (index !== -1) {
+          usuariosDB[index].estado = 'Inactivo';
+        }
+
+        // Actualizar fila visual
+        const filaTarget = document.querySelector(`tr[data-id="${usuarioBajaActual.id}"]`);
+        if (filaTarget) {
+          filaTarget.dataset.estado = 'Inactivo';
+          filaTarget.classList.add('opacity-85');
+          const elEstado = filaTarget.querySelector('.usuario-estado-badge');
+          if (elEstado) {
+            elEstado.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-error-container text-on-error-container usuario-estado-badge';
+            elEstado.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Inactivo';
+          }
+          const btnToggle = filaTarget.querySelector('.btn-accion-desactivar span');
+          if (btnToggle) btnToggle.textContent = 'toggle_off';
+        }
+
+        cerrarModalDesactivar();
+        mostrarToast(`Baja lógica de ${usuarioBajaActual.nombreCompleto} procesada. Motivo: ${motivo}`);
+      });
+    }
+
+    // ==========================================
+    // 4. ACCIONES EN FILAS Y CHECKBOXES
+    // ==========================================
+    function enlazarEventosFila(fila) {
+      const btnEditar = fila.querySelector('.btn-accion-editar');
+      const btnVer = fila.querySelector('.btn-accion-ver');
+      const btnDesactivar = fila.querySelector('.btn-accion-desactivar');
+
+      const datosUsuarioFila = {
+        id: fila.dataset.id,
+        nombreCompleto: fila.dataset.nombre,
+        cedula: fila.dataset.cedula,
+        correo: fila.dataset.correo,
+        gerencia: fila.dataset.gerencia,
+        rol: fila.dataset.rol,
+        estado: fila.dataset.estado
+      };
+
+      if (btnEditar) {
+        btnEditar.addEventListener('click', (e) => {
+          e.stopPropagation();
+          abrirModalEditar(datosUsuarioFila);
+        });
+      }
+
+      if (btnVer) {
+        btnVer.addEventListener('click', (e) => {
+          e.stopPropagation();
+          mostrarToast(`Auditoría de accesos: ${datosUsuarioFila.nombreCompleto} (${datosUsuarioFila.correo})`);
+        });
+      }
+
+      if (btnDesactivar) {
+        btnDesactivar.addEventListener('click', (e) => {
+          e.stopPropagation();
+          abrirModalDesactivar(datosUsuarioFila);
+        });
+      }
+    }
+
+    document.querySelectorAll('#tabla-usuarios-cuerpo tr').forEach(fila => {
+      enlazarEventosFila(fila);
+    });
+
+    // ==========================================
+    // 5. FILTRADO Y BÚSQUEDA EN LA TABLA
+    // ==========================================
+    const inputBusqueda = document.getElementById('filtro-busqueda');
+    const selectGerencia = document.getElementById('filtro-gerencia');
+    const selectRol = document.getElementById('filtro-rol');
+    const selectEstado = document.getElementById('filtro-estado');
+    const contadorMostrados = document.getElementById('contador-mostrados');
+
+    function aplicarFiltros() {
+      const q = (inputBusqueda.value || '').toLowerCase();
+      const gerencia = selectGerencia.value;
+      const rol = selectRol.value;
+      const estado = selectEstado.value;
+      const filas = document.querySelectorAll('#tabla-usuarios-cuerpo tr');
+      let visibles = 0;
+
+      filas.forEach(fila => {
+        const texto = fila.textContent.toLowerCase();
+        const coincideBusqueda = !q || texto.includes(q);
+        const coincideGerencia = gerencia === 'todas' || (fila.dataset.gerencia && fila.dataset.gerencia.toLowerCase().includes(gerencia.toLowerCase()));
+        const coincideRol = rol === 'todos' || (fila.dataset.rol && fila.dataset.rol.toLowerCase().includes(rol.toLowerCase()));
+        const coincideEstado = estado === 'todos' || (fila.dataset.estado && fila.dataset.estado.toLowerCase() === estado.toLowerCase());
+
+        if (coincideBusqueda && coincideGerencia && coincideRol && coincideEstado) {
+          fila.style.display = '';
+          visibles++;
+        } else {
+          fila.style.display = 'none';
+        }
+      });
+
+      if (contadorMostrados) contadorMostrados.textContent = visibles;
+    }
+
+    if (inputBusqueda) inputBusqueda.addEventListener('input', aplicarFiltros);
+    if (selectGerencia) selectGerencia.addEventListener('change', aplicarFiltros);
+    if (selectRol) selectRol.addEventListener('change', aplicarFiltros);
+    if (selectEstado) selectEstado.addEventListener('change', aplicarFiltros);
+
+    const btnRecargar = document.getElementById('btn-recargar');
+    if (btnRecargar) {
+      btnRecargar.addEventListener('click', () => {
+        inputBusqueda.value = '';
+        selectGerencia.value = 'todas';
+        selectRol.value = 'todos';
+        selectEstado.value = 'todos';
+        aplicarFiltros();
+        mostrarToast('Lista de usuarios sincronizada con el directorio central.');
+      });
+    }
+
+    const btnExportar = document.getElementById('btn-exportar-csv');
+    if (btnExportar) {
+      btnExportar.addEventListener('click', () => {
+        mostrarToast('Exportando reporte consolidado de usuarios a formato CSV/Excel...');
+      });
+    }
+  })();
+</script>
+</div></main>
+<!-- Pie de Página Institucional -->
+<footer class="w-full bg-white border-t border-surface-container mt-16 shadow-sm">
+</footer>
+</body></html>
