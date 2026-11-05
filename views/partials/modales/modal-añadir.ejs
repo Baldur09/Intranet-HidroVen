@@ -22,11 +22,11 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-nombres">Nombres <span class="text-error">*</span></label>
-          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-nombres" placeholder="Ej. Carlos Eduardo" required="" type="text"/>
+          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-nombres" maxlength="100" name="nombres" placeholder="Ej. Carlos Eduardo" required="" type="text"/>
         </div>
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-apellidos">Apellidos <span class="text-error">*</span></label>
-          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-apellidos" placeholder="Ej. Martínez Rangel" required="" type="text"/>
+          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-apellidos" maxlength="100" name="apellidos" placeholder="Ej. Martínez Rangel" required="" type="text"/>
         </div>
       </div>
       <!-- Fila 2: Cédula y Correo Corporativo -->
@@ -34,36 +34,28 @@
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-cedula">Cédula <span class="text-error">*</span></label>
           <div class="flex gap-1.5">
-            <select class="w-16 px-2 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="select-nacionalidad">
+            <select class="w-16 px-2 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="select-nacionalidad" name="nacionalidad" required="">
               <option value="V">V-</option>
               <option value="E">E-</option>
             </select>
-            <input class="w-full flex-1 px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm font-mono text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-cedula" placeholder="18.490.221" required="" type="text"/>
+            <input class="w-full flex-1 px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm font-mono text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-cedula" inputmode="numeric" maxlength="12" name="cedula" placeholder="18490221" required="" type="text"/>
           </div>
         </div>
         <div>
-          <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-correo">Correo Corporativo <span class="text-error">*</span></label>
-          <div class="relative">
-            <input class="w-full pl-3 pr-28 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-correo" placeholder="usuario" required="" type="text"/>
-            <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-tertiary text-[11px] select-none">@hidroven.gob.ve</span>
-          </div>
+          <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-correo">Correo <span class="text-error">*</span></label>
+          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-correo" maxlength="100" name="correo" placeholder="usuario@institucion.gob.ve" required="" type="email"/>
         </div>
       </div>
-      <!-- Fila 3: Extensión y Gerencia -->
+      <!-- Fila 3: Teléfono y Gerencia -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
-          <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-extension">Extensión telefónica</label>
-          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm font-mono text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-extension" placeholder="Ej. 4410" type="text"/>
+          <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-telefono">Teléfono <span class="text-error">*</span></label>
+          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm font-mono text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-telefono" maxlength="20" name="telefono" placeholder="Ej. 0412-1234567" required="" type="tel"/>
         </div>
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="select-gerencia">Gerencia / Departamento <span class="text-error">*</span></label>
-          <select class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="select-gerencia" required="">
+          <select class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="select-gerencia" name="id_gerencia" required="">
             <option value="">Seleccione Gerencia...</option>
-            <option value="Gerencia Operativa">Gerencia Operativa</option>
-            <option value="Sistemas y TI">Sistemas y TI</option>
-            <option value="Administración y Finanzas">Administración y Finanzas</option>
-            <option value="Presidencia">Presidencia</option>
-            <option value="Comercialización">Comercialización</option>
           </select>
         </div>
       </div>
@@ -71,26 +63,21 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="select-rol">Rol de Sistema <span class="text-error">*</span></label>
-          <select class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="select-rol" required="">
-            <option value="Operativo">Operativo</option>
-            <option value="Administrador">Administrador</option>
-            <option value="Consulta / Estándar">Consulta / Estándar</option>
+          <select class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="select-rol" name="rol" required="">
+            <option value="empleado">Empleado</option>
+            <option value="administrador">Administrador</option>
           </select>
         </div>
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-password-temp">Clave Provisional</label>
-          <input class="w-full px-3 py-1.5 bg-surface-container rounded-lg text-body-sm text-tertiary font-mono select-all focus:outline-none cursor-not-allowed border-none" disabled="" id="input-password-temp" readonly="" type="text" value="HidroVen.2026*Defecto"/>
+          <input class="w-full px-3 py-1.5 bg-surface-container rounded-lg text-body-sm text-on-surface font-mono focus:outline-none focus:ring-2 focus:ring-primary border-none" id="input-password-temp" maxlength="255" minlength="8" name="password" placeholder="Mínimo 8 caracteres" required="" type="password"/>
         </div>
       </div>
-      <!-- Opciones de Seguridad y Nota Compacta -->
+      <!-- Nota Compacta -->
       <div class="pt-1 space-y-2">
-        <div class="flex items-center gap-2">
-          <input checked="" class="rounded text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer h-3.5 w-3.5" id="check-cambio-password" type="checkbox"/>
-          <label class="text-[11px] text-on-surface select-none cursor-pointer" for="check-cambio-password">Exigir actualización de contraseña en el primer inicio de sesión</label>
-        </div>
         <div class="p-2.5 bg-surface-container-low rounded-lg flex items-center gap-2 text-on-surface-variant">
           <span class="material-symbols-outlined text-primary text-[18px] flex-shrink-0">info</span>
-          <span class="text-[11px] leading-tight">Se aplicarán los protocolos institucionales de LDAP y Zimbra automáticamente.</span>
+          <span class="text-[11px] leading-tight">Los datos se guardarán en el registro de usuario y su información de contacto.</span>
         </div>
       </div>
     </form>

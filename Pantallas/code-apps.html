@@ -1,0 +1,500 @@
+<!DOCTYPE html><html class="h-auto min-h-screen" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HidroVen - Centro de Aplicaciones</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary": "#00687a",
+            "background": "#f7f9fb",
+            "on-background": "#191c1e",
+            "inverse-surface": "#2d3133",
+            "tertiary": "#545c72",
+            "surface-container": "#eceef0",
+            "surface-container-lowest": "#ffffff",
+            "primary": "#006194",
+            "primary-container": "#007bb9",
+            "on-primary": "#ffffff",
+            "on-surface": "#191c1e",
+            "on-surface-variant": "#3f4850",
+            "outline": "#707881",
+            "surface-container-high": "#e6e8ea",
+            "surface-container-low": "#f2f4f6"
+          },
+          fontFamily: {
+            "headline-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "display-hero": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "label-lg": ["Inter", "sans-serif"],
+            "label-md": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    html, body {
+      min-height: 100%;
+      height: auto;
+      overflow-y: auto !important;
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md flex flex-col min-h-screen">
+<!-- Encabezado Unificado Superior -->
+<header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-surface-container shadow-sm"><div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 h-16"><div class="flex items-center gap-6 lg:gap-8 flex-shrink-0"><a class="flex items-center gap-2.5" data-path="inicio" href="#"><img alt="HidroVen" class="h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwiltRJAhLfCooQEPL6xOazZux70iNdWxpLSpBVQ7v64sFUdOepB2uxYYjdjRhqasN-4Ozy0ECCW0K-_lDSClPwAKbGBAfrEClezSI8fIBxpDxK3JsjgRIFWiaqGaTzX1BNUaFOPXK3evKD-Iwnjqol2mbpBZeEV9zFu0dsS2ktAbajukApttZmrgEAt3foDhPJcb-VL24GxAKc3Nx_mSkUUtD9-nzmKENxBmX6jOEGHYgmEemPJdS"><div class="flex flex-col"><span class="font-headline-sm text-base lg:text-lg font-bold text-[#006194] tracking-tight leading-none">HIDROVEN</span><span class="text-[10px] tracking-wider uppercase font-semibold text-tertiary mt-1">PORTAL INTRANET</span></div></a><div class="hidden xl:flex items-center relative w-72 lg:w-80"><span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span><input class="w-full pl-10 pr-4 py-2 bg-surface-container-low rounded-lg text-body-sm text-on-surface placeholder-outline focus:outline-none focus:ring-2 focus:ring-[#006194] focus:bg-white border-none transition-all" placeholder="Buscar aplicaciones, documentos o extensiones..." type="text"></div></div><nav class="hidden lg:flex items-center gap-1.5 lg:gap-2"><a class="px-3.5 py-2 rounded-lg font-label-lg text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="inicio" href="#">Inicio</a><a aria-current="page" class="px-4 py-2 rounded-lg font-label-lg text-sm bg-[#006194] text-white font-semibold shadow-sm transition-colors" data-path="aplicaciones" href="#">Aplicaciones</a><a class="px-3.5 py-2 rounded-lg font-label-lg text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="nosotros" href="#nosotros">Nosotros</a><a class="px-3.5 py-2 rounded-lg font-label-lg text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors whitespace-nowrap" data-path="enlaces-interes" href="#enlaces-interes">Enlaces de Interés</a></nav><div class="flex items-center gap-3 sm:gap-4 flex-shrink-0"><a class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-[#006194] hover:text-[#006194] transition-all font-label-lg text-sm font-semibold" href="https://correo.hidroven.gob.ve" rel="noopener" target="_blank"><span class="material-symbols-outlined text-[18px]">mail</span><span class="hidden sm:inline">Correo Zimbra</span></a><button class="flex items-center gap-2 pl-2 sm:pl-3 border-l border-surface-container cursor-pointer select-none bg-transparent border-t-0 border-r-0 border-b-0 text-left p-0" type="button"><div class="relative"><img alt="Profile" class="w-9 h-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA5IpAJJWUsts4XlDNcAHL2g1XCh-pBUaUwhr7Rns08wLG13X0xnB3anAabnpODIU9mZa5h-HUFb_JYtEixRGsYzL-7Ueyl6FnLdjHibKg3aS3TS-RnrKUKQAM1RUKLjfEsmXpacULT0b4KTosozI0Jp29QMd84Bqrw8Fm4OhlFoljG5vrgtj50BMhQ-4vkU_qtxXHGQHV3MGcWFAZshfJFMVipeNs0r2FGqUKnRtic1eR5XwE_4MG"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span></div><div class="hidden md:flex flex-col text-left"><span class="text-sm font-bold text-on-surface leading-tight">Ing. Luis Salazar</span><span class="text-[11px] text-tertiary">Gerencia Operativa</span></div><span class="material-symbols-outlined text-outline text-[18px] hidden md:inline-block">expand_more</span></button></div></div></header>
+<!-- Contenido Principal -->
+<main class="w-full flex-1 py-8 pt-20">
+<div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+<!-- Miga de Pan -->
+<nav class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="hover:text-primary transition-colors cursor-pointer">Portal Intranet</span>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+<span class="text-primary font-semibold">Centro de Aplicaciones</span>
+</nav>
+<!-- Banner de Título & Filtros -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 sm:p-8 lg:p-10 border border-surface-container shadow-sm space-y-6">
+<div class="max-w-3xl space-y-2">
+<h1 class="font-display-hero text-3xl sm:text-4xl text-on-surface font-extrabold tracking-tight">Aplicaciones</h1>
+<p class="font-body-lg text-base sm:text-lg text-on-surface-variant leading-relaxed">
+            Plataformas internas, módulos de autoservicio y herramientas operativas diseñadas para el personal técnico y administrativo del sector hídrico.
+          </p>
+</div>
+<!-- Filtros de Categorías -->
+<div class="flex items-center gap-2.5 overflow-x-auto pb-1 pt-2">
+<button class="filter-btn px-5 py-2 rounded-full bg-[#0284c7] text-white font-semibold text-sm shadow-sm transition-all whitespace-nowrap" data-filter="all">Todas</button>
+<button class="filter-btn px-5 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium text-sm transition-all whitespace-nowrap" data-filter="administracion">Administración</button><button class="filter-btn px-5 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium text-sm transition-all whitespace-nowrap" data-filter="trabajadores">Trabajadores</button>
+
+<button class="filter-btn px-5 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium text-sm transition-all whitespace-nowrap" data-filter="tecnologia">Tecnología</button>
+</div>
+</div>
+<!-- SECCIÓN 1: TRABAJADORES -->
+<section class="category-section space-y-4 pt-4" id="sec-administracion">
+<div class="flex items-center justify-between border-b border-surface-container pb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<div>
+<h2 class="font-headline-md text-xl sm:text-2xl font-bold text-on-surface">Administración</h2>
+<p class="text-xs sm:text-sm text-on-surface-variant">Sistemas de gestión corporativa, nómina y compras institucionales</p>
+</div>
+</div>
+
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+<!-- Tarjeta 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow relative" id="card-sia"><div class="flex items-start gap-4 mb-4"><div class="w-12 h-12 rounded-xl bg-blue-50 text-[#006194] flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-[26px]">hub</span></div><div class="space-y-1"><div class="flex items-center gap-2"><h3 class="font-headline-sm text-base font-bold text-on-surface">SIA - Sistema Integrado Administrativo</h3></div><p class="text-sm text-on-surface-variant leading-relaxed">Gestión presupuestaria, patrimonial y órdenes de compra.</p></div></div><div class="pt-3 border-t border-surface-container/60 flex justify-end relative"><button type="button" id="btn-toggle-sia" onclick="toggleSiaMenu(event)" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0284c7] text-white hover:bg-[#0369a1] text-sm font-semibold transition-colors cursor-pointer shadow-sm"><span class="">Ingresar al SIA</span><span class="material-symbols-outlined text-[16px] transition-transform duration-200" id="sia-caret-icon">arrow_drop_down</span></button><!-- Menú flotante / Popover SIA desplegable --><div id="sia-dropdown-menu" class="hidden absolute right-0 bottom-12 z-50 w-64 bg-white rounded-xl shadow-2xl border border-surface-container overflow-hidden transition-all"><div class="p-3 bg-surface-container-low/70 border-b border-surface-container flex items-center gap-3"><div class="w-12 h-12 rounded-lg bg-white border border-surface-container/80 p-1 flex flex-col items-center justify-center flex-shrink-0 shadow-sm"><div class="text-[7px] font-bold text-[#006194] leading-tight text-center">SISTEMA INTEGRADO</div><div class="text-[13px] font-black tracking-tight leading-none text-[#0284c7] font-display-hero">SIA</div><div class="text-[7px] font-bold text-slate-700 leading-tight text-center">ADMINISTRATIVO</div></div><div><div class="font-headline-sm text-sm font-bold text-[#006194]">Módulos SIA</div><div class="text-[11px] text-tertiary">Seleccione el departamento</div></div></div><div class="p-1.5 max-h-72 overflow-y-auto space-y-0.5"><button type="button" onclick="selectSiaModule('Dpto de Almacen')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">inventory_2</span><span class="">Dpto de Almacen</span></span><span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span></button><button type="button" onclick="selectSiaModule('Bancos')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">account_balance</span><span class="">Bancos</span></span><span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span></button><button type="button" onclick="selectSiaModule('Dpto. de Bienes')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">domain</span><span class="">Dpto. de Bienes</span></span><span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span></button><button type="button" onclick="selectSiaModule('Dpto. de Compras')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">shopping_bag</span><span class="">Dpto. de Compras</span></span><span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span></button><button type="button" onclick="selectSiaModule('Contabilidad')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">calculate</span><span class="">Contabilidad</span></span><span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span></button><button type="button" onclick="selectSiaModule('Ingresos')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">trending_up</span><span class="">Ingresos</span></span><span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span></button><button type="button" onclick="selectSiaModule('Nomina')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">payments</span><span class="">Nomina</span></span><span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span></button><button type="button" onclick="selectSiaModule('Pagos')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">credit_score</span><span class="">Pagos</span></span><span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span></button><button type="button" onclick="selectSiaModule('Dpto. de Presupuesto')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">pie_chart</span><span class="">Dpto. de Presupuesto</span></span><span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span></button></div><div class="p-2 bg-surface-container-low text-center border-t border-surface-container"><span class="text-[11px] text-tertiary">Autenticación SSO HidroVen</span></div></div></div></div>
+<!-- Tarjeta 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">account_balance_wallet</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Nómina Banco Provincial</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Dispersión de salarios masivos a contratistas y personal.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+<span class="">Acceder</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Tarjeta 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">shopping_cart</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">E-Compras Corporativas</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Licitaciones públicas y compras directas de insumos.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+<span class="">Portal de Compras</span>
+<span class="material-symbols-outlined text-[16px]">launch</span>
+</a>
+</div>
+</div>
+<!-- Tarjeta 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">point_of_sale</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Facturación y Cobranzas</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Módulo de facturación institucional de servicios hídricos.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+<span class="">Acceder</span>
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+</a>
+</div>
+</div>
+<!-- Tarjeta 5 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">wallet</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Caja Chica y Viáticos</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Rendición digital de gastos operativos de campo.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0284c7] text-white hover:bg-[#0369a1] text-sm font-semibold transition-colors" href="#">
+<span class="">Solicitar</span>
+<span class="material-symbols-outlined text-[16px]">send</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECCIÓN 2: ADMINISTRACIÓN -->
+<section class="category-section space-y-4 pt-4" id="sec-trabajadores">
+<div class="flex items-center justify-between border-b border-surface-container pb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-sky-50 text-[#006194] flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">badge</span>
+</div>
+<div>
+<h2 class="font-headline-md text-xl sm:text-2xl font-bold text-on-surface">Trabajadores</h2>
+<p class="text-xs sm:text-sm text-on-surface-variant">Autoservicio, recibos de pago, gestiones de talento humano y solicitudes</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+<!-- Tarjeta 1: Recibo de Pago -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-blue-50 text-[#006194] flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">receipt_long</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Recibo de Pago</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Consulta y descarga tus comprobantes quincenales de nómina.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0284c7] text-white hover:bg-[#0369a1] text-sm font-semibold transition-colors shadow-sm" href="#">
+<span class="">Descargar Recibo</span>
+<span class="material-symbols-outlined text-[16px]">download</span>
+</a>
+</div>
+</div>
+<!-- Tarjeta 2: Consulta de Cuentas por NIA -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">account_box</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Consulta de Cuentas por NIA</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Verificación de número de identificación administrativa y cuentas bancarias.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+<span class="">Consultar NIA</span>
+<span class="material-symbols-outlined text-[16px]">search</span>
+</a>
+</div>
+</div>
+<!-- Tarjeta 3: Comprobante de Retención ARC -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">request_quote</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Comprobante de Retención ARC</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Planilla oficial de ingresos percibidos y retenciones de ISLR anuales.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+<span class="">Obtener ARC</span>
+<span class="material-symbols-outlined text-[16px]">description</span>
+</a>
+</div>
+</div>
+<!-- Tarjeta 4: Evaluación de Desempeño -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">fact_check</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Evaluación de Desempeño</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Plataforma semestral para valoración de metas individuales y de gerencia.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+<span class="">Completar Evaluación</span>
+<span class="material-symbols-outlined text-[16px]">edit_document</span>
+</a>
+</div>
+</div>
+<!-- Tarjeta 5: Permisos y Vacaciones -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">event_available</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Permisos y Vacaciones</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Solicitud formal de reposos, permisos y períodos vacacionales.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0284c7] text-white hover:bg-[#0369a1] text-sm font-semibold transition-colors shadow-sm" href="#">
+<span class="">Gestionar Solicitud</span>
+<span class="material-symbols-outlined text-[16px]">send</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECCIÓN 3: TECNOLOGÍA -->
+<section class="category-section space-y-4 pt-4" id="sec-tecnologia">
+<div class="flex items-center justify-between border-b border-surface-container pb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-blue-50 text-[#0284c7] flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">terminal</span>
+</div>
+<div>
+<h2 class="font-headline-md text-xl sm:text-2xl font-bold text-on-surface">Tecnología</h2>
+<p class="text-xs sm:text-sm text-on-surface-variant">Soporte informático, telecomunicaciones y conectividad segura</p>
+</div>
+</div>
+
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+<!-- Tarjeta 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-blue-50 text-[#0284c7] flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">support_agent</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Mesa de Ayuda TI (Helpdesk)</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Apertura de tickets para soporte informático, red e impresoras.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0284c7] text-white hover:bg-[#0369a1] text-sm font-semibold transition-colors" href="#">
+<span class="">Abrir Ticket</span>
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+</a>
+</div>
+</div>
+<!-- Tarjeta 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">mail</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Gestión de Correo Zimbra</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Administración de buzones corporativos y cuotas.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+<span class="">Gestionar Cuenta</span>
+<span class="material-symbols-outlined text-[16px]">settings</span>
+</a>
+</div>
+</div>
+<!-- Tarjeta 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">vpn_key</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Configuración VPN HidroVen</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Acceso remoto seguro para personal en plantas y estaciones.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+<span class="">Descargar Perfil</span>
+<span class="material-symbols-outlined text-[16px]">download</span>
+</a>
+</div>
+</div>
+<!-- Tarjeta 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">network_check</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Monitoreo y Estatus de Red</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Tablero de conectividad de enlaces satelitales y fibra óptica.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+<span class="">Ver Estatus</span>
+<span class="material-symbols-outlined text-[16px]">monitoring</span>
+</a>
+</div>
+</div>
+<!-- Tarjeta 5 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">devices</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-base font-bold text-on-surface">Inventario de Equipos TI</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Registro de activos tecnológicos y custodias.</p>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-container/60 flex justify-end">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+<span class="">Consultar</span>
+<span class="material-symbols-outlined text-[16px]">search</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Pie de Página Institucional -->
+<footer class="w-full bg-white border-t border-surface-container mt-16 shadow-sm">
+<div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+<!-- Identidad -->
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<img alt="HidroVen" class="h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwiltRJAhLfCooQEPL6xOazZux70iNdWxpLSpBVQ7v64sFUdOepB2uxYYjdjRhqasN-4Ozy0ECCW0K-_lDSClPwAKbGBAfrEClezSI8fIBxpDxK3JsjgRIFWiaqGaTzX1BNUaFOPXK3evKD-Iwnjqol2mbpBZeEV9zFu0dsS2ktAbajukApttZmrgEAt3foDhPJcb-VL24GxAKc3Nx_mSkUUtD9-nzmKENxBmX6jOEGHYgmEemPJdS">
+<span class="font-headline-sm text-lg font-bold text-[#006194]">HidroVen</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+            Casa Matriz del Sector Agua Potable y Saneamiento. Administrando con solvencia y rigor técnico el patrimonio hídrico nacional.
+          </p>
+</div>
+<!-- Soporte -->
+<div class="space-y-3">
+<h4 class="font-label-lg text-sm font-bold text-on-surface">Mesa de Ayuda &amp; Soporte TI</h4>
+<ul class="space-y-2 text-sm text-on-surface-variant">
+<li class="">Extensión Central: <strong class="text-on-surface">4400 / 4401</strong></li>
+<li class="">Guardia Operativa: <strong class="text-on-surface">ext. 4455</strong></li>
+<li class="">Soporte: <strong class="text-primary">cau@hidroven.gob.ve</strong></li>
+<li class="">Horario: 24/7 Monitoreo Nacional</li>
+</ul>
+</div>
+<!-- Normativas -->
+<div class="space-y-3">
+<h4 class="font-label-lg text-sm font-bold text-on-surface">Normativas &amp; Marco Legal</h4>
+<ul class="space-y-2 text-sm text-on-surface-variant">
+<li class=""><a class="hover:text-primary transition-colors" href="#">Política de Seguridad de la Información</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Reglamento Interno de Personal</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Gaceta Oficial Hidrológica</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Manual de Gestión Documental</a></li>
+</ul>
+</div>
+<!-- Canales -->
+<div class="space-y-3">
+<h4 class="font-label-lg text-sm font-bold text-on-surface">Canales Corporativos</h4>
+<p class="text-sm text-on-surface-variant">Red Oficial de Divulgación e Información Institucional</p>
+<div class="flex items-center gap-2 pt-1 text-on-surface-variant">
+<a aria-label="Noticias" class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">rss_feed</span>
+</a>
+<a aria-label="Audiovisual" class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">smart_display</span>
+</a>
+<a aria-label="Boletines" class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">newspaper</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Barra inferior -->
+<div class="pt-6 border-t border-surface-container flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-on-surface-variant">
+<span class="">© 2026 Casa Matriz HidroVen, S.A. Todos los derechos reservados. RIF: G-20000000-0.</span>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">Términos de Uso</a>
+<a class="hover:text-primary transition-colors" href="#">Privacidad Interna</a>
+<a class="hover:text-primary transition-colors" href="#">Estatus de Red VPN</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Script interactivo de filtrado -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const sections = {
+        'trabajadores': document.getElementById('sec-trabajadores'),
+        'administracion': document.getElementById('sec-administracion'),
+        'tecnologia': document.getElementById('sec-tecnologia')
+      };
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.filter;
+
+          // Actualizar estilos activos de los botones
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-[#0284c7]', 'text-white', 'font-semibold', 'shadow-sm');
+            b.classList.add('bg-surface-container-low', 'text-on-surface-variant', 'font-medium');
+          });
+          btn.classList.add('bg-[#0284c7]', 'text-white', 'font-semibold', 'shadow-sm');
+          btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant', 'font-medium');
+
+          // Filtrar secciones correspondientes
+          if (filter === 'all') {
+            Object.values(sections).forEach(sec => sec && sec.classList.remove('hidden'));
+          } else {
+            Object.keys(sections).forEach(key => {
+              if (sections[key]) {
+                if (key === filter) {
+                  sections[key].classList.remove('hidden');
+                } else {
+                  sections[key].classList.add('hidden');
+                }
+              }
+            });
+          }
+        });
+      });
+    });
+  </script>
+
+
+
+
+
+
+<div id="sia-toast" class="fixed bottom-6 right-6 z-50 hidden bg-[#006194] text-white px-5 py-3.5 rounded-xl shadow-2xl items-center gap-3 border border-white/20 transition-all"><span class="material-symbols-outlined text-[24px] text-secondary-container">check_circle</span><div><div class="font-bold text-sm leading-tight" id="sia-toast-title">Ingresando al módulo...</div><div class="text-xs text-white/80" id="sia-toast-desc">Redirigiendo de forma segura</div></div></div><script>function toggleSiaMenu(e){if(e)e.stopPropagation();const menu=document.getElementById('sia-dropdown-menu');const caret=document.getElementById('sia-caret-icon');if(!menu)return;const isHidden=menu.classList.contains('hidden');if(isHidden){menu.classList.remove('hidden');if(caret)caret.style.transform='rotate(180deg)';}else{menu.classList.add('hidden');if(caret)caret.style.transform='rotate(0deg)';}}function selectSiaModule(name){const menu=document.getElementById('sia-dropdown-menu');const caret=document.getElementById('sia-caret-icon');if(menu)menu.classList.add('hidden');if(caret)caret.style.transform='rotate(0deg)';const toast=document.getElementById('sia-toast');const toastTitle=document.getElementById('sia-toast-title');const toastDesc=document.getElementById('sia-toast-desc');if(toast&&toastTitle&&toastDesc){toastTitle.textContent='Accediendo a: '+name;toastDesc.textContent='Cargando entorno SIA corporativo...';toast.classList.remove('hidden');toast.classList.add('flex');setTimeout(()=>{toast.classList.add('hidden');toast.classList.remove('flex');},3500);}}document.addEventListener('click',(event)=>{const menu=document.getElementById('sia-dropdown-menu');const btn=document.getElementById('btn-toggle-sia');const caret=document.getElementById('sia-caret-icon');if(menu&&!menu.classList.contains('hidden')){if(!menu.contains(event.target)&&!btn.contains(event.target)){menu.classList.add('hidden');if(caret)caret.style.transform='rotate(0deg)';}}});document.addEventListener('keydown',(event)=>{if(event.key==='Escape'){const menu=document.getElementById('sia-dropdown-menu');const caret=document.getElementById('sia-caret-icon');if(menu&&!menu.classList.contains('hidden')){menu.classList.add('hidden');if(caret)caret.style.transform='rotate(0deg)';}}});</script>
+
+</body></html>

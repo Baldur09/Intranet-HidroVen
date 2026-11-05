@@ -149,7 +149,7 @@
 <div class="space-y-1">
 <span class="font-label-caps text-label-caps uppercase text-tertiary">Total Registrados</span>
 <div class="flex items-baseline gap-2">
-<span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-total-usuarios">348</span>
+<span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-total-usuarios">0</span>
 <span class="font-body-sm text-body-sm text-tertiary">cuentas</span>
 </div>
 </div>
@@ -162,7 +162,7 @@
 <div class="space-y-1">
 <span class="font-label-caps text-label-caps uppercase text-tertiary">Inactivos / Bajas</span>
 <div class="flex items-baseline gap-2">
-<span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-inactivos">22</span>
+<span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-inactivos">0</span>
 <span class="font-body-sm text-body-sm text-tertiary">cuentas</span>
 </div>
 </div>
@@ -194,10 +194,9 @@
 <div class="md:col-span-2">
 <select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-rol">
 <option value="todos">Todos los Roles</option>
-<option value="Administrador">Administrador</option>
-<option value="Operativo">Operativo</option>
-<option value="Consulta / Estándar">Consulta / Estándar</option>
-</select>
+    <option value="administrador">Administrador</option>
+    <option value="empleado">Empleado</option>
+  </select>
 </div>
 <!-- Filtro Estado -->
 <div class="md:col-span-2">
@@ -227,300 +226,7 @@
 </tr>
 </thead>
 <tbody class="text-body-md font-body-md divide-y-0" id="tabla-usuarios-cuerpo">
-<!-- Fila 1 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors group" data-cedula="V-14.892.301" data-correo="lsalazar@hidroven.gob.ve" data-estado="Activo" data-gerencia="Gerencia Operativa" data-id="1" data-nombre="Ing. Luis Salazar" data-rol="Administrador">
-<td class="py-4 px-4">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-primary-fixed text-primary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
-                    LS
-                  </div>
-<div class="min-w-0">
-<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Ing. Luis Salazar</span>
-<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">lsalazar@hidroven.gob.ve</span>
-</div>
-</div>
-</td>
-<td class="py-4 px-4 font-mono text-on-surface usuario-cedula">V-14.892.301</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span class="">Gerencia Operativa</span></span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-primary text-on-primary usuario-rol-badge">
-                  Administrador
-                </span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  Activo
-                </span>
-</td>
-<td class="py-4 px-4">
-<div class="flex items-center justify-center gap-2 text-on-surface-variant">
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
-<span class="material-symbols-outlined text-[22px]">edit</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
-<span class="material-symbols-outlined text-[22px]">visibility</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja" type="button">
-<span class="material-symbols-outlined text-[22px]">toggle_on</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Fila 2 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors group" data-cedula="V-16.442.908" data-correo="crivas@hidroven.gob.ve" data-estado="Activo" data-gerencia="Sistemas y TI" data-id="2" data-nombre="Ing. Carmen Rivas" data-rol="Administrador">
-<td class="py-4 px-4">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-secondary-fixed text-secondary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
-                    CR
-                  </div>
-<div class="min-w-0">
-<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Ing. Carmen Rivas</span>
-<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">crivas@hidroven.gob.ve</span>
-</div>
-</div>
-</td>
-<td class="py-4 px-4 font-mono text-on-surface usuario-cedula">V-16.442.908</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span class="">Sistemas y TI</span></span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-primary text-on-primary usuario-rol-badge">
-                  Administrador
-                </span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  Activo
-                </span>
-</td>
-<td class="py-4 px-4">
-<div class="flex items-center justify-center gap-2 text-on-surface-variant">
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
-<span class="material-symbols-outlined text-[22px]">edit</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
-<span class="material-symbols-outlined text-[22px]">visibility</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja" type="button">
-<span class="material-symbols-outlined text-[22px]">toggle_on</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Fila 3 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors group" data-cedula="V-12.771.604" data-correo="mpena@hidroven.gob.ve" data-estado="Activo" data-gerencia="Administración y Finanzas" data-id="3" data-nombre="Lcdo. Marcos Peña" data-rol="Operativo">
-<td class="py-4 px-4">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-surface-container text-tertiary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
-                    MP
-                  </div>
-<div class="min-w-0">
-<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Lcdo. Marcos Peña</span>
-<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">mpena@hidroven.gob.ve</span>
-</div>
-</div>
-</td>
-<td class="py-4 px-4 font-mono text-on-surface usuario-cedula">V-12.771.604</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span class="">Administración y Finanzas</span></span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed text-on-secondary-fixed-variant usuario-rol-badge">
-                  Operativo
-                </span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  Activo
-                </span>
-</td>
-<td class="py-4 px-4">
-<div class="flex items-center justify-center gap-2 text-on-surface-variant">
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
-<span class="material-symbols-outlined text-[22px]">edit</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
-<span class="material-symbols-outlined text-[22px]">visibility</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja" type="button">
-<span class="material-symbols-outlined text-[22px]">toggle_on</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Fila 4 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors group" data-cedula="V-11.230.155" data-correo="egomez@hidroven.gob.ve" data-estado="Activo" data-gerencia="Presidencia" data-id="4" data-nombre="Dra. Elena Gómez" data-rol="Administrador">
-<td class="py-4 px-4">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-tertiary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
-                    EG
-                  </div>
-<div class="min-w-0">
-<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Dra. Elena Gómez</span>
-<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">egomez@hidroven.gob.ve</span>
-</div>
-</div>
-</td>
-<td class="py-4 px-4 font-mono text-on-surface usuario-cedula">V-11.230.155</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span class="">Presidencia</span></span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-primary text-on-primary usuario-rol-badge">
-                  Administrador
-                </span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  Activo
-                </span>
-</td>
-<td class="py-4 px-4">
-<div class="flex items-center justify-center gap-2 text-on-surface-variant">
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
-<span class="material-symbols-outlined text-[22px]">edit</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
-<span class="material-symbols-outlined text-[22px]">visibility</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja" type="button">
-<span class="material-symbols-outlined text-[22px]">toggle_on</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Fila 5 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors group" data-cedula="V-18.905.112" data-correo="rmendoza@hidroven.gob.ve" data-estado="Activo" data-gerencia="Gerencia Operativa" data-id="5" data-nombre="Tec. Rafael Mendoza" data-rol="Operativo">
-<td class="py-4 px-4">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-surface-container text-tertiary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
-                    RM
-                  </div>
-<div class="min-w-0">
-<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Tec. Rafael Mendoza</span>
-<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">rmendoza@hidroven.gob.ve</span>
-</div>
-</div>
-</td>
-<td class="py-4 px-4 font-mono text-on-surface usuario-cedula">V-18.905.112</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span class="">Gerencia Operativa</span></span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed text-on-secondary-fixed-variant usuario-rol-badge">
-                  Operativo
-                </span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  Activo
-                </span>
-</td>
-<td class="py-4 px-4">
-<div class="flex items-center justify-center gap-2 text-on-surface-variant">
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
-<span class="material-symbols-outlined text-[22px]">edit</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
-<span class="material-symbols-outlined text-[22px]">visibility</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja" type="button">
-<span class="material-symbols-outlined text-[22px]">toggle_on</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Fila 6 (Inactivo) -->
-<tr class="hover:bg-surface-container-low/50 transition-colors group opacity-85" data-cedula="V-20.103.882" data-correo="avillalobos@hidroven.gob.ve" data-estado="Inactivo" data-gerencia="Comercialización" data-id="6" data-nombre="Tsu. Ana Villalobos" data-rol="Consulta / Estándar">
-<td class="py-4 px-4">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-surface-container-high text-outline font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
-                    AV
-                  </div>
-<div class="min-w-0">
-<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Tsu. Ana Villalobos</span>
-<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">avillalobos@hidroven.gob.ve</span>
-</div>
-</div>
-</td>
-<td class="py-4 px-4 font-mono text-outline usuario-cedula">V-20.103.882</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 text-outline usuario-gerencia"><span class="">Comercialización</span></span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-surface-container-high text-tertiary usuario-rol-badge">
-                  Consulta / Estándar
-                </span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-error-container text-on-error-container usuario-estado-badge">
-<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
-                  Inactivo
-                </span>
-</td>
-<td class="py-4 px-4">
-<div class="flex items-center justify-center gap-2 text-on-surface-variant">
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
-<span class="material-symbols-outlined text-[22px]">edit</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
-<span class="material-symbols-outlined text-[22px]">visibility</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-desactivar" title="Gestionar estado" type="button">
-<span class="material-symbols-outlined text-[22px]">toggle_off</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Fila 7 -->
-<tr class="hover:bg-surface-container-low/50 transition-colors group" data-cedula="V-17.521.409" data-correo="jortiz@hidroven.gob.ve" data-estado="Activo" data-gerencia="Sistemas y TI" data-id="7" data-nombre="Ing. José Ortiz" data-rol="Operativo">
-<td class="py-4 px-4">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-surface-container text-tertiary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
-                    JO
-                  </div>
-<div class="min-w-0">
-<span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">Ing. José Ortiz</span>
-<span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">jortiz@hidroven.gob.ve</span>
-</div>
-</div>
-</td>
-<td class="py-4 px-4 font-mono text-on-surface usuario-cedula">V-17.521.409</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span class="">Sistemas y TI</span></span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed text-on-secondary-fixed-variant usuario-rol-badge">
-                  Operativo
-                </span>
-</td>
-<td class="py-4 px-4">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  Activo
-                </span>
-</td>
-<td class="py-4 px-4">
-<div class="flex items-center justify-center gap-2 text-on-surface-variant">
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
-<span class="material-symbols-outlined text-[22px]">edit</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
-<span class="material-symbols-outlined text-[22px]">visibility</span>
-</button>
-<button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja" type="button">
-<span class="material-symbols-outlined text-[22px]">toggle_on</span>
-</button>
-</div>
-</td>
-</tr>
+  <!-- Los datos se cargaran dinámicamente desde la base de datos -->
 </tbody>
 </table>
 </div>
@@ -529,15 +235,12 @@
 </div>
 
 <!-- MODAL 1: AÑADIR USUARIO INSTITUCIONAL (PRESERVADO) -->
-
 <%- include('partials/modales/modal-añadir') %>
 
 <!-- MODAL 2: EDITAR USUARIO -->
-
 <%- include('partials/modales/modal-editar') %>
 
 <!-- MODAL 3: DESACTIVAR / BAJA LÓGICA INSTITUCIONAL -->
-
 <%- include('partials/modales/modal-baja') %>
 
 <!-- Toast Notification Flotante (Retroalimentación al Guardar) -->
@@ -545,23 +248,13 @@
 <span class="material-symbols-outlined text-secondary-container text-[22px]" id="toast-icono" style="animation-delay: 0ms;">check_circle</span>
 <span class="font-body-md text-body-md" id="toast-mensaje">Lista de usuarios sincronizada con el directorio central.</span>
 </div>
+
 <!-- ========================================================= -->
-<!-- JAVASCRIPT: GESTIÓN CENTRALIZADA DE MODALES, TABLA Y FILTROS -->
+<!-- JAVASCRIPT: GESTIÓN CONECTADA A LA BASE DE DATOS MEDIANTE FETCH -->
 <!-- ========================================================= -->
 <script>
   (function() {
-    // Dataset simulado y sincronizado con la tabla
-    let usuariosDB = [
-      { id: 1, nombres: 'Luis Antonio', apellidos: 'Salazar Rodríguez', nombreCompleto: 'Ing. Luis Salazar', cedula: 'V-14.892.301', correo: 'lsalazar@hidroven.gob.ve', gerencia: 'Gerencia Operativa', rol: 'Administrador', estado: 'Activo' },
-      { id: 2, nombres: 'Carmen Beatriz', apellidos: 'Rivas Medina', nombreCompleto: 'Ing. Carmen Rivas', cedula: 'V-16.442.908', correo: 'crivas@hidroven.gob.ve', gerencia: 'Sistemas y TI', rol: 'Administrador', estado: 'Activo' },
-      { id: 3, nombres: 'Marcos José', apellidos: 'Peña Gil', nombreCompleto: 'Lcdo. Marcos Peña', cedula: 'V-12.771.604', correo: 'mpena@hidroven.gob.ve', gerencia: 'Administración y Finanzas', rol: 'Operativo', estado: 'Activo' },
-      { id: 4, nombres: 'Elena María', apellidos: 'Gómez Farías', nombreCompleto: 'Dra. Elena Gómez', cedula: 'V-11.230.155', correo: 'egomez@hidroven.gob.ve', gerencia: 'Presidencia', rol: 'Administrador', estado: 'Activo' },
-      { id: 5, nombres: 'Rafael Alberto', apellidos: 'Mendoza Pérez', nombreCompleto: 'Tec. Rafael Mendoza', cedula: 'V-18.905.112', correo: 'rmendoza@hidroven.gob.ve', gerencia: 'Gerencia Operativa', rol: 'Operativo', estado: 'Activo' },
-      { id: 6, nombres: 'Ana Victoria', apellidos: 'Villalobos Soto', nombreCompleto: 'Tsu. Ana Villalobos', cedula: 'V-20.103.882', correo: 'avillalobos@hidroven.gob.ve', gerencia: 'Comercialización', rol: 'Consulta / Estándar', estado: 'Inactivo' },
-      { id: 7, nombres: 'José David', apellidos: 'Ortiz Alvarado', nombreCompleto: 'Ing. José Ortiz', cedula: 'V-17.521.409', correo: 'jortiz@hidroven.gob.ve', gerencia: 'Sistemas y TI', rol: 'Operativo', estado: 'Activo' }
-    ];
-
-    let usuarioSeleccionadoActual = usuariosDB[0];
+    let usuariosDB = []; // Se llenará desde la Base de Datos
 
     // Elementos de Notificación
     const toast = document.getElementById('toast-notificacion');
@@ -587,7 +280,121 @@
     }
 
     // ==========================================
-    // 1. MODAL: AÑADIR USUARIO
+    // CARGAR USUARIOS DESDE LA BD AL INICIAR
+    // ==========================================
+    async function cargarUsuariosBD() {
+      try {
+        const respuesta = await fetch('/api/usuarios');
+        const data = await respuesta.json();
+        if (!respuesta.ok || !data.success) {
+          throw new Error(data.message || 'No se pudo cargar la lista de usuarios.');
+        }
+        if (data.success) {
+          usuariosDB = data.usuarios;
+          renderizarTabla(usuariosDB);
+          actualizarKPIs(usuariosDB);
+        }
+      } catch (error) {
+        console.error("Error al cargar los usuarios:", error);
+        mostrarToast("No se pudo conectar con la base de datos", "error");
+      }
+    }
+
+    async function cargarGerencias() {
+      const selectGerenciaCrear = document.getElementById('select-gerencia');
+      if (!selectGerenciaCrear) return;
+
+      try {
+        const respuesta = await fetch('/api/gerencias');
+        const data = await respuesta.json();
+        if (!respuesta.ok || !data.success) {
+          throw new Error(data.message || 'No se pudieron cargar las gerencias.');
+        }
+
+        selectGerenciaCrear.replaceChildren(new Option('Seleccione Gerencia...', ''));
+        data.gerencias.forEach(gerencia => {
+          selectGerenciaCrear.add(new Option(gerencia.nombre, gerencia.Id));
+        });
+      } catch (error) {
+        console.error('Error al cargar gerencias:', error);
+        mostrarToast('No se pudieron cargar las gerencias disponibles.', 'error');
+      }
+    }
+
+    function actualizarKPIs(lista) {
+      const totalUsuarios = document.getElementById('kpi-total-usuarios');
+      const inactivos = document.getElementById('kpi-inactivos');
+
+      const total = lista.length;
+      const cantInactivos = lista.filter(u => u.estado === 'Inactivo').length;
+
+      if (totalUsuarios) totalUsuarios.textContent = total;
+      if (inactivos) inactivos.textContent = cantInactivos;
+    }
+
+    function renderizarTabla(lista) {
+      const tablaCuerpo = document.getElementById('tabla-usuarios-cuerpo');
+      if (!tablaCuerpo) return;
+
+      if (lista.length === 0) {
+        tablaCuerpo.innerHTML = `<tr><td colspan="6" class="py-6 text-center text-outline">No hay usuarios registrados en la base de datos.</td></tr>`;
+        return;
+      }
+
+      tablaCuerpo.innerHTML = lista.map(u => {
+        const nombreCompleto = `${u.nombres} ${u.apellidos}`;
+        const iniciales = (u.nombres.charAt(0) + (u.apellidos ? u.apellidos.charAt(0) : '')).toUpperCase();
+        const esActivo = u.estado === 'Activo';
+
+        return `
+          <tr class="hover:bg-surface-container-low/50 transition-colors group ${!esActivo ? 'opacity-85' : ''}" data-cedula="${u.cedula}" data-correo="${u.correo}" data-estado="${u.estado}" data-gerencia="${u.gerencia}" data-id="${u.id}" data-nombre="${nombreCompleto}" data-rol="${u.rol}">
+            <td class="py-4 px-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary-fixed text-primary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
+                  ${iniciales}
+                </div>
+                <div class="min-w-0">
+                  <span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">${nombreCompleto}</span>
+                  <span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">${u.correo}</span>
+                </div>
+              </div>
+            </td>
+            <td class="py-4 px-4 font-mono text-on-surface usuario-cedula">${u.cedula}</td>
+            <td class="py-4 px-4">
+              <span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span>${u.gerencia}</span></span>
+            </td>
+            <td class="py-4 px-4">
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-primary text-on-primary usuario-rol-badge">
+                ${u.rol}
+              </span>
+            </td>
+            <td class="py-4 px-4">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps ${esActivo ? 'bg-secondary-fixed/50 text-on-secondary-fixed-variant' : 'bg-error-container text-on-error-container'} usuario-estado-badge">
+                <span class="w-1.5 h-1.5 rounded-full ${esActivo ? 'bg-secondary' : 'bg-error'}"></span>
+                ${u.estado}
+              </span>
+            </td>
+            <td class="py-4 px-4">
+              <div class="flex items-center justify-center gap-2 text-on-surface-variant">
+                <button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
+                  <span class="material-symbols-outlined text-[22px]">edit</span>
+                </button>
+                <button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
+                  <span class="material-symbols-outlined text-[22px]">visibility</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Ejecutar al cargar la página
+    cargarUsuariosBD();
+    cargarGerencias();
+
+    // ==========================================
+    // 1. MODAL: AÑADIR USUARIO CON FETCH
     // ==========================================
     const modalCrear = document.getElementById('modal-nuevo-usuario');
     const btnAbrirCrear = document.getElementById('btn-abrir-modal');
@@ -598,7 +405,6 @@
     const inputPassword = document.getElementById('input-password-temp');
     const btnTogglePassword = document.getElementById('btn-toggle-password');
     const iconoTogglePassword = document.getElementById('icono-toggle-password');
-    const tablaCuerpo = document.getElementById('tabla-usuarios-cuerpo');
 
     function abrirModalCrear() {
       if (modalCrear) {
@@ -614,7 +420,7 @@
         if (formCrear) formCrear.reset();
         if (inputPassword) {
           inputPassword.type = 'password';
-          inputPassword.value = 'HidroVen.2026*Temp';
+          inputPassword.value = '';
         }
         if (iconoTogglePassword) {
           iconoTogglePassword.textContent = 'visibility';
@@ -654,490 +460,63 @@
     }
 
     if (formCrear) {
-      formCrear.addEventListener('submit', (e) => {
+      formCrear.addEventListener('submit', async (e) => {
         e.preventDefault();
         const nombres = document.getElementById('input-nombres').value.trim();
         const apellidos = document.getElementById('input-apellidos').value.trim();
-        const nac = document.getElementById('select-nacionalidad').value;
-        const cedula = document.getElementById('input-cedula').value.trim();
+        const nacionalidad = document.getElementById('select-nacionalidad').value;
+        const cedula = document.getElementById('input-cedula').value.trim().replace(/\./g, '');
         const correo = document.getElementById('input-correo').value.trim();
-        const gerencia = document.getElementById('select-gerencia').value;
+        const telefono = document.getElementById('input-telefono').value.trim();
+        const id_gerencia = document.getElementById('select-gerencia').value;
         const rol = document.getElementById('select-rol').value;
+        const password = inputPassword.value;
 
-        if (!nombres || !cedula || !correo || !gerencia) {
+        if (!nombres || !apellidos || !cedula || !correo || !telefono || !id_gerencia || !rol || !password) {
           alert('Por favor complete los campos obligatorios del formulario.');
           return;
         }
 
-        const iniciales = (nombres.charAt(0) + (apellidos.charAt(0) || '')).toUpperCase() || 'US';
-        const nombreCompleto = nombres + ' ' + apellidos;
-        const cedulaCompleta = nac + '-' + cedula;
-        const correoCompleto = correo.includes('@') ? correo : (correo + '@hidroven.gob.ve');
-        const nuevoId = Date.now();
-
-        const nuevoUsuario = {
-          id: nuevoId,
+        const nuevoUsuarioData = {
           nombres,
           apellidos,
-          nombreCompleto,
-          cedula: cedulaCompleta,
-          correo: correoCompleto,
-          gerencia,
+          nacionalidad,
+          cedula,
+          correo,
+          telefono,
+          id_gerencia: Number(id_gerencia),
           rol,
-          estado: 'Activo'
+          password
         };
-        usuariosDB.unshift(nuevoUsuario);
 
-        if (tablaCuerpo) {
-          const nuevaFila = document.createElement('tr');
-          nuevaFila.className = 'hover:bg-surface-container-low/50 transition-colors group';
-          nuevaFila.dataset.id = nuevoId;
-          nuevaFila.dataset.nombre = nombreCompleto;
-          nuevaFila.dataset.cedula = cedulaCompleta;
-          nuevaFila.dataset.correo = correoCompleto;
-          nuevaFila.dataset.gerencia = gerencia;
-          nuevaFila.dataset.rol = rol;
-          nuevaFila.dataset.estado = 'Activo';
-
-          nuevaFila.innerHTML = `
-            <td class="py-4 px-4">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-primary-fixed text-primary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
-                  ${iniciales}
-                </div>
-                <div class="min-w-0">
-                  <span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">${nombreCompleto}</span>
-                  <span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">${correoCompleto}</span>
-                </div>
-              </div>
-            </td>
-            <td class="py-4 px-4 font-mono text-on-surface usuario-cedula">${cedulaCompleta}</td>
-            <td class="py-4 px-4">
-              <span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia">
-                <span>${gerencia}</span>
-              </span>
-            </td>
-            <td class="py-4 px-4">
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-primary text-on-primary usuario-rol-badge">
-                ${rol}
-              </span>
-            </td>
-            <td class="py-4 px-4">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge">
-                <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                Activo
-              </span>
-            </td>
-            <td class="py-4 px-4">
-              <div class="flex items-center justify-center gap-2 text-on-surface-variant">
-                <button type="button" class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario">
-                  <span class="material-symbols-outlined text-[22px]">edit</span>
-                </button>
-                <button type="button" class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría">
-                  <span class="material-symbols-outlined text-[22px]">visibility</span>
-                </button>
-                <button type="button" class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-desactivar" title="Desactivar o tramitar baja">
-                  <span class="material-symbols-outlined text-[22px]">toggle_on</span>
-                </button>
-              </div>
-            </td>
-          `;
-          tablaCuerpo.prepend(nuevaFila);
-          enlazarEventosFila(nuevaFila);
-        }
-
-        cerrarModalCrear();
-        mostrarToast('Usuario registrado exitosamente en la base de datos');
-      });
-    }
-
-    // ==========================================
-    // 2. MODAL: EDITAR USUARIO
-    // ==========================================
-    const modalEditar = document.getElementById('modal-editar-usuario');
-    const btnAbrirEditarRapido = document.getElementById('btn-editar-rapido');
-    const btnCerrarEditar = document.getElementById('btn-cerrar-modal-editar');
-    const btnCerrarEditarX = document.getElementById('btn-cerrar-modal-editar-x');
-    const formEditar = document.getElementById('form-editar-usuario');
-    const inputBuscadorEditar = document.getElementById('editar-buscar-usuario');
-    const listaResultadosEditar = document.getElementById('lista-coincidencias-editar');
-    const btnLimpiarBusquedaEditar = document.getElementById('btn-limpiar-busqueda-editar');
-
-    // Campos formulario edición
-    const editId = document.getElementById('editar-user-id');
-    const editNombres = document.getElementById('editar-nombres');
-    const editApellidos = document.getElementById('editar-apellidos');
-    const editCedula = document.getElementById('editar-cedula');
-    const editCorreo = document.getElementById('editar-correo');
-    const editGerencia = document.getElementById('editar-gerencia');
-    const editRol = document.getElementById('editar-rol');
-    const radiosEstado = document.getElementsByName('editar-estado-radio');
-
-    function precargarDatosEdicion(u) {
-      if (!u) return;
-      usuarioSeleccionadoActual = u;
-      editId.value = u.id;
-      
-      const partes = u.nombreCompleto ? u.nombreCompleto.replace(/^(Ing\.|Lcdo\.|Tec\.|Dra\.|Tsu\.)\s*/, '').split(' ') : ['',''];
-      editNombres.value = u.nombres || partes[0] || '';
-      editApellidos.value = u.apellidos || partes.slice(1).join(' ') || '';
-      editCedula.value = u.cedula || '';
-      
-      const emailLocal = (u.correo || '').split('@')[0];
-      editCorreo.value = emailLocal;
-      if (editGerencia) editGerencia.value = u.gerencia || 'Gerencia Operativa';
-      if (editRol) editRol.value = u.rol || 'Operativo';
-
-      radiosEstado.forEach(r => {
-        r.checked = (r.value === u.estado);
-      });
-
-      if (inputBuscadorEditar) {
-        inputBuscadorEditar.value = `${u.nombreCompleto || u.nombres} (${u.cedula})`;
-        if (btnLimpiarBusquedaEditar) btnLimpiarBusquedaEditar.classList.remove('hidden');
-      }
-      if (listaResultadosEditar) listaResultadosEditar.classList.add('hidden');
-    }
-
-    function abrirModalEditar(usuarioPredefinido) {
-      if (modalEditar) {
-        modalEditar.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        if (usuarioPredefinido) {
-          precargarDatosEdicion(usuarioPredefinido);
-        } else {
-          precargarDatosEdicion(usuariosDB[0]);
-        }
-      }
-    }
-
-    function cerrarModalEditar() {
-      if (modalEditar) {
-        modalEditar.classList.add('hidden');
-        document.body.style.overflow = '';
-        if (listaResultadosEditar) listaResultadosEditar.classList.add('hidden');
-      }
-    }
-
-    if (btnAbrirEditarRapido) {
-      btnAbrirEditarRapido.addEventListener('click', () => abrirModalEditar());
-    }
-    if (btnCerrarEditar) btnCerrarEditar.addEventListener('click', cerrarModalEditar);
-    if (btnCerrarEditarX) btnCerrarEditarX.addEventListener('click', cerrarModalEditar);
-    if (modalEditar) {
-      modalEditar.addEventListener('click', (e) => {
-        if (e.target === modalEditar) cerrarModalEditar();
-      });
-    }
-
-    // Buscador interactivo en modal edición
-    if (inputBuscadorEditar && listaResultadosEditar) {
-      inputBuscadorEditar.addEventListener('input', () => {
-        const query = inputBuscadorEditar.value.trim().toLowerCase();
-        if (btnLimpiarBusquedaEditar) {
-          if (query.length > 0) btnLimpiarBusquedaEditar.classList.remove('hidden');
-          else btnLimpiarBusquedaEditar.classList.add('hidden');
-        }
-
-        if (query.length === 0) {
-          listaResultadosEditar.classList.add('hidden');
-          return;
-        }
-
-        const filtrados = usuariosDB.filter(u => 
-          (u.nombreCompleto && u.nombreCompleto.toLowerCase().includes(query)) ||
-          (u.nombres && u.nombres.toLowerCase().includes(query)) ||
-          (u.apellidos && u.apellidos.toLowerCase().includes(query)) ||
-          (u.cedula && u.cedula.toLowerCase().includes(query)) ||
-          (u.correo && u.correo.toLowerCase().includes(query))
-        );
-
-        if (filtrados.length === 0) {
-          listaResultadosEditar.innerHTML = `
-            <div class="p-3 text-body-sm text-outline text-center">No se encontraron empleados coincidentes</div>
-          `;
-        } else {
-          listaResultadosEditar.innerHTML = filtrados.map(u => `
-            <button type="button" class="w-full text-left p-3 hover:bg-surface-container-low transition-colors flex items-center justify-between gap-3 border-b border-surface-container last:border-0 item-coincidencia-editar" data-id="${u.id}">
-              <div>
-                <span class="font-label-lg text-label-lg text-on-surface block">${u.nombreCompleto || (u.nombres + ' ' + u.apellidos)}</span>
-                <span class="text-body-sm text-outline">${u.cedula} • ${u.gerencia}</span>
-              </div>
-              <span class="text-label-caps font-semibold px-2 py-0.5 rounded ${u.estado === 'Activo' ? 'bg-secondary-fixed text-on-secondary-fixed-variant' : 'bg-error-container text-on-error-container'}">${u.estado}</span>
-            </button>
-          `).join('');
-
-          listaResultadosEditar.querySelectorAll('.item-coincidencia-editar').forEach(btn => {
-            btn.addEventListener('click', () => {
-              const uid = btn.dataset.id;
-              const usuarioEncontrado = usuariosDB.find(x => String(x.id) === String(uid));
-              if (usuarioEncontrado) precargarDatosEdicion(usuarioEncontrado);
-            });
+        try {
+          const respuesta = await fetch('/api/usuarios', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(nuevoUsuarioData)
           });
-        }
-        listaResultadosEditar.classList.remove('hidden');
-      });
+          const resultado = await respuesta.json();
 
-      if (btnLimpiarBusquedaEditar) {
-        btnLimpiarBusquedaEditar.addEventListener('click', () => {
-          inputBuscadorEditar.value = '';
-          inputBuscadorEditar.focus();
-          btnLimpiarBusquedaEditar.classList.add('hidden');
-          listaResultadosEditar.classList.add('hidden');
-        });
-      }
-    }
-
-    if (formEditar) {
-      formEditar.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const idActual = editId.value;
-        const index = usuariosDB.findIndex(x => String(x.id) === String(idActual));
-        const nuevoNombreComp = editNombres.value.trim() + ' ' + editApellidos.value.trim();
-        const nuevoCorreo = editCorreo.value.trim().includes('@') ? editCorreo.value.trim() : (editCorreo.value.trim() + '@hidroven.gob.ve');
-        let nuevoEstado = 'Activo';
-        radiosEstado.forEach(r => { if (r.checked) nuevoEstado = r.value; });
-
-        if (index !== -1) {
-          usuariosDB[index].nombres = editNombres.value.trim();
-          usuariosDB[index].apellidos = editApellidos.value.trim();
-          usuariosDB[index].nombreCompleto = nuevoNombreComp;
-          usuariosDB[index].cedula = editCedula.value.trim();
-          usuariosDB[index].correo = nuevoCorreo;
-          usuariosDB[index].gerencia = editGerencia.value;
-          usuariosDB[index].rol = editRol.value;
-          usuariosDB[index].estado = nuevoEstado;
-        }
-
-        // Actualizar visualmente la fila en la tabla si existe
-        const filaTarget = document.querySelector(`tr[data-id="${idActual}"]`);
-        if (filaTarget) {
-          filaTarget.dataset.nombre = nuevoNombreComp;
-          filaTarget.dataset.cedula = editCedula.value.trim();
-          filaTarget.dataset.correo = nuevoCorreo;
-          filaTarget.dataset.gerencia = editGerencia.value;
-          filaTarget.dataset.rol = editRol.value;
-          filaTarget.dataset.estado = nuevoEstado;
-
-          const elNombre = filaTarget.querySelector('.usuario-nombre');
-          if (elNombre) elNombre.textContent = nuevoNombreComp;
-          const elCorreo = filaTarget.querySelector('.usuario-correo');
-          if (elCorreo) elCorreo.textContent = nuevoCorreo;
-          const elCedula = filaTarget.querySelector('.usuario-cedula');
-          if (elCedula) elCedula.textContent = editCedula.value.trim();
-          const elGerencia = filaTarget.querySelector('.usuario-gerencia span:last-child');
-          if (elGerencia) elGerencia.textContent = editGerencia.value;
-          const elRol = filaTarget.querySelector('.usuario-rol-badge');
-          if (elRol) elRol.textContent = editRol.value;
-
-          const elEstado = filaTarget.querySelector('.usuario-estado-badge');
-          if (elEstado) {
-            if (nuevoEstado === 'Activo') {
-              elEstado.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-secondary-fixed/50 text-on-secondary-fixed-variant usuario-estado-badge';
-              elEstado.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Activo';
-              filaTarget.classList.remove('opacity-85');
-            } else {
-              elEstado.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-error-container text-on-error-container usuario-estado-badge';
-              elEstado.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Inactivo';
-              filaTarget.classList.add('opacity-85');
-            }
+          if (!respuesta.ok || !resultado.success) {
+            throw new Error(resultado.message || 'Error al registrar usuario.');
           }
+          cerrarModalCrear();
+          mostrarToast('Usuario registrado exitosamente en la base de datos');
+          cargarUsuariosBD();
+        } catch (error) {
+          console.error('Error al registrar usuario:', error);
+          alert(error.message || 'No se pudo conectar con el servidor.');
         }
-
-        cerrarModalEditar();
-        mostrarToast(`Cambios de ${nuevoNombreComp} sincronizados en la base de datos`);
       });
     }
 
     // ==========================================
-    // 3. MODAL: DESACTIVAR / BAJA LÓGICA
-    // ==========================================
-    const modalDesactivar = document.getElementById('modal-desactivar-usuario');
-    const btnAbrirDesactivarTop = document.getElementById('btn-eliminar-seleccion');
-    const btnCerrarDesactivar = document.getElementById('btn-cerrar-modal-desactivar');
-    const btnCerrarDesactivarX = document.getElementById('btn-cerrar-modal-desactivar-x');
-    const btnConfirmarBaja = document.getElementById('btn-confirmar-baja');
-    const inputBuscadorBaja = document.getElementById('baja-buscar-usuario');
-    const listaResultadosBaja = document.getElementById('lista-coincidencias-baja');
-
-    // Elementos resumen tarjeta baja
-    const bajaAvatar = document.getElementById('baja-avatar-iniciales');
-    const bajaNombre = document.getElementById('baja-nombre-empleado');
-    const bajaCedula = document.getElementById('baja-cedula-empleado');
-    const bajaGerencia = document.getElementById('baja-gerencia-empleado');
-    const bajaCorreo = document.getElementById('baja-correo-empleado');
-    const selectMotivo = document.getElementById('select-motivo-baja');
-    const textareaNotas = document.getElementById('textarea-notas-baja');
-
-    let usuarioBajaActual = usuariosDB[0];
-
-    function precargarBaja(u) {
-      if (!u) return;
-      usuarioBajaActual = u;
-      const iniciales = (u.nombreCompleto || u.nombres || 'US').replace(/^(Ing\.|Lcdo\.|Tec\.|Dra\.|Tsu\.)\s*/, '').slice(0, 2).toUpperCase();
-      if (bajaAvatar) bajaAvatar.textContent = iniciales;
-      if (bajaNombre) bajaNombre.textContent = u.nombreCompleto || (u.nombres + ' ' + u.apellidos);
-      if (bajaCedula) bajaCedula.textContent = u.cedula || '';
-      if (bajaGerencia) bajaGerencia.textContent = u.gerencia || '';
-      if (bajaCorreo) bajaCorreo.textContent = u.correo || '';
-      if (inputBuscadorBaja) inputBuscadorBaja.value = `${u.nombreCompleto || u.nombres} (${u.cedula})`;
-      if (listaResultadosBaja) listaResultadosBaja.classList.add('hidden');
-    }
-
-    function abrirModalDesactivar(usuarioTarget) {
-      if (modalDesactivar) {
-        modalDesactivar.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        if (usuarioTarget) {
-          precargarBaja(usuarioTarget);
-        } else {
-          precargarBaja(usuariosDB[0]);
-        }
-      }
-    }
-
-    function cerrarModalDesactivar() {
-      if (modalDesactivar) {
-        modalDesactivar.classList.add('hidden');
-        document.body.style.overflow = '';
-        if (listaResultadosBaja) listaResultadosBaja.classList.add('hidden');
-        if (textareaNotas) textareaNotas.value = '';
-      }
-    }
-
-    if (btnAbrirDesactivarTop) {
-      btnAbrirDesactivarTop.addEventListener('click', () => abrirModalDesactivar());
-    }
-    if (btnCerrarDesactivar) btnCerrarDesactivar.addEventListener('click', cerrarModalDesactivar);
-    if (btnCerrarDesactivarX) btnCerrarDesactivarX.addEventListener('click', cerrarModalDesactivar);
-    if (modalDesactivar) {
-      modalDesactivar.addEventListener('click', (e) => {
-        if (e.target === modalDesactivar) cerrarModalDesactivar();
-      });
-    }
-
-    // Buscador interactivo en modal de baja
-    if (inputBuscadorBaja && listaResultadosBaja) {
-      inputBuscadorBaja.addEventListener('input', () => {
-        const query = inputBuscadorBaja.value.trim().toLowerCase();
-        if (query.length === 0) {
-          listaResultadosBaja.classList.add('hidden');
-          return;
-        }
-
-        const filtrados = usuariosDB.filter(u => 
-          (u.nombreCompleto && u.nombreCompleto.toLowerCase().includes(query)) ||
-          (u.nombres && u.nombres.toLowerCase().includes(query)) ||
-          (u.cedula && u.cedula.toLowerCase().includes(query))
-        );
-
-        if (filtrados.length === 0) {
-          listaResultadosBaja.innerHTML = `
-            <div class="p-3 text-body-sm text-outline text-center">No se encontraron empleados</div>
-          `;
-        } else {
-          listaResultadosBaja.innerHTML = filtrados.map(u => `
-            <button type="button" class="w-full text-left p-3 hover:bg-surface-container-low transition-colors flex items-center justify-between gap-3 border-b border-surface-container last:border-0 item-coincidencia-baja" data-id="${u.id}">
-              <div>
-                <span class="font-label-lg text-label-lg text-on-surface block">${u.nombreCompleto}</span>
-                <span class="text-body-sm text-outline">${u.cedula} • ${u.gerencia}</span>
-              </div>
-              <span class="text-label-caps font-semibold px-2 py-0.5 rounded ${u.estado === 'Activo' ? 'bg-secondary-fixed text-on-secondary-fixed-variant' : 'bg-error-container text-on-error-container'}">${u.estado}</span>
-            </button>
-          `).join('');
-
-          listaResultadosBaja.querySelectorAll('.item-coincidencia-baja').forEach(btn => {
-            btn.addEventListener('click', () => {
-              const uid = btn.dataset.id;
-              const usuarioEncontrado = usuariosDB.find(x => String(x.id) === String(uid));
-              if (usuarioEncontrado) precargarBaja(usuarioEncontrado);
-            });
-          });
-        }
-        listaResultadosBaja.classList.remove('hidden');
-      });
-    }
-
-    if (btnConfirmarBaja) {
-      btnConfirmarBaja.addEventListener('click', () => {
-        if (!usuarioBajaActual) return;
-        const motivo = selectMotivo ? selectMotivo.value : 'Fin de contrato';
-        const index = usuariosDB.findIndex(x => String(x.id) === String(usuarioBajaActual.id));
-        if (index !== -1) {
-          usuariosDB[index].estado = 'Inactivo';
-        }
-
-        // Actualizar fila visual
-        const filaTarget = document.querySelector(`tr[data-id="${usuarioBajaActual.id}"]`);
-        if (filaTarget) {
-          filaTarget.dataset.estado = 'Inactivo';
-          filaTarget.classList.add('opacity-85');
-          const elEstado = filaTarget.querySelector('.usuario-estado-badge');
-          if (elEstado) {
-            elEstado.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-error-container text-on-error-container usuario-estado-badge';
-            elEstado.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Inactivo';
-          }
-          const btnToggle = filaTarget.querySelector('.btn-accion-desactivar span');
-          if (btnToggle) btnToggle.textContent = 'toggle_off';
-        }
-
-        cerrarModalDesactivar();
-        mostrarToast(`Baja lógica de ${usuarioBajaActual.nombreCompleto} procesada. Motivo: ${motivo}`);
-      });
-    }
-
-    // ==========================================
-    // 4. ACCIONES EN FILAS Y CHECKBOXES
-    // ==========================================
-    function enlazarEventosFila(fila) {
-      const btnEditar = fila.querySelector('.btn-accion-editar');
-      const btnVer = fila.querySelector('.btn-accion-ver');
-      const btnDesactivar = fila.querySelector('.btn-accion-desactivar');
-
-      const datosUsuarioFila = {
-        id: fila.dataset.id,
-        nombreCompleto: fila.dataset.nombre,
-        cedula: fila.dataset.cedula,
-        correo: fila.dataset.correo,
-        gerencia: fila.dataset.gerencia,
-        rol: fila.dataset.rol,
-        estado: fila.dataset.estado
-      };
-
-      if (btnEditar) {
-        btnEditar.addEventListener('click', (e) => {
-          e.stopPropagation();
-          abrirModalEditar(datosUsuarioFila);
-        });
-      }
-
-      if (btnVer) {
-        btnVer.addEventListener('click', (e) => {
-          e.stopPropagation();
-          mostrarToast(`Auditoría de accesos: ${datosUsuarioFila.nombreCompleto} (${datosUsuarioFila.correo})`);
-        });
-      }
-
-      if (btnDesactivar) {
-        btnDesactivar.addEventListener('click', (e) => {
-          e.stopPropagation();
-          abrirModalDesactivar(datosUsuarioFila);
-        });
-      }
-    }
-
-    document.querySelectorAll('#tabla-usuarios-cuerpo tr').forEach(fila => {
-      enlazarEventosFila(fila);
-    });
-
-    // ==========================================
-    // 5. FILTRADO Y BÚSQUEDA EN LA TABLA
+    // 2. FILTRADO Y BÚSQUEDA EN LA TABLA
     // ==========================================
     const inputBusqueda = document.getElementById('filtro-busqueda');
     const selectGerencia = document.getElementById('filtro-gerencia');
     const selectRol = document.getElementById('filtro-rol');
     const selectEstado = document.getElementById('filtro-estado');
-    const contadorMostrados = document.getElementById('contador-mostrados');
 
     function aplicarFiltros() {
       const q = (inputBusqueda.value || '').toLowerCase();
@@ -1145,7 +524,6 @@
       const rol = selectRol.value;
       const estado = selectEstado.value;
       const filas = document.querySelectorAll('#tabla-usuarios-cuerpo tr');
-      let visibles = 0;
 
       filas.forEach(fila => {
         const texto = fila.textContent.toLowerCase();
@@ -1156,13 +534,10 @@
 
         if (coincideBusqueda && coincideGerencia && coincideRol && coincideEstado) {
           fila.style.display = '';
-          visibles++;
         } else {
           fila.style.display = 'none';
         }
       });
-
-      if (contadorMostrados) contadorMostrados.textContent = visibles;
     }
 
     if (inputBusqueda) inputBusqueda.addEventListener('input', aplicarFiltros);
@@ -1170,34 +545,14 @@
     if (selectRol) selectRol.addEventListener('change', aplicarFiltros);
     if (selectEstado) selectEstado.addEventListener('change', aplicarFiltros);
 
-    const btnRecargar = document.getElementById('btn-recargar');
-    if (btnRecargar) {
-      btnRecargar.addEventListener('click', () => {
-        inputBusqueda.value = '';
-        selectGerencia.value = 'todas';
-        selectRol.value = 'todos';
-        selectEstado.value = 'todos';
-        aplicarFiltros();
-        mostrarToast('Lista de usuarios sincronizada con el directorio central.');
-      });
-    }
-
-    const btnExportar = document.getElementById('btn-exportar-csv');
-    if (btnExportar) {
-      btnExportar.addEventListener('click', () => {
-        mostrarToast('Exportando reporte consolidado de usuarios a formato CSV/Excel...');
-      });
-    }
   })();
 </script>
 </div></main>
 <footer class="w-full bg-white border-t border-surface-container mt-auto shadow-sm"></footer>
 <!-- Pie de Página Institucional -->
-
 <%- include('partials/footer') %>
 
-
- <script src="/sidebar.js"></script>
-  <div id="sidebar-overlay" class="hidden fixed inset-0 bg-transparent z-40 pointer-events-none" onclick="toggleSidebar()"></div>
+<script src="/sidebar.js"></script>
+<div id="sidebar-overlay" class="hidden fixed inset-0 bg-transparent z-40 pointer-events-none" onclick="toggleSidebar()"></div>
 
 </body></html>

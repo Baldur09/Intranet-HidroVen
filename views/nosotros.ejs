@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Nosotros</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#006194',
+              dark: '#004368',
+              hover: '#004c75',
+              light: '#e0f2fe',
+              50: '#f0f8ff',
+              100: '#e0f2fe',
+              700: '#005b8a',
+              800: '#00476e',
+              900: '#003352',
+            },
+            secondary: {
+              DEFAULT: '#00687a',
+              light: '#e6f7fa',
+            },
+            background: '#f7f9fb',
+            'on-background': '#191c1e',
+            'inverse-surface': '#2d3133',
+            'surface-container-lowest': '#ffffff',
+            'surface-container': '#eceef0',
+            'surface-container-low': '#f2f4f6',
+            'surface-container-high': '#e6e8ea',
+            'surface-container-highest': '#e0e3e5',
+            surface: '#f7f9fb',
+            'surface-dim': '#d8dadc',
+            'surface-bright': '#f7f9fb',
+            'surface-variant': '#e0e3e5',
+            'on-surface': '#191c1e',
+            'on-surface-variant': '#3f4850',
+            outline: '#707881',
+            'outline-variant': '#bfc7d2',
+            tertiary: '#545c72',
+            'tertiary-container': '#6c748b',
+            'primary-container': '#007bb9',
+            'secondary-container': '#57dffe',
+            'primary-fixed': '#cce5ff',
+            'primary-fixed-dim': '#93ccff',
+            'secondary-fixed': '#acedff',
+            'secondary-fixed-dim': '#4cd7f6',
+            'on-secondary-fixed': '#001f26',
+            'on-secondary-fixed-variant': '#004e5c',
+            'on-primary': '#ffffff',
+            'on-primary-container': '#fdfcff',
+            'on-secondary': '#ffffff',
+            'inverse-primary': '#93ccff',
+            'inverse-on-surface': '#eff1f3',
+          },
+          spacing: {
+            margin: '2rem',
+            'margin-mobile': '1rem',
+            'space-xl': '2.5rem',
+            'space-lg': '1.5rem',
+            'space-md': '1rem',
+            'space-sm': '0.5rem',
+            'space-xs': '0.25rem',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            'headline-sm': ['Plus Jakarta Sans', 'sans-serif'],
+            'label-caps': ['Plus Jakarta Sans', 'sans-serif'],
+            'label-lg': ['Inter', 'sans-serif'],
+            'label-md': ['Inter', 'sans-serif'],
+            'body-sm': ['Inter', 'sans-serif'],
+          },
+          fontSize: {
+            'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }],
+            'body-sm': ['12px', { lineHeight: '18px', fontWeight: '400' }],
+            'label-caps': ['11px', { lineHeight: '16px', letterSpacing: '0.06em', fontWeight: '700' }],
+            'label-lg': ['14px', { lineHeight: '20px', fontWeight: '600' }],
+            'label-md': ['12px', { lineHeight: '16px', fontWeight: '500' }],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .anchor-offset {
+      scroll-margin-top: 140px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+
+  <!-- ==================== ENCABEZADO UNIFICADO (PARTIAL) ==================== -->
+  <%- include('partials/header') %>
+
+  <!-- ==================== SUB-HEADER / INTRO & BADGES ==================== -->
+  <section class="bg-white border-b border-slate-200 pt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-5">
+      <!-- BREADCRUMB -->
+      <nav class="flex items-center gap-2 text-xs text-on-surface-variant mb-3">
+        <a class="hover:text-primary transition-colors cursor-pointer" href="/dashboard">Inicio</a>
+        <span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+        <span class="text-primary font-semibold">Nosotros (HIDROVEN - Casa Matriz)</span>
+      </nav>
+
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-5">
+        <div>
+          <h1 class="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight">Conoce Hidroven Lara</h1>
+          <p class="mt-2 text-slate-600 text-xs sm:text-sm max-w-3xl leading-relaxed">
+            Compañía Anónima Hidrológica Venezolana (HIDROVEN), ente rector y Casa Matriz del sector de agua potable y saneamiento en el país, dedicada a garantizar la rectoría técnica, desarrollo institucional y preservación del recurso hídrico para todo el pueblo venezolano.
+          </p>
+        </div>
+        <!-- Ámbito Operativo -->
+        <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0">
+          <div class="flex items-center gap-2.5 bg-slate-50 border border-slate-200/80 px-3.5 py-2 rounded-xl shadow-xs">
+            <span class="material-symbols-outlined text-sky-600 text-2xl">location_on</span>
+            <div>
+              <p class="text-[9px] uppercase font-bold text-slate-400 leading-tight">Ámbito Operativo</p>
+              <p class="text-xs font-bold text-slate-800 leading-tight">Estado Lara</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BARRA DE SUB-NAVEGACIÓN (PILL BUTTONS) -->
+      <nav class="flex items-center gap-2 overflow-x-auto pt-3 pb-1 border-t border-slate-100 no-scrollbar text-xs font-semibold">
+        <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#004c75] text-white shadow-xs shrink-0 transition-colors" href="#resena">
+          <span class="material-symbols-outlined text-[16px]">menu_book</span>
+          <span>Reseña Histórica</span>
+        </a>
+        <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0 transition-colors" href="#mision-vision">
+          <span class="material-symbols-outlined text-[16px]">visibility</span>
+          <span>Misión, Visión y Principios</span>
+        </a>
+        <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0 transition-colors" href="#objetivos-calidad">
+          <span class="material-symbols-outlined text-[16px]">verified</span>
+          <span>Objetivos y Calidad</span>
+        </a>
+        <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0 transition-colors" href="#organigrama">
+          <span class="material-symbols-outlined text-[16px]">account_tree</span>
+          <span>Estructura y Organigrama</span>
+        </a>
+        <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0 transition-colors" href="#memoria-grafica">
+          <span class="material-symbols-outlined text-[16px]">photo_library</span>
+          <span>Memoria Gráfica</span>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+  <main class="w-full flex-1 max-w-[1280px] mx-auto px-margin-mobile lg:px-margin py-10 space-y-16">
+    
+    <!-- SECCIÓN 1: RESEÑA HISTÓRICA -->
+    <section class="anchor-offset space-y-5" id="resena">
+      <div>
+        <div class="flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-[#005b8a] mb-1">
+          <span class="material-symbols-outlined text-sm">auto_stories</span>
+          <span>Trayectoria y Origen</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-slate-900">Reseña Histórica Institucional</h2>
+        <p class="text-xs text-slate-500 mt-1">Hitos de evolución técnica, marco institucional y vocación de servicio público de HIDROLARA C.A. al servicio del pueblo larense.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <!-- Texto Histórico -->
+        <div class="lg:col-span-7 bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-xs space-y-4 text-slate-700 leading-relaxed text-xs sm:text-[13px]">
+          <p>
+            Con la creación del <strong>Instituto Nacional de Obras Sanitarias (INOS)</strong>, el 15 de abril de 1943, el Estado Venezolano asume formalmente la responsabilidad de prestar los servicios de agua potable y recolección de aguas servidas en todo el territorio nacional.
+          </p>
+          <p>
+            En <strong>1973</strong>, bajo la administración del INOS, se inaugura la primera etapa de la <strong>Planta de Tratamiento Ciudad de Barquisimeto</strong>, con capacidad para producir <strong>1.500 lts/seg</strong> de agua proveniente del embalse Ingeniero Emiro Cordero (El Tocuyo), complementada con perforaciones subterráneas en el bosque de Macuto.
+          </p>
+          <p>
+            Posteriormente, en <strong>1980</strong> se culmina y pone en funcionamiento la segunda etapa, ampliando la capacidad instalada a <strong>3.000 lts/seg</strong>, abasteciendo a más del 90% de la población de Barquisimeto y su zona metropolitana.
+          </p>
+          <p>
+            Hacia <strong>1989</strong>, en el marco de la <em>Ley Orgánica de Descentralización, Delimitación y Transferencia de Competencias del Poder Público</em>, se decreta la liquidación del INOS y nace la <strong>Compañía Anónima Hidrológica Venezolana (HIDROVEN)</strong> como ente rector y casa matriz con diez empresas hidrológicas regionales adscritas, entre ellas HIDROCCIDENTAL, C.A.
+          </p>
+          <p>
+            Entre <strong>1993 y 1994</strong> se formaliza la creación legal y reforma de estatutos de la <strong>C.A. Hidrológica del Estado Lara (HIDROLARA, C.A.)</strong>, iniciando plenamente sus operaciones en <strong>1996</strong> como empresa pública descentralizada, asumiendo una profunda reestructuración técnica, financiera y humana.
+          </p>
+          <p>
+            En <strong>1997</strong> se aprueba la operación de crédito con el <strong>Banco Interamericano de Desarrollo (BID)</strong> por un monto de <strong>US $ 60.000.000,00</strong> destinado a la modernización de los acueductos y colectores de aguas servidas de los municipios larenses. Más adelante, en 1999, se firma el Contrato de Gerencia Integral con Aguas de Valencia para afianzar la transferencia metodológica y comercial.
+          </p>
+          <p>
+            Como muestra de su rigor institucional, HIDROLARA consolida su Sistema de Gestión de Calidad, obteniendo en 2004 la certificación ISO 9001:2000 avalada por la firma internacional Bureau Veritas Quality International (BVQI), ratificada en 2007 bajo la norma ISO 9001:2001 y refrendada en 2010 con la norma ISO 9001:2008, convirtiéndose en referencia nacional de eficiencia en el sector agua.
+          </p>
+          <div class="pt-3 border-t border-slate-100 flex justify-end">
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500">
+              <span class="material-symbols-outlined text-[14px] text-sky-600">location_on</span>
+              Barquisimeto, Estado Lara
+            </span>
+          </div>
+        </div>
+
+        <!-- Línea de Tiempo -->
+        <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
+          <div class="flex items-center gap-2 pb-4 border-b border-slate-100">
+            <span class="material-symbols-outlined text-sky-600 text-xl">timeline</span>
+            <h3 class="font-display font-bold text-sm text-slate-900">Línea de Tiempo Clave</h3>
+          </div>
+          <div class="relative pl-6 space-y-6 pt-5 before:content-[''] before:absolute before:left-2 before:top-6 before:bottom-3 before:w-0.5 before:bg-sky-200">
+            <div class="relative">
+              <span class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full bg-sky-600 ring-4 ring-white"></span>
+              <p class="text-[11px] font-bold text-sky-700">15 de Abril de 1943</p>
+              <h4 class="text-xs font-bold text-slate-900">Creación del INOS</h4>
+              <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">Asunción estatal de los servicios de agua y saneamiento en Venezuela.</p>
+            </div>
+            <div class="relative">
+              <span class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full bg-sky-600 ring-4 ring-white"></span>
+              <p class="text-[11px] font-bold text-sky-700">1973 &amp; 1980</p>
+              <h4 class="text-xs font-bold text-slate-900">Planta Ciudad de Barquisimeto</h4>
+              <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">1ª etapa (1.500 lts/seg desde embalse Dos Cerritos) y 2ª etapa (3.000 lts/seg, 90% cobertura).</p>
+            </div>
+            <div class="relative">
+              <span class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full bg-sky-600 ring-4 ring-white"></span>
+              <p class="text-[11px] font-bold text-sky-700">1989</p>
+              <h4 class="text-xs font-bold text-slate-900">Ley de Descentralización y Nacimiento de HIDROVEN</h4>
+              <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">Transición desde el INOS hacia filiales hidrológicas regionales.</p>
+            </div>
+            <div class="relative">
+              <span class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full bg-sky-600 ring-4 ring-white"></span>
+              <p class="text-[11px] font-bold text-sky-700">1993 - 1994</p>
+              <h4 class="text-xs font-bold text-slate-900">Constitución de HIDROLARA, C.A.</h4>
+              <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">Inicio formal de operaciones y autonomía operativa en el estado Lara.</p>
+            </div>
+            <div class="relative">
+              <span class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full bg-sky-600 ring-4 ring-white"></span>
+              <p class="text-[11px] font-bold text-sky-700">1997 - 1999</p>
+              <h4 class="text-xs font-bold text-slate-900">Crédito BID (US$ 60M) y Gerencia Integral</h4>
+              <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">Modernización de acueductos, macromedición y saneamiento de colectores.</p>
+            </div>
+            <div class="relative">
+              <span class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full bg-sky-600 ring-4 ring-white"></span>
+              <p class="text-[11px] font-bold text-sky-700">2004 - 2010</p>
+              <h4 class="text-xs font-bold text-slate-900">Triple Certificación ISO 9001 BVQI</h4>
+              <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">ISO 9001:2000 (2004), ISO 9001:2001 (2007) e ISO 9001:2008 (2010).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: MISIÓN, VISIÓN Y PRINCIPIOS -->
+    <section class="anchor-offset space-y-6" id="mision-vision">
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="text-[11px] uppercase font-bold text-[#005b8a] tracking-wider">Fundamento Estratégico</span>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-slate-900 mt-0.5">Misión, Visión y Principios</h2>
+        <p class="text-xs text-slate-500 mt-1">Los pilares que fundamentan nuestra vocación de servicio, orientan la planificación operativa y cohesionan a todo el personal de HIDROLARA.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Misión -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-xs flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-[#005b8a]"></div>
+          <div>
+            <div class="w-10 h-10 rounded-full bg-sky-50 text-[#005b8a] flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-xl">water_drop</span>
+            </div>
+            <h3 class="text-base font-display font-bold text-[#005b8a] mb-2">Nuestra Misión</h3>
+            <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed">
+              «Suministrar con prestancia el servicio de agua potable y recolección de aguas servidas a la población larense, con el uso de tecnología avanzada, capital humano competente, calificado y vinculado a los valores estratégicos de la empresa que satisfaga las necesidades de la colectividad, fomentando una conciencia ecológica de la importancia que tiene este recurso hídrico para la vida y el desarrollo.»
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
+            <span class="material-symbols-outlined text-sky-600 text-[16px]">verified</span>
+            <span>Compromiso con equidad técnica y bioseguridad hídrica.</span>
+          </div>
+        </div>
+
+        <!-- Visión -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-xs flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-cyan-600"></div>
+          <div>
+            <div class="w-10 h-10 rounded-full bg-cyan-50 text-cyan-700 flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-xl">visibility</span>
+            </div>
+            <h3 class="text-base font-display font-bold text-cyan-800 mb-2">Nuestra Visión</h3>
+            <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed">
+              «Ser una empresa líder nacional en la prestación del servicio de agua potable y saneamiento en la búsqueda del desarrollo ecológico y social de la colectividad, con excelencia y tecnología avanzada.»
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
+            <span class="material-symbols-outlined text-cyan-700 text-[16px]">travel_explore</span>
+            <span>Liderazgo hidrológico de vanguardia y preservación del recurso.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Principios Institucionales -->
+      <div class="pt-4 space-y-4">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Conducta y Convicción</span>
+          <h3 class="text-sm font-bold text-slate-900">Nuestros Principios Institucionales</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="w-9 h-9 rounded-lg bg-sky-50 text-[#005b8a] flex items-center justify-center mb-3">
+                <span class="material-symbols-outlined text-lg">diversity_3</span>
+              </div>
+              <h4 class="text-sm font-bold text-slate-900 mb-1">Respeto</h4>
+              <p class="text-[12px] text-slate-500 leading-relaxed">
+                Consideración y trato digno hacia las personas, acatando normas y propiciando un ambiente armonioso de trabajo y servicio.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[10px] font-bold text-[#005b8a] tracking-wide uppercase">
+              VALOR CLAVE: CONSIDERACIÓN &amp; CONVIVENCIA
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="w-9 h-9 rounded-lg bg-cyan-50 text-cyan-700 flex items-center justify-center mb-3">
+                <span class="material-symbols-outlined text-lg">handshake</span>
+              </div>
+              <h4 class="text-sm font-bold text-slate-900 mb-1">Ética</h4>
+              <p class="text-[12px] text-slate-500 leading-relaxed">
+                Gestión clara y transparente orientada al bienestar colectivo, regida por la integridad y la responsabilidad social.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[10px] font-bold text-cyan-700 tracking-wide uppercase">
+              VALOR CLAVE: INTEGRIDAD &amp; TRANSPARENCIA
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center mb-3">
+                <span class="material-symbols-outlined text-lg">domain</span>
+              </div>
+              <h4 class="text-sm font-bold text-slate-900 mb-1">Sentido de Pertenencia</h4>
+              <p class="text-[12px] text-slate-500 leading-relaxed">
+                Compromiso genuino e identificación con los objetivos de la institución, fomentando el trabajo en equipo y la honestidad.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[10px] font-bold text-indigo-700 tracking-wide uppercase">
+              VALOR CLAVE: COMPROMISO &amp; IDENTIDAD
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: OBJETIVOS Y CALIDAD -->
+    <section class="anchor-offset space-y-6" id="objetivos-calidad">
+      <div>
+        <div class="flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-[#005b8a] mb-1">
+          <span class="material-symbols-outlined text-sm">verified</span>
+          <span>Excelencia Operacional y Normativa</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-slate-900">Objetivos Institucionales y Política de la Calidad</h2>
+        <p class="text-xs text-slate-500 mt-1">Compromiso inquebrantable con la satisfacción de la comunidad, el cumplimiento de la normativa sanitaria vigente y la optimización continua de nuestros procesos hidrológicos.</p>
+      </div>
+
+      <div class="bg-sky-50/70 border border-sky-100 rounded-2xl p-5 sm:p-6 shadow-xs">
+        <span class="px-2.5 py-0.5 rounded bg-[#004c75] text-white text-[10px] font-bold uppercase tracking-wide">
+          OBJETIVO GENERAL
+        </span>
+        <blockquote class="mt-3 text-slate-800 font-medium text-xs sm:text-sm italic leading-relaxed">
+          «Brindar un servicio de agua potable y recolección de aguas servidas, que satisfaga las necesidades del cliente, cumpliendo con la normativa legal y sanitaria vigente.»
+        </blockquote>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-7 shadow-xs">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-9 h-9 rounded-lg bg-sky-100 text-[#005b8a] flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-xl">workspace_premium</span>
+          </span>
+          <div>
+            <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Sistema de Gestión de la Calidad</span>
+            <h3 class="text-sm sm:text-base font-bold text-slate-900">Política de la Calidad HIDROLARA C.A.</h3>
+          </div>
+        </div>
+        <blockquote class="text-slate-600 italic text-xs sm:text-sm pl-4 border-l-2 border-sky-400 leading-relaxed">
+          «En <strong>HIDROLARA C.A.</strong> estamos comprometidos a prestar un servicio de agua potable y recolección de aguas servidas que satisfaga los requerimientos de los clientes, mejorando continuamente los procesos, desarrollando las competencias de nuestro personal, manteniendo un ambiente de trabajo seguro, manteniendo nuestro sistema de gestión de calidad y fomentando una conciencia ecológica de la importancia del agua para la vida y el desarrollo.»
+        </blockquote>
+      </div>
+
+      <!-- Objetivos Estratégicos -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-sky-600 text-lg">flag</span>
+            <span>Objetivos Estratégicos</span>
+          </h3>
+          <span class="text-[10px] text-slate-400 font-semibold uppercase">11 Metas Fundamentales</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+          <div class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-sky-600 text-lg shrink-0 mt-0.5">task_alt</span>
+            <p class="text-xs text-slate-700 leading-snug">Garantizar el servicio de agua potable y recolección de aguas servidas a la población.</p>
+          </div>
+          <div class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-sky-600 text-lg shrink-0 mt-0.5">task_alt</span>
+            <p class="text-xs text-slate-700 leading-snug">Prestar apoyo a las Unidades Medulares de la Organización para el logro de sus objetivos.</p>
+          </div>
+          <div class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-sky-600 text-lg shrink-0 mt-0.5">task_alt</span>
+            <p class="text-xs text-slate-700 leading-snug">Desarrollar los procesos inherentes a la Gestión Comercial que garanticen los ingresos, para el desarrollo Financiero Sustentable.</p>
+          </div>
+          <div class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-sky-600 text-lg shrink-0 mt-0.5">task_alt</span>
+            <p class="text-xs text-slate-700 leading-snug">Ejecutar el Programa de Apoyo a la Modernización de los Sistemas de acueductos, recolección de aguas servidas del estado Lara.</p>
+          </div>
+          <div class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-sky-600 text-lg shrink-0 mt-0.5">task_alt</span>
+            <p class="text-xs text-slate-700 leading-snug">Satisfacer los requerimientos de nuestros clientes.</p>
+          </div>
+          <div class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-sky-600 text-lg shrink-0 mt-0.5">task_alt</span>
+            <p class="text-xs text-slate-700 leading-snug">Mantener un capital humano competente, calificado y vinculado a los valores estratégicos de la empresa.</p>
+          </div>
+          <div class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-sky-600 text-lg shrink-0 mt-0.5">task_alt</span>
+            <p class="text-xs text-slate-700 leading-snug">Mantener nuestro Sistema de Gestión de Calidad.</p>
+          </div>
+          <div class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-sky-600 text-lg shrink-0 mt-0.5">task_alt</span>
+            <p class="text-xs text-slate-700 leading-snug">Crear en la colectividad una conciencia ecológica de la importancia del agua para la vida y el desarrollo humano.</p>
+          </div>
+          <div class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-sky-600 text-lg shrink-0 mt-0.5">task_alt</span>
+            <p class="text-xs text-slate-700 leading-snug">Mejorar la calidad de los procesos de producción, distribución y recolección de aguas.</p>
+          </div>
+          <div class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-sky-600 text-lg shrink-0 mt-0.5">task_alt</span>
+            <p class="text-xs text-slate-700 leading-snug">Promover la integración para la atención a las comunidades.</p>
+          </div>
+          <div class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-sky-600 text-lg shrink-0 mt-0.5">task_alt</span>
+            <p class="text-xs text-slate-700 leading-snug">Fortalecer el desarrollo del capital humano de la empresa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: ORGANIGRAMA -->
+    <section class="anchor-offset space-y-6" id="organigrama">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-[#005b8a] tracking-wider">Estructura Organizacional y Jerárquica</span>
+          <h2 class="text-2xl sm:text-3xl font-display font-bold text-slate-900 mt-0.5">Organigrama Institucional HIDROVEN</h2>
+          <p class="text-xs text-slate-500 mt-1">Líneas de mando, órganos de asesoría y control, gerencias medulares y unidades operativas articuladas para el bienestar del estado Lara.</p>
+        </div>
+        <div>
+          <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-[#004c75] rounded-lg hover:bg-[#003e60] transition-colors shadow-xs">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            <span>Descargar Organigrama PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Diagrama de Organigrama -->
+      <div class="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-xs overflow-x-auto">
+        <div class="min-w-[860px] flex flex-col items-center">
+          <!-- NIVEL 1 -->
+          <div class="w-80 bg-[#005b8a] text-white p-4 rounded-xl shadow-md text-center relative">
+            <span class="text-[9px] font-bold uppercase tracking-wider text-sky-200">Nivel Superior / Gobernanza</span>
+            <h4 class="font-display font-bold text-xs sm:text-sm mt-0.5">Asamblea General de Accionistas</h4>
+            <p class="text-[11px] text-sky-100">Junta Directiva HIDROLARA, C.A.</p>
+            <div class="mt-2 pt-1 border-t border-sky-600/50 flex justify-center">
+              <span class="px-2 py-0.5 bg-[#004368] rounded-full text-[9px] font-semibold text-sky-200">Rectoría Institucional: C.A. HIDROVEN</span>
+            </div>
+          </div>
+          <div class="w-0.5 h-6 bg-slate-300"></div>
+
+          <!-- NIVEL 2 -->
+          <div class="w-72 bg-[#004c75] text-white p-3 rounded-xl shadow-md text-center">
+            <span class="text-[9px] font-bold uppercase tracking-wider text-sky-200">Nivel Ejecutivo</span>
+            <h5 class="font-display font-bold text-xs sm:text-sm mt-0.5">Presidencia Ejecutiva</h5>
+            <p class="text-[10px] text-sky-100">Dirección General de Operaciones y Servicios</p>
+          </div>
+          <div class="w-0.5 h-6 bg-slate-300"></div>
+          <div class="w-[78%] h-0.5 bg-slate-300"></div>
+
+          <!-- NIVEL ASESOR Y CONTROL -->
+          <div class="grid grid-cols-4 gap-4 w-[84%] pt-4">
+            <div class="flex flex-col items-center">
+              <div class="w-0.5 h-4 bg-slate-300 -mt-4 mb-0"></div>
+              <div class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
+                <span class="material-symbols-outlined text-[#005b8a] text-lg">verified_user</span>
+                <p class="text-[9px] font-bold uppercase text-slate-400 mt-1">Apoyo &amp; Control</p>
+                <h6 class="text-xs font-bold text-slate-800 leading-tight">Auditoría Interna</h6>
+              </div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-0.5 h-4 bg-slate-300 -mt-4 mb-0"></div>
+              <div class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
+                <span class="material-symbols-outlined text-[#005b8a] text-lg">gavel</span>
+                <p class="text-[9px] font-bold uppercase text-slate-400 mt-1">Asesoría Legal</p>
+                <h6 class="text-xs font-bold text-slate-800 leading-tight">Consultoría Jurídica</h6>
+              </div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-0.5 h-4 bg-slate-300 -mt-4 mb-0"></div>
+              <div class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
+                <span class="material-symbols-outlined text-[#005b8a] text-lg">query_stats</span>
+                <p class="text-[9px] font-bold uppercase text-slate-400 mt-1">Estrategia</p>
+                <h6 class="text-xs font-bold text-slate-800 leading-tight">Planificación y Presupuesto</h6>
+              </div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-0.5 h-4 bg-slate-300 -mt-4 mb-0"></div>
+              <div class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
+                <span class="material-symbols-outlined text-[#005b8a] text-lg">workspace_premium</span>
+                <p class="text-[9px] font-bold uppercase text-slate-400 mt-1">Normatividad</p>
+                <h6 class="text-xs font-bold text-slate-800 leading-tight">Gestión de la Calidad</h6>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-0.5 h-8 bg-slate-300"></div>
+          <div class="w-[94%] h-0.5 bg-slate-300"></div>
+
+          <!-- NIVEL OPERATIVO MEDULAR -->
+          <div class="grid grid-cols-5 gap-3 w-full pt-4">
+            <div class="flex flex-col items-center">
+              <div class="w-0.5 h-4 bg-slate-300 -mt-4 mb-0"></div>
+              <div class="w-full bg-white border border-sky-200 rounded-xl p-3 text-center shadow-2xs">
+                <span class="material-symbols-outlined text-[#005b8a] text-xl">water_damage</span>
+                <h6 class="text-xs font-bold text-slate-800 mt-1 leading-tight">Operaciones y Mantenimiento Hidráulico</h6>
+              </div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-0.5 h-4 bg-slate-300 -mt-4 mb-0"></div>
+              <div class="w-full bg-white border border-sky-200 rounded-xl p-3 text-center shadow-2xs">
+                <span class="material-symbols-outlined text-[#005b8a] text-xl">payments</span>
+                <h6 class="text-xs font-bold text-slate-800 mt-1 leading-tight">Gerencia Comercial y Facturación</h6>
+              </div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-0.5 h-4 bg-slate-300 -mt-4 mb-0"></div>
+              <div class="w-full bg-white border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
+                <span class="material-symbols-outlined text-slate-700 text-xl">account_balance</span>
+                <h6 class="text-xs font-bold text-slate-800 mt-1 leading-tight">Administración y Finanzas</h6>
+              </div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-0.5 h-4 bg-slate-300 -mt-4 mb-0"></div>
+              <div class="w-full bg-white border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
+                <span class="material-symbols-outlined text-slate-700 text-xl">groups</span>
+                <h6 class="text-xs font-bold text-slate-800 mt-1 leading-tight">Talento Humano y Gestión Social</h6>
+              </div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-0.5 h-4 bg-slate-300 -mt-4 mb-0"></div>
+              <div class="w-full bg-white border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
+                <span class="material-symbols-outlined text-slate-700 text-xl">dns</span>
+                <h6 class="text-xs font-bold text-slate-800 mt-1 leading-tight">Tecnología e Información</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: MEMORIA GRÁFICA -->
+    <section class="anchor-offset space-y-6" id="memoria-grafica">
+      <div>
+        <div class="flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-[#005b8a] mb-1">
+          <span class="material-symbols-outlined text-sm">photo_camera</span>
+          <span>Archivo Fotográfico y Patrimonio Humano</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-slate-900">Memoria Gráfica</h2>
+        <p class="text-xs text-slate-500 mt-1">Fotografías históricas que testimonian el esfuerzo del personal de atención, la cercanía con la comunidad larense y la conformación del equipo pionero de HIDROLARA C.A.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Foto 1 -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs flex flex-col">
+          <div class="relative bg-slate-100 p-2">
+            <span class="absolute top-4 left-4 z-10 px-2.5 py-1 rounded bg-[#004c75] text-white text-[9px] font-bold uppercase tracking-wide flex items-center gap-1 shadow-xs">
+              <span class="material-symbols-outlined text-[13px]">storefront</span>
+              TAQUILLAS COMERCIALES
+            </span>
+            <img alt="Taquilla de Recaudación histórica" class="w-full h-56 object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcqKJZ0yx4uhrYnklaIgPe0L5V5onEpHYd0t8WjRreLQDljdTLgthmFsoqt3IW-9g2tLauqvp36KpG8qF5xzFw1KnytYL0o7mNscNwgi6l3S9mvqCugVmUARkoik-ismYKRWb1UAQwRRqxBPwtM7URRPHGXnI_8_HOLkScZKJmL_8Q_sn7xpqaBK7MnjW8aP-atveSvw00BvY63dcLu0ueurudWaPOTfLowmbga4Fwf9Eb_J26ru31nzIczVBOuRfw4Q">
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="text-sm font-bold text-slate-900">Atención Comercial y Recaudación</h3>
+                <span class="text-[10px] text-slate-400 font-semibold">Década 1990 - 2000</span>
+              </div>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Módulos históricos de taquilla de recaudación de HIDROLARA durante los primeros años de descentralización, evidenciando el compromiso directo de los trabajadores en la atención personalizada a los usuarios y suscriptores larenses.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 2 -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs flex flex-col">
+          <div class="relative bg-slate-100 p-2">
+            <span class="absolute top-4 left-4 z-10 px-2.5 py-1 rounded bg-[#005b8a] text-white text-[9px] font-bold uppercase tracking-wide flex items-center gap-1 shadow-xs">
+              <span class="material-symbols-outlined text-[13px]">groups</span>
+              TALENTO HUMANO
+            </span>
+            <img alt="Equipo Fundacional de Servidores Públicos" class="w-full h-56 object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAbPeQquaXPicZAWBRuxfqG1nE6IM629xdbUp2ESOacBlr6JJCoEnxD7Yowa01_wX8M-ePviKsrr-KsDbBR8Did1KXx5SLghA-tpMAwRn3Of86aGdoABH8U8w3RLyjDSZNM_fH9nPEuwAAwUugYury91gPd3-v2n1U0MLQOVmeJ4lF7BmpxiVvVCutmrfWyeFok1mKPm3sVBJazMu2ZtrqB-ENz7IV1M2PjXrsy7NAvSa3P4gz-42ALFqHv2K3iP7RiQ">
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="text-sm font-bold text-slate-900">Equipo Fundacional de Servidores Públicos</h3>
+                <span class="text-[10px] text-slate-400 font-semibold">Memoria Institucional</span>
+              </div>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Encuentro del equipo profesional, ingenieros, analistas y operadores técnicos de HIDROLARA. Generaciones de servidores públicos dedicados con mística al saneamiento, operatividad y distribución del agua potable en el estado Lara.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== PIE DE PÁGINA INSTITUCIONAL ==================== -->
+  <%- include('partials/footer') %>
+
+  <!-- Scripts Globales -->
+  <script src="/sidebar.js"></script>
+</body>
+</html>
