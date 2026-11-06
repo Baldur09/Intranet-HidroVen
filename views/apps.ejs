@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Aplicaciones</title>
+  <title>Aplicaciones - HidroVen</title>
 
   <!-- Fuentes e Iconos -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -88,7 +88,7 @@
       
       <!-- Migas de Pan (Breadcrumb) -->
       <nav class="flex items-center gap-2 text-sm text-on-surface-variant">
-        <span class="hover:text-primary transition-colors cursor-pointer">Inicio</span>
+        <span class="hover:text-primary transition-colors cursor-pointer" onclick="window.location.href='/'">Inicio</span>
         <span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
         <span class="text-primary font-semibold">Aplicaciones</span>
       </nav>
@@ -104,10 +104,10 @@
 
         <!-- Filtros de Categorías -->
         <div class="flex items-center gap-2.5 overflow-x-auto pb-1 pt-2">
-          <button class="filter-btn px-5 py-2 rounded-full bg-[#0284c7] text-white font-semibold text-sm shadow-sm transition-all whitespace-nowrap" data-filter="all">Todas</button>
-          <button class="filter-btn px-5 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium text-sm transition-all whitespace-nowrap" data-filter="administracion">Administración</button>
-          <button class="filter-btn px-5 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium text-sm transition-all whitespace-nowrap" data-filter="trabajadores">Trabajadores</button>
-          <button class="filter-btn px-5 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium text-sm transition-all whitespace-nowrap" data-filter="tecnologia">Tecnología</button>
+          <button class="filter-btn px-5 py-2 rounded-full bg-[#0284c7] text-white font-semibold text-sm shadow-sm transition-all whitespace-nowrap cursor-pointer" data-filter="all">Todas</button>
+          <button class="filter-btn px-5 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium text-sm transition-all whitespace-nowrap cursor-pointer" data-filter="administracion">Administración</button>
+          <button class="filter-btn px-5 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium text-sm transition-all whitespace-nowrap cursor-pointer" data-filter="trabajadores">Trabajadores</button>
+          <button class="filter-btn px-5 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium text-sm transition-all whitespace-nowrap cursor-pointer" data-filter="tecnologia">Tecnología</button>
         </div>
       </div>
 
@@ -127,30 +127,26 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <!-- Tarjeta 1: SIA -->
-          <!-- Tarjeta 1: SIA -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow" id="card-sia">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200" id="card-sia">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#006194] flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#006194] flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">hub</span>
               </div>
               <div class="space-y-1">
-                <div class="flex items-center gap-2">
-                  <h3 class="font-headline-sm text-base font-bold text-on-surface">SIA - Sistema Integrado Administrativo</h3>
-                </div>
+                <h3 class="font-headline-sm text-base font-bold text-on-surface">SIA - Sistema Integrado Administrativo</h3>
                 <p class="text-sm text-on-surface-variant leading-relaxed">Gestión presupuestaria, patrimonial y órdenes de compra.</p>
               </div>
             </div>
 
             <div class="pt-3 border-t border-surface-container/60 flex justify-end">
-              <!-- El "relative" se pasa aquí al contenedor directo del botón para que la ventanita nazca justo debajo de su esquina izquierda -->
               <div class="relative inline-block">
                 <button type="button" id="btn-toggle-sia" onclick="toggleSiaMenu(event)" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0284c7] text-white hover:bg-[#0369a1] text-sm font-semibold transition-colors cursor-pointer shadow-sm">
                   <span>Ingresar al SIA</span>
                   <span class="material-symbols-outlined text-[16px] transition-transform duration-200" id="sia-caret-icon">arrow_drop_down</span>
                 </button>
 
-                <!-- Menú Flotante / Popover SIA (Alineado exactamente con el botón) -->
-                <div id="sia-dropdown-menu" class="hidden absolute left-0 top-full mt-2 z-50 w-64 bg-white rounded-xl shadow-2xl border border-surface-container overflow-hidden transition-all">
+                <!-- Menú Flotante / Popover SIA (Centrado respecto al botón) -->
+                <div id="sia-dropdown-menu" class="hidden absolute left-1/2 -translate-x-1/2 top-full mt-2 z-50 w-64 bg-white rounded-xl shadow-2xl border border-surface-container overflow-hidden transition-all">
                   <div class="p-3 bg-surface-container-low/70 border-b border-surface-container flex items-center justify-between">
                     <div>
                       <div class="font-headline-sm text-sm font-bold text-[#006194]">Módulos SIA</div>
@@ -160,41 +156,41 @@
                   </div>
 
                   <div class="p-1.5 max-h-72 overflow-y-auto space-y-0.5">
-                    <button type="button" onclick="selectSiaModule('Dpto de Almacen')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group">
-                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">inventory_2</span><span>Dpto de Almacen</span></span>
-                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                    <button type="button" onclick="selectSiaModule('Dpto de Almacen')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group/item">
+                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover/item:text-[#0284c7]">inventory_2</span><span>Dpto de Almacen</span></span>
+                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover/item:opacity-100 transition-opacity">chevron_right</span>
                     </button>
-                    <button type="button" onclick="selectSiaModule('Bancos')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group">
-                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">account_balance</span><span>Bancos</span></span>
-                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                    <button type="button" onclick="selectSiaModule('Bancos')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group/item">
+                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover/item:text-[#0284c7]">account_balance</span><span>Bancos</span></span>
+                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover/item:opacity-100 transition-opacity">chevron_right</span>
                     </button>
-                    <button type="button" onclick="selectSiaModule('Dpto. de Bienes')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group">
-                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">domain</span><span>Dpto. de Bienes</span></span>
-                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                    <button type="button" onclick="selectSiaModule('Dpto. de Bienes')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group/item">
+                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover/item:text-[#0284c7]">domain</span><span>Dpto. de Bienes</span></span>
+                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover/item:opacity-100 transition-opacity">chevron_right</span>
                     </button>
-                    <button type="button" onclick="selectSiaModule('Dpto. de Compras')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group">
-                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">shopping_bag</span><span>Dpto. de Compras</span></span>
-                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                    <button type="button" onclick="selectSiaModule('Dpto. de Compras')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group/item">
+                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover/item:text-[#0284c7]">shopping_bag</span><span>Dpto. de Compras</span></span>
+                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover/item:opacity-100 transition-opacity">chevron_right</span>
                     </button>
-                    <button type="button" onclick="selectSiaModule('Contabilidad')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group">
-                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">calculate</span><span>Contabilidad</span></span>
-                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                    <button type="button" onclick="selectSiaModule('Contabilidad')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group/item">
+                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover/item:text-[#0284c7]">calculate</span><span>Contabilidad</span></span>
+                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover/item:opacity-100 transition-opacity">chevron_right</span>
                     </button>
-                    <button type="button" onclick="selectSiaModule('Ingresos')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group">
-                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">trending_up</span><span>Ingresos</span></span>
-                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                    <button type="button" onclick="selectSiaModule('Ingresos')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group/item">
+                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover/item:text-[#0284c7]">trending_up</span><span>Ingresos</span></span>
+                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover/item:opacity-100 transition-opacity">chevron_right</span>
                     </button>
-                    <button type="button" onclick="selectSiaModule('Nomina')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group">
-                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">payments</span><span>Nomina</span></span>
-                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                    <button type="button" onclick="selectSiaModule('Nomina')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group/item">
+                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover/item:text-[#0284c7]">payments</span><span>Nomina</span></span>
+                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover/item:opacity-100 transition-opacity">chevron_right</span>
                     </button>
-                    <button type="button" onclick="selectSiaModule('Pagos')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group">
-                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">credit_score</span><span>Pagos</span></span>
-                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                    <button type="button" onclick="selectSiaModule('Pagos')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group/item">
+                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover/item:text-[#0284c7]">credit_score</span><span>Pagos</span></span>
+                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover/item:opacity-100 transition-opacity">chevron_right</span>
                     </button>
-                    <button type="button" onclick="selectSiaModule('Dpto. de Presupuesto')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group">
-                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover:text-[#0284c7]">pie_chart</span><span>Dpto. de Presupuesto</span></span>
-                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                    <button type="button" onclick="selectSiaModule('Dpto. de Presupuesto')" class="w-full flex items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:text-[#0284c7] hover:bg-sky-50 rounded-lg transition-colors cursor-pointer group/item">
+                      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-slate-700 group-hover/item:text-[#0284c7]">pie_chart</span><span>Dpto. de Presupuesto</span></span>
+                      <span class="material-symbols-outlined text-[16px] text-outline opacity-0 group-hover/item:opacity-100 transition-opacity">chevron_right</span>
                     </button>
                   </div>
 
@@ -207,9 +203,9 @@
           </div>
 
           <!-- Tarjeta 2 -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">account_balance_wallet</span>
               </div>
               <div class="space-y-1">
@@ -218,7 +214,7 @@
               </div>
             </div>
             <div class="pt-3 border-t border-surface-container/60 flex justify-end">
-              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface text-sm font-semibold transition-colors" href="#">
                 <span>Acceder</span>
                 <span class="material-symbols-outlined text-[16px]">open_in_new</span>
               </a>
@@ -226,9 +222,9 @@
           </div>
 
           <!-- Tarjeta 3 -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">shopping_cart</span>
               </div>
               <div class="space-y-1">
@@ -237,7 +233,7 @@
               </div>
             </div>
             <div class="pt-3 border-t border-surface-container/60 flex justify-end">
-              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface text-sm font-semibold transition-colors" href="#">
                 <span>Portal de Compras</span>
                 <span class="material-symbols-outlined text-[16px]">launch</span>
               </a>
@@ -245,9 +241,9 @@
           </div>
 
           <!-- Tarjeta 4 -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">point_of_sale</span>
               </div>
               <div class="space-y-1">
@@ -256,7 +252,7 @@
               </div>
             </div>
             <div class="pt-3 border-t border-surface-container/60 flex justify-end">
-              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface text-sm font-semibold transition-colors" href="#">
                 <span>Acceder</span>
                 <span class="material-symbols-outlined text-[16px]">trending_up</span>
               </a>
@@ -264,9 +260,9 @@
           </div>
 
           <!-- Tarjeta 5 -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">wallet</span>
               </div>
               <div class="space-y-1">
@@ -275,7 +271,7 @@
               </div>
             </div>
             <div class="pt-3 border-t border-surface-container/60 flex justify-end">
-              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0284c7] text-white hover:bg-[#0369a1] text-sm font-semibold transition-colors" href="#">
+              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0284c7] text-white hover:bg-[#0369a1] text-sm font-semibold transition-colors shadow-sm" href="#">
                 <span>Solicitar</span>
                 <span class="material-symbols-outlined text-[16px]">send</span>
               </a>
@@ -300,9 +296,9 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <!-- Tarjeta 1: Recibo de Pago -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#006194] flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#006194] flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">receipt_long</span>
               </div>
               <div class="space-y-1">
@@ -319,9 +315,9 @@
           </div>
 
           <!-- Tarjeta 2: Consulta de Cuentas por NIA -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">account_box</span>
               </div>
               <div class="space-y-1">
@@ -330,7 +326,7 @@
               </div>
             </div>
             <div class="pt-3 border-t border-surface-container/60 flex justify-end">
-              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface text-sm font-semibold transition-colors" href="#">
                 <span>Consultar NIA</span>
                 <span class="material-symbols-outlined text-[16px]">search</span>
               </a>
@@ -338,9 +334,9 @@
           </div>
 
           <!-- Tarjeta 3: Comprobante de Retención ARC -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">request_quote</span>
               </div>
               <div class="space-y-1">
@@ -349,7 +345,7 @@
               </div>
             </div>
             <div class="pt-3 border-t border-surface-container/60 flex justify-end">
-              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface text-sm font-semibold transition-colors" href="#">
                 <span>Obtener ARC</span>
                 <span class="material-symbols-outlined text-[16px]">description</span>
               </a>
@@ -357,9 +353,9 @@
           </div>
 
           <!-- Tarjeta 4: Evaluación de Desempeño -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">fact_check</span>
               </div>
               <div class="space-y-1">
@@ -368,7 +364,7 @@
               </div>
             </div>
             <div class="pt-3 border-t border-surface-container/60 flex justify-end">
-              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface text-sm font-semibold transition-colors" href="#">
                 <span>Completar Evaluación</span>
                 <span class="material-symbols-outlined text-[16px]">edit_document</span>
               </a>
@@ -376,9 +372,9 @@
           </div>
 
           <!-- Tarjeta 5: Permisos y Vacaciones -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">event_available</span>
               </div>
               <div class="space-y-1">
@@ -412,9 +408,9 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <!-- Tarjeta 1 -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#0284c7] flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#0284c7] flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">support_agent</span>
               </div>
               <div class="space-y-1">
@@ -431,9 +427,9 @@
           </div>
 
           <!-- Tarjeta 2 -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">mail</span>
               </div>
               <div class="space-y-1">
@@ -442,7 +438,7 @@
               </div>
             </div>
             <div class="pt-3 border-t border-surface-container/60 flex justify-end">
-              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface text-sm font-semibold transition-colors" href="#">
                 <span>Gestionar Cuenta</span>
                 <span class="material-symbols-outlined text-[16px]">settings</span>
               </a>
@@ -450,9 +446,9 @@
           </div>
 
           <!-- Tarjeta 3 -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">vpn_key</span>
               </div>
               <div class="space-y-1">
@@ -461,7 +457,7 @@
               </div>
             </div>
             <div class="pt-3 border-t border-surface-container/60 flex justify-end">
-              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface text-sm font-semibold transition-colors" href="#">
                 <span>Descargar Perfil</span>
                 <span class="material-symbols-outlined text-[16px]">download</span>
               </a>
@@ -469,9 +465,9 @@
           </div>
 
           <!-- Tarjeta 4 -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">network_check</span>
               </div>
               <div class="space-y-1">
@@ -480,7 +476,7 @@
               </div>
             </div>
             <div class="pt-3 border-t border-surface-container/60 flex justify-end">
-              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface text-sm font-semibold transition-colors" href="#">
                 <span>Ver Estatus</span>
                 <span class="material-symbols-outlined text-[16px]">monitoring</span>
               </a>
@@ -488,9 +484,9 @@
           </div>
 
           <!-- Tarjeta 5 -->
-          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container shadow-sm flex flex-col justify-between group hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-all">
                 <span class="material-symbols-outlined text-[26px]">devices</span>
               </div>
               <div class="space-y-1">
@@ -499,7 +495,7 @@
               </div>
             </div>
             <div class="pt-3 border-t border-surface-container/60 flex justify-end">
-              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-sm font-semibold transition-colors" href="#">
+              <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface text-sm font-semibold transition-colors" href="#">
                 <span>Consultar</span>
                 <span class="material-symbols-outlined text-[16px]">search</span>
               </a>
@@ -602,15 +598,17 @@
     }
 
     document.addEventListener('click', (event) => {
-      const menu = document.getElementById('sia-dropdown-menu');
-      const btn = document.getElementById('btn-toggle-sia');
-      const caret = document.getElementById('sia-caret-icon');
-      if (menu && !menu.classList.contains('hidden')) {
-        if (!menu.contains(event.target) && !btn.contains(event.target)) {
-          menu.classList.add('hidden');
-          if (caret) caret.style.transform = 'rotate(0deg)';
+      (function() {
+        const menu = document.getElementById('sia-dropdown-menu');
+        const btn = document.getElementById('btn-toggle-sia');
+        const caret = document.getElementById('sia-caret-icon');
+        if (menu && !menu.classList.contains('hidden')) {
+          if (!menu.contains(event.target) && !btn.contains(event.target)) {
+            menu.classList.add('hidden');
+            if (caret) caret.style.transform = 'rotate(0deg)';
+          }
         }
-      }
+      })();
     });
 
     document.addEventListener('keydown', (event) => {

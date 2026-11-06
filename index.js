@@ -83,6 +83,11 @@ app.get('/apps', (req, res) => {
 app.get('/nosotros', (req, res) => {
     res.render('nosotros');
 });
+// Ruta para la pantalla de Directorio Telefónico
+app.get('/directorio', (req, res) => {
+    res.render('directorio');
+});
+
 // ==========================================
 // RUTAS DE LA API PARA GESTIÓN DE USUARIOS
 // ==========================================

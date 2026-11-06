@@ -37,19 +37,32 @@
 
       <!-- Botón de Perfil de Usuario y Contenedor Sidebar -->
       <div class="relative">
-        <button id="btn-perfil-user" onclick="toggleSidebar()" type="button" class="flex items-center gap-2 p-1 sm:px-2 rounded-lg hover:bg-surface-container-high transition-colors text-left cursor-pointer">
-          <div class="relative shrink-0">
-            <img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA5IpAJJWUsts4XlDNcAHL2g1XCh-pBUaUwhr7Rns08wLG13X0xnB3anAabnpODIU9mZa5h-HUFb_JYtEixRGsYzL-7Ueyl6FnLdjHibKg3aS3TS-RnrKUKQAM1RUKLjfEsmXpacULT0b4KTosozI0Jp29QMd84Bqrw8Fm4OhlFoljG5vrgtj50BMhQ-4vkU_qtxXHGQHV3MGcWFAZshfJFMVipeNs0r2FGqUKnRtic1eR5XwE_4MG">
-            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary-container ring-2 ring-surface"></span>
+        <button id="btn-perfil-user" onclick="toggleSidebar()" type="button" class="flex items-center gap-2 p-1 sm:px-2 sm:py-1 rounded-xl hover:bg-surface-container-high transition-colors text-left cursor-pointer">
+          
+          <!-- Círculo con Iniciales Dinámicas (Extraídas de la BD) -->
+          <div class="relative shrink-0 w-9 h-9 rounded-full p-0.5 bg-gradient-to-tr from-[#0284c7] to-[#38bdf8] flex items-center justify-center shadow-xs">
+            <div class="w-full h-full bg-surface-container-lowest rounded-full flex items-center justify-center">
+              <span class="font-headline-sm text-xs font-bold text-primary tracking-wide">
+                <%= typeof user !== 'undefined' && user.nombres && user.apellidos ? user.nombres.charAt(0).toUpperCase() + user.apellidos.charAt(0).toUpperCase() : 'MP' %>
+              </span>
+            </div>
           </div>
-          <div class="hidden md:flex flex-col text-left">
-            <span class="font-label-md text-xs text-on-surface font-semibold leading-tight whitespace-nowrap">Ing. Luis Salazar</span>
-            <span class="font-label-caps text-[10px] text-tertiary whitespace-nowrap">Gerencia Operativa</span>
+
+          <!-- Información del Usuario: Nombre, Rol y Gerencia compactos -->
+          <div class="hidden md:flex flex-col text-left justify-center leading-tight">
+            <span class="font-headline-sm text-xs text-on-surface font-bold tracking-tight capitalize">
+              <%= typeof user !== 'undefined' && user.nombres ? (user.nombres + ' ' + (user.apellidos || '')) : 'Miguel Perdomo' %>
+            </span>
+            <span class="font-body-sm text-[10px] text-outline mt-0.5 whitespace-nowrap capitalize">
+              <%= typeof user !== 'undefined' ? user.rol : 'Empleado' %> • <%= typeof user !== 'undefined' ? user.gerencia : 'Gerencia Operativa' %>
+            </span>
           </div>
-          <span class="material-symbols-outlined text-[18px] text-outline hidden md:inline-block">expand_more</span>
+
+          <!-- Icono de Despliegue -->
+          <span class="material-symbols-outlined text-[16px] text-outline hidden md:inline-block ml-0.5">expand_more</span>
         </button>
         
-        <!-- Contenedor simple sin clases de animación -->
+        <!-- Contenedor del Sidebar -->
         <div id="sidebar-container" class="hidden absolute right-0 top-full mt-2 z-50"></div>
       </div>
 

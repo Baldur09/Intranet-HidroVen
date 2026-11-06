@@ -151,7 +151,8 @@
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
             <!-- Pillar 1: Apps -->
-            <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer" onclick="document.getElementById('launcher-section')?.scrollIntoView({behavior: 'smooth'})">
+            <!-- Pillar 1: Apps (Toda la tarjeta redirige a la pantalla de Apps) -->
+            <a class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col justify-between group cursor-pointer border border-surface-container" href="/apps">
               <div>
                 <div class="w-12 h-12 rounded-xl bg-surface-container-low text-primary flex items-center justify-center mb-space-md group-hover:bg-primary group-hover:text-on-primary transition-all">
                   <span class="material-symbols-outlined text-[28px]">apps</span>
@@ -166,7 +167,7 @@
                 <span>Abrir catálogo de aplicaciones</span>
                 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
               </div>
-            </div>
+            </a>
             <!-- Pillar 2: Phone Directory -->
             <a class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between group" href="#directorio">
               <div>
