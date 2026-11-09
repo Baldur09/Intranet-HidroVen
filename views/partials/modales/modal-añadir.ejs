@@ -1,4 +1,3 @@
-
 <div class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-inverse-surface/60 backdrop-blur-sm transition-all" id="modal-nuevo-usuario">
   <div class="bg-surface-container-lowest w-full max-w-xl rounded-xl shadow-xl overflow-hidden flex flex-col max-h-[85vh]">
     <!-- Cabecera Compacta -->
@@ -22,35 +21,32 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-nombres">Nombres <span class="text-error">*</span></label>
-          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-nombres" maxlength="100" name="nombres" placeholder="Ej. Carlos Eduardo" required="" type="text"/>
+          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-nombres" maxlength="100" name="nombres" placeholder="Carlos Eduardo" required="" type="text"/>
         </div>
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-apellidos">Apellidos <span class="text-error">*</span></label>
-          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-apellidos" maxlength="100" name="apellidos" placeholder="Ej. Martínez Rangel" required="" type="text"/>
+          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-apellidos" maxlength="100" name="apellidos" placeholder="Martínez Rangel" required="" type="text"/>
         </div>
       </div>
       <!-- Fila 2: Cédula y Correo Corporativo -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-cedula">Cédula <span class="text-error">*</span></label>
-          <div class="flex gap-1.5">
-            <select class="w-16 px-2 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="select-nacionalidad" name="nacionalidad" required="">
-              <option value="V">V-</option>
-              <option value="E">E-</option>
-            </select>
-            <input class="w-full flex-1 px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm font-mono text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-cedula" inputmode="numeric" maxlength="12" name="cedula" placeholder="18490221" required="" type="text"/>
-          </div>
+          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm font-mono text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-cedula" inputmode="numeric" maxlength="12" name="cedula" placeholder="18490221" required="" type="text"/>
         </div>
-        <div>
-          <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-correo">Correo <span class="text-error">*</span></label>
-          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-correo" maxlength="100" name="correo" placeholder="usuario@institucion.gob.ve" required="" type="email"/>
+      <div>
+          <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-correo">Correo Institucional <span class="text-error">*</span></label>
+          <div class="flex items-center bg-surface-container-low rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-primary transition-all">
+            <input class="w-full flex-1 px-3 py-1.5 bg-transparent text-body-sm text-on-surface focus:outline-none border-none" id="input-correo" maxlength="60" name="correo" placeholder="carlos.martinez" required="" type="text"/>
+            <span class="px-3 py-1.5 bg-surface-container text-on-surface-variant text-body-sm font-medium select-none border-l border-surface-container-high">@gmail.com</span>
+          </div>
         </div>
       </div>
       <!-- Fila 3: Teléfono y Gerencia -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-telefono">Teléfono <span class="text-error">*</span></label>
-          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm font-mono text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-telefono" maxlength="20" name="telefono" placeholder="Ej. 0412-1234567" required="" type="tel"/>
+          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm font-mono text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="input-telefono" maxlength="20" name="telefono" placeholder="0412-1234567" required="" type="tel"/>
         </div>
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="select-gerencia">Gerencia / Departamento <span class="text-error">*</span></label>
@@ -70,11 +66,16 @@
         </div>
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="input-password-temp">Clave Provisional</label>
-          <input class="w-full px-3 py-1.5 bg-surface-container rounded-lg text-body-sm text-on-surface font-mono focus:outline-none focus:ring-2 focus:ring-primary border-none" id="input-password-temp" maxlength="255" minlength="8" name="password" placeholder="Mínimo 8 caracteres" required="" type="password"/>
+          <div class="relative">
+            <input class="w-full px-3 pr-9 py-1.5 bg-surface-container rounded-lg text-body-sm text-on-surface font-mono focus:outline-none focus:ring-2 focus:ring-primary border-none" id="input-password-temp" maxlength="255" minlength="6" name="password" required="" type="text"/>
+            <button class="absolute right-2.5 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface p-0.5 cursor-pointer" id="btn-toggle-password" type="button" title="Mostrar u ocultar contraseña">
+              <span class="material-symbols-outlined text-[18px]" id="icono-toggle-password">visibility</span>
+            </button>
+          </div>
         </div>
       </div>
       <!-- Nota Compacta -->
-      <div class="pt-1 space-y-2">
+      <div class="pt-1">
         <div class="p-2.5 bg-surface-container-low rounded-lg flex items-center gap-2 text-on-surface-variant">
           <span class="material-symbols-outlined text-primary text-[18px] flex-shrink-0">info</span>
           <span class="text-[11px] leading-tight">Los datos se guardarán en el registro de usuario y su información de contacto.</span>
@@ -82,13 +83,13 @@
       </div>
     </form>
     <!-- Pie Compacto -->
-    <div class="px-5 py-2.5 bg-surface-container flex items-center justify-end gap-2 border-t border-surface-container-high">
-      <button class="px-3.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface transition-colors font-label-md text-xs cursor-pointer" id="btn-cerrar-modal" type="button">
+    <div class="px-5 py-3 bg-surface-container flex items-center justify-end gap-2 border-t border-surface-container-high">
+      <button class="px-3.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface transition-colors font-label-md text-xs cursor-pointer whitespace-nowrap" id="btn-cerrar-modal" type="button">
         Cancelar
       </button>
-      <button class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary transition-all font-label-md text-xs shadow-sm cursor-pointer" form="form-crear-usuario" id="btn-guardar-usuario" type="submit">
+      <button class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary transition-all font-label-md text-xs shadow-sm cursor-pointer whitespace-nowrap" form="form-crear-usuario" id="btn-guardar-usuario" type="submit">
         <span class="material-symbols-outlined text-[16px]">save</span>
-        <span class="">Registrar Usuario</span>
+        <span>Registrar Usuario</span>
       </button>
     </div>
   </div>

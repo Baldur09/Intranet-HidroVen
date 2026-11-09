@@ -27,17 +27,18 @@
       <span class="material-symbols-outlined text-[20px] text-slate-500">grid_view</span>
       <span class="truncate">Dashboard</span>
     </a>
-    <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium text-[14px] transition-all" href="#">
+    <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium text-[14px] transition-all" href="/usuarios">
       <span class="material-symbols-outlined text-[20px] text-slate-500">manage_accounts</span>
       <span class="truncate">Gestión de Usuarios</span>
     </a>
   </div>
 
-<!-- Logout Button -->
+<!-- Logout Button Mejorado (Semántico) -->
 <div class="pt-3 mt-2 border-t border-slate-100">
-  <button onclick="window.location.href='/logout'" class="w-full flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 transition-all text-[13.5px] font-semibold border border-red-200/60 cursor-pointer" type="button">
+  <a href="/logout" class="w-full flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 transition-all text-[13.5px] font-semibold border border-red-200/60 no-underline">
     <span class="material-symbols-outlined text-[17px] text-red-600">logout</span>
     <span>Cerrar Sesión</span>
-  </button>
+  </a> 
+</div>
 </div>
 </div>
