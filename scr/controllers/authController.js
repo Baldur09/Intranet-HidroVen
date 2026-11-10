@@ -9,12 +9,14 @@ const loginUsuario = async (req, res) => {
 
     const query = `
         SELECT 
-            u.Id, u.cedula, u.correo, u.password, u.rol, u.estado,
+            u.Id, u.cedula, u.correo, u.password, u.estado,
+            r.nombre AS rol, r.Id AS id_rol,
             i.nombres, i.apellidos, i.telefono,
             g.nombre AS gerencia
         FROM usuario u
         INNER JOIN info_usuario i ON u.Id = i.id_usuario
         INNER JOIN gerencia g ON i.id_gerencia = g.Id
+        INNER JOIN rol r ON i.id_rol = r.Id
         WHERE u.cedula = ?
     `;
 

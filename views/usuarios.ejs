@@ -179,23 +179,16 @@
 <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
 <input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-busqueda" placeholder="Buscar por nombre, cédula o correo..." type="text"/>
 </div>
-<!-- Filtro Gerencia -->
+<!-- Filtro Gerencia Dinámico -->
 <div class="md:col-span-3">
 <select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-gerencia">
 <option value="todas">Todas las Gerencias</option>
-<option value="Gerencia Operativa">Gerencia Operativa</option>
-<option value="Sistemas y TI">Sistemas y TI</option>
-<option value="Administración y Finanzas">Administración y Finanzas</option>
-<option value="Comercialización">Comercialización</option>
-<option value="Presidencia">Presidencia</option>
 </select>
 </div>
-<!-- Filtro Rol -->
+<!-- Filtro Rol Dinámico -->
 <div class="md:col-span-2">
 <select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-rol">
 <option value="todos">Todos los Roles</option>
-    <option value="administrador">Administrador</option>
-    <option value="empleado">Empleado</option>
   </select>
 </div>
 <!-- Filtro Estado -->
@@ -234,7 +227,7 @@
 </div>
 </div>
 
-<!-- MODAL 1: AÑADIR USUARIO INSTITUCIONAL (PRESERVADO) -->
+<!-- MODAL 1: AÑADIR USUARIO INSTITUCIONAL -->
 <%- include('partials/modales/modal-añadir') %>
 
 <!-- MODAL 2: EDITAR USUARIO -->
@@ -243,26 +236,25 @@
 <!-- MODAL 3: DESACTIVAR / BAJA LÓGICA INSTITUCIONAL -->
 <%- include('partials/modales/modal-baja') %>
 
-<!-- Toast Notification Flotante (Retroalimentación al Guardar) -->
+<!-- Toast Notification Flotante -->
 <div class="fixed bottom-6 right-6 z-50 items-center gap-3 px-4 py-3 bg-inverse-surface text-inverse-on-surface rounded-xl shadow-xl transition-all hidden" id="toast-notificacion">
 <span class="material-symbols-outlined text-secondary-container text-[22px]" id="toast-icono" style="animation-delay: 0ms;">check_circle</span>
 <span class="font-body-md text-body-md" id="toast-mensaje">Lista de usuarios sincronizada con el directorio central.</span>
 </div>
 
 <!-- ========================================================= -->
-<!-- JAVASCRIPT: GESTIÓN CONECTADA A LA BASE DE DATOS MEDIANTE FETCH -->
+<!-- JAVASCRIPT: GESTIÓN CONECTADA A LA BASE DE DATOS -->
 <!-- ========================================================= -->
 <script>
   (function() {
     let usuariosDB = []; // Se llenará desde la Base de Datos
 
-    // Función para formatear la cédula únicamente con puntos de miles (Ej: 12345678 -> 12.345.678)
     function formatearCedula(cedula) {
       if (!cedula) return '';
       let soloNumeros = String(cedula).replace(/\D/g, '');
       return soloNumeros.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&.');
     }
-    // Elementos de Notificación
+
     const toast = document.getElementById('toast-notificacion');
     const toastMensaje = document.getElementById('toast-mensaje');
     const toastIcono = document.getElementById('toast-icono');
@@ -285,9 +277,6 @@
       }, 4000);
     }
 
-    // ==========================================
-    // CARGAR USUARIOS DESDE LA BD AL INICIAR
-    // ==========================================
     async function cargarUsuariosBD() {
       try {
         const respuesta = await fetch('/api/usuarios');
@@ -297,7 +286,7 @@
         }
         if (data.success) {
           usuariosDB = data.usuarios;
-          renderizarTabla(usuariosDB);
+          aplicarFiltros(); 
           actualizarKPIs(usuariosDB);
         }
       } catch (error) {
@@ -307,26 +296,77 @@
     }
 
     async function cargarGerencias() {
-      const selectGerenciaCrear = document.getElementById('select-gerencia');
-      if (!selectGerenciaCrear) return;
-
       try {
         const respuesta = await fetch('/api/gerencias');
         const data = await respuesta.json();
+        
         if (!respuesta.ok || !data.success) {
           throw new Error(data.message || 'No se pudieron cargar las gerencias.');
         }
 
-        selectGerenciaCrear.replaceChildren(new Option('Seleccione Gerencia...', ''));
-        data.gerencias.forEach(gerencia => {
-          selectGerenciaCrear.add(new Option(gerencia.nombre, gerencia.Id));
+        // 1. Selector en modal Añadir / Editar
+        ['select-gerencia', 'editar-gerencia'].forEach(idSelect => {
+          const select = document.getElementById(idSelect);
+          if (select) {
+            select.replaceChildren(new Option('Seleccione Gerencia...', ''));
+            data.gerencias.forEach(gerencia => {
+              select.add(new Option(gerencia.nombre, gerencia.Id));
+            });
+          }
         });
+
+        // 2. Selector del filtro superior en la tabla principal
+        const filtroGerencia = document.getElementById('filtro-gerencia');
+        if (filtroGerencia) {
+          filtroGerencia.replaceChildren(new Option('Todas las Gerencias', 'todas'));
+          data.gerencias.forEach(gerencia => {
+            filtroGerencia.add(new Option(gerencia.nombre, gerencia.nombre));
+          });
+        }
       } catch (error) {
         console.error('Error al cargar gerencias:', error);
         mostrarToast('No se pudieron cargar las gerencias disponibles.', 'error');
       }
     }
 
+    async function cargarRoles() {
+      try {
+        const respuesta = await fetch('/api/roles');
+        const data = await respuesta.json();
+        
+        if (!respuesta.ok || !data.success) {
+          throw new Error(data.message || 'No se pudieron cargar los roles.');
+        }
+
+        // 1. Selector en modal Añadir / Editar
+        ['select-rol', 'editar-rol'].forEach(idSelect => {
+          const select = document.getElementById(idSelect);
+          if (select) {
+            select.replaceChildren(new Option('Seleccione Rol...', ''));
+            data.roles.forEach(rol => {
+              select.add(new Option(rol.nombre, rol.Id));
+            });
+          }
+        });
+
+        // 2. Selector del filtro superior en la tabla principal
+        const filtroRol = document.getElementById('filtro-rol');
+        if (filtroRol) {
+          filtroRol.replaceChildren(new Option('Todos los Roles', 'todos'));
+          data.roles.forEach(rol => {
+            filtroRol.add(new Option(rol.nombre, rol.nombre));
+          });
+        }
+      } catch (error) {
+        console.error('Error al cargar roles:', error);
+        mostrarToast('No se pudieron cargar los roles disponibles.', 'error');
+      }
+    }
+
+    cargarRoles();
+    cargarUsuariosBD();
+    cargarGerencias();
+    
     function actualizarKPIs(lista) {
       const totalUsuarios = document.getElementById('kpi-total-usuarios');
       const inactivos = document.getElementById('kpi-inactivos');
@@ -343,7 +383,7 @@
       if (!tablaCuerpo) return;
 
       if (lista.length === 0) {
-        tablaCuerpo.innerHTML = `<tr><td colspan="6" class="py-6 text-center text-outline">No hay usuarios registrados en la base de datos.</td></tr>`;
+        tablaCuerpo.innerHTML = `<tr><td colspan="6" class="py-6 text-center text-outline">No hay usuarios registrados que coincidan con la búsqueda.</td></tr>`;
         return;
       }
 
@@ -351,8 +391,6 @@
         const nombreCompleto = `${u.nombres} ${u.apellidos}`;
         const iniciales = (u.nombres.charAt(0) + (u.apellidos ? u.apellidos.charAt(0) : '')).toUpperCase();
         const esActivo = u.estado === 'Activo';
-        
-        // Aplicamos el formato con puntos de miles sobre el número limpio
         const cedulaFormateada = formatearCedula(u.cedula);
 
         return `
@@ -368,7 +406,6 @@
                 </div>
               </div>
             </td>
-            <!-- Mostramos la cédula formateada únicamente con puntos -->
             <td class="py-4 px-4 font-mono text-on-surface usuario-cedula">${cedulaFormateada}</td>
             <td class="py-4 px-4">
               <span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span>${u.gerencia}</span></span>
@@ -399,13 +436,7 @@
       }).join('');
     }
 
-    // Ejecutar al cargar la página
-    cargarUsuariosBD();
-    cargarGerencias();
-
-    // ==========================================
-    // 1. MODAL: AÑADIR USUARIO CON FETCH
-    // ==========================================
+    // Modal Crear
     const modalCrear = document.getElementById('modal-nuevo-usuario');
     const btnAbrirCrear = document.getElementById('btn-abrir-modal');
     const btnCerrarCrear = document.getElementById('btn-cerrar-modal');
@@ -420,7 +451,6 @@
       if (modalCrear) {
         modalCrear.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
-        
         if (inputPassword) {
           inputPassword.type = 'text';
           inputPassword.value = '%hidrolara123%';
@@ -482,16 +512,15 @@
         e.preventDefault();
         const nombres = document.getElementById('input-nombres').value.trim();
         const apellidos = document.getElementById('input-apellidos').value.trim();
-        // Guardamos únicamente los números limpios de la cédula
         const cedulaInput = document.getElementById('input-cedula').value.trim().replace(/\D/g, '');
         const usuarioCorreo = document.getElementById('input-correo').value.trim();
         const correo = usuarioCorreo.includes('@') ? usuarioCorreo : `${usuarioCorreo}@gmail.com`;
         const telefono = document.getElementById('input-telefono').value.trim();
         const id_gerencia = document.getElementById('select-gerencia').value;
-        const rol = document.getElementById('select-rol').value;
+        const id_rol = document.getElementById('select-rol').value;
         const password = inputPassword.value;
 
-        if (!nombres || !apellidos || !cedulaInput || !correo || !telefono || !id_gerencia || !rol || !password) {
+        if (!nombres || !apellidos || !cedulaInput || !correo || !telefono || !id_gerencia || !id_rol || !password) {
           alert('Por favor complete los campos obligatorios del formulario.');
           return;
         }
@@ -499,11 +528,11 @@
         const nuevoUsuarioData = {
           nombres,
           apellidos,
-          cedula: cedulaInput, // Envía solo números limpios a la base de datos
+          cedula: cedulaInput,
           correo,
           telefono,
           id_gerencia: Number(id_gerencia),
-          rol,
+          id_rol: Number(id_rol),
           password
         };
 
@@ -528,34 +557,250 @@
       });
     }
 
-    // ==========================================
-    // 2. FILTRADO Y BÚSQUEDA EN LA TABLA
-    // ==========================================
+    // Modal Editar
+    const modalEditar = document.getElementById('modal-editar-usuario');
+    const btnCerrarEditar = document.getElementById('btn-cerrar-modal-editar');
+    const btnCerrarEditarX = document.getElementById('btn-cerrar-modal-editar-x');
+    const btnEditarRapido = document.getElementById('btn-editar-rapido');
+    const tablaCuerpoUsuarios = document.getElementById('tabla-usuarios-cuerpo');
+
+    function abrirModalEditar() {
+      if (modalEditar) {
+        modalEditar.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function cerrarModalEditar() {
+      if (modalEditar) {
+        modalEditar.classList.add('hidden');
+        document.body.style.overflow = '';
+        const formEditar = document.getElementById('form-editar-usuario');
+        if (formEditar) formEditar.reset();
+        const inputBuscador = document.getElementById('editar-buscar-usuario');
+        if (inputBuscador) inputBuscador.value = '';
+      }
+    }
+
+    if (btnCerrarEditar) btnCerrarEditar.addEventListener('click', cerrarModalEditar);
+    if (btnCerrarEditarX) btnCerrarEditarX.addEventListener('click', cerrarModalEditar);
+    if (modalEditar) {
+      modalEditar.addEventListener('click', (e) => {
+        if (e.target === modalEditar) cerrarModalEditar();
+      });
+    }
+
+    function limpiarFormularioEditar() {
+      document.getElementById('editar-user-id').value = '';
+      document.getElementById('editar-nombres').value = '';
+      document.getElementById('editar-apellidos').value = '';
+      document.getElementById('editar-cedula').value = '';
+      document.getElementById('editar-correo').value = '';
+      document.getElementById('editar-gerencia').value = '';
+      document.getElementById('editar-rol').value = '';
+      const inputBuscador = document.getElementById('editar-buscar-usuario');
+      if (inputBuscador) inputBuscador.value = '';
+      
+      const radioActivo = document.querySelector('input[name="editar-estado-radio"][value="Activo"]');
+      if (radioActivo) radioActivo.checked = true;
+
+      abrirModalEditar();
+    }
+
+    function poblarFormularioEditar(usuario) {
+      if (!usuario) return;
+
+      document.getElementById('editar-user-id').value = usuario.id;
+      document.getElementById('editar-nombres').value = usuario.nombres || '';
+      document.getElementById('editar-apellidos').value = usuario.apellidos || '';
+      document.getElementById('editar-cedula').value = String(usuario.cedula || '').replace(/\D/g, '');
+      
+      const correoLimpio = (usuario.correo || '').replace(/@gmail\.com$/i, '');
+      document.getElementById('editar-correo').value = correoLimpio;
+
+      if (document.getElementById('editar-gerencia')) {
+        document.getElementById('editar-gerencia').value = usuario.id_gerencia || '';
+      }
+      
+      if (document.getElementById('editar-rol')) {
+        document.getElementById('editar-rol').value = usuario.id_rol || '';
+      }
+
+      const radioEstado = document.querySelector(`input[name="editar-estado-radio"][value="${usuario.estado || 'Activo'}"]`);
+      if (radioEstado) radioEstado.checked = true;
+
+      abrirModalEditar();
+    }
+
+    if (tablaCuerpoUsuarios) {
+      tablaCuerpoUsuarios.addEventListener('click', (e) => {
+        const btnEditar = e.target.closest('.btn-accion-editar');
+        if (btnEditar) {
+          const fila = btnEditar.closest('tr');
+          const userId = fila.dataset.id;
+          const usuarioEncontrado = usuariosDB.find(u => u.id == userId);
+          
+          if (usuarioEncontrado) {
+            poblarFormularioEditar(usuarioEncontrado);
+          } else {
+            console.warn('Usuario no encontrado en la memoria local');
+          }
+        }
+      });
+    }
+
+    if (btnEditarRapido) {
+      btnEditarRapido.addEventListener('click', () => {
+        limpiarFormularioEditar();
+      });
+    }
+
+    // Buscador en el modal de edición
+    const inputBuscadorEditar = document.getElementById('editar-buscar-usuario');
+    const listaResultadosEditar = document.getElementById('lista-coincidencias-editar');
+    const btnLimpiarBusquedaEditar = document.getElementById('btn-limpiar-busqueda-editar');
+
+    if (inputBuscadorEditar && listaResultadosEditar) {
+      inputBuscadorEditar.addEventListener('input', () => {
+        const query = inputBuscadorEditar.value.trim().toLowerCase();
+        if (btnLimpiarBusquedaEditar) {
+          btnLimpiarBusquedaEditar.classList.toggle('hidden', query.length === 0);
+        }
+
+        if (query.length === 0) {
+          listaResultadosEditar.classList.add('hidden');
+          return;
+        }
+
+        const filtrados = usuariosDB.filter(u => 
+          (`${u.nombres} ${u.apellidos}`).toLowerCase().includes(query) ||
+          String(u.cedula).includes(query) ||
+          (u.correo && u.correo.toLowerCase().includes(query))
+        );
+
+        if (filtrados.length === 0) {
+          listaResultadosEditar.innerHTML = `<div class="p-3 text-body-sm text-outline text-center">No se encontraron coincidencias</div>`;
+        } else {
+          listaResultadosEditar.innerHTML = filtrados.map(u => `
+            <button type="button" class="w-full text-left p-2.5 hover:bg-surface-container-low transition-colors flex items-center justify-between border-b border-surface-container last:border-0 item-coincidencia-editar" data-id="${u.id}">
+              <div>
+                <span class="font-label-lg text-label-lg text-on-surface block">${u.nombres} ${u.apellidos}</span>
+                <span class="text-body-sm text-outline">${formatearCedula(u.cedula)} • ${u.gerencia || ''}</span>
+              </div>
+            </button>
+          `).join('');
+
+          listaResultadosEditar.querySelectorAll('.item-coincidencia-editar').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const uid = btn.dataset.id;
+              const usuarioEncontrado = usuariosDB.find(x => x.id == uid);
+              if (usuarioEncontrado) {
+                poblarFormularioEditar(usuarioEncontrado);
+                listaResultadosEditar.classList.add('hidden');
+              }
+            });
+          });
+        }
+        listaResultadosEditar.classList.remove('hidden');
+      });
+
+      if (btnLimpiarBusquedaEditar) {
+        btnLimpiarBusquedaEditar.addEventListener('click', () => {
+          inputBuscadorEditar.value = '';
+          btnLimpiarBusquedaEditar.classList.add('hidden');
+          listaResultadosEditar.classList.add('hidden');
+        });
+      }
+    }
+
+    // Guardar cambios (PUT)
+    const formEditar = document.getElementById('form-editar-usuario');
+
+    if (formEditar) {
+      formEditar.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const userId = document.getElementById('editar-user-id').value;
+        
+        if (!userId) {
+          alert('Por favor busque y seleccione un usuario para editar.');
+          return;
+        }
+
+        const nombres = document.getElementById('editar-nombres').value.trim();
+        const apellidos = document.getElementById('editar-apellidos').value.trim();
+        const cedulaInput = document.getElementById('editar-cedula').value.trim().replace(/\D/g, '');
+        const usuarioCorreo = document.getElementById('editar-correo').value.trim();
+        const correo = usuarioCorreo.includes('@') ? usuarioCorreo : `${usuarioCorreo}@gmail.com`;
+        const id_gerencia = document.getElementById('editar-gerencia').value;
+        const id_rol = document.getElementById('editar-rol').value;
+        const estado = document.querySelector('input[name="editar-estado-radio"]:checked').value;
+
+        if (!nombres || !apellidos || !cedulaInput || !correo || !id_gerencia || !id_rol) {
+          alert('Por favor complete todos los campos obligatorios para actualizar.');
+          return;
+        }
+
+        const usuarioEditadoData = {
+          nombres,
+          apellidos,
+          cedula: cedulaInput,
+          correo,
+          id_gerencia: Number(id_gerencia),
+          id_rol: Number(id_rol),
+          estado
+        };
+
+        try {
+          const respuesta = await fetch(`/api/usuarios/${userId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(usuarioEditadoData)
+          });
+          const resultado = await respuesta.json();
+
+          if (!respuesta.ok || !resultado.success) {
+            throw new Error(resultado.message || 'Error al actualizar usuario.');
+          }
+
+          modalEditar.classList.add('hidden');
+          document.body.style.overflow = '';
+          
+          mostrarToast('Usuario actualizado correctamente');
+          cargarUsuariosBD();
+        } catch (error) {
+          console.error('Error al actualizar usuario:', error);
+          alert(error.message || 'No se pudo conectar con el servidor.');
+        }
+      });
+    }
+
+    // Filtros de tabla y búsqueda en tiempo real letra por letra
     const inputBusqueda = document.getElementById('filtro-busqueda');
     const selectGerencia = document.getElementById('filtro-gerencia');
     const selectRol = document.getElementById('filtro-rol');
     const selectEstado = document.getElementById('filtro-estado');
 
     function aplicarFiltros() {
-      const q = (inputBusqueda.value || '').toLowerCase();
+      const q = (inputBusqueda.value || '').toLowerCase().trim();
       const gerencia = selectGerencia.value;
       const rol = selectRol.value;
       const estado = selectEstado.value;
-      const filas = document.querySelectorAll('#tabla-usuarios-cuerpo tr');
 
-      filas.forEach(fila => {
-        const texto = fila.textContent.toLowerCase();
-        const coincideBusqueda = !q || texto.includes(q);
-        const coincideGerencia = gerencia === 'todas' || (fila.dataset.gerencia && fila.dataset.gerencia.toLowerCase().includes(gerencia.toLowerCase()));
-        const coincideRol = rol === 'todos' || (fila.dataset.rol && fila.dataset.rol.toLowerCase().includes(rol.toLowerCase()));
-        const coincideEstado = estado === 'todos' || (fila.dataset.estado && fila.dataset.estado.toLowerCase() === estado.toLowerCase());
+      renderizarTabla(usuariosDB.filter(u => {
+        const nombreCompleto = `${u.nombres} ${u.apellidos}`.toLowerCase();
+        const cedulaStr = String(u.cedula || '').toLowerCase();
+        const correoStr = (u.correo || '').toLowerCase();
+        const gerenciaStr = (u.gerencia || '').toLowerCase();
+        const rolStr = (u.rol || '').toLowerCase();
+        const estadoStr = (u.estado || '').toLowerCase();
 
-        if (coincideBusqueda && coincideGerencia && coincideRol && coincideEstado) {
-          fila.style.display = '';
-        } else {
-          fila.style.display = 'none';
-        }
-      });
+        const coincideBusqueda = !q || nombreCompleto.includes(q) || cedulaStr.includes(q) || correoStr.includes(q);
+        const coincideGerencia = gerencia === 'todas' || gerenciaStr.includes(gerencia.toLowerCase());
+        const coincideRol = rol === 'todos' || rolStr.includes(rol.toLowerCase());
+        const coincideEstado = estado === 'todos' || estadoStr === estado.toLowerCase();
+
+        return coincideBusqueda && coincideGerencia && coincideRol && coincideEstado;
+      }));
     }
 
     if (inputBusqueda) inputBusqueda.addEventListener('input', aplicarFiltros);
@@ -567,7 +812,6 @@
 </script>
 </div></main>
 <footer class="w-full bg-white border-t border-surface-container mt-auto shadow-sm"></footer>
-<!-- Pie de Página Institucional -->
 <%- include('partials/footer') %>
 
 <script src="/sidebar.js"></script>

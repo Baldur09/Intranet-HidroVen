@@ -1,6 +1,6 @@
 <div class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-inverse-surface/60 backdrop-blur-sm transition-all" id="modal-desactivar-usuario">
   <div class="bg-surface-container-lowest w-full max-w-lg rounded-xl shadow-xl overflow-hidden flex flex-col max-h-[85vh]">
-    <!-- Cabecera Compacta Alerta -->
+    <!-- Cabecera Compacta -->
     <div class="px-5 py-3.5 bg-error-container/40 flex items-center justify-between border-b border-error-container/60">
       <div class="flex items-center gap-2.5">
         <div class="w-8 h-8 rounded-lg bg-error text-on-error flex items-center justify-center flex-shrink-0">
@@ -15,36 +15,27 @@
         <span class="material-symbols-outlined text-[18px]">close</span>
       </button>
     </div>
-    <!-- Contenido Compacto -->
+    <!-- Contenido -->
     <div class="p-4 sm:p-5 overflow-y-auto space-y-3.5 flex-1 text-left">
-      <!-- Buscador Rápido de Baja -->
-      <div>
-        <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="baja-buscar-usuario">Empleado a tramitar baja</label>
-        <div class="relative">
-          <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
-          <input autocomplete="off" class="w-full pl-8 pr-4 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-error border-none transition-all" id="baja-buscar-usuario" placeholder="Buscar por cédula (V-...) o nombre..." type="text"/>
-          <div class="absolute left-0 right-0 top-full mt-1 bg-surface-container-lowest rounded-xl shadow-lg border border-surface-container-high max-h-40 overflow-y-auto hidden z-20" id="lista-coincidencias-baja"></div>
-        </div>
-      </div>
-      <!-- Tarjeta Resumen Compacta -->
+      <!-- Tarjeta Resumen -->
       <div class="p-3 bg-surface-container-low rounded-lg border border-surface-container flex items-center gap-3" id="tarjeta-resumen-baja">
-        <div class="w-9 h-9 rounded-full bg-primary-fixed text-primary font-bold text-xs flex items-center justify-center flex-shrink-0" id="baja-avatar-iniciales">LS</div>
+        <div class="w-9 h-9 rounded-full bg-primary-fixed text-primary font-bold text-xs flex items-center justify-center flex-shrink-0" id="baja-avatar-iniciales">--</div>
         <div class="min-w-0 flex-1">
-          <h4 class="font-headline-sm text-xs font-bold text-on-surface truncate" id="baja-nombre-empleado">Ing. Luis Salazar</h4>
+          <h4 class="font-headline-sm text-xs font-bold text-on-surface truncate" id="baja-nombre-empleado">Cargando...</h4>
           <div class="flex items-center gap-2 text-[11px] text-tertiary mt-0.5">
-            <span class="font-mono font-medium text-on-surface" id="baja-cedula-empleado">V-14.892.301</span>
-            <span class="">•</span>
-            <span class="truncate" id="baja-gerencia-empleado">Gerencia Operativa</span>
+            <span class="font-mono font-medium text-on-surface" id="baja-cedula-empleado">--</span>
+            <span>•</span>
+            <span class="truncate" id="baja-gerencia-empleado">--</span>
           </div>
-          <span class="text-[11px] text-outline block truncate" id="baja-correo-empleado">lsalazar@hidroven.gob.ve</span>
+          <span class="text-[11px] text-outline block truncate" id="baja-correo-empleado">--</span>
         </div>
       </div>
-      <!-- Advertencia Slim -->
+      <!-- Advertencia -->
       <div class="p-2.5 bg-amber-50 border border-amber-200 rounded-lg flex items-start gap-2 text-amber-900">
         <span class="material-symbols-outlined text-amber-600 text-[18px] flex-shrink-0 mt-0.5">warning</span>
-        <span class="text-[11px] leading-tight">El registro permanecerá en la base de datos para trazabilidad histórica, inactivando las credenciales de correo Zimbra.</span>
+        <span class="text-[11px] leading-tight">El registro permanecerá en la base de datos para trazabilidad histórica, inactivando sus credenciales de acceso.</span>
       </div>
-      <!-- Motivo y Observaciones Compactas -->
+      <!-- Motivo -->
       <div>
         <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="select-motivo-baja">Motivo de la baja <span class="text-error">*</span></label>
         <select class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-error border-none" id="select-motivo-baja">
@@ -52,23 +43,18 @@
           <option value="Renuncia voluntaria">Renuncia voluntaria</option>
           <option value="Jubilación">Jubilación</option>
           <option value="Traslado institucional">Traslado institucional</option>
-          <option value="Suspensión preventiva administrativa">Suspensión preventiva administrativa</option>
           <option value="Revocación de accesos por seguridad">Revocación de accesos por seguridad</option>
         </select>
       </div>
-      <div>
-        <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="textarea-notas-baja">Observaciones o acta administrativa</label>
-        <textarea class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-error resize-none border-none" id="textarea-notas-baja" placeholder="Ej. Acta DRH-2026/041 emitida por Recursos Humanos..." rows="2"></textarea>
-      </div>
     </div>
-    <!-- Pie Compacto -->
+    <!-- Pie -->
     <div class="px-5 py-2.5 bg-surface-container flex items-center justify-end gap-2 border-t border-surface-container-high">
       <button class="px-3.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface transition-colors font-label-md text-xs cursor-pointer" id="btn-cerrar-modal-desactivar" type="button">
         Cancelar
       </button>
       <button class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-error hover:bg-red-700 text-on-error transition-all font-label-md text-xs shadow-sm cursor-pointer" id="btn-confirmar-baja" type="button">
         <span class="material-symbols-outlined text-[16px]">person_off</span>
-        <span class="">Confirmar Desactivación</span>
+        <span>Confirmar Desactivación</span>
       </button>
     </div>
   </div>
