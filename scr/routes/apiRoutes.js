@@ -127,18 +127,17 @@ router.put('/usuarios/:id', verificarSesion, (req, res) => {
 });
 
 // 5. DESACTIVAR / BAJA LÓGICA (PATCH)
-router.patch('/usuarios/:id/estado', verificarSesion, (req, res) => {
+router.patch('/usuarios/:id/baja', verificarSesion, (req, res) => {
     const { id } = req.params;
-    const { estado } = req.body;
+    const { estado } = req.body; // Solo necesitamos cambiar el estado a 'Inactivo'
 
     const query = `UPDATE usuario SET estado = ? WHERE Id = ?`;
-    conexion.query(query, [estado, id], (err) => {
+    conexion.query(query, [estado || 'Inactivo', id], (err) => {
         if (err) {
-            console.error('Error al cambiar estado:', err);
+            console.error('Error al dar de baja:', err);
             return res.status(500).json({ success: false, message: 'Error al cambiar estado del usuario.' });
         }
-        res.json({ success: true, message: 'Estado del usuario actualizado.' });
+        res.json({ success: true, message: 'Usuario dado de baja exitosamente.' });
     });
 });
-
 module.exports = router;

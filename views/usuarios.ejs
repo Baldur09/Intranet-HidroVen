@@ -112,6 +112,7 @@
 <span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
 <span class="text-primary font-semibold">Gestión de Usuarios</span>
 </nav>
+
 <!-- Encabezado de Página con Acciones Principales -->
 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 bg-surface-container-lowest p-6 rounded-xl shadow-sm">
 <div class="space-y-1">
@@ -142,9 +143,9 @@
 </button>
 </div>
 </div>
+
 <!-- Indicadores Numéricos y Métricas (KPIs) -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-<!-- Tarjeta: Total Usuarios -->
 <div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between">
 <div class="space-y-1">
 <span class="font-label-caps text-label-caps uppercase text-tertiary">Total Registrados</span>
@@ -157,7 +158,6 @@
 <span class="material-symbols-outlined text-[26px]">badge</span>
 </div>
 </div>
-<!-- Tarjeta: Inactivos / Suspendidos -->
 <div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between">
 <div class="space-y-1">
 <span class="font-label-caps text-label-caps uppercase text-tertiary">Inactivos / Bajas</span>
@@ -171,27 +171,24 @@
 </div>
 </div>
 </div>
+
 <!-- Barra de Búsqueda, Filtrado Dinámico y Herramientas -->
 <div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm space-y-3">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
-<!-- Campo Buscador -->
 <div class="md:col-span-4 relative">
 <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
 <input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-busqueda" placeholder="Buscar por nombre, cédula o correo..." type="text"/>
 </div>
-<!-- Filtro Gerencia Dinámico -->
 <div class="md:col-span-3">
 <select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-gerencia">
 <option value="todas">Todas las Gerencias</option>
 </select>
 </div>
-<!-- Filtro Rol Dinámico -->
 <div class="md:col-span-2">
 <select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-rol">
 <option value="todos">Todos los Roles</option>
   </select>
 </div>
-<!-- Filtro Estado -->
 <div class="md:col-span-2">
 <select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-estado">
 <option value="todos">Todos los Estados</option>
@@ -199,14 +196,12 @@
 <option value="Inactivo">Inactivos</option>
 </select>
 </div>
-<!-- Botón Refrescar / Exportar -->
-<div class="md:col-span-1 flex items-center justify-end gap-1">
 </div>
 </div>
-</div>
+
 <!-- Contenedor Principal: Tabla de Personal Institucional -->
-<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
-<div class="overflow-x-auto">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto flex-1">
 <table class="w-full text-left border-collapse">
 <thead>
 <tr class="bg-surface-container-low text-tertiary font-label-caps text-label-caps uppercase">
@@ -219,35 +214,45 @@
 </tr>
 </thead>
 <tbody class="text-body-md font-body-md divide-y-0" id="tabla-usuarios-cuerpo">
-  <!-- Los datos se cargaran dinámicamente desde la base de datos -->
 </tbody>
 </table>
 </div>
-<!-- Pie de Tabla: Paginación y Resumen -->
+
+<!-- Pie de Tabla: Paginación Interactiva -->
+<div class="px-5 py-3.5 bg-surface-container-low border-t border-surface-container-high flex flex-col sm:flex-row items-center justify-between gap-4">
+  <div class="flex items-center gap-3 text-body-sm text-on-surface-variant">
+    <span>Mostrando <span class="font-semibold text-on-surface" id="paginacion-inicio">0</span> a <span class="font-semibold text-on-surface" id="paginacion-fin">0</span> de <span class="font-semibold text-on-surface" id="paginacion-total">0</span> usuarios</span>
+    <select class="py-1 pl-2 pr-7 bg-surface-container-lowest rounded-md text-body-sm border border-surface-container-high focus:outline-none focus:ring-1 focus:ring-primary" id="select-limite-pag">
+      <option value="10" selected>10 por pág.</option>
+      <option value="25">25 por pág.</option>
+      <option value="50">50 por pág.</option>
+    </select>
+  </div>
+  <div class="flex items-center gap-1.5" id="contenedor-botones-paginacion">
+  </div>
+</div>
+
 </div>
 </div>
 
-<!-- MODAL 1: AÑADIR USUARIO INSTITUCIONAL -->
+<!-- MODALES -->
 <%- include('partials/modales/modal-añadir') %>
-
-<!-- MODAL 2: EDITAR USUARIO -->
 <%- include('partials/modales/modal-editar') %>
-
-<!-- MODAL 3: DESACTIVAR / BAJA LÓGICA INSTITUCIONAL -->
 <%- include('partials/modales/modal-baja') %>
 
 <!-- Toast Notification Flotante -->
 <div class="fixed bottom-6 right-6 z-50 items-center gap-3 px-4 py-3 bg-inverse-surface text-inverse-on-surface rounded-xl shadow-xl transition-all hidden" id="toast-notificacion">
-<span class="material-symbols-outlined text-secondary-container text-[22px]" id="toast-icono" style="animation-delay: 0ms;">check_circle</span>
+<span class="material-symbols-outlined text-secondary-container text-[22px]" id="toast-icono">check_circle</span>
 <span class="font-body-md text-body-md" id="toast-mensaje">Lista de usuarios sincronizada con el directorio central.</span>
 </div>
 
-<!-- ========================================================= -->
-<!-- JAVASCRIPT: GESTIÓN CONECTADA A LA BASE DE DATOS -->
-<!-- ========================================================= -->
+<!-- JAVASCRIPT PRINCIPAL -->
 <script>
   (function() {
-    let usuariosDB = []; // Se llenará desde la Base de Datos
+    let usuariosDB = [];
+    let paginaActual = 1;
+    let registrosPorPagina = 10;
+    let usuarioSeleccionadoParaBaja = null;
 
     function formatearCedula(cedula) {
       if (!cedula) return '';
@@ -263,11 +268,15 @@
       if (!toast) return;
       toastMensaje.textContent = texto;
       if (tipo === 'error') {
-        toastIcono.textContent = 'error';
-        toastIcono.className = 'material-symbols-outlined text-red-400 text-[22px]';
+        if (toastIcono) {
+          toastIcono.textContent = 'error';
+          toastIcono.className = 'material-symbols-outlined text-red-400 text-[22px]';
+        }
       } else {
-        toastIcono.textContent = 'check_circle';
-        toastIcono.className = 'material-symbols-outlined text-secondary-container text-[22px]';
+        if (toastIcono) {
+          toastIcono.textContent = 'check_circle';
+          toastIcono.className = 'material-symbols-outlined text-secondary-container text-[22px]';
+        }
       }
       toast.classList.remove('hidden');
       toast.classList.add('flex');
@@ -304,7 +313,6 @@
           throw new Error(data.message || 'No se pudieron cargar las gerencias.');
         }
 
-        // 1. Selector en modal Añadir / Editar
         ['select-gerencia', 'editar-gerencia'].forEach(idSelect => {
           const select = document.getElementById(idSelect);
           if (select) {
@@ -315,7 +323,6 @@
           }
         });
 
-        // 2. Selector del filtro superior en la tabla principal
         const filtroGerencia = document.getElementById('filtro-gerencia');
         if (filtroGerencia) {
           filtroGerencia.replaceChildren(new Option('Todas las Gerencias', 'todas'));
@@ -338,7 +345,6 @@
           throw new Error(data.message || 'No se pudieron cargar los roles.');
         }
 
-        // 1. Selector en modal Añadir / Editar
         ['select-rol', 'editar-rol'].forEach(idSelect => {
           const select = document.getElementById(idSelect);
           if (select) {
@@ -349,7 +355,6 @@
           }
         });
 
-        // 2. Selector del filtro superior en la tabla principal
         const filtroRol = document.getElementById('filtro-rol');
         if (filtroRol) {
           filtroRol.replaceChildren(new Option('Todos los Roles', 'todos'));
@@ -378,16 +383,38 @@
       if (inactivos) inactivos.textContent = cantInactivos;
     }
 
-    function renderizarTabla(lista) {
+    function renderizarTablaPaginada(listaFiltrada) {
       const tablaCuerpo = document.getElementById('tabla-usuarios-cuerpo');
+      const spanInicio = document.getElementById('paginacion-inicio');
+      const spanFin = document.getElementById('paginacion-fin');
+      const spanTotal = document.getElementById('paginacion-total');
+      const contenedorBotones = document.getElementById('contenedor-botones-paginacion');
+
       if (!tablaCuerpo) return;
 
-      if (lista.length === 0) {
+      const totalRegistros = listaFiltrada.length;
+      spanTotal.textContent = totalRegistros;
+
+      if (totalRegistros === 0) {
         tablaCuerpo.innerHTML = `<tr><td colspan="6" class="py-6 text-center text-outline">No hay usuarios registrados que coincidan con la búsqueda.</td></tr>`;
+        spanInicio.textContent = 0;
+        spanFin.textContent = 0;
+        contenedorBotones.innerHTML = '';
         return;
       }
 
-      tablaCuerpo.innerHTML = lista.map(u => {
+      const totalPaginas = Math.ceil(totalRegistros / registrosPorPagina);
+      if (paginaActual > totalPaginas) paginaActual = totalPaginas;
+      if (paginaActual < 1) paginaActual = 1;
+
+      const inicio = (paginaActual - 1) * registrosPorPagina;
+      const fin = Math.min(inicio + registrosPorPagina, totalRegistros);
+      const listaPaginada = listaFiltrada.slice(inicio, fin);
+
+      spanInicio.textContent = inicio + 1;
+      spanFin.textContent = fin;
+
+      tablaCuerpo.innerHTML = listaPaginada.map(u => {
         const nombreCompleto = `${u.nombres} ${u.apellidos}`;
         const iniciales = (u.nombres.charAt(0) + (u.apellidos ? u.apellidos.charAt(0) : '')).toUpperCase();
         const esActivo = u.estado === 'Activo';
@@ -426,15 +453,40 @@
                 <button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
                   <span class="material-symbols-outlined text-[22px]">edit</span>
                 </button>
-                <button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-secondary transition-all cursor-pointer btn-accion-ver" title="Ver detalles y auditoría" type="button">
-                  <span class="material-symbols-outlined text-[22px]">visibility</span>
+                <button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-error-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-baja" title="Desactivar / Dar de baja" type="button">
+                  <span class="material-symbols-outlined text-[22px]">person_off</span>
                 </button>
               </div>
             </td>
           </tr>
         `;
       }).join('');
+
+      let htmlBotones = `
+        <button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-surface-container-high text-on-surface text-xs font-medium hover:bg-surface-container transition-all ${paginaActual === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}" ${paginaActual === 1 ? 'disabled' : ''} onclick="cambiarPagina(${paginaActual - 1})">Anterior</button>
+      `;
+
+      for (let i = 1; i <= totalPaginas; i++) {
+        if (i === 1 || i === totalPaginas || (i >= paginaActual - 1 && i <= paginaActual + 1)) {
+          htmlBotones += `
+            <button class="w-8 h-8 rounded-lg text-xs font-semibold transition-all ${i === paginaActual ? 'bg-primary text-on-primary shadow-sm' : 'bg-surface-container-lowest border border-surface-container-high text-on-surface hover:bg-surface-container'} cursor-pointer" onclick="cambiarPagina(${i})">${i}</button>
+          `;
+        } else if (i === paginaActual - 2 || i === paginaActual + 2) {
+          htmlBotones += `<span class="px-1 text-outline">...</span>`;
+        }
+      }
+
+      htmlBotones += `
+        <button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-surface-container-high text-on-surface text-xs font-medium hover:bg-surface-container transition-all ${paginaActual === totalPaginas || totalPaginas === 0 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}" ${paginaActual === totalPaginas || totalPaginas === 0 ? 'disabled' : ''} onclick="cambiarPagina(${paginaActual + 1})">Siguiente</button>
+      `;
+
+      contenedorBotones.innerHTML = htmlBotones;
     }
+
+    window.cambiarPagina = function(nuevaPagina) {
+      paginaActual = nuevaPagina;
+      aplicarFiltros();
+    };
 
     // Modal Crear
     const modalCrear = document.getElementById('modal-nuevo-usuario');
@@ -561,8 +613,11 @@
     const modalEditar = document.getElementById('modal-editar-usuario');
     const btnCerrarEditar = document.getElementById('btn-cerrar-modal-editar');
     const btnCerrarEditarX = document.getElementById('btn-cerrar-modal-editar-x');
-    const btnEditarRapido = document.getElementById('btn-editar-rapido');
     const tablaCuerpoUsuarios = document.getElementById('tabla-usuarios-cuerpo');
+    const inputPasswordEditar = document.getElementById('editar-password-temp');
+    const btnTogglePasswordEditar = document.getElementById('btn-toggle-password-editar');
+    const iconoTogglePasswordEditar = document.getElementById('icono-toggle-password-editar');
+    const btnSetDefaultPass = document.getElementById('btn-set-default-pass');
 
     function abrirModalEditar() {
       if (modalEditar) {
@@ -577,6 +632,13 @@
         document.body.style.overflow = '';
         const formEditar = document.getElementById('form-editar-usuario');
         if (formEditar) formEditar.reset();
+        if (inputPasswordEditar) {
+          inputPasswordEditar.value = '';
+          inputPasswordEditar.type = 'password';
+        }
+        if (iconoTogglePasswordEditar) {
+          iconoTogglePasswordEditar.textContent = 'visibility';
+        }
         const inputBuscador = document.getElementById('editar-buscar-usuario');
         if (inputBuscador) inputBuscador.value = '';
       }
@@ -590,16 +652,46 @@
       });
     }
 
+    if (btnTogglePasswordEditar && inputPasswordEditar && iconoTogglePasswordEditar) {
+      btnTogglePasswordEditar.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (inputPasswordEditar.type === 'password') {
+          inputPasswordEditar.type = 'text';
+          iconoTogglePasswordEditar.textContent = 'visibility_off';
+        } else {
+          inputPasswordEditar.type = 'password';
+          iconoTogglePasswordEditar.textContent = 'visibility';
+        }
+      });
+    }
+
+    if (btnSetDefaultPass && inputPasswordEditar) {
+      btnSetDefaultPass.addEventListener('click', (e) => {
+        e.preventDefault();
+        inputPasswordEditar.type = 'text';
+        inputPasswordEditar.value = '%hidrolara123%';
+        if (iconoTogglePasswordEditar) {
+          iconoTogglePasswordEditar.textContent = 'visibility_off';
+        }
+      });
+    }
+
     function limpiarFormularioEditar() {
-      document.getElementById('editar-user-id').value = '';
-      document.getElementById('editar-nombres').value = '';
-      document.getElementById('editar-apellidos').value = '';
-      document.getElementById('editar-cedula').value = '';
-      document.getElementById('editar-correo').value = '';
-      document.getElementById('editar-gerencia').value = '';
-      document.getElementById('editar-rol').value = '';
-      const inputBuscador = document.getElementById('editar-buscar-usuario');
-      if (inputBuscador) inputBuscador.value = '';
+      const userIdInput = document.getElementById('editar-user-id');
+      if (userIdInput) userIdInput.value = '';
+      
+      const campos = ['editar-nombres', 'editar-apellidos', 'editar-cedula', 'editar-correo', 'editar-telefono', 'editar-gerencia', 'editar-rol', 'editar-buscar-usuario', 'editar-password-temp'];
+      campos.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+
+      if (inputPasswordEditar) {
+        inputPasswordEditar.type = 'password';
+      }
+      if (iconoTogglePasswordEditar) {
+        iconoTogglePasswordEditar.textContent = 'visibility';
+      }
       
       const radioActivo = document.querySelector('input[name="editar-estado-radio"][value="Activo"]');
       if (radioActivo) radioActivo.checked = true;
@@ -607,30 +699,13 @@
       abrirModalEditar();
     }
 
-    function poblarFormularioEditar(usuario) {
-      if (!usuario) return;
-
-      document.getElementById('editar-user-id').value = usuario.id;
-      document.getElementById('editar-nombres').value = usuario.nombres || '';
-      document.getElementById('editar-apellidos').value = usuario.apellidos || '';
-      document.getElementById('editar-cedula').value = String(usuario.cedula || '').replace(/\D/g, '');
-      
-      const correoLimpio = (usuario.correo || '').replace(/@gmail\.com$/i, '');
-      document.getElementById('editar-correo').value = correoLimpio;
-
-      if (document.getElementById('editar-gerencia')) {
-        document.getElementById('editar-gerencia').value = usuario.id_gerencia || '';
+    document.addEventListener('click', (e) => {
+      const targetBtn = e.target.closest('#btn-editar-rapido');
+      if (targetBtn) {
+        e.preventDefault();
+        limpiarFormularioEditar();
       }
-      
-      if (document.getElementById('editar-rol')) {
-        document.getElementById('editar-rol').value = usuario.id_rol || '';
-      }
-
-      const radioEstado = document.querySelector(`input[name="editar-estado-radio"][value="${usuario.estado || 'Activo'}"]`);
-      if (radioEstado) radioEstado.checked = true;
-
-      abrirModalEditar();
-    }
+    });
 
     if (tablaCuerpoUsuarios) {
       tablaCuerpoUsuarios.addEventListener('click', (e) => {
@@ -649,13 +724,42 @@
       });
     }
 
-    if (btnEditarRapido) {
-      btnEditarRapido.addEventListener('click', () => {
-        limpiarFormularioEditar();
-      });
+    function poblarFormularioEditar(usuario) {
+      if (!usuario) return;
+
+      document.getElementById('editar-user-id').value = usuario.id;
+      document.getElementById('editar-nombres').value = usuario.nombres || '';
+      document.getElementById('editar-apellidos').value = usuario.apellidos || '';
+      document.getElementById('editar-cedula').value = String(usuario.cedula || '').replace(/\D/g, '');
+      
+      const correoLimpio = (usuario.correo || '').replace(/@gmail\.com$/i, '');
+      document.getElementById('editar-correo').value = correoLimpio;
+
+      const telefonoInput = document.getElementById('editar-telefono');
+      if (telefonoInput) telefonoInput.value = usuario.telefono || '';
+
+      if (inputPasswordEditar) {
+        inputPasswordEditar.value = '';
+        inputPasswordEditar.type = 'password';
+      }
+      if (iconoTogglePasswordEditar) {
+        iconoTogglePasswordEditar.textContent = 'visibility';
+      }
+
+      if (document.getElementById('editar-gerencia')) {
+        document.getElementById('editar-gerencia').value = usuario.id_gerencia || '';
+      }
+      
+      if (document.getElementById('editar-rol')) {
+        document.getElementById('editar-rol').value = usuario.id_rol || '';
+      }
+
+      const radioEstado = document.querySelector(`input[name="editar-estado-radio"][value="${usuario.estado || 'Activo'}"]`);
+      if (radioEstado) radioEstado.checked = true;
+
+      abrirModalEditar();
     }
 
-    // Buscador en el modal de edición
     const inputBuscadorEditar = document.getElementById('editar-buscar-usuario');
     const listaResultadosEditar = document.getElementById('lista-coincidencias-editar');
     const btnLimpiarBusquedaEditar = document.getElementById('btn-limpiar-busqueda-editar');
@@ -713,7 +817,6 @@
       }
     }
 
-    // Guardar cambios (PUT)
     const formEditar = document.getElementById('form-editar-usuario');
 
     if (formEditar) {
@@ -722,7 +825,7 @@
         const userId = document.getElementById('editar-user-id').value;
         
         if (!userId) {
-          alert('Por favor busque y seleccione un usuario para editar.');
+          alert('Por favor busque y seleccione un usuario utilizando la barra de búsqueda superior dentro del modal.');
           return;
         }
 
@@ -731,11 +834,13 @@
         const cedulaInput = document.getElementById('editar-cedula').value.trim().replace(/\D/g, '');
         const usuarioCorreo = document.getElementById('editar-correo').value.trim();
         const correo = usuarioCorreo.includes('@') ? usuarioCorreo : `${usuarioCorreo}@gmail.com`;
+        const telefono = document.getElementById('editar-telefono').value.trim();
         const id_gerencia = document.getElementById('editar-gerencia').value;
         const id_rol = document.getElementById('editar-rol').value;
+        const passwordIngresada = inputPasswordEditar ? inputPasswordEditar.value.trim() : '';
         const estado = document.querySelector('input[name="editar-estado-radio"]:checked').value;
 
-        if (!nombres || !apellidos || !cedulaInput || !correo || !id_gerencia || !id_rol) {
+        if (!nombres || !apellidos || !cedulaInput || !correo || !telefono || !id_gerencia || !id_rol) {
           alert('Por favor complete todos los campos obligatorios para actualizar.');
           return;
         }
@@ -745,10 +850,15 @@
           apellidos,
           cedula: cedulaInput,
           correo,
+          telefono,
           id_gerencia: Number(id_gerencia),
           id_rol: Number(id_rol),
           estado
         };
+
+        if (passwordIngresada !== '') {
+          usuarioEditadoData.password = passwordIngresada;
+        }
 
         try {
           const respuesta = await fetch(`/api/usuarios/${userId}`, {
@@ -774,11 +884,185 @@
       });
     }
 
-    // Filtros de tabla y búsqueda en tiempo real letra por letra
+    // Modal Desactivar / Baja
+    const modalDesactivar = document.getElementById('modal-desactivar-usuario');
+    const btnCerrarDesactivar = document.getElementById('btn-cerrar-modal-desactivar');
+    const btnCerrarDesactivarX = document.getElementById('btn-cerrar-modal-desactivar-x');
+    const btnConfirmarBaja = document.getElementById('btn-confirmar-baja');
+    const btnAbrirDesactivarSuperior = document.getElementById('btn-eliminar-seleccion');
+    const inputBuscadorBaja = document.getElementById('baja-input-buscador');
+    const listaResultadosBaja = document.getElementById('baja-lista-coincidencias');
+
+    function poblarTarjetaBaja(usuario) {
+      if (!usuario) return;
+      usuarioSeleccionadoParaBaja = usuario;
+
+      const iniciales = (usuario.nombres.charAt(0) + (usuario.apellidos ? usuario.apellidos.charAt(0) : '')).toUpperCase();
+      const elAvatar = document.getElementById('baja-avatar-iniciales');
+      const elNombre = document.getElementById('baja-nombre-empleado');
+      const elCedula = document.getElementById('baja-cedula-empleado');
+      const elGerencia = document.getElementById('baja-gerencia-empleado');
+      const elCorreo = document.getElementById('baja-correo-empleado');
+
+      if (elAvatar) elAvatar.textContent = iniciales;
+      if (elNombre) elNombre.textContent = `${usuario.nombres} ${usuario.apellidos}`;
+      if (elCedula) elCedula.textContent = formatearCedula(usuario.cedula);
+      if (elGerencia) elGerencia.textContent = usuario.gerencia || 'Sin Gerencia';
+      if (elCorreo) elCorreo.textContent = usuario.correo || '';
+      
+      if (inputBuscadorBaja) inputBuscadorBaja.value = `${usuario.nombres} ${usuario.apellidos}`;
+    }
+
+    function abrirModalBaja(usuario) {
+      if (!modalDesactivar) return;
+      
+      if (usuario) {
+        poblarTarjetaBaja(usuario);
+      } else {
+        usuarioSeleccionadoParaBaja = null;
+        if (inputBuscadorBaja) inputBuscadorBaja.value = '';
+        document.getElementById('baja-nombre-empleado').textContent = 'Busque y seleccione un empleado...';
+        document.getElementById('baja-cedula-empleado').textContent = '--';
+        document.getElementById('baja-gerencia-empleado').textContent = '--';
+        document.getElementById('baja-correo-empleado').textContent = '--';
+        document.getElementById('baja-avatar-iniciales').textContent = '--';
+      }
+
+      if (listaResultadosBaja) listaResultadosBaja.classList.add('hidden');
+      modalDesactivar.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function cerrarModalBaja() {
+      if (modalDesactivar) {
+        modalDesactivar.classList.add('hidden');
+        document.body.style.overflow = '';
+        usuarioSeleccionadoParaBaja = null;
+        if (inputBuscadorBaja) inputBuscadorBaja.value = '';
+        if (listaResultadosBaja) listaResultadosBaja.classList.add('hidden');
+      }
+    }
+
+    if (btnCerrarDesactivar) btnCerrarDesactivar.addEventListener('click', cerrarModalBaja);
+    if (btnCerrarDesactivarX) btnCerrarDesactivarX.addEventListener('click', cerrarModalBaja);
+    if (modalDesactivar) {
+      modalDesactivar.addEventListener('click', (e) => {
+        if (e.target === modalDesactivar) cerrarModalBaja();
+      });
+    }
+
+    // Buscador en tiempo real dentro del modal de baja
+    if (inputBuscadorBaja && listaResultadosBaja) {
+      inputBuscadorBaja.addEventListener('input', () => {
+        const query = inputBuscadorBaja.value.trim().toLowerCase();
+
+        if (query.length === 0) {
+          listaResultadosBaja.classList.add('hidden');
+          return;
+        }
+
+        const filtrados = usuariosDB.filter(u => 
+          (`${u.nombres} ${u.apellidos}`).toLowerCase().includes(query) ||
+          String(u.cedula).includes(query) ||
+          (u.correo && u.correo.toLowerCase().includes(query))
+        );
+
+        if (filtrados.length === 0) {
+          listaResultadosBaja.innerHTML = `<div class="p-3 text-body-sm text-outline text-center">No se encontraron empleados</div>`;
+        } else {
+          listaResultadosBaja.innerHTML = filtrados.map(u => `
+            <button type="button" class="w-full text-left p-2.5 hover:bg-surface-container-low transition-colors flex items-center justify-between border-b border-surface-container last:border-0 item-coincidencia-baja" data-id="${u.id}">
+              <div>
+                <span class="font-label-lg text-label-lg text-on-surface block">${u.nombres} ${u.apellidos}</span>
+                <span class="text-body-sm text-outline">Cédula: ${formatearCedula(u.cedula)} • ${u.gerencia || ''}</span>
+              </div>
+            </button>
+          `).join('');
+
+          listaResultadosBaja.querySelectorAll('.item-coincidencia-baja').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const uid = btn.dataset.id;
+              const usuarioEncontrado = usuariosDB.find(x => x.id == uid);
+              if (usuarioEncontrado) {
+                poblarTarjetaBaja(usuarioEncontrado);
+                listaResultadosBaja.classList.add('hidden');
+              }
+            });
+          });
+        }
+        listaResultadosBaja.classList.remove('hidden');
+      });
+    }
+
+    // Botón superior de Baja
+    if (btnAbrirDesactivarSuperior) {
+      btnAbrirDesactivarSuperior.addEventListener('click', (e) => {
+        e.preventDefault();
+        abrirModalBaja(null);
+      });
+    }
+
+    // Evento en la tabla para los botones de baja directos de cada fila
+    if (tablaCuerpoUsuarios) {
+      tablaCuerpoUsuarios.addEventListener('click', (e) => {
+        const btnBaja = e.target.closest('.btn-accion-baja');
+        if (btnBaja) {
+          const fila = btnBaja.closest('tr');
+          const userId = fila.dataset.id;
+          const usuarioEncontrado = usuariosDB.find(u => u.id == userId);
+          if (usuarioEncontrado) {
+            abrirModalBaja(usuarioEncontrado);
+          }
+        }
+      });
+    }
+
+    // Confirmar la desactivación (Fetch PATCH)
+    if (btnConfirmarBaja) {
+      btnConfirmarBaja.addEventListener('click', async () => {
+        if (!usuarioSeleccionadoParaBaja) {
+          alert('Por favor busque y seleccione un empleado para dar de baja.');
+          return;
+        }
+
+        const selectMotivo = document.getElementById('select-motivo-baja');
+        const motivo = selectMotivo ? selectMotivo.value : 'Baja lógica';
+        const observacionesInput = document.getElementById('input-observaciones-baja');
+        const observaciones = observacionesInput ? observacionesInput.value.trim() : '';
+
+        try {
+          const respuesta = await fetch(`/api/usuarios/${usuarioSeleccionadoParaBaja.id}/baja`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              estado: 'Inactivo',
+              motivo: motivo,
+              observaciones: observaciones
+            })
+          });
+
+          const resultado = await respuesta.json();
+
+          if (!respuesta.ok || !resultado.success) {
+            throw new Error(resultado.message || 'No se pudo desactivar el usuario.');
+          }
+
+          cerrarModalBaja();
+          mostrarToast('Usuario dado de baja exitosamente');
+          cargarUsuariosBD();
+        } catch (error) {
+          console.error('Error al dar de baja:', error);
+          alert(error.message || 'Error al conectar con el servidor.');
+        }
+      });
+    }
+
+    // Filtros y paginación
     const inputBusqueda = document.getElementById('filtro-busqueda');
     const selectGerencia = document.getElementById('filtro-gerencia');
     const selectRol = document.getElementById('filtro-rol');
     const selectEstado = document.getElementById('filtro-estado');
+    const selectLimitePag = document.getElementById('select-limite-pag');
 
     function aplicarFiltros() {
       const q = (inputBusqueda.value || '').toLowerCase().trim();
@@ -786,7 +1070,7 @@
       const rol = selectRol.value;
       const estado = selectEstado.value;
 
-      renderizarTabla(usuariosDB.filter(u => {
+      const listaFiltrada = usuariosDB.filter(u => {
         const nombreCompleto = `${u.nombres} ${u.apellidos}`.toLowerCase();
         const cedulaStr = String(u.cedula || '').toLowerCase();
         const correoStr = (u.correo || '').toLowerCase();
@@ -800,13 +1084,23 @@
         const coincideEstado = estado === 'todos' || estadoStr === estado.toLowerCase();
 
         return coincideBusqueda && coincideGerencia && coincideRol && coincideEstado;
-      }));
+      });
+
+      renderizarTablaPaginada(listaFiltrada);
     }
 
-    if (inputBusqueda) inputBusqueda.addEventListener('input', aplicarFiltros);
-    if (selectGerencia) selectGerencia.addEventListener('change', aplicarFiltros);
-    if (selectRol) selectRol.addEventListener('change', aplicarFiltros);
-    if (selectEstado) selectEstado.addEventListener('change', aplicarFiltros);
+    if (inputBusqueda) inputBusqueda.addEventListener('input', () => { paginaActual = 1; aplicarFiltros(); });
+    if (selectGerencia) selectGerencia.addEventListener('change', () => { paginaActual = 1; aplicarFiltros(); });
+    if (selectRol) selectRol.addEventListener('change', () => { paginaActual = 1; aplicarFiltros(); });
+    if (selectEstado) selectEstado.addEventListener('change', () => { paginaActual = 1; aplicarFiltros(); });
+    
+    if (selectLimitePag) {
+      selectLimitePag.addEventListener('change', (e) => {
+        registrosPorPagina = Number(e.target.value);
+        paginaActual = 1;
+        aplicarFiltros();
+      });
+    }
 
   })();
 </script>

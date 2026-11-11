@@ -28,7 +28,8 @@
     </div>
     <!-- Formulario de Edición Compacto en 2 Columnas -->
     <form class="p-4 sm:p-5 overflow-y-auto space-y-3.5 flex-1 text-left" id="form-editar-usuario">
-      <input id="editar-user-id" type="hidden" value="1"/>
+      <input id="editar-user-id" type="hidden" value=""/>
+      
       <!-- Fila 1: Nombres y Apellidos -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
@@ -40,6 +41,7 @@
           <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="editar-apellidos" required="" type="text"/>
         </div>
       </div>
+
       <!-- Fila 2: Cédula y Correo Institucional -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
@@ -54,22 +56,46 @@
           </div>
         </div>
       </div>
-      <!-- Fila 3: Gerencia y Rol corregidos -->
+
+      <!-- Fila 3: Teléfono y Gerencia -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="editar-telefono">Teléfono <span class="text-error">*</span></label>
+          <input class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm font-mono text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary border-none transition-all" id="editar-telefono" maxlength="20" required="" type="tel"/>
+        </div>
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="editar-gerencia">Gerencia / Departamento <span class="text-error">*</span></label>
           <select class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="editar-gerencia" required="">
             <option value="">Seleccione Gerencia...</option>
           </select>
         </div>
+      </div>
+
+      <!-- Fila 4: Rol Institucional y Opción Restablecer Contraseña -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 items-end">
         <div>
           <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="editar-rol">Rol Institucional <span class="text-error">*</span></label>
           <select class="w-full px-3 py-1.5 bg-surface-container-low rounded-lg text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary border-none" id="editar-rol" required="">
             <option value="">Seleccione Rol...</option>
           </select>
         </div>
+        <div>
+          <label class="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1" for="editar-password-temp">Contraseña (Opcional)</label>
+          <div class="flex items-center gap-1.5">
+            <div class="flex items-center flex-1 bg-surface-container-low rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-primary transition-all">
+              <input class="w-full px-3 py-1.5 bg-transparent text-body-sm font-mono text-on-surface focus:outline-none border-none placeholder:text-outline" id="editar-password-temp" placeholder="Sin cambios" type="password"/>
+              <button class="px-2 py-1.5 text-outline hover:text-on-surface transition-colors cursor-pointer" id="btn-toggle-password-editar" title="Mostrar/Ocultar contraseña" type="button">
+                <span class="material-symbols-outlined text-[18px]" id="icono-toggle-password-editar">visibility</span>
+              </button>
+            </div>
+            <button class="px-2.5 py-1.5 bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-primary rounded-lg text-[11px] font-semibold transition-all cursor-pointer whitespace-nowrap border border-surface-container-high" id="btn-set-default-pass" title="Cargar clave por defecto: %hidrolara123%" type="button">
+              Por Defecto
+            </button>
+          </div>
+        </div>
       </div>
-      <!-- Fila 4: Estado de la Cuenta Slim -->
+
+      <!-- Fila 5: Estado de la Cuenta Slim -->
       <div class="p-3 bg-surface-container-low rounded-lg flex items-center justify-between gap-3">
         <div>
           <span class="text-xs font-semibold text-on-surface block">Estado de la Cuenta</span>
