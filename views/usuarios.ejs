@@ -1081,7 +1081,17 @@
         const coincideBusqueda = !q || nombreCompleto.includes(q) || cedulaStr.includes(q) || correoStr.includes(q);
         const coincideGerencia = gerencia === 'todas' || gerenciaStr.includes(gerencia.toLowerCase());
         const coincideRol = rol === 'todos' || rolStr.includes(rol.toLowerCase());
-        const coincideEstado = estado === 'todos' || estadoStr === estado.toLowerCase();
+        
+        let coincideEstado = false;
+        if (estado === 'todos') {
+          if (u.estado === 'Activo') {
+            coincideEstado = true;
+          } else if (u.estado === 'Inactivo' && q !== '') {
+            coincideEstado = true;
+          }
+        } else {
+          coincideEstado = estadoStr === estado.toLowerCase();
+        }
 
         return coincideBusqueda && coincideGerencia && coincideRol && coincideEstado;
       });
