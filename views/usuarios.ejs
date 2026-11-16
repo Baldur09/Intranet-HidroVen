@@ -1,1124 +1,170 @@
+
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Language" content="es">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta content="web_standard" name="shell-type"/>
-
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            "secondary": "#00687a",
-            "background": "#f7f9fb",
-            "on-background": "#191c1e",
-            "inverse-surface": "#2d3133",
-            "inverse-on-surface": "#eff1f3",
-            "tertiary": "#545c72",
-            "surface-container": "#eceef0",
-            "surface-container-lowest": "#ffffff",
-            "primary": "#006194",
-            "primary-container": "#007bb9",
-            "primary-fixed": "#cce5ff",
-            "on-primary": "#ffffff",
-            "on-surface": "#191c1e",
-            "on-surface-variant": "#3f4850",
-            "outline": "#707881",
-            "surface-container-high": "#e6e8ea",
-            "surface-container-highest": "#e0e3e5",
-            "surface-container-low": "#f2f4f6",
-            "error": "#ba1a1a",
-            "error-container": "#ffdad6",
-            "on-error-container": "#93000a",
-            "secondary-container": "#57dffe",
-            "on-secondary-fixed-variant": "#004e5c",
-            "secondary-fixed": "#acedff",
-            "tertiary-fixed": "#dae2fd"
-          },
-          spacing: {
-            "margin": "2rem",
-            "space-xl": "2.5rem",
-            "margin-mobile": "1rem",
-            "gutter-mobile": "1rem",
-            "space-md": "1rem",
-            "space-xs": "0.25rem",
-            "gutter": "1.5rem",
-            "space-lg": "1.5rem",
-            "space-sm": "0.5rem"
-          },
-          fontFamily: {
-            "headline-lg": ["Plus Jakarta Sans", "sans-serif"],
-            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
-            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
-            "display-hero": ["Plus Jakarta Sans", "sans-serif"],
-            "body-lg": ["Inter", "sans-serif"],
-            "body-md": ["Inter", "sans-serif"],
-            "body-sm": ["Inter", "sans-serif"],
-            "label-lg": ["Inter", "sans-serif"],
-            "label-md": ["Inter", "sans-serif"],
-            "label-caps": ["Plus Jakarta Sans", "sans-serif"]
-          },
-          fontSize: {
-            "display-hero": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "700" }],
-            "label-md": ["12px", { lineHeight: "16px", fontWeight: "500" }],
-            "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
-            "headline-lg-mobile": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "700" }],
-            "label-caps": ["11px", { lineHeight: "16px", letterSpacing: "0.06em", fontWeight: "700" }],
-            "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }],
-            "body-md": ["14px", { lineHeight: "22px", fontWeight: "400" }],
-            "label-lg": ["14px", { lineHeight: "20px", fontWeight: "600" }],
-            "headline-lg": ["30px", { lineHeight: "38px", letterSpacing: "-0.015em", fontWeight: "700" }],
-            "body-sm": ["12px", { lineHeight: "18px", fontWeight: "400" }],
-            "body-lg": ["16px", { lineHeight: "26px", fontWeight: "400" }]
-          }
-        }
-      }
-    };
-  </script>
-<style>
-    html, body {
-      min-height: 100%;
-      height: auto;
-      overflow-y: auto !important;
-      scroll-behavior: smooth;
-    }
-  </style>
-</head>
+  <!-- Head reutilizable -->
+  <%- include('partials/head', { titulo: 'Gestión de Usuarios | Portal Intranet' }) %>
 
 <body class="bg-background text-on-surface antialiased font-body-md flex flex-col min-h-screen">
   <!-- Encabezado -->
   <%- include('partials/header') %>
 
-<main class="w-full pt-20 bg-background min-h-screen">
-  <div class="flex flex-col w-full">
-    <div class="max-w-[1280px] w-full mx-auto px-margin-mobile lg:px-margin space-y-space-xl pb-space-xl">
-<!-- Navegación de Migas de Pan (Breadcrumbs) -->
-<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md pt-2">
-<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
-<span class="material-symbols-outlined text-[16px]">domain</span>
-<span class="">Portal Intranet</span>
-</a>
-<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
-<span class="hover:text-primary transition-colors">Dashboard</span>
-<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
-<span class="text-primary font-semibold">Gestión de Usuarios</span>
-</nav>
-
-<!-- Encabezado de Página con Acciones Principales -->
-<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 bg-surface-container-lowest p-6 rounded-xl shadow-sm">
-<div class="space-y-1">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-[24px]">manage_accounts</span>
-</div>
-<div>
-<h1 class="font-headline-lg text-headline-lg text-on-surface">Gestión de Usuarios</h1>
-<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
-              Administración centralizada de cuentas de empleados, asignación de roles, gerencias y control de accesos institucionales.
-            </p>
-</div>
-</div>
-</div>
-<div class="flex flex-wrap items-center gap-2.5">
-<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary transition-all font-label-lg text-label-lg shadow-sm hover:shadow cursor-pointer flex-shrink-0 whitespace-nowrap" id="btn-abrir-modal">
-<span class="material-symbols-outlined text-[20px]">person_add</span>
-<span class="">Añadir Usuario</span>
-</button>
-<button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface transition-all font-label-lg text-label-lg cursor-pointer flex-shrink-0 whitespace-nowrap" id="btn-editar-rapido">
-<span class="material-symbols-outlined text-[18px]">edit</span>
-<span class="">Editar Usuario</span>
-</button>
-<button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-surface-container-low hover:bg-error-container text-on-surface hover:text-error transition-all font-label-lg text-label-lg cursor-pointer flex-shrink-0 whitespace-nowrap" id="btn-eliminar-seleccion">
-<span class="material-symbols-outlined text-[18px]">person_off</span>
-<span class="">Desactivar / Baja</span>
-</button>
-</div>
-</div>
-
-<!-- Indicadores Numéricos y Métricas (KPIs) -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between">
-<div class="space-y-1">
-<span class="font-label-caps text-label-caps uppercase text-tertiary">Total Registrados</span>
-<div class="flex items-baseline gap-2">
-<span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-total-usuarios">0</span>
-<span class="font-body-sm text-body-sm text-tertiary">cuentas</span>
-</div>
-</div>
-<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-[26px]">badge</span>
-</div>
-</div>
-<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between">
-<div class="space-y-1">
-<span class="font-label-caps text-label-caps uppercase text-tertiary">Inactivos / Bajas</span>
-<div class="flex items-baseline gap-2">
-<span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-inactivos">0</span>
-<span class="font-body-sm text-body-sm text-tertiary">cuentas</span>
-</div>
-</div>
-<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-outline">
-<span class="material-symbols-outlined text-[26px]">person_off</span>
-</div>
-</div>
-</div>
-
-<!-- Barra de Búsqueda, Filtrado Dinámico y Herramientas -->
-<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm space-y-3">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
-<div class="md:col-span-4 relative">
-<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
-<input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-busqueda" placeholder="Buscar por nombre, cédula o correo..." type="text"/>
-</div>
-<div class="md:col-span-3">
-<select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-gerencia">
-<option value="todas">Todas las Gerencias</option>
-</select>
-</div>
-<div class="md:col-span-2">
-<select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-rol">
-<option value="todos">Todos los Roles</option>
-  </select>
-</div>
-<div class="md:col-span-2">
-<select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-estado">
-<option value="todos">Todos los Estados</option>
-<option value="Activo">Activos</option>
-<option value="Inactivo">Inactivos</option>
-</select>
-</div>
-</div>
-</div>
-
-<!-- Contenedor Principal: Tabla de Personal Institucional -->
-<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
-<div class="overflow-x-auto flex-1">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-surface-container-low text-tertiary font-label-caps text-label-caps uppercase">
-<th class="py-3.5 px-4" scope="col">Empleado</th>
-<th class="py-3.5 px-4" scope="col">Cédula de Identidad</th>
-<th class="py-3.5 px-4" scope="col">Gerencia / Departamento</th>
-<th class="py-3.5 px-4" scope="col">Rol Institucional</th>
-<th class="py-3.5 px-4" scope="col">Estado</th>
-<th class="py-3.5 px-4 text-center min-w-[140px]" scope="col">Acciones</th>
-</tr>
-</thead>
-<tbody class="text-body-md font-body-md divide-y-0" id="tabla-usuarios-cuerpo">
-</tbody>
-</table>
-</div>
-
-<!-- Pie de Tabla: Paginación Interactiva -->
-<div class="px-5 py-3.5 bg-surface-container-low border-t border-surface-container-high flex flex-col sm:flex-row items-center justify-between gap-4">
-  <div class="flex items-center gap-3 text-body-sm text-on-surface-variant">
-    <span>Mostrando <span class="font-semibold text-on-surface" id="paginacion-inicio">0</span> a <span class="font-semibold text-on-surface" id="paginacion-fin">0</span> de <span class="font-semibold text-on-surface" id="paginacion-total">0</span> usuarios</span>
-    <select class="py-1 pl-2 pr-7 bg-surface-container-lowest rounded-md text-body-sm border border-surface-container-high focus:outline-none focus:ring-1 focus:ring-primary" id="select-limite-pag">
-      <option value="10" selected>10 por pág.</option>
-      <option value="25">25 por pág.</option>
-      <option value="50">50 por pág.</option>
-    </select>
-  </div>
-  <div class="flex items-center gap-1.5" id="contenedor-botones-paginacion">
-  </div>
-</div>
-
-</div>
-</div>
-
-<!-- MODALES -->
-<%- include('partials/modales/modal-añadir') %>
-<%- include('partials/modales/modal-editar') %>
-<%- include('partials/modales/modal-baja') %>
-
-<!-- Toast Notification Flotante -->
-<div class="fixed bottom-6 right-6 z-50 items-center gap-3 px-4 py-3 bg-inverse-surface text-inverse-on-surface rounded-xl shadow-xl transition-all hidden" id="toast-notificacion">
-<span class="material-symbols-outlined text-secondary-container text-[22px]" id="toast-icono">check_circle</span>
-<span class="font-body-md text-body-md" id="toast-mensaje">Lista de usuarios sincronizada con el directorio central.</span>
-</div>
-
-<!-- JAVASCRIPT PRINCIPAL -->
-<script>
-  (function() {
-    let usuariosDB = [];
-    let paginaActual = 1;
-    let registrosPorPagina = 10;
-    let usuarioSeleccionadoParaBaja = null;
-
-    function formatearCedula(cedula) {
-      if (!cedula) return '';
-      let soloNumeros = String(cedula).replace(/\D/g, '');
-      return soloNumeros.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&.');
-    }
-
-    const toast = document.getElementById('toast-notificacion');
-    const toastMensaje = document.getElementById('toast-mensaje');
-    const toastIcono = document.getElementById('toast-icono');
-
-    function mostrarToast(texto, tipo = 'success') {
-      if (!toast) return;
-      toastMensaje.textContent = texto;
-      if (tipo === 'error') {
-        if (toastIcono) {
-          toastIcono.textContent = 'error';
-          toastIcono.className = 'material-symbols-outlined text-red-400 text-[22px]';
-        }
-      } else {
-        if (toastIcono) {
-          toastIcono.textContent = 'check_circle';
-          toastIcono.className = 'material-symbols-outlined text-secondary-container text-[22px]';
-        }
-      }
-      toast.classList.remove('hidden');
-      toast.classList.add('flex');
-      setTimeout(() => {
-        toast.classList.add('hidden');
-        toast.classList.remove('flex');
-      }, 4000);
-    }
-
-    async function cargarUsuariosBD() {
-      try {
-        const respuesta = await fetch('/api/usuarios');
-        const data = await respuesta.json();
-        if (!respuesta.ok || !data.success) {
-          throw new Error(data.message || 'No se pudo cargar la lista de usuarios.');
-        }
-        if (data.success) {
-          usuariosDB = data.usuarios;
-          aplicarFiltros(); 
-          actualizarKPIs(usuariosDB);
-        }
-      } catch (error) {
-        console.error("Error al cargar los usuarios:", error);
-        mostrarToast("No se pudo conectar con la base de datos", "error");
-      }
-    }
-
-    async function cargarGerencias() {
-      try {
-        const respuesta = await fetch('/api/gerencias');
-        const data = await respuesta.json();
+  <main class="w-full pt-20 bg-background min-h-screen">
+    <div class="flex flex-col w-full">
+      <div class="max-w-[1280px] w-full mx-auto px-margin-mobile lg:px-margin space-y-space-xl pb-space-xl">
         
-        if (!respuesta.ok || !data.success) {
-          throw new Error(data.message || 'No se pudieron cargar las gerencias.');
-        }
+        <!-- Navegación de Migas de Pan (Breadcrumbs) -->
+        <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md pt-2">
+          <a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+            <span class="material-symbols-outlined text-[16px]">domain</span>
+            <span>Portal Intranet</span>
+          </a>
+          <span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+          <span class="hover:text-primary transition-colors">Dashboard</span>
+          <span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+          <span class="text-primary font-semibold">Gestión de Usuarios</span>
+        </nav>
 
-        ['select-gerencia', 'editar-gerencia'].forEach(idSelect => {
-          const select = document.getElementById(idSelect);
-          if (select) {
-            select.replaceChildren(new Option('Seleccione Gerencia...', ''));
-            data.gerencias.forEach(gerencia => {
-              select.add(new Option(gerencia.nombre, gerencia.Id));
-            });
-          }
-        });
-
-        const filtroGerencia = document.getElementById('filtro-gerencia');
-        if (filtroGerencia) {
-          filtroGerencia.replaceChildren(new Option('Todas las Gerencias', 'todas'));
-          data.gerencias.forEach(gerencia => {
-            filtroGerencia.add(new Option(gerencia.nombre, gerencia.nombre));
-          });
-        }
-      } catch (error) {
-        console.error('Error al cargar gerencias:', error);
-        mostrarToast('No se pudieron cargar las gerencias disponibles.', 'error');
-      }
-    }
-
-    async function cargarRoles() {
-      try {
-        const respuesta = await fetch('/api/roles');
-        const data = await respuesta.json();
-        
-        if (!respuesta.ok || !data.success) {
-          throw new Error(data.message || 'No se pudieron cargar los roles.');
-        }
-
-        ['select-rol', 'editar-rol'].forEach(idSelect => {
-          const select = document.getElementById(idSelect);
-          if (select) {
-            select.replaceChildren(new Option('Seleccione Rol...', ''));
-            data.roles.forEach(rol => {
-              select.add(new Option(rol.nombre, rol.Id));
-            });
-          }
-        });
-
-        const filtroRol = document.getElementById('filtro-rol');
-        if (filtroRol) {
-          filtroRol.replaceChildren(new Option('Todos los Roles', 'todos'));
-          data.roles.forEach(rol => {
-            filtroRol.add(new Option(rol.nombre, rol.nombre));
-          });
-        }
-      } catch (error) {
-        console.error('Error al cargar roles:', error);
-        mostrarToast('No se pudieron cargar los roles disponibles.', 'error');
-      }
-    }
-
-    cargarRoles();
-    cargarUsuariosBD();
-    cargarGerencias();
-    
-    function actualizarKPIs(lista) {
-      const totalUsuarios = document.getElementById('kpi-total-usuarios');
-      const inactivos = document.getElementById('kpi-inactivos');
-
-      const total = lista.length;
-      const cantInactivos = lista.filter(u => u.estado === 'Inactivo').length;
-
-      if (totalUsuarios) totalUsuarios.textContent = total;
-      if (inactivos) inactivos.textContent = cantInactivos;
-    }
-
-    function renderizarTablaPaginada(listaFiltrada) {
-      const tablaCuerpo = document.getElementById('tabla-usuarios-cuerpo');
-      const spanInicio = document.getElementById('paginacion-inicio');
-      const spanFin = document.getElementById('paginacion-fin');
-      const spanTotal = document.getElementById('paginacion-total');
-      const contenedorBotones = document.getElementById('contenedor-botones-paginacion');
-
-      if (!tablaCuerpo) return;
-
-      const totalRegistros = listaFiltrada.length;
-      spanTotal.textContent = totalRegistros;
-
-      if (totalRegistros === 0) {
-        tablaCuerpo.innerHTML = `<tr><td colspan="6" class="py-6 text-center text-outline">No hay usuarios registrados que coincidan con la búsqueda.</td></tr>`;
-        spanInicio.textContent = 0;
-        spanFin.textContent = 0;
-        contenedorBotones.innerHTML = '';
-        return;
-      }
-
-      const totalPaginas = Math.ceil(totalRegistros / registrosPorPagina);
-      if (paginaActual > totalPaginas) paginaActual = totalPaginas;
-      if (paginaActual < 1) paginaActual = 1;
-
-      const inicio = (paginaActual - 1) * registrosPorPagina;
-      const fin = Math.min(inicio + registrosPorPagina, totalRegistros);
-      const listaPaginada = listaFiltrada.slice(inicio, fin);
-
-      spanInicio.textContent = inicio + 1;
-      spanFin.textContent = fin;
-
-      tablaCuerpo.innerHTML = listaPaginada.map(u => {
-        const nombreCompleto = `${u.nombres} ${u.apellidos}`;
-        const iniciales = (u.nombres.charAt(0) + (u.apellidos ? u.apellidos.charAt(0) : '')).toUpperCase();
-        const esActivo = u.estado === 'Activo';
-        const cedulaFormateada = formatearCedula(u.cedula);
-
-        return `
-          <tr class="hover:bg-surface-container-low/50 transition-colors group ${!esActivo ? 'opacity-85' : ''}" data-cedula="${u.cedula}" data-correo="${u.correo}" data-estado="${u.estado}" data-gerencia="${u.gerencia}" data-id="${u.id}" data-nombre="${nombreCompleto}" data-rol="${u.rol}">
-            <td class="py-4 px-4">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-primary-fixed text-primary font-headline-sm text-headline-sm flex items-center justify-center font-bold flex-shrink-0">
-                  ${iniciales}
-                </div>
-                <div class="min-w-0">
-                  <span class="font-label-lg text-label-lg text-on-surface block truncate usuario-nombre">${nombreCompleto}</span>
-                  <span class="text-body-sm font-body-sm text-outline block truncate usuario-correo">${u.correo}</span>
-                </div>
+        <!-- Encabezado de Página con Acciones Principales -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+          <div class="space-y-1">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-[24px]">manage_accounts</span>
               </div>
-            </td>
-            <td class="py-4 px-4 font-mono text-on-surface usuario-cedula">${cedulaFormateada}</td>
-            <td class="py-4 px-4">
-              <span class="inline-flex items-center gap-1.5 text-on-surface usuario-gerencia"><span>${u.gerencia}</span></span>
-            </td>
-            <td class="py-4 px-4">
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-caps font-label-caps bg-primary text-on-primary usuario-rol-badge">
-                ${u.rol}
-              </span>
-            </td>
-            <td class="py-4 px-4">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-caps font-label-caps ${esActivo ? 'bg-secondary-fixed/50 text-on-secondary-fixed-variant' : 'bg-error-container text-on-error-container'} usuario-estado-badge">
-                <span class="w-1.5 h-1.5 rounded-full ${esActivo ? 'bg-secondary' : 'bg-error'}"></span>
-                ${u.estado}
-              </span>
-            </td>
-            <td class="py-4 px-4">
-              <div class="flex items-center justify-center gap-2 text-on-surface-variant">
-                <button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface-variant hover:text-primary transition-all cursor-pointer btn-accion-editar" title="Editar datos del usuario" type="button">
-                  <span class="material-symbols-outlined text-[22px]">edit</span>
-                </button>
-                <button class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-error-container text-on-surface-variant hover:text-error transition-all cursor-pointer btn-accion-baja" title="Desactivar / Dar de baja" type="button">
-                  <span class="material-symbols-outlined text-[22px]">person_off</span>
-                </button>
-              </div>
-            </td>
-          </tr>
-        `;
-      }).join('');
-
-      let htmlBotones = `
-        <button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-surface-container-high text-on-surface text-xs font-medium hover:bg-surface-container transition-all ${paginaActual === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}" ${paginaActual === 1 ? 'disabled' : ''} onclick="cambiarPagina(${paginaActual - 1})">Anterior</button>
-      `;
-
-      for (let i = 1; i <= totalPaginas; i++) {
-        if (i === 1 || i === totalPaginas || (i >= paginaActual - 1 && i <= paginaActual + 1)) {
-          htmlBotones += `
-            <button class="w-8 h-8 rounded-lg text-xs font-semibold transition-all ${i === paginaActual ? 'bg-primary text-on-primary shadow-sm' : 'bg-surface-container-lowest border border-surface-container-high text-on-surface hover:bg-surface-container'} cursor-pointer" onclick="cambiarPagina(${i})">${i}</button>
-          `;
-        } else if (i === paginaActual - 2 || i === paginaActual + 2) {
-          htmlBotones += `<span class="px-1 text-outline">...</span>`;
-        }
-      }
-
-      htmlBotones += `
-        <button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-surface-container-high text-on-surface text-xs font-medium hover:bg-surface-container transition-all ${paginaActual === totalPaginas || totalPaginas === 0 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}" ${paginaActual === totalPaginas || totalPaginas === 0 ? 'disabled' : ''} onclick="cambiarPagina(${paginaActual + 1})">Siguiente</button>
-      `;
-
-      contenedorBotones.innerHTML = htmlBotones;
-    }
-
-    window.cambiarPagina = function(nuevaPagina) {
-      paginaActual = nuevaPagina;
-      aplicarFiltros();
-    };
-
-    // Modal Crear
-    const modalCrear = document.getElementById('modal-nuevo-usuario');
-    const btnAbrirCrear = document.getElementById('btn-abrir-modal');
-    const btnCerrarCrear = document.getElementById('btn-cerrar-modal');
-    const btnCerrarCrearX = document.getElementById('btn-cerrar-modal-x');
-    const formCrear = document.getElementById('form-crear-usuario');
-    const btnGenerarClave = document.getElementById('btn-generar-clave');
-    const inputPassword = document.getElementById('input-password-temp');
-    const btnTogglePassword = document.getElementById('btn-toggle-password');
-    const iconoTogglePassword = document.getElementById('icono-toggle-password');
-
-    function abrirModalCrear() {
-      if (modalCrear) {
-        modalCrear.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        if (inputPassword) {
-          inputPassword.type = 'text';
-          inputPassword.value = '%hidrolara123%';
-        }
-        if (iconoTogglePassword) {
-          iconoTogglePassword.textContent = 'visibility_off';
-        }
-      }
-    }
-
-    function cerrarModalCrear() {
-      if (modalCrear) {
-        modalCrear.classList.add('hidden');
-        document.body.style.overflow = '';
-        if (formCrear) formCrear.reset();
-        if (inputPassword) {
-          inputPassword.type = 'text';
-          inputPassword.value = '';
-        }
-        if (iconoTogglePassword) {
-          iconoTogglePassword.textContent = 'visibility_off';
-        }
-      }
-    }
-
-    if (btnAbrirCrear) btnAbrirCrear.addEventListener('click', abrirModalCrear);
-    if (btnCerrarCrear) btnCerrarCrear.addEventListener('click', cerrarModalCrear);
-    if (btnCerrarCrearX) btnCerrarCrearX.addEventListener('click', cerrarModalCrear);
-    if (modalCrear) {
-      modalCrear.addEventListener('click', (e) => {
-        if (e.target === modalCrear) cerrarModalCrear();
-      });
-    }
-
-    if (btnTogglePassword && inputPassword && iconoTogglePassword) {
-      btnTogglePassword.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (inputPassword.type === 'password') {
-          inputPassword.type = 'text';
-          iconoTogglePassword.textContent = 'visibility_off';
-        } else {
-          inputPassword.type = 'password';
-          iconoTogglePassword.textContent = 'visibility';
-        }
-      });
-    }
-
-    if (btnGenerarClave && inputPassword) {
-      btnGenerarClave.addEventListener('click', (e) => {
-        e.preventDefault();
-        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!#%*';
-        let nuevaClave = 'HV.' + Array.from({length: 8}, () => chars.charAt(Math.floor(Math.random() * chars.length))).join('') + '*';
-        inputPassword.value = nuevaClave;
-      });
-    }
-
-    if (formCrear) {
-      formCrear.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const nombres = document.getElementById('input-nombres').value.trim();
-        const apellidos = document.getElementById('input-apellidos').value.trim();
-        const cedulaInput = document.getElementById('input-cedula').value.trim().replace(/\D/g, '');
-        const usuarioCorreo = document.getElementById('input-correo').value.trim();
-        const correo = usuarioCorreo.includes('@') ? usuarioCorreo : `${usuarioCorreo}@gmail.com`;
-        const telefono = document.getElementById('input-telefono').value.trim();
-        const id_gerencia = document.getElementById('select-gerencia').value;
-        const id_rol = document.getElementById('select-rol').value;
-        const password = inputPassword.value;
-
-        if (!nombres || !apellidos || !cedulaInput || !correo || !telefono || !id_gerencia || !id_rol || !password) {
-          alert('Por favor complete los campos obligatorios del formulario.');
-          return;
-        }
-
-        const nuevoUsuarioData = {
-          nombres,
-          apellidos,
-          cedula: cedulaInput,
-          correo,
-          telefono,
-          id_gerencia: Number(id_gerencia),
-          id_rol: Number(id_rol),
-          password
-        };
-
-        try {
-          const respuesta = await fetch('/api/usuarios', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(nuevoUsuarioData)
-          });
-          const resultado = await respuesta.json();
-
-          if (!respuesta.ok || !resultado.success) {
-            throw new Error(resultado.message || 'Error al registrar usuario.');
-          }
-          cerrarModalCrear();
-          mostrarToast('Usuario registrado exitosamente en la base de datos');
-          cargarUsuariosBD();
-        } catch (error) {
-          console.error('Error al registrar usuario:', error);
-          alert(error.message || 'No se pudo conectar con el servidor.');
-        }
-      });
-    }
-
-    // Modal Editar
-    const modalEditar = document.getElementById('modal-editar-usuario');
-    const btnCerrarEditar = document.getElementById('btn-cerrar-modal-editar');
-    const btnCerrarEditarX = document.getElementById('btn-cerrar-modal-editar-x');
-    const tablaCuerpoUsuarios = document.getElementById('tabla-usuarios-cuerpo');
-    const inputPasswordEditar = document.getElementById('editar-password-temp');
-    const btnTogglePasswordEditar = document.getElementById('btn-toggle-password-editar');
-    const iconoTogglePasswordEditar = document.getElementById('icono-toggle-password-editar');
-    const btnSetDefaultPass = document.getElementById('btn-set-default-pass');
-
-    function abrirModalEditar() {
-      if (modalEditar) {
-        modalEditar.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-
-    function cerrarModalEditar() {
-      if (modalEditar) {
-        modalEditar.classList.add('hidden');
-        document.body.style.overflow = '';
-        const formEditar = document.getElementById('form-editar-usuario');
-        if (formEditar) formEditar.reset();
-        if (inputPasswordEditar) {
-          inputPasswordEditar.value = '';
-          inputPasswordEditar.type = 'password';
-        }
-        if (iconoTogglePasswordEditar) {
-          iconoTogglePasswordEditar.textContent = 'visibility';
-        }
-        const inputBuscador = document.getElementById('editar-buscar-usuario');
-        if (inputBuscador) inputBuscador.value = '';
-      }
-    }
-
-    if (btnCerrarEditar) btnCerrarEditar.addEventListener('click', cerrarModalEditar);
-    if (btnCerrarEditarX) btnCerrarEditarX.addEventListener('click', cerrarModalEditar);
-    if (modalEditar) {
-      modalEditar.addEventListener('click', (e) => {
-        if (e.target === modalEditar) cerrarModalEditar();
-      });
-    }
-
-    if (btnTogglePasswordEditar && inputPasswordEditar && iconoTogglePasswordEditar) {
-      btnTogglePasswordEditar.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (inputPasswordEditar.type === 'password') {
-          inputPasswordEditar.type = 'text';
-          iconoTogglePasswordEditar.textContent = 'visibility_off';
-        } else {
-          inputPasswordEditar.type = 'password';
-          iconoTogglePasswordEditar.textContent = 'visibility';
-        }
-      });
-    }
-
-    if (btnSetDefaultPass && inputPasswordEditar) {
-      btnSetDefaultPass.addEventListener('click', (e) => {
-        e.preventDefault();
-        inputPasswordEditar.type = 'text';
-        inputPasswordEditar.value = '%hidrolara123%';
-        if (iconoTogglePasswordEditar) {
-          iconoTogglePasswordEditar.textContent = 'visibility_off';
-        }
-      });
-    }
-
-    function limpiarFormularioEditar() {
-      const userIdInput = document.getElementById('editar-user-id');
-      if (userIdInput) userIdInput.value = '';
-      
-      const campos = ['editar-nombres', 'editar-apellidos', 'editar-cedula', 'editar-correo', 'editar-telefono', 'editar-gerencia', 'editar-rol', 'editar-buscar-usuario', 'editar-password-temp'];
-      campos.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.value = '';
-      });
-
-      if (inputPasswordEditar) {
-        inputPasswordEditar.type = 'password';
-      }
-      if (iconoTogglePasswordEditar) {
-        iconoTogglePasswordEditar.textContent = 'visibility';
-      }
-      
-      const radioActivo = document.querySelector('input[name="editar-estado-radio"][value="Activo"]');
-      if (radioActivo) radioActivo.checked = true;
-
-      abrirModalEditar();
-    }
-
-    document.addEventListener('click', (e) => {
-      const targetBtn = e.target.closest('#btn-editar-rapido');
-      if (targetBtn) {
-        e.preventDefault();
-        limpiarFormularioEditar();
-      }
-    });
-
-    if (tablaCuerpoUsuarios) {
-      tablaCuerpoUsuarios.addEventListener('click', (e) => {
-        const btnEditar = e.target.closest('.btn-accion-editar');
-        if (btnEditar) {
-          const fila = btnEditar.closest('tr');
-          const userId = fila.dataset.id;
-          const usuarioEncontrado = usuariosDB.find(u => u.id == userId);
-          
-          if (usuarioEncontrado) {
-            poblarFormularioEditar(usuarioEncontrado);
-          } else {
-            console.warn('Usuario no encontrado en la memoria local');
-          }
-        }
-      });
-    }
-
-    function poblarFormularioEditar(usuario) {
-      if (!usuario) return;
-
-      document.getElementById('editar-user-id').value = usuario.id;
-      document.getElementById('editar-nombres').value = usuario.nombres || '';
-      document.getElementById('editar-apellidos').value = usuario.apellidos || '';
-      document.getElementById('editar-cedula').value = String(usuario.cedula || '').replace(/\D/g, '');
-      
-      const correoLimpio = (usuario.correo || '').replace(/@gmail\.com$/i, '');
-      document.getElementById('editar-correo').value = correoLimpio;
-
-      const telefonoInput = document.getElementById('editar-telefono');
-      if (telefonoInput) telefonoInput.value = usuario.telefono || '';
-
-      if (inputPasswordEditar) {
-        inputPasswordEditar.value = '';
-        inputPasswordEditar.type = 'password';
-      }
-      if (iconoTogglePasswordEditar) {
-        iconoTogglePasswordEditar.textContent = 'visibility';
-      }
-
-      if (document.getElementById('editar-gerencia')) {
-        document.getElementById('editar-gerencia').value = usuario.id_gerencia || '';
-      }
-      
-      if (document.getElementById('editar-rol')) {
-        document.getElementById('editar-rol').value = usuario.id_rol || '';
-      }
-
-      const radioEstado = document.querySelector(`input[name="editar-estado-radio"][value="${usuario.estado || 'Activo'}"]`);
-      if (radioEstado) radioEstado.checked = true;
-
-      abrirModalEditar();
-    }
-
-    const inputBuscadorEditar = document.getElementById('editar-buscar-usuario');
-    const listaResultadosEditar = document.getElementById('lista-coincidencias-editar');
-    const btnLimpiarBusquedaEditar = document.getElementById('btn-limpiar-busqueda-editar');
-
-    if (inputBuscadorEditar && listaResultadosEditar) {
-      inputBuscadorEditar.addEventListener('input', () => {
-        const query = inputBuscadorEditar.value.trim().toLowerCase();
-        if (btnLimpiarBusquedaEditar) {
-          btnLimpiarBusquedaEditar.classList.toggle('hidden', query.length === 0);
-        }
-
-        if (query.length === 0) {
-          listaResultadosEditar.classList.add('hidden');
-          return;
-        }
-
-        const filtrados = usuariosDB.filter(u => 
-          (`${u.nombres} ${u.apellidos}`).toLowerCase().includes(query) ||
-          String(u.cedula).includes(query) ||
-          (u.correo && u.correo.toLowerCase().includes(query))
-        );
-
-        if (filtrados.length === 0) {
-          listaResultadosEditar.innerHTML = `<div class="p-3 text-body-sm text-outline text-center">No se encontraron coincidencias</div>`;
-        } else {
-          listaResultadosEditar.innerHTML = filtrados.map(u => `
-            <button type="button" class="w-full text-left p-2.5 hover:bg-surface-container-low transition-colors flex items-center justify-between border-b border-surface-container last:border-0 item-coincidencia-editar" data-id="${u.id}">
               <div>
-                <span class="font-label-lg text-label-lg text-on-surface block">${u.nombres} ${u.apellidos}</span>
-                <span class="text-body-sm text-outline">${formatearCedula(u.cedula)} • ${u.gerencia || ''}</span>
+                <h1 class="font-headline-lg text-headline-lg text-on-surface">Gestión de Usuarios</h1>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                  Administración centralizada de cuentas de empleados, asignación de roles, gerencias y control de accesos institucionales.
+                </p>
               </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary transition-all font-label-lg text-label-lg shadow-sm hover:shadow cursor-pointer flex-shrink-0 whitespace-nowrap" id="btn-abrir-modal">
+              <span class="material-symbols-outlined text-[20px]">person_add</span>
+              <span>Añadir Usuario</span>
             </button>
-          `).join('');
+            <button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface transition-all font-label-lg text-label-lg cursor-pointer flex-shrink-0 whitespace-nowrap" id="btn-editar-rapido">
+              <span class="material-symbols-outlined text-[18px]">edit</span>
+              <span>Editar Usuario</span>
+            </button>
+            <button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-surface-container-low hover:bg-error-container text-on-surface hover:text-error transition-all font-label-lg text-label-lg cursor-pointer flex-shrink-0 whitespace-nowrap" id="btn-eliminar-seleccion">
+              <span class="material-symbols-outlined text-[18px]">person_off</span>
+              <span>Desactivar / Baja</span>
+            </button>
+          </div>
+        </div>
 
-          listaResultadosEditar.querySelectorAll('.item-coincidencia-editar').forEach(btn => {
-            btn.addEventListener('click', () => {
-              const uid = btn.dataset.id;
-              const usuarioEncontrado = usuariosDB.find(x => x.id == uid);
-              if (usuarioEncontrado) {
-                poblarFormularioEditar(usuarioEncontrado);
-                listaResultadosEditar.classList.add('hidden');
-              }
-            });
-          });
-        }
-        listaResultadosEditar.classList.remove('hidden');
-      });
-
-      if (btnLimpiarBusquedaEditar) {
-        btnLimpiarBusquedaEditar.addEventListener('click', () => {
-          inputBuscadorEditar.value = '';
-          btnLimpiarBusquedaEditar.classList.add('hidden');
-          listaResultadosEditar.classList.add('hidden');
-        });
-      }
-    }
-
-    const formEditar = document.getElementById('form-editar-usuario');
-
-    if (formEditar) {
-      formEditar.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const userId = document.getElementById('editar-user-id').value;
-        
-        if (!userId) {
-          alert('Por favor busque y seleccione un usuario utilizando la barra de búsqueda superior dentro del modal.');
-          return;
-        }
-
-        const nombres = document.getElementById('editar-nombres').value.trim();
-        const apellidos = document.getElementById('editar-apellidos').value.trim();
-        const cedulaInput = document.getElementById('editar-cedula').value.trim().replace(/\D/g, '');
-        const usuarioCorreo = document.getElementById('editar-correo').value.trim();
-        const correo = usuarioCorreo.includes('@') ? usuarioCorreo : `${usuarioCorreo}@gmail.com`;
-        const telefono = document.getElementById('editar-telefono').value.trim();
-        const id_gerencia = document.getElementById('editar-gerencia').value;
-        const id_rol = document.getElementById('editar-rol').value;
-        const passwordIngresada = inputPasswordEditar ? inputPasswordEditar.value.trim() : '';
-        const estado = document.querySelector('input[name="editar-estado-radio"]:checked').value;
-
-        if (!nombres || !apellidos || !cedulaInput || !correo || !telefono || !id_gerencia || !id_rol) {
-          alert('Por favor complete todos los campos obligatorios para actualizar.');
-          return;
-        }
-
-        const usuarioEditadoData = {
-          nombres,
-          apellidos,
-          cedula: cedulaInput,
-          correo,
-          telefono,
-          id_gerencia: Number(id_gerencia),
-          id_rol: Number(id_rol),
-          estado
-        };
-
-        if (passwordIngresada !== '') {
-          usuarioEditadoData.password = passwordIngresada;
-        }
-
-        try {
-          const respuesta = await fetch(`/api/usuarios/${userId}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(usuarioEditadoData)
-          });
-          const resultado = await respuesta.json();
-
-          if (!respuesta.ok || !resultado.success) {
-            throw new Error(resultado.message || 'Error al actualizar usuario.');
-          }
-
-          modalEditar.classList.add('hidden');
-          document.body.style.overflow = '';
-          
-          mostrarToast('Usuario actualizado correctamente');
-          cargarUsuariosBD();
-        } catch (error) {
-          console.error('Error al actualizar usuario:', error);
-          alert(error.message || 'No se pudo conectar con el servidor.');
-        }
-      });
-    }
-
-    // Modal Desactivar / Baja
-    const modalDesactivar = document.getElementById('modal-desactivar-usuario');
-    const btnCerrarDesactivar = document.getElementById('btn-cerrar-modal-desactivar');
-    const btnCerrarDesactivarX = document.getElementById('btn-cerrar-modal-desactivar-x');
-    const btnConfirmarBaja = document.getElementById('btn-confirmar-baja');
-    const btnAbrirDesactivarSuperior = document.getElementById('btn-eliminar-seleccion');
-    const inputBuscadorBaja = document.getElementById('baja-input-buscador');
-    const listaResultadosBaja = document.getElementById('baja-lista-coincidencias');
-
-    function poblarTarjetaBaja(usuario) {
-      if (!usuario) return;
-      usuarioSeleccionadoParaBaja = usuario;
-
-      const iniciales = (usuario.nombres.charAt(0) + (usuario.apellidos ? usuario.apellidos.charAt(0) : '')).toUpperCase();
-      const elAvatar = document.getElementById('baja-avatar-iniciales');
-      const elNombre = document.getElementById('baja-nombre-empleado');
-      const elCedula = document.getElementById('baja-cedula-empleado');
-      const elGerencia = document.getElementById('baja-gerencia-empleado');
-      const elCorreo = document.getElementById('baja-correo-empleado');
-
-      if (elAvatar) elAvatar.textContent = iniciales;
-      if (elNombre) elNombre.textContent = `${usuario.nombres} ${usuario.apellidos}`;
-      if (elCedula) elCedula.textContent = formatearCedula(usuario.cedula);
-      if (elGerencia) elGerencia.textContent = usuario.gerencia || 'Sin Gerencia';
-      if (elCorreo) elCorreo.textContent = usuario.correo || '';
-      
-      if (inputBuscadorBaja) inputBuscadorBaja.value = `${usuario.nombres} ${usuario.apellidos}`;
-    }
-
-    function abrirModalBaja(usuario) {
-      if (!modalDesactivar) return;
-      
-      if (usuario) {
-        poblarTarjetaBaja(usuario);
-      } else {
-        usuarioSeleccionadoParaBaja = null;
-        if (inputBuscadorBaja) inputBuscadorBaja.value = '';
-        document.getElementById('baja-nombre-empleado').textContent = 'Busque y seleccione un empleado...';
-        document.getElementById('baja-cedula-empleado').textContent = '--';
-        document.getElementById('baja-gerencia-empleado').textContent = '--';
-        document.getElementById('baja-correo-empleado').textContent = '--';
-        document.getElementById('baja-avatar-iniciales').textContent = '--';
-      }
-
-      if (listaResultadosBaja) listaResultadosBaja.classList.add('hidden');
-      modalDesactivar.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function cerrarModalBaja() {
-      if (modalDesactivar) {
-        modalDesactivar.classList.add('hidden');
-        document.body.style.overflow = '';
-        usuarioSeleccionadoParaBaja = null;
-        if (inputBuscadorBaja) inputBuscadorBaja.value = '';
-        if (listaResultadosBaja) listaResultadosBaja.classList.add('hidden');
-      }
-    }
-
-    if (btnCerrarDesactivar) btnCerrarDesactivar.addEventListener('click', cerrarModalBaja);
-    if (btnCerrarDesactivarX) btnCerrarDesactivarX.addEventListener('click', cerrarModalBaja);
-    if (modalDesactivar) {
-      modalDesactivar.addEventListener('click', (e) => {
-        if (e.target === modalDesactivar) cerrarModalBaja();
-      });
-    }
-
-    // Buscador en tiempo real dentro del modal de baja
-    if (inputBuscadorBaja && listaResultadosBaja) {
-      inputBuscadorBaja.addEventListener('input', () => {
-        const query = inputBuscadorBaja.value.trim().toLowerCase();
-
-        if (query.length === 0) {
-          listaResultadosBaja.classList.add('hidden');
-          return;
-        }
-
-        const filtrados = usuariosDB.filter(u => 
-          (`${u.nombres} ${u.apellidos}`).toLowerCase().includes(query) ||
-          String(u.cedula).includes(query) ||
-          (u.correo && u.correo.toLowerCase().includes(query))
-        );
-
-        if (filtrados.length === 0) {
-          listaResultadosBaja.innerHTML = `<div class="p-3 text-body-sm text-outline text-center">No se encontraron empleados</div>`;
-        } else {
-          listaResultadosBaja.innerHTML = filtrados.map(u => `
-            <button type="button" class="w-full text-left p-2.5 hover:bg-surface-container-low transition-colors flex items-center justify-between border-b border-surface-container last:border-0 item-coincidencia-baja" data-id="${u.id}">
-              <div>
-                <span class="font-label-lg text-label-lg text-on-surface block">${u.nombres} ${u.apellidos}</span>
-                <span class="text-body-sm text-outline">Cédula: ${formatearCedula(u.cedula)} • ${u.gerencia || ''}</span>
+        <!-- Indicadores Numéricos y Métricas (KPIs) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between">
+            <div class="space-y-1">
+              <span class="font-label-caps text-label-caps uppercase text-tertiary">Total Registrados</span>
+              <div class="flex items-baseline gap-2">
+                <span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-total-usuarios">0</span>
+                <span class="font-body-sm text-body-sm text-tertiary">cuentas</span>
               </div>
-            </button>
-          `).join('');
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-[26px]">badge</span>
+            </div>
+          </div>
+          <div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between">
+            <div class="space-y-1">
+              <span class="font-label-caps text-label-caps uppercase text-tertiary">Inactivos / Bajas</span>
+              <div class="flex items-baseline gap-2">
+                <span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-inactivos">0</span>
+                <span class="font-body-sm text-body-sm text-tertiary">cuentas</span>
+              </div>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-outline">
+              <span class="material-symbols-outlined text-[26px]">person_off</span>
+            </div>
+          </div>
+        </div>
 
-          listaResultadosBaja.querySelectorAll('.item-coincidencia-baja').forEach(btn => {
-            btn.addEventListener('click', () => {
-              const uid = btn.dataset.id;
-              const usuarioEncontrado = usuariosDB.find(x => x.id == uid);
-              if (usuarioEncontrado) {
-                poblarTarjetaBaja(usuarioEncontrado);
-                listaResultadosBaja.classList.add('hidden');
-              }
-            });
-          });
-        }
-        listaResultadosBaja.classList.remove('hidden');
-      });
-    }
+        <!-- Barra de Búsqueda, Filtrado Dinámico y Herramientas -->
+        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm space-y-3">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            <div class="md:col-span-4 relative">
+              <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+              <input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-busqueda" placeholder="Buscar por nombre, cédula o correo..." type="text"/>
+            </div>
+            <div class="md:col-span-3">
+              <select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-gerencia">
+                <option value="todas">Todas las Gerencias</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-rol">
+                <option value="todos">Todos los Roles</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <select class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="filtro-estado">
+                <option value="todos">Todos los Estados</option>
+                <option value="Activo">Activos</option>
+                <option value="Inactivo">Inactivos</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
-    // Botón superior de Baja
-    if (btnAbrirDesactivarSuperior) {
-      btnAbrirDesactivarSuperior.addEventListener('click', (e) => {
-        e.preventDefault();
-        abrirModalBaja(null);
-      });
-    }
+        <!-- Contenedor Principal: Tabla de Personal Institucional -->
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+          <div class="overflow-x-auto flex-1">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-surface-container-low text-tertiary font-label-caps text-label-caps uppercase">
+                  <th class="py-3.5 px-4" scope="col">Empleado</th>
+                  <th class="py-3.5 px-4" scope="col">Cédula de Identidad</th>
+                  <th class="py-3.5 px-4" scope="col">Gerencia / Departamento</th>
+                  <th class="py-3.5 px-4" scope="col">Rol Institucional</th>
+                  <th class="py-3.5 px-4" scope="col">Estado</th>
+                  <th class="py-3.5 px-4 text-center min-w-[140px]" scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody class="text-body-md font-body-md divide-y-0" id="tabla-usuarios-cuerpo">
+              </tbody>
+            </table>
+          </div>
 
-    // Evento en la tabla para los botones de baja directos de cada fila
-    if (tablaCuerpoUsuarios) {
-      tablaCuerpoUsuarios.addEventListener('click', (e) => {
-        const btnBaja = e.target.closest('.btn-accion-baja');
-        if (btnBaja) {
-          const fila = btnBaja.closest('tr');
-          const userId = fila.dataset.id;
-          const usuarioEncontrado = usuariosDB.find(u => u.id == userId);
-          if (usuarioEncontrado) {
-            abrirModalBaja(usuarioEncontrado);
-          }
-        }
-      });
-    }
+          <!-- Pie de Tabla: Paginación Interactiva -->
+          <div class="px-5 py-3.5 bg-surface-container-low border-t border-surface-container-high flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3 text-body-sm text-on-surface-variant">
+              <span>Mostrando <span class="font-semibold text-on-surface" id="paginacion-inicio">0</span> a <span class="font-semibold text-on-surface" id="paginacion-fin">0</span> de <span class="font-semibold text-on-surface" id="paginacion-total">0</span> usuarios</span>
+              <select class="py-1 pl-2 pr-7 bg-surface-container-lowest rounded-md text-body-sm border border-surface-container-high focus:outline-none focus:ring-1 focus:ring-primary" id="select-limite-pag">
+                <option value="10" selected>10 por pág.</option>
+                <option value="25">25 por pág.</option>
+                <option value="50">50 por pág.</option>
+              </select>
+            </div>
+            <div class="flex items-center gap-1.5" id="contenedor-botones-paginacion">
+            </div>
+          </div>
+        </div>
 
-    // Confirmar la desactivación (Fetch PATCH)
-    if (btnConfirmarBaja) {
-      btnConfirmarBaja.addEventListener('click', async () => {
-        if (!usuarioSeleccionadoParaBaja) {
-          alert('Por favor busque y seleccione un empleado para dar de baja.');
-          return;
-        }
+      </div>
+    </div>
 
-        const selectMotivo = document.getElementById('select-motivo-baja');
-        const motivo = selectMotivo ? selectMotivo.value : 'Baja lógica';
-        const observacionesInput = document.getElementById('input-observaciones-baja');
-        const observaciones = observacionesInput ? observacionesInput.value.trim() : '';
+    <!-- MODALES -->
+    <%- include('partials/modales/modal-añadir') %>
+    <%- include('partials/modales/modal-editar') %>
+    <%- include('partials/modales/modal-baja') %>
 
-        try {
-          const respuesta = await fetch(`/api/usuarios/${usuarioSeleccionadoParaBaja.id}/baja`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              estado: 'Inactivo',
-              motivo: motivo,
-              observaciones: observaciones
-            })
-          });
+    <!-- Toast Notification Flotante -->
+    <div class="fixed bottom-6 right-6 z-50 items-center gap-3 px-4 py-3 bg-inverse-surface text-inverse-on-surface rounded-xl shadow-xl transition-all hidden" id="toast-notificacion">
+      <span class="material-symbols-outlined text-secondary-container text-[22px]" id="toast-icono">check_circle</span>
+      <span class="font-body-md text-body-md" id="toast-mensaje">Lista de usuarios sincronizada con el directorio central.</span>
+    </div>
+  </main>
 
-          const resultado = await respuesta.json();
+  <%- include('partials/footer') %>
 
-          if (!respuesta.ok || !resultado.success) {
-            throw new Error(resultado.message || 'No se pudo desactivar el usuario.');
-          }
+  <div id="sidebar-overlay" class="hidden fixed inset-0 bg-transparent z-40 pointer-events-none" onclick="toggleSidebar()"></div>
 
-          cerrarModalBaja();
-          mostrarToast('Usuario dado de baja exitosamente');
-          cargarUsuariosBD();
-        } catch (error) {
-          console.error('Error al dar de baja:', error);
-          alert(error.message || 'Error al conectar con el servidor.');
-        }
-      });
-    }
-
-    // Filtros y paginación
-    const inputBusqueda = document.getElementById('filtro-busqueda');
-    const selectGerencia = document.getElementById('filtro-gerencia');
-    const selectRol = document.getElementById('filtro-rol');
-    const selectEstado = document.getElementById('filtro-estado');
-    const selectLimitePag = document.getElementById('select-limite-pag');
-
-    function aplicarFiltros() {
-      const q = (inputBusqueda.value || '').toLowerCase().trim();
-      const gerencia = selectGerencia.value;
-      const rol = selectRol.value;
-      const estado = selectEstado.value;
-
-      const listaFiltrada = usuariosDB.filter(u => {
-        const nombreCompleto = `${u.nombres} ${u.apellidos}`.toLowerCase();
-        const cedulaStr = String(u.cedula || '').toLowerCase();
-        const correoStr = (u.correo || '').toLowerCase();
-        const gerenciaStr = (u.gerencia || '').toLowerCase();
-        const rolStr = (u.rol || '').toLowerCase();
-        const estadoStr = (u.estado || '').toLowerCase();
-
-        const coincideBusqueda = !q || nombreCompleto.includes(q) || cedulaStr.includes(q) || correoStr.includes(q);
-        const coincideGerencia = gerencia === 'todas' || gerenciaStr.includes(gerencia.toLowerCase());
-        const coincideRol = rol === 'todos' || rolStr.includes(rol.toLowerCase());
-        
-        let coincideEstado = false;
-        if (estado === 'todos') {
-          if (u.estado === 'Activo') {
-            coincideEstado = true;
-          } else if (u.estado === 'Inactivo' && q !== '') {
-            coincideEstado = true;
-          }
-        } else {
-          coincideEstado = estadoStr === estado.toLowerCase();
-        }
-
-        return coincideBusqueda && coincideGerencia && coincideRol && coincideEstado;
-      });
-
-      renderizarTablaPaginada(listaFiltrada);
-    }
-
-    if (inputBusqueda) inputBusqueda.addEventListener('input', () => { paginaActual = 1; aplicarFiltros(); });
-    if (selectGerencia) selectGerencia.addEventListener('change', () => { paginaActual = 1; aplicarFiltros(); });
-    if (selectRol) selectRol.addEventListener('change', () => { paginaActual = 1; aplicarFiltros(); });
-    if (selectEstado) selectEstado.addEventListener('change', () => { paginaActual = 1; aplicarFiltros(); });
-    
-    if (selectLimitePag) {
-      selectLimitePag.addEventListener('change', (e) => {
-        registrosPorPagina = Number(e.target.value);
-        paginaActual = 1;
-        aplicarFiltros();
-      });
-    }
-
-  })();
-</script>
-</div></main>
-<footer class="w-full bg-white border-t border-surface-container mt-auto shadow-sm"></footer>
-<%- include('partials/footer') %>
-
-<script src="/sidebar.js"></script>
-<div id="sidebar-overlay" class="hidden fixed inset-0 bg-transparent z-40 pointer-events-none" onclick="toggleSidebar()"></div>
-
-</body></html>
+  <!-- SCRIPTS EXTERNOS -->
+  <script src="/Sidebar.js"></script>
+  <script src="/js/usuarios.js"></script>
+</body>
+</html>

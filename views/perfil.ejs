@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('partials/head', { titulo: 'Mi Perfil | Portal Intranet', headStyles: 'styles/site' }) %>
+<body class="bg-background font-body-md text-on-surface antialiased flex flex-col min-h-screen">
+
+  <!-- INCLUSIÓN DINÁMICA DEL ENCABEZADO -->
+  <%- include('partials/header') %>
+
+  <main class="w-full pt-20 bg-background min-h-screen flex-1">
+    <div class="max-w-4xl mx-auto py-10 px-4 flex flex-col gap-10">
+      
+      <!-- Cabecera de perfil elegante y sobria -->
+      <div class="flex flex-col sm:flex-row items-center gap-6 pb-2">
+        <div id="perfil-avatar" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline-lg text-2xl sm:text-3xl font-bold tracking-wider ring-4 ring-primary-fixed shadow-sm shrink-0">
+          --
+        </div>
+        <div class="flex flex-col items-center sm:items-start text-center sm:text-left gap-1">
+          <h1 id="perfil-nombre-completo" class="font-headline-lg text-2xl sm:text-3xl font-bold text-on-surface tracking-tight">
+            Cargando información...
+          </h1>
+          <p id="perfil-gerencia" class="font-body-md text-on-surface-variant font-medium">
+            --
+          </p>
+        </div>
+      </div>
+
+      <!-- Columnas de información -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        
+        <!-- Columna 1: Información Personal -->
+        <div class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl p-8 shadow-sm flex flex-col gap-6">
+          <div>
+            <h2 class="font-headline-md text-lg font-bold text-on-surface">
+              Información Personal
+            </h2>
+            <p class="font-body-sm text-on-surface-variant mt-1">
+              Datos institucionales registrados en la plataforma
+            </p>
+          </div>
+          
+          <div class="divide-y divide-surface-container flex flex-col">
+            <div class="py-3 flex flex-col gap-0.5">
+              <span class="text-xs font-medium text-outline uppercase tracking-wider">Cédula de Identidad</span>
+              <span id="perfil-cedula" class="text-sm font-semibold text-on-surface">--</span>
+            </div>
+            <div class="py-3 flex flex-col gap-0.5">
+              <span class="text-xs font-medium text-outline uppercase tracking-wider">Nombres</span>
+              <span id="perfil-nombres" class="text-sm font-medium text-on-surface">--</span>
+            </div>
+            <div class="py-3 flex flex-col gap-0.5">
+              <span class="text-xs font-medium text-outline uppercase tracking-wider">Apellidos</span>
+              <span id="perfil-apellidos" class="text-sm font-medium text-on-surface">--</span>
+            </div>
+            <div class="py-3 flex flex-col gap-0.5">
+              <span class="text-xs font-medium text-outline uppercase tracking-wider">Correo Electrónico</span>
+              <span id="perfil-correo" class="text-sm font-medium text-on-surface">--</span>
+            </div>
+            <div class="py-3 flex flex-col gap-0.5">
+              <span class="text-xs font-medium text-outline uppercase tracking-wider">Teléfono</span>
+              <span id="perfil-telefono" class="text-sm font-medium text-on-surface">--</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna 2: Seguridad / Cambio de Contraseña -->
+        <div class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl p-8 shadow-sm flex flex-col gap-6">
+          <div>
+            <h2 class="font-headline-md text-lg font-bold text-on-surface">
+              Cambiar Contraseña
+            </h2>
+            <p class="font-body-sm text-on-surface-variant mt-1">
+              Ingresa tu contraseña actual y define una nueva clave de acceso.
+            </p>
+          </div>
+
+          <form class="flex flex-col gap-5" id="password-form">
+            <!-- Contraseña Actual -->
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-medium text-on-surface-variant" for="curr-pass">Contraseña actual</label>
+              <div class="relative">
+                <input class="w-full h-10 px-3 pr-10 text-sm bg-surface-container-low border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition" id="curr-pass" placeholder="••••••••" required type="password">
+                <button aria-label="Mostrar contraseña" class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition btn-toggle-pass" data-target="curr-pass" type="button">
+                  <span class="material-symbols-outlined text-[18px]">visibility</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Nueva Contraseña -->
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-medium text-on-surface-variant" for="new-pass">Nueva contraseña</label>
+              <div class="relative">
+                <input class="w-full h-10 px-3 pr-10 text-sm bg-surface-container-low border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition" id="new-pass" placeholder="Mínimo 8 caracteres" required type="password">
+                <button aria-label="Mostrar contraseña" class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition btn-toggle-pass" data-target="new-pass" type="button">
+                  <span class="material-symbols-outlined text-[18px]">visibility</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Confirmar Nueva Contraseña -->
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-medium text-on-surface-variant" for="conf-pass">Confirmar nueva contraseña</label>
+              <div class="relative">
+                <input class="w-full h-10 px-3 pr-10 text-sm bg-surface-container-low border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition" id="conf-pass" placeholder="Confirma tu clave" required type="password">
+                <button aria-label="Mostrar contraseña" class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition btn-toggle-pass" data-target="conf-pass" type="button">
+                  <span class="material-symbols-outlined text-[18px]">visibility</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Mensaje de error o éxito -->
+            <div class="hidden p-3 rounded-xl text-xs font-medium text-center" id="pwd-alerta"></div>
+
+            <div class="pt-2">
+              <button class="w-full bg-primary hover:bg-primary-container text-on-primary font-medium rounded-xl py-2.5 px-6 shadow-sm transition flex items-center justify-center gap-2 text-sm cursor-pointer" type="submit" id="btn-guardar-pass">
+                <span>Actualizar Contraseña</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/Sidebar.js"></script>
+  <script src="/js/perfil.js"></script>
+  <div id="sidebar-overlay" class="hidden fixed inset-0 bg-transparent z-40 pointer-events-none" onclick="toggleSidebar()"></div>
+
+</body>
+</html>

@@ -12,9 +12,10 @@
       <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg>
     </button>
   </div>
-  <!-- Navigation Links -->
+ <!-- Navigation Links -->
   <div class="flex flex-col space-y-2.5 pt-1">
-    <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium text-[14px] transition-all" href="#">
+    <!-- Visible para TODOS (Administrador y Empleado) -->
+    <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium text-[14px] transition-all" href="/perfil">
       <span class="material-symbols-outlined text-[20px] text-slate-500">person</span>
       <span class="truncate">Mi perfil</span>
     </a>
@@ -22,16 +23,20 @@
       <span class="material-symbols-outlined text-[20px] text-slate-500">call</span>
       <span class="truncate">Directorio Telefónico</span>
     </a>
-    <a id="nav-dashboard" class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium text-[14px] transition-all" href="/dashboard">
-      <span class="material-symbols-outlined text-[20px] text-slate-500">grid_view</span>
-      <span class="truncate">Dashboard</span>
-    </a>
-    <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium text-[14px] transition-all" href="/usuarios">
-      <span class="material-symbols-outlined text-[20px] text-slate-500">manage_accounts</span>
-      <span class="truncate">Gestión de Usuarios</span>
-    </a>
-  </div>
 
+    <!-- Visible SOLO para Administrador -->
+    <% if (user && user.rol === 'Administrador') { %>
+      <a id="nav-dashboard" class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium text-[14px] transition-all" href="/dashboard">
+        <span class="material-symbols-outlined text-[20px] text-slate-500">grid_view</span>
+        <span class="truncate">Dashboard</span>
+      </a>
+      <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium text-[14px] transition-all" href="/usuarios">
+        <span class="material-symbols-outlined text-[20px] text-slate-500">manage_accounts</span>
+        <span class="truncate">Gestión de Usuarios</span>
+      </a>
+      <!-- Aquí podrás agregar tus futuros botones de admin -->
+    <% } %>
+  </div>
 <!-- Logout Button Mejorado (Semántico) -->
 <div class="pt-3 mt-2 border-t border-slate-100">
   <a href="/logout" class="w-full flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 transition-all text-[13.5px] font-semibold border border-red-200/60 no-underline">

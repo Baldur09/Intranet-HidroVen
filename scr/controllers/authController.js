@@ -9,7 +9,7 @@ const loginUsuario = async (req, res) => {
 
     const query = `
         SELECT 
-            u.Id, u.cedula, u.correo, u.password, u.estado,
+            u.Id, u.cedula, u.correo, u.password, u.estado, u.cambiar_password,
             r.nombre AS rol, r.Id AS id_rol,
             i.nombres, i.apellidos, i.telefono,
             g.nombre AS gerencia
@@ -33,8 +33,11 @@ const loginUsuario = async (req, res) => {
         const empleado = results[0];
 
         if (empleado.estado.toLowerCase() !== 'activo') {
-            return res.json({ success: false, message: 'Su usuario se encuentra inactivo.' });
-        }
+    return res.json({ 
+        success: false, 
+        message: 'Su usuario se encuentra inactivo en el sistema. Comuníquese con la Gerencia de Telemática para más información.' 
+    });
+}
 
         try {
             let passwordMatch = false;
@@ -47,7 +50,7 @@ const loginUsuario = async (req, res) => {
                 if (empleado.password === password) {
                     passwordMatch = true;
 
-                    // Actualizar automáticamente a hash en la base de datos sin borrar nada
+                    // Actualizar automáticamente a hash en la base de datos de forma segura
                     const saltRounds = 10;
                     const hashedPassword = await bcrypt.hash(password, saltRounds);
                     
@@ -69,7 +72,17 @@ const loginUsuario = async (req, res) => {
                 return res.json({ success: false, message: 'Contraseña incorrecta.' });
             }
 
-            // Guardamos los datos completos del usuario en la sesión si todo es correcto
+            // 3. NUEVA VALIDACIÓN: Si el usuario tiene clave por defecto (cambiar_password = 1)
+            if (empleado.cambiar_password === 1) {
+                return res.json({ 
+                    success: true, 
+                    requiereCambioClave: true,
+                    userId: empleado.Id, 
+                    message: 'Debe actualizar su contraseña por defecto.' 
+                });
+            }
+
+            // Guardamos los datos completos del usuario en la sesión si ya la había cambiado antes
             req.session.user = {
                 id: empleado.Id,
                 cedula: empleado.cedula,
@@ -80,11 +93,13 @@ const loginUsuario = async (req, res) => {
                 gerencia: empleado.gerencia
             };
 
-            res.json({ success: true, message: '¡Bienvenido!' });
+            return res.json({ success: true, message: '¡Bienvenido!' });
 
         } catch (error) {
             console.error('Error al procesar la contraseña:', error);
-            res.json({ success: false, message: 'Error interno del servidor' });
+            if (!res.headersSent) {
+                return res.json({ success: false, message: 'Error interno del servidor' });
+            }
         }
     });
 };
