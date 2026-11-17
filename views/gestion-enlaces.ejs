@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+  <!-- Head reutilizable (igual que usuarios.ejs) -->
+  <%- include('partials/head', { titulo: 'Gestión de Enlaces | Portal Intranet' }) %>
+
+<body class="bg-background text-on-surface antialiased font-body-md flex flex-col min-h-screen">
+  <!-- Encabezado -->
+  <%- include('partials/header') %>
+
+  <main class="w-full pt-20 bg-background min-h-screen">
+    <div class="flex flex-col w-full">
+      <div class="max-w-[1280px] w-full mx-auto px-margin-mobile lg:px-margin space-y-space-xl pb-space-xl">
+
+        <!-- Navegación de Migas de Pan (Breadcrumbs) -->
+        <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md pt-2">
+          <a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+            <span class="material-symbols-outlined text-[16px]">domain</span>
+            <span>Portal Intranet</span>
+          </a>
+          <span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+          <span class="hover:text-primary transition-colors">Dashboard</span>
+          <span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+          <span class="text-primary font-semibold">Gestión de Enlaces</span>
+        </nav>
+
+        <!-- Encabezado de Página con Acciones Principales (estilo usuarios.ejs) -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+          <div class="space-y-1">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary flex-shrink-0">
+                <span class="material-symbols-outlined text-[24px]">link</span>
+              </div>
+              <div>
+                <h1 class="font-headline-lg text-headline-lg text-on-surface">Gestión de Enlaces</h1>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                  Administración de accesos externos de Aplicaciones, Bancos y Organismos Públicos, y organización de sus subdivisiones.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <div class="flex flex-wrap items-center gap-space-sm shrink-0">
+          <button id="btn-abrir-modal-enlace" type="button" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-on-primary font-label-lg text-label-lg shadow-sm hover:shadow transition-all cursor-pointer flex-shrink-0 whitespace-nowrap">
+    <span class="material-symbols-outlined text-[20px]">add_link</span>
+    <span>Añadir Enlace</span>
+  </button>
+  <button id="btn-abrir-modal-subdivision" type="button" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary-fixed/70 hover:bg-secondary-fixed text-on-secondary-fixed font-label-lg text-label-lg transition-all cursor-pointer flex-shrink-0 whitespace-nowrap">
+    <span class="material-symbols-outlined text-[20px]">create_new_folder</span>
+    <span>Nueva Subdivisión</span>
+  </button>
+</div>
+        </div>
+
+        <!-- Indicadores Numéricos y Métricas (KPIs) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between">
+            <div class="space-y-1">
+              <span class="font-label-caps text-label-caps uppercase text-tertiary">Enlaces Activos</span>
+              <div class="flex items-baseline gap-2">
+                <span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-enlaces-activos">0</span>
+                <span class="font-body-sm text-body-sm text-tertiary">portales</span>
+              </div>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-[26px]">link</span>
+            </div>
+          </div>
+
+          <div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between">
+            <div class="space-y-1">
+              <span class="font-label-caps text-label-caps uppercase text-tertiary">Subdivisiones Activas</span>
+              <div class="flex items-baseline gap-2">
+                <span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-subdivisiones">0</span>
+                <span class="font-body-sm text-body-sm text-tertiary">categorías</span>
+              </div>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
+              <span class="material-symbols-outlined text-[26px]">folder_copy</span>
+            </div>
+          </div>
+
+          <div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between">
+            <div class="space-y-1">
+              <span class="font-label-caps text-label-caps uppercase text-tertiary">Pantallas Habilitadas</span>
+              <div class="flex items-baseline gap-2">
+                <span class="font-headline-lg text-headline-lg text-on-surface" id="kpi-pantallas">0</span>
+                <span class="font-body-sm text-body-sm text-tertiary">secciones</span>
+              </div>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-outline">
+              <span class="material-symbols-outlined text-[26px]">web</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Barra de Búsqueda y Filtrado Dinámico (estilo usuarios.ejs) -->
+        <div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm space-y-3">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            <div class="md:col-span-4 relative">
+              <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+              <input id="filtro-busqueda-enlace" type="text" placeholder="Buscar por nombre o URL del portal..." class="w-full pl-10 pr-4 py-2.5 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all"/>
+            </div>
+            <div class="md:col-span-3">
+              <select id="filtro-pantalla" class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all">
+                <option value="all">Todas las Pantallas</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <select id="filtro-subdivision" class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all">
+                <option value="all">Todas las Subdivisiones</option>
+              </select>
+            </div>
+            <div class="md:col-span-3 flex items-center gap-2">
+              <select id="filtro-estado-enlace" class="w-full py-2.5 px-3 bg-surface-container-low rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all">
+                <option value="all">Todos los Estados</option>
+                <option value="Activo">Activos</option>
+                <option value="Inactivo">Inactivos</option>
+              </select>
+              <button id="btn-limpiar-filtros" type="button" title="Limpiar filtros" class="p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors cursor-pointer flex-shrink-0">
+                <span class="material-symbols-outlined text-[20px]">filter_alt_off</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenedor Principal: Tabla de Enlaces -->
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+          <div class="overflow-x-auto flex-1">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-surface-container-low text-tertiary font-label-caps text-label-caps uppercase">
+                  <th class="py-3.5 px-4" scope="col">Enlace / Sitio Web</th>
+                  <th class="py-3.5 px-4" scope="col">Pantalla</th>
+                  <th class="py-3.5 px-4" scope="col">Subdivisión</th>
+                  <th class="py-3.5 px-4" scope="col">Estado</th>
+                  <th class="py-3.5 px-4 text-center min-w-[140px]" scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-enlaces-body" class="text-body-md font-body-md divide-y-0">
+                <tr>
+                  <td colspan="5" class="py-6 text-center text-outline">Cargando enlaces...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pie de Tabla: Paginación Interactiva (estilo usuarios.ejs) -->
+          <div class="px-5 py-3.5 bg-surface-container-low border-t border-surface-container-high flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3 text-body-sm text-on-surface-variant">
+              <span>Mostrando <span class="font-semibold text-on-surface" id="paginacion-inicio">0</span> a <span class="font-semibold text-on-surface" id="paginacion-fin">0</span> de <span class="font-semibold text-on-surface" id="paginacion-total">0</span> enlaces</span>
+              <select id="select-limite-pag" class="py-1 pl-2 pr-7 bg-surface-container-lowest rounded-md text-body-sm border border-surface-container-high focus:outline-none focus:ring-1 focus:ring-primary">
+                <option value="10" selected>10 por pág.</option>
+                <option value="25">25 por pág.</option>
+                <option value="50">50 por pág.</option>
+              </select>
+            </div>
+            <div id="contenedor-botones-paginacion" class="flex items-center gap-1.5"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MODALES SEPARADOS -->
+    <%- include('partials/modales/modal-enlace') %>
+    <%- include('partials/modales/modal-subdivision') %>
+
+    <!-- Toast Notification Flotante (estilo usuarios.ejs) -->
+    <div class="fixed bottom-6 right-6 z-50 items-center gap-3 px-4 py-3 bg-inverse-surface text-inverse-on-surface rounded-xl shadow-xl transition-all hidden" id="toast-notificacion">
+      <span class="material-symbols-outlined text-secondary-container text-[22px]" id="toast-icono">check_circle</span>
+      <span class="font-body-md text-body-md" id="toast-mensaje">Operación exitosa</span>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <div id="sidebar-overlay" class="hidden fixed inset-0 bg-transparent z-40 pointer-events-none" onclick="toggleSidebar()"></div>
+
+  <!-- SCRIPTS EXTERNOS -->
+  <script src="/Sidebar.js"></script>
+  <script src="/js/gestion-enlaces.js"></script>
+</body>
+</html>

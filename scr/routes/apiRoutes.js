@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 const conexion = require('../conexion');
 const { verificarSesion, esAdmin } = require('../middlewares/authMiddleware');
-const bcrypt = require('bcrypt'); // 1. Importar bcrypt
+const bcrypt = require('bcrypt');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 
 router.post('/actualizar-clave-inicial', async (req, res) => {
     const { userId, nuevaPassword, confirmarPassword } = req.body;
@@ -32,7 +35,7 @@ router.post('/actualizar-clave-inicial', async (req, res) => {
     } catch (error) {
         res.json({ success: false, message: 'Error interno del servidor.' });
     }
-});  
+});
 
 // 1. OBTENER GERENCIAS ACTIVAS
 router.get('/gerencias', verificarSesion, (req, res) => {
@@ -91,8 +94,6 @@ router.post('/usuarios', verificarSesion, esAdmin, async (req, res) => {
     try {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-        // LÓGICA CLAVE: Si la contraseña es la predeterminada, cambiar_password = 1. Si puso otra, = 0.
         const cambiarPasswordVal = (password === '%hidrolara123%') ? 1 : 0;
 
         const queryUsuario = `
@@ -135,17 +136,15 @@ router.put('/usuarios/:id', verificarSesion, esAdmin, async (req, res) => {
         let queryUsuario;
         let paramsUsuario;
 
-        // Si el administrador escribió una contraseña nueva en el modal
         if (password && password.trim() !== '') {
             if (password.length < 8) {
-                return res.status(400).json({ 
-                    success: false, 
-                    message: 'La nueva contraseña debe tener al menos 8 caracteres.' 
+                return res.status(400).json({
+                    success: false,
+                    message: 'La nueva contraseña debe tener al menos 8 caracteres.'
                 });
             }
 
             const hashedPassword = await bcrypt.hash(password, 10);
-            // Si pone la clave por defecto (%hidrolara123%), obliga al empleado a cambiarla al entrar
             const cambiarPasswordVal = (password === '%hidrolara123%') ? 1 : 0;
 
             queryUsuario = `
@@ -155,7 +154,6 @@ router.put('/usuarios/:id', verificarSesion, esAdmin, async (req, res) => {
             `;
             paramsUsuario = [cedula, correo, estado, hashedPassword, cambiarPasswordVal, id];
         } else {
-            // Si dejó el campo de contraseña vacío, mantiene la clave actual
             queryUsuario = `
                 UPDATE usuario 
                 SET cedula = ?, correo = ?, estado = ? 
@@ -193,7 +191,7 @@ router.put('/usuarios/:id', verificarSesion, esAdmin, async (req, res) => {
 // 5. DESACTIVAR / BAJA LÓGICA (PATCH)
 router.patch('/usuarios/:id/baja', verificarSesion, esAdmin, (req, res) => {
     const { id } = req.params;
-    const { estado } = req.body; // Solo necesitamos cambiar el estado a 'Inactivo'
+    const { estado } = req.body;
 
     const query = `UPDATE usuario SET estado = ? WHERE Id = ?`;
     conexion.query(query, [estado || 'Inactivo', id], (err) => {
@@ -204,6 +202,7 @@ router.patch('/usuarios/:id/baja', verificarSesion, esAdmin, (req, res) => {
         res.json({ success: true, message: 'Usuario dado de baja exitosamente.' });
     });
 });
+
 // 6. OBTENER DATOS DEL PERFIL DEL USUARIO LOGUEADO (GET)
 router.get('/perfil', verificarSesion, (req, res) => {
     const userId = req.session.user.id || req.session.user.Id;
@@ -241,7 +240,6 @@ router.put('/perfil/password', verificarSesion, (req, res) => {
         return res.status(400).json({ success: false, message: 'La nueva contraseña debe tener al menos 8 caracteres.' });
     }
 
-    // 1. Buscar la contraseña actual encriptada en la BD
     const queryBuscar = `SELECT password FROM usuario WHERE Id = ?`;
     conexion.query(queryBuscar, [userId], async (err, results) => {
         if (err || results.length === 0) {
@@ -250,14 +248,12 @@ router.put('/perfil/password', verificarSesion, (req, res) => {
 
         try {
             const passwordHashBD = results[0].password;
-            // 2. Comparar la contraseña ingresada con la de la BD
             const coincide = await bcrypt.compare(actualPassword, passwordHashBD);
 
             if (!coincide) {
                 return res.status(401).json({ success: false, message: 'La contraseña actual es incorrecta.' });
             }
 
-            // 3. Encriptar la nueva contraseña y guardar
             const nuevoHash = await bcrypt.hash(nuevaPassword, 10);
             const queryActualizar = `UPDATE usuario SET password = ? WHERE Id = ?`;
 
@@ -274,4 +270,183 @@ router.put('/perfil/password', verificarSesion, (req, res) => {
         }
     });
 });
+
+// =========================================================================
+// MÓDULO DE GESTIÓN DE ENLACES, PANTALLAS Y SUBDIVISIONES (CON MULTER)
+// =========================================================================
+
+// Crear carpeta destino si no existe (../../public/images/logos desde scr/routes/)
+const dirLogos = path.join(__dirname, '../../public/images/logos');
+if (!fs.existsSync(dirLogos)) {
+    fs.mkdirSync(dirLogos, { recursive: true });
+}
+
+const storageLogos = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, dirLogos);
+    },
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname).toLowerCase();
+        const nombreUnico = `logo-${Date.now()}-${Math.round(Math.random() * 1e6)}${ext}`;
+        cb(null, nombreUnico);
+    }
+});
+
+const uploadLogo = multer({
+    storage: storageLogos,
+    limits: { fileSize: 2 * 1024 * 1024 }, // Máximo 2MB
+    fileFilter: (req, file, cb) => {
+        const permitidos = /jpeg|jpg|png|webp|svg|ico/;
+        const extOk = permitidos.test(path.extname(file.originalname).toLowerCase());
+        const mimeOk = permitidos.test(file.mimetype);
+        if (extOk || mimeOk) {
+            return cb(null, true);
+        }
+        cb(new Error('Solo se permiten archivos de imagen (PNG, JPG, WEBP, SVG, ICO).'));
+    }
+});
+
+function extraerDominioBase(hostname) {
+    const limpio = hostname.replace(/^www\./i, '');
+    const partes = limpio.split('.');
+    const tldsCompuestos = ['gob', 'gov', 'com', 'org', 'edu', 'net', 'mil'];
+
+    if (partes.length > 2) {
+        const penultima = partes[partes.length - 2].toLowerCase();
+        if (tldsCompuestos.includes(penultima) && partes.length > 3) {
+            return partes.slice(-3).join('.');
+        }
+        if (!tldsCompuestos.includes(penultima)) {
+            return partes.slice(-2).join('.');
+        }
+    }
+    return limpio;
+}
+
+function resolverLogo(url, logoIngresado, archivoSubido) {
+    // 1. Archivo subido con Multer
+    if (archivoSubido) {
+        return `/images/logos/${archivoSubido.filename}`;
+    }
+    // 2. URL manual ingresada por el admin
+    if (logoIngresado && logoIngresado.trim() !== '') {
+        return logoIngresado.trim();
+    }
+    // 3. Automático: Favicon del dominio base
+    try {
+        const hostname = new URL(url).hostname;
+        const dominioBase = extraerDominioBase(hostname);
+        return `https://www.google.com/s2/favicons?domain=${dominioBase}&sz=128`;
+    } catch (e) {
+        return '/images/default-link.png';
+    }
+}
+
+// 8. OBTENER PANTALLAS (GET)
+router.get('/pantallas', verificarSesion, (req, res) => {
+    const query = `SELECT Id, nombre, slug, estado FROM pantallas ORDER BY Id ASC`;
+    conexion.query(query, (err, results) => {
+        if (err) return res.status(500).json({ success: false, message: 'Error al cargar pantallas' });
+        res.json({ success: true, pantallas: results });
+    });
+});
+
+// 9. OBTENER SUBDIVISIONES (GET)
+router.get('/subdivisiones', verificarSesion, (req, res) => {
+    const query = `
+        SELECT s.Id, s.id_pantalla, s.nombre, s.estado, p.nombre AS pantalla_nombre
+        FROM subdivision s
+        INNER JOIN pantallas p ON s.id_pantalla = p.Id
+        ORDER BY p.Id ASC, s.Id ASC
+    `;
+    conexion.query(query, (err, results) => {
+        if (err) return res.status(500).json({ success: false, message: 'Error al cargar subdivisiones' });
+        res.json({ success: true, subdivisiones: results });
+    });
+});
+
+// 10. CREAR SUBDIVISIÓN (POST)
+router.post('/subdivisiones', verificarSesion, esAdmin, (req, res) => {
+    const { id_pantalla, nombre } = req.body;
+    if (!id_pantalla || !nombre || nombre.trim() === '') {
+        return res.status(400).json({ success: false, message: 'La pantalla y el nombre de la subdivisión son obligatorios.' });
+    }
+    const query = `INSERT INTO subdivision (id_pantalla, nombre, estado) VALUES (?, ?, 'Activo')`;
+    conexion.query(query, [Number(id_pantalla), nombre.trim()], (err, result) => {
+        if (err) return res.status(500).json({ success: false, message: 'Error al crear la subdivisión.' });
+        res.json({ success: true, message: 'Subdivisión creada exitosamente.', id: result.insertId });
+    });
+});
+
+// 11. OBTENER ENLACES (GET)
+router.get('/enlaces', verificarSesion, (req, res) => {
+    const query = `
+        SELECT e.Id AS id, e.titulo, e.url, e.logo, e.estado, e.id_subdivision,
+               s.nombre AS subdivision, s.id_pantalla,
+               p.nombre AS pantalla, p.slug AS pantalla_slug
+        FROM enlaces e
+        INNER JOIN subdivision s ON e.id_subdivision = s.Id
+        INNER JOIN pantallas p ON s.id_pantalla = p.Id
+        ORDER BY e.Id DESC
+    `;
+    conexion.query(query, (err, results) => {
+        if (err) return res.status(500).json({ success: false, message: 'Error al cargar los enlaces.' });
+        res.json({ success: true, enlaces: results });
+    });
+});
+
+// 12. CREAR ENLACE (POST con Multer)
+router.post('/enlaces', verificarSesion, esAdmin, uploadLogo.single('logoArchivo'), (req, res) => {
+    const { titulo, url, logo, id_subdivision } = req.body;
+    if (!titulo || !url || !id_subdivision) {
+        return res.status(400).json({ success: false, message: 'Título, URL y subdivisión son obligatorios.' });
+    }
+    const urlFormateada = /^https?:\/\//i.test(url.trim()) ? url.trim() : `https://${url.trim()}`;
+    const logoFinal = resolverLogo(urlFormateada, logo, req.file);
+
+    const query = `INSERT INTO enlaces (titulo, url, logo, estado, id_subdivision) VALUES (?, ?, ?, 'Activo', ?)`;
+    conexion.query(query, [titulo.trim(), urlFormateada, logoFinal, Number(id_subdivision)], (err) => {
+        if (err) return res.status(500).json({ success: false, message: 'Error al guardar el enlace.' });
+        res.json({ success: true, message: 'Enlace registrado exitosamente.' });
+    });
+});
+
+// 13. ACTUALIZAR ENLACE (PUT con Multer)
+router.put('/enlaces/:id', verificarSesion, esAdmin, uploadLogo.single('logoArchivo'), (req, res) => {
+    const { id } = req.params;
+    const { titulo, url, logo, id_subdivision, estado, logoActual } = req.body;
+    if (!titulo || !url || !id_subdivision) {
+        return res.status(400).json({ success: false, message: 'Todos los campos obligatorios deben completarse.' });
+    }
+    const urlFormateada = /^https?:\/\//i.test(url.trim()) ? url.trim() : `https://${url.trim()}`;
+
+    let logoFinal;
+    if (req.file) {
+        logoFinal = `/images/logos/${req.file.filename}`;
+    } else if (logo && logo.trim() !== '') {
+        logoFinal = logo.trim();
+    } else if (logoActual && logoActual.startsWith('/images/logos/')) {
+        logoFinal = logoActual;
+    } else {
+        logoFinal = resolverLogo(urlFormateada, '', null);
+    }
+
+    const query = `UPDATE enlaces SET titulo = ?, url = ?, logo = ?, estado = ?, id_subdivision = ? WHERE Id = ?`;
+    conexion.query(query, [titulo.trim(), urlFormateada, logoFinal, estado || 'Activo', Number(id_subdivision), id], (err) => {
+        if (err) return res.status(500).json({ success: false, message: 'Error al actualizar el enlace.' });
+        res.json({ success: true, message: 'Enlace actualizado correctamente.' });
+    });
+});
+
+// 14. CAMBIAR ESTADO DE ENLACE (PATCH)
+router.patch('/enlaces/:id/estado', verificarSesion, esAdmin, (req, res) => {
+    const { id } = req.params;
+    const { estado } = req.body;
+    const query = `UPDATE enlaces SET estado = ? WHERE Id = ?`;
+    conexion.query(query, [estado || 'Inactivo', id], (err) => {
+        if (err) return res.status(500).json({ success: false, message: 'Error al cambiar el estado.' });
+        res.json({ success: true, message: `Enlace marcado como ${estado || 'Inactivo'}.` });
+    });
+});
+
 module.exports = router;

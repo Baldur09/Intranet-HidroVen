@@ -1,0 +1,844 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>HidroVen - Portal Corporativo</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-dim":"#d8dadc","on-secondary-container":"#006172","secondary":"#00687a","on-primary-container":"#fdfcff","surface-container-highest":"#e0e3e5","tertiary":"#545c72","on-secondary":"#ffffff","surface-container-low":"#f2f4f6","error-container":"#ffdad6","inverse-primary":"#93ccff","on-primary":"#ffffff","on-tertiary":"#ffffff","outline-variant":"#bfc7d2","primary":"#006194","secondary-fixed":"#acedff","on-tertiary-fixed-variant":"#3f465c","secondary-container":"#57dffe","surface-container-high":"#e6e8ea","surface-bright":"#f7f9fb","secondary-fixed-dim":"#4cd7f6","inverse-on-surface":"#eff1f3","on-error-container":"#93000a","primary-fixed":"#cce5ff","tertiary-container":"#6c748b","tertiary-fixed":"#dae2fd","inverse-surface":"#2d3133","surface-container-lowest":"#ffffff","on-secondary-fixed":"#001f26","primary-container":"#007bb9","on-tertiary-fixed":"#131b2e","on-error":"#ffffff","on-primary-fixed-variant":"#004b73","on-background":"#191c1e","surface":"#f7f9fb","background":"#f7f9fb","on-surface-variant":"#3f4850","surface-tint":"#006398","on-tertiary-container":"#fefcff","on-secondary-fixed-variant":"#004e5c","outline":"#707881","surface-variant":"#e0e3e5","surface-container":"#eceef0","tertiary-fixed-dim":"#bec6e0","primary-fixed-dim":"#93ccff","on-surface":"#191c1e","error":"#ba1a1a","on-primary-fixed":"#001d31"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.5rem","space-md":"1rem","gutter-mobile":"1rem","space-xl":"2.5rem","space-sm":"0.5rem","gutter":"1.5rem","margin":"2rem","space-xs":"0.25rem","margin-mobile":"1rem"},"fontFamily":{"body-sm":["Inter"],"body-md":["Inter"],"display-hero":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-md":["Inter"],"label-caps":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"label-lg":["Inter"],"body-lg":["Inter"],"headline-sm":["Plus Jakarta Sans"]},"fontSize":{"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"display-hero":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg":["30px",{"lineHeight":"38px","letterSpacing":"-0.015em","fontWeight":"700"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"500"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"700"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"26px","fontWeight":"400"}],"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-[1280px] mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md"><img alt="Hidroven_Logo_PNG-removebg-preview.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAmBx8A-CLMgxSQhacxR3j3hJmiKfukIfje-vDaljjsjaWNXtcgF2xYBo7Y7kB5qYepnLrMiGy7j4A28Idrej30ED6KbR2ibfNMDs5mLhFeaxFQ0A5T_K7GokSSAdIXjKbJkOfrxKCb4AYiwQVEmxv08tG34J8RnQNgOgYZZRsSgd2P2kRRvEZLTcscmLtLtRxAcHIdoRxJBnkZpMK8q-03jii1LXLfXlqFakp1HhDe_TlF2MRB-LD39QdnCwyE6yLEHITHqy04Jg"><div class="hidden sm:flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-none">HidroVen</span><span class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider mt-0.5">Intranet Corporativa</span></div></div><nav class="hidden xl:flex items-center gap-space-lg h-full" data-active-classes="text-primary font-bold border-b-2 border-primary"><a aria-current="page" class="h-full inline-flex items-center transition-colors text-primary font-bold border-b-2 border-primary" data-path="inicio" href="#">Inicio</a><a class="h-full inline-flex items-center font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="aplicaciones" href="#">Aplicaciones</a><a class="h-full inline-flex items-center font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="directorio-telefonico" href="#">Directorio Telefónico</a><a class="h-full inline-flex items-center font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="enlaces-externos" href="#">Enlaces Externos</a><a class="h-full inline-flex items-center font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="nosotros" href="#">Nosotros</a></nav><div class="flex items-center gap-space-md"><a class="inline-flex items-center px-space-md py-space-xs rounded-lg bg-secondary text-on-secondary font-label-lg text-label-lg hover:bg-secondary-container hover:text-on-secondary-container transition-colors shadow-[0_1px_3px_rgba(0,0,0,0.08)]" data-path="correo-zimbra" href="#">Correo Zimbra</a><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/30"><div class="hidden md:flex flex-col text-right"><span class="font-label-lg text-label-lg text-on-surface leading-tight">Ing. Luis Salazar</span><span class="font-body-sm text-body-sm text-tertiary leading-none">Gerencia Operativa</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-16rem)]"><div class="flex flex-col w-full">
+<div class="max-w-[1280px] w-full mx-auto px-margin py-space-lg flex flex-col gap-space-lg">
+<!-- 1. Breadcrumbs superiores -->
+<nav aria-label="Ruta de navegación" class="flex items-center gap-space-xs font-label-md text-label-md text-tertiary">
+<a class="hover:text-primary transition-colors" href="#">Portal Intranet</a>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Dashboard</a>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">chevron_right</span>
+<span class="font-semibold text-primary">Gestión de Enlaces</span>
+</nav>
+<!-- 2. Encabezado principal -->
+<header class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-start sm:items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]">captive_portal</span>
+</div>
+<div class="flex flex-col">
+<h1 class="font-headline-lg text-headline-lg text-on-surface leading-tight">Gestión de Enlaces y Portales</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+            Administración centralizada de accesos directos, pantallas institucionales, subdivisiones y enlaces externos.
+          </p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm self-start md:self-auto">
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-low text-on-surface font-label-lg text-label-lg hover:bg-surface-container transition-colors shadow-sm" id="btn-abrir-modal-pantalla" type="button">
+<span class="material-symbols-outlined text-[20px] text-secondary">web</span>
+          Nueva Pantalla
+        </button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-low text-on-surface font-label-lg text-label-lg hover:bg-surface-container transition-colors shadow-sm" id="btn-abrir-modal-subdivision" type="button">
+<span class="material-symbols-outlined text-[20px] text-tertiary">account_tree</span>
+          Nueva Subdivisión
+        </button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-colors shadow-sm" id="btn-abrir-modal-enlace" type="button">
+<span class="material-symbols-outlined text-[20px]">add_link</span>
+          Añadir Enlace
+        </button>
+</div>
+</header>
+<!-- 3. Tarjetas de Indicadores (KPIs) -->
+<section aria-label="Indicadores generales" class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps uppercase text-tertiary tracking-wider">Total de Enlaces Activos</span>
+<div class="flex items-baseline gap-space-sm mt-1">
+<span class="font-display-hero text-display-hero text-on-surface leading-none">24</span>
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-label-caps font-label-caps">
+<span class="material-symbols-outlined text-[13px]">trending_up</span> +3 este mes
+            </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Verificación semanal de URLs</span>
+</div>
+<div class="w-14 h-14 rounded-full bg-primary-fixed-dim/30 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[30px]">link</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps uppercase text-tertiary tracking-wider">Pantallas Configuradas</span>
+<div class="flex items-baseline gap-space-sm mt-1">
+<span class="font-display-hero text-display-hero text-on-surface leading-none">6</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-fixed-dim/40 text-on-secondary-fixed font-label-caps text-label-caps">
+              Bancos, Trámites...
+            </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Vistas modulares para usuarios</span>
+</div>
+<div class="w-14 h-14 rounded-full bg-secondary-fixed/50 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[30px]">dashboard</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps uppercase text-tertiary tracking-wider">Subdivisiones Creadas</span>
+<div class="flex items-baseline gap-space-sm mt-1">
+<span class="font-display-hero text-display-hero text-on-surface leading-none">14</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">
+              Estructura activa
+            </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Categorías de clasificación</span>
+</div>
+<div class="w-14 h-14 rounded-full bg-surface-container-high text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[30px]">folder_open</span>
+</div>
+</div>
+</section>
+<!-- 4. Barra de Búsqueda y Filtros Dinámicos -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Search Input -->
+<div class="relative flex-1 min-w-[280px]">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-tertiary text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-10 pr-4 bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary transition-all placeholder:text-outline" id="filtro-busqueda-enlace" placeholder="Buscar enlace por título o URL..." type="text">
+</div>
+<!-- Selectores de Filtro -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Pantallas -->
+<div class="relative min-w-[170px]">
+<select class="w-full h-11 appearance-none bg-surface-container-low text-on-surface font-body-md text-body-md px-3.5 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all cursor-pointer" id="filtro-pantalla">
+<option value="all">Todas las Pantallas</option>
+<option value="Bancos">Bancos</option>
+<option value="Entes Gubernamentales">Entes Gubernamentales</option>
+<option value="Universidades">Universidades</option>
+<option value="Medios de Difusión">Medios de Difusión</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-tertiary pointer-events-none text-[20px]">expand_more</span>
+</div>
+<!-- Subdivisiones -->
+<div class="relative min-w-[180px]">
+<select class="w-full h-11 appearance-none bg-surface-container-low text-on-surface font-body-md text-body-md px-3.5 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all cursor-pointer" id="filtro-subdivision">
+<option value="all">Todas las Subdivisiones</option>
+<option value="Bancos Nacionales">Bancos Nacionales</option>
+<option value="Billeteras Digitales">Billeteras Digitales</option>
+<option value="Tributario &amp; Aduanas">Tributario &amp; Aduanas</option>
+<option value="Seguridad Social">Seguridad Social</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-tertiary pointer-events-none text-[20px]">expand_more</span>
+</div>
+<!-- Estados -->
+<div class="relative min-w-[150px]">
+<select class="w-full h-11 appearance-none bg-surface-container-low text-on-surface font-body-md text-body-md px-3.5 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all cursor-pointer" id="filtro-estado-enlace">
+<option value="all">Todos los Estados</option>
+<option value="Activo">Activo</option>
+<option value="Inactivo">Inactivo</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-tertiary pointer-events-none text-[20px]">expand_more</span>
+</div>
+<button class="h-11 px-3 rounded-lg bg-surface-container-high text-tertiary hover:text-on-surface hover:bg-surface-dim transition-colors flex items-center justify-center" id="btn-limpiar-filtros" title="Limpiar filtros" type="button">
+<span class="material-symbols-outlined text-[20px]">filter_alt_off</span>
+</button>
+</div>
+</section>
+<!-- 5. Tabla Principal de Enlaces -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse" id="tabla-enlaces">
+<thead>
+<tr class="bg-surface-container-low font-label-caps text-label-caps text-tertiary uppercase tracking-wider">
+<th class="py-3.5 px-space-md" scope="col">Enlace / Sitio Web</th>
+<th class="py-3.5 px-space-md" scope="col">Pantalla</th>
+<th class="py-3.5 px-space-md" scope="col">Subdivisión</th>
+<th class="py-3.5 px-space-md" scope="col">Estado</th>
+<th class="py-3.5 px-space-md text-center" scope="col">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md text-body-md" id="tabla-enlaces-body">
+<!-- Fila 1: Banco de Venezuela -->
+<tr class="hover:bg-surface-bright transition-colors fila-enlace" data-estado="Activo" data-pantalla="Bancos" data-subdivision="Bancos Nacionales">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold text-[14px] flex-shrink-0">
+                    BDV
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate titulo-enlace">Banco de Venezuela</span>
+<a class="font-body-sm text-body-sm text-tertiary hover:text-primary transition-colors truncate url-enlace" href="https://www.bancodevenezuela.com" rel="noopener noreferrer" target="_blank">https://www.bancodevenezuela.com</a>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-secondary-fixed/50 text-secondary font-label-md text-label-md">
+                  Bancos
+                </span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+
+<span>Bancos Nacionales</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="badge-estado inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                  Activo
+                </span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center justify-center gap-1">
+<button class="btn-editar-fila p-1.5 rounded-lg text-tertiary hover:text-primary hover:bg-surface-container transition-colors" title="Editar enlace" type="button">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="btn-toggle-estado p-1.5 rounded-lg text-tertiary hover:text-error hover:bg-surface-container transition-colors" title="Cambiar estado" type="button">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 2: Banesco -->
+<tr class="hover:bg-surface-bright transition-colors fila-enlace" data-estado="Activo" data-pantalla="Bancos" data-subdivision="Bancos Nacionales">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold text-[14px] flex-shrink-0">
+                    BAN
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate titulo-enlace">Banesco Banco Universal</span>
+<a class="font-body-sm text-body-sm text-tertiary hover:text-primary transition-colors truncate url-enlace" href="https://www.banesco.com" rel="noopener noreferrer" target="_blank">https://www.banesco.com</a>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-secondary-fixed/50 text-secondary font-label-md text-label-md">
+                  Bancos
+                </span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+
+<span>Bancos Nacionales</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="badge-estado inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                  Activo
+                </span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center justify-center gap-1">
+<button class="btn-editar-fila p-1.5 rounded-lg text-tertiary hover:text-primary hover:bg-surface-container transition-colors" title="Editar enlace" type="button">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="btn-toggle-estado p-1.5 rounded-lg text-tertiary hover:text-error hover:bg-surface-container transition-colors" title="Cambiar estado" type="button">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 3: Banco Mercantil -->
+<tr class="hover:bg-surface-bright transition-colors fila-enlace" data-estado="Activo" data-pantalla="Bancos" data-subdivision="Bancos Nacionales">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold text-[14px] flex-shrink-0">
+                    BMA
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate titulo-enlace">Banco Mercantil</span>
+<a class="font-body-sm text-body-sm text-tertiary hover:text-primary transition-colors truncate url-enlace" href="https://www.mercantilbanco.com" rel="noopener noreferrer" target="_blank">https://www.mercantilbanco.com</a>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-secondary-fixed/50 text-secondary font-label-md text-label-md">
+                  Bancos
+                </span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+
+<span>Bancos Nacionales</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="badge-estado inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                  Activo
+                </span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center justify-center gap-1">
+<button class="btn-editar-fila p-1.5 rounded-lg text-tertiary hover:text-primary hover:bg-surface-container transition-colors" title="Editar enlace" type="button">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="btn-toggle-estado p-1.5 rounded-lg text-tertiary hover:text-error hover:bg-surface-container transition-colors" title="Cambiar estado" type="button">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 4: SENIAT -->
+<tr class="hover:bg-surface-bright transition-colors fila-enlace" data-estado="Activo" data-pantalla="Entes Gubernamentales" data-subdivision="Tributario &amp; Aduanas">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold text-[14px] flex-shrink-0">
+                    SEN
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate titulo-enlace">SENIAT</span>
+<a class="font-body-sm text-body-sm text-tertiary hover:text-primary transition-colors truncate url-enlace" href="https://declaraciones.seniat.gob.ve" rel="noopener noreferrer" target="_blank">https://declaraciones.seniat.gob.ve</a>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md">
+                  Entes Gubernamentales
+                </span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+
+<span>Tributario &amp; Aduanas</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="badge-estado inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                  Activo
+                </span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center justify-center gap-1">
+<button class="btn-editar-fila p-1.5 rounded-lg text-tertiary hover:text-primary hover:bg-surface-container transition-colors" title="Editar enlace" type="button">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="btn-toggle-estado p-1.5 rounded-lg text-tertiary hover:text-error hover:bg-surface-container transition-colors" title="Cambiar estado" type="button">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 5: IVSS -->
+<tr class="hover:bg-surface-bright transition-colors fila-enlace" data-estado="Activo" data-pantalla="Entes Gubernamentales" data-subdivision="Seguridad Social">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold text-[14px] flex-shrink-0">
+                    IVSS
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate titulo-enlace">IVSS (Seguro Social)</span>
+<a class="font-body-sm text-body-sm text-tertiary hover:text-primary transition-colors truncate url-enlace" href="https://www.ivss.gov.ve" rel="noopener noreferrer" target="_blank">https://www.ivss.gov.ve</a>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md">
+                  Entes Gubernamentales
+                </span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+
+<span>Seguridad Social</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="badge-estado inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                  Activo
+                </span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center justify-center gap-1">
+<button class="btn-editar-fila p-1.5 rounded-lg text-tertiary hover:text-primary hover:bg-surface-container transition-colors" title="Editar enlace" type="button">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="btn-toggle-estado p-1.5 rounded-lg text-tertiary hover:text-error hover:bg-surface-container transition-colors" title="Cambiar estado" type="button">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 6: Binance P2P -->
+<tr class="hover:bg-surface-bright transition-colors fila-enlace" data-estado="Inactivo" data-pantalla="Bancos" data-subdivision="Billeteras Digitales">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold text-[14px] flex-shrink-0">
+                    BNB
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate titulo-enlace">Binance P2P</span>
+<a class="font-body-sm text-body-sm text-tertiary hover:text-primary transition-colors truncate url-enlace" href="https://p2p.binance.com" rel="noopener noreferrer" target="_blank">https://p2p.binance.com</a>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-secondary-fixed/50 text-secondary font-label-md text-label-md">
+                  Bancos
+                </span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+
+<span>Billeteras Digitales</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="badge-estado inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                  Inactivo
+                </span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center justify-center gap-1">
+<button class="btn-editar-fila p-1.5 rounded-lg text-tertiary hover:text-primary hover:bg-surface-container transition-colors" title="Editar enlace" type="button">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="btn-toggle-estado p-1.5 rounded-lg text-tertiary hover:text-primary hover:bg-surface-container transition-colors" title="Cambiar estado" type="button">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pie de tabla / Paginación -->
+<div class="px-space-md py-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-tertiary">
+<div class="flex items-center gap-space-md">
+<span id="contador-resultados">Mostrando 1 a 6 de 24 enlaces</span>
+<div class="hidden sm:flex items-center gap-1">
+<span>Filas:</span>
+<select class="bg-surface-container-lowest text-on-surface rounded px-2 py-0.5 focus:outline-none">
+<option>10 por página</option>
+<option>25 por página</option>
+<option>50 por página</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded text-outline-variant cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<span class="px-3 py-1 rounded bg-primary text-on-primary font-label-md text-label-md">1</span>
+<span class="px-3 py-1 rounded hover:bg-surface-container-highest cursor-pointer font-label-md text-label-md">2</span>
+<span class="px-3 py-1 rounded hover:bg-surface-container-highest cursor-pointer font-label-md text-label-md">3</span>
+<button class="p-1.5 rounded text-on-surface hover:bg-surface-container-highest" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Banner informativo complementario -->
+
+</div>
+<!-- 6. MODALES INTERACTIVOS -->
+<!-- MODAL 1: Añadir / Editar Enlace -->
+<div class="hidden fixed inset-0 bg-inverse-surface/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" id="modal-enlace">
+<div class="bg-surface-container-lowest rounded-xl shadow-xl w-full max-w-2xl max-h-[921px] overflow-y-auto flex flex-col">
+<!-- Header -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">add_link</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface" id="modal-enlace-titulo-texto">Añadir Nuevo Enlace</h3>
+<p class="font-body-sm text-body-sm text-tertiary">Configure los accesos directos visibles para el personal.</p>
+</div>
+</div>
+<button class="btn-cerrar-modal p-1.5 rounded-lg text-tertiary hover:bg-surface-container transition-colors" data-modal="modal-enlace" type="button">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</div>
+<!-- Form Body -->
+<form class="p-space-lg flex flex-col gap-space-md" id="form-enlace">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Pantalla Select -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="select-enlace-pantalla">Pantalla Destino</label>
+<div class="relative">
+<select class="w-full h-11 appearance-none bg-surface-container-low text-on-surface font-body-md text-body-md px-3.5 pr-8 rounded-lg focus:ring-2 focus:ring-primary focus:outline-none transition-all" id="select-enlace-pantalla" required="">
+<option value="Bancos">Bancos</option>
+<option value="Entes Gubernamentales">Entes Gubernamentales</option>
+<option value="Universidades">Universidades</option>
+<option value="Medios de Difusión">Medios de Difusión</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-tertiary pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Subdivisión Select con botón rápido -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="select-enlace-subdivision">Subdivisión</label>
+<div class="flex items-center gap-2">
+<div class="relative flex-1">
+<select class="w-full h-11 appearance-none bg-surface-container-low text-on-surface font-body-md text-body-md px-3.5 pr-8 rounded-lg focus:ring-2 focus:ring-primary focus:outline-none transition-all" id="select-enlace-subdivision" required="">
+<option value="Bancos Nacionales">Bancos Nacionales</option>
+<option value="Billeteras Digitales">Billeteras Digitales</option>
+<option value="Tributario &amp; Aduanas">Tributario &amp; Aduanas</option>
+<option value="Seguridad Social">Seguridad Social</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-tertiary pointer-events-none text-[20px]">expand_more</span>
+</div>
+<button class="h-11 w-11 flex-shrink-0 bg-surface-container-high hover:bg-surface-dim rounded-lg text-primary flex items-center justify-center transition-colors" id="btn-quick-subdivision" title="Crear nueva subdivisión rápida" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Título -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="input-enlace-titulo">Título del Enlace</label>
+<input class="w-full h-11 px-3.5 bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" id="input-enlace-titulo" placeholder="ej. Banco de Venezuela" required="" type="text">
+</div>
+<!-- URL -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="input-enlace-url">URL del Sitio Web</label>
+<input class="w-full h-11 px-3.5 bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" id="input-enlace-url" placeholder="https://www.bancodevenezuela.com" required="" type="url">
+</div>
+<!-- Logo Input & Previsualización -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="input-enlace-logo">Logo o Monograma</label>
+<div class="flex items-center gap-space-md">
+<input class="flex-1 h-11 px-3.5 bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" id="input-enlace-logo" placeholder="Iniciales (ej. BDV) o URL de icono" type="text">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high text-primary font-bold text-[14px] flex items-center justify-center flex-shrink-0 shadow-sm overflow-hidden" id="preview-logo-box">
+<span id="preview-logo-text">BDV</span>
+</div>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary">Se mostrará como caja cuadrada estilizada en los accesos rápidos.</span>
+</div>
+<!-- Estado Radio Buttons -->
+<div class="flex flex-col gap-2 pt-2">
+<label class="font-label-md text-label-md text-on-surface">Estado del Enlace</label>
+<div class="flex items-center gap-space-lg">
+<label class="flex items-center gap-2 cursor-pointer font-body-md text-body-md text-on-surface">
+<input checked="" class="accent-primary w-4 h-4 cursor-pointer" name="radio-estado" type="radio" value="Activo">
+<span class="inline-flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span> Activo
+              </span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer font-body-md text-body-md text-on-surface">
+<input class="accent-primary w-4 h-4 cursor-pointer" name="radio-estado" type="radio" value="Inactivo">
+<span class="inline-flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span> Inactivo
+              </span>
+</label>
+</div>
+</div>
+<!-- Footer -->
+<div class="flex items-center justify-end gap-space-sm pt-space-md mt-space-sm border-t border-surface-container">
+<button class="btn-cerrar-modal px-space-md py-2.5 rounded-lg bg-surface-container-high text-on-surface font-label-lg text-label-lg hover:bg-surface-dim transition-colors" data-modal="modal-enlace" type="button">
+            Cancelar
+          </button>
+<button class="px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-colors shadow-sm" id="btn-guardar-enlace" type="submit">
+            Guardar Enlace
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- MODAL 2: Nueva Subdivisión -->
+<div class="hidden fixed inset-0 bg-inverse-surface/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" id="modal-subdivision">
+<div class="bg-surface-container-lowest rounded-xl shadow-xl w-full max-w-lg overflow-hidden flex flex-col">
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">account_tree</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Nueva Subdivisión</h3>
+<p class="font-body-sm text-body-sm text-tertiary">Agrupe enlaces dentro de una pantalla específica.</p>
+</div>
+</div>
+<button class="btn-cerrar-modal p-1.5 rounded-lg text-tertiary hover:bg-surface-container transition-colors" data-modal="modal-subdivision" type="button">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</div>
+<form class="p-space-lg flex flex-col gap-space-md" id="form-subdivision">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="select-subdivision-pantalla">Pantalla de Destino</label>
+<div class="relative">
+<select class="w-full h-11 appearance-none bg-surface-container-low text-on-surface font-body-md text-body-md px-3.5 pr-8 rounded-lg focus:ring-2 focus:ring-primary focus:outline-none transition-all" id="select-subdivision-pantalla" required="">
+<option value="Bancos">Bancos</option>
+<option value="Entes Gubernamentales">Entes Gubernamentales</option>
+<option value="Universidades">Universidades</option>
+<option value="Medios de Difusión">Medios de Difusión</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-tertiary pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="input-subdivision-nombre">Nombre de la Subdivisión</label>
+<input class="w-full h-11 px-3.5 bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" id="input-subdivision-nombre" placeholder="ej. Bancos Nacionales" required="" type="text">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="textarea-subdivision-desc">Descripción breve (opcional)</label>
+<textarea class="w-full p-3 bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all resize-none" id="textarea-subdivision-desc" placeholder="Propósito operativo de esta categoría..." rows="3"></textarea>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-sm border-t border-surface-container">
+<button class="btn-cerrar-modal px-space-md py-2.5 rounded-lg bg-surface-container-high text-on-surface font-label-lg text-label-lg hover:bg-surface-dim transition-colors" data-modal="modal-subdivision" type="button">
+            Cancelar
+          </button>
+<button class="px-space-md py-2.5 rounded-lg bg-secondary text-on-secondary font-label-lg text-label-lg hover:bg-secondary-container hover:text-on-secondary-container transition-colors shadow-sm" type="submit">
+            Guardar Subdivisión
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- MODAL 3: Nueva Pantalla -->
+<div class="hidden fixed inset-0 bg-inverse-surface/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" id="modal-pantalla">
+<div class="bg-surface-container-lowest rounded-xl shadow-xl w-full max-w-lg overflow-hidden flex flex-col">
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">web</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Nueva Pantalla Institucional</h3>
+<p class="font-body-sm text-body-sm text-tertiary">Crea un módulo o vista dedicada para la intranet.</p>
+</div>
+</div>
+<button class="btn-cerrar-modal p-1.5 rounded-lg text-tertiary hover:bg-surface-container transition-colors" data-modal="modal-pantalla" type="button">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</div>
+<form class="p-space-lg flex flex-col gap-space-md" id="form-pantalla">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="input-pantalla-nombre">Nombre de la Pantalla</label>
+<input class="w-full h-11 px-3.5 bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" id="input-pantalla-nombre" placeholder="ej. Entes Gubernamentales" required="" type="text">
+<p class="font-body-sm text-body-sm text-tertiary mt-1">
+            La URL y ruta de navegación se generarán automáticamente (ej. <code class="font-mono text-primary text-xs">/portal/entes-gubernamentales</code>).
+          </p>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Al registrar una nueva pantalla, aparecerá disponible de inmediato en los menús de configuración y asignación de permisos de rol.
+          </p>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-sm border-t border-surface-container">
+<button class="btn-cerrar-modal px-space-md py-2.5 rounded-lg bg-surface-container-high text-on-surface font-label-lg text-label-lg hover:bg-surface-dim transition-colors" data-modal="modal-pantalla" type="button">
+            Cancelar
+          </button>
+<button class="px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-colors shadow-sm" type="submit">
+            Guardar Pantalla
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- SCRIPT INTEGRADO: Lógica Vanilla JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Elementos de Modales
+      const modalEnlace = document.getElementById('modal-enlace');
+      const modalSubdivision = document.getElementById('modal-subdivision');
+      const modalPantalla = document.getElementById('modal-pantalla');
+
+      const btnAbrirEnlace = document.getElementById('btn-abrir-modal-enlace');
+      const btnAbrirSubdivision = document.getElementById('btn-abrir-modal-subdivision');
+      const btnAbrirPantalla = document.getElementById('btn-abrir-modal-pantalla');
+      const btnQuickSubdivision = document.getElementById('btn-quick-subdivision');
+
+      const btnsCerrarModal = document.querySelectorAll('.btn-cerrar-modal');
+
+      function abrirModal(modal) {
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      }
+
+      function cerrarModal(modal) {
+        if (!modal) return;
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+
+      btnAbrirEnlace?.addEventListener('click', () => {
+        document.getElementById('modal-enlace-titulo-texto').textContent = 'Añadir Nuevo Enlace';
+        document.getElementById('form-enlace')?.reset();
+        document.getElementById('preview-logo-text').textContent = 'BDV';
+        abrirModal(modalEnlace);
+      });
+
+      btnAbrirSubdivision?.addEventListener('click', () => abrirModal(modalSubdivision));
+      btnAbrirPantalla?.addEventListener('click', () => abrirModal(modalPantalla));
+      
+      btnQuickSubdivision?.addEventListener('click', () => {
+        cerrarModal(modalEnlace);
+        abrirModal(modalSubdivision);
+      });
+
+      btnsCerrarModal.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-modal');
+          if (targetId) {
+            cerrarModal(document.getElementById(targetId));
+          } else {
+            cerrarModal(btn.closest('.fixed'));
+          }
+        });
+      });
+
+      // Cierre con Escape o clic en el backdrop
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          cerrarModal(modalEnlace);
+          cerrarModal(modalSubdivision);
+          cerrarModal(modalPantalla);
+        }
+      });
+
+      [modalEnlace, modalSubdivision, modalPantalla].forEach(m => {
+        m?.addEventListener('click', (e) => {
+          if (e.target === m) cerrarModal(m);
+        });
+      });
+
+      // Previsualización dinámica de logo
+      const inputLogo = document.getElementById('input-enlace-logo');
+      const previewText = document.getElementById('preview-logo-text');
+      const previewBox = document.getElementById('preview-logo-box');
+
+      inputLogo?.addEventListener('input', (e) => {
+        const val = e.target.value.trim();
+        if (val.startsWith('http://') || val.startsWith('https://')) {
+          previewBox.innerHTML = `<img src="${val}" alt="Logo" class="w-full h-full object-contain p-1" onerror="this.parentElement.textContent='IMG'">`;
+        } else {
+          previewBox.textContent = val ? val.slice(0, 4).toUpperCase() : 'URL';
+        }
+      });
+
+      // Búsqueda y Filtros de la Tabla
+      const inputBusqueda = document.getElementById('filtro-busqueda-enlace');
+      const selectPantalla = document.getElementById('filtro-pantalla');
+      const selectSubdivision = document.getElementById('filtro-subdivision');
+      const selectEstado = document.getElementById('filtro-estado-enlace');
+      const btnLimpiar = document.getElementById('btn-limpiar-filtros');
+      const filas = document.querySelectorAll('.fila-enlace');
+      const contadorResultados = document.getElementById('contador-resultados');
+
+      function filtrarTabla() {
+        const term = inputBusqueda?.value.toLowerCase().trim() || '';
+        const pantalla = selectPantalla?.value || 'all';
+        const subdivision = selectSubdivision?.value || 'all';
+        const estado = selectEstado?.value || 'all';
+
+        let visibles = 0;
+
+        filas.forEach(row => {
+          const tit = row.querySelector('.titulo-enlace')?.textContent.toLowerCase() || '';
+          const url = row.querySelector('.url-enlace')?.textContent.toLowerCase() || '';
+          const rowPantalla = row.getAttribute('data-pantalla');
+          const rowSubdivision = row.getAttribute('data-subdivision');
+          const rowEstado = row.getAttribute('data-estado');
+
+          const matchText = tit.includes(term) || url.includes(term);
+          const matchPantalla = (pantalla === 'all' || rowPantalla === pantalla);
+          const matchSubdivision = (subdivision === 'all' || rowSubdivision === subdivision);
+          const matchEstado = (estado === 'all' || rowEstado === estado);
+
+          if (matchText && matchPantalla && matchSubdivision && matchEstado) {
+            row.style.display = '';
+            visibles++;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+
+        if (contadorResultados) {
+          contadorResultados.textContent = `Mostrando ${visibles} de 24 enlaces`;
+        }
+      }
+
+      inputBusqueda?.addEventListener('input', filtrarTabla);
+      selectPantalla?.addEventListener('change', filtrarTabla);
+      selectSubdivision?.addEventListener('change', filtrarTabla);
+      selectEstado?.addEventListener('change', filtrarTabla);
+
+      btnLimpiar?.addEventListener('click', () => {
+        if (inputBusqueda) inputBusqueda.value = '';
+        if (selectPantalla) selectPantalla.value = 'all';
+        if (selectSubdivision) selectSubdivision.value = 'all';
+        if (selectEstado) selectEstado.value = 'all';
+        filtrarTabla();
+      });
+
+      // Alternar estado activo / inactivo de fila
+      document.querySelectorAll('.btn-toggle-estado').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const row = btn.closest('.fila-enlace');
+          if (!row) return;
+
+          const estadoActual = row.getAttribute('data-estado');
+          const badge = row.querySelector('.badge-estado');
+          const iconSpan = btn.querySelector('.material-symbols-outlined');
+
+          if (estadoActual === 'Activo') {
+            row.setAttribute('data-estado', 'Inactivo');
+            if (badge) {
+              badge.className = 'badge-estado inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label-caps text-label-caps';
+              badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-error"></span> Inactivo';
+            }
+            if (iconSpan) {
+              iconSpan.textContent = 'check_circle';
+              btn.classList.remove('hover:text-error');
+              btn.classList.add('hover:text-primary');
+            }
+          } else {
+            row.setAttribute('data-estado', 'Activo');
+            if (badge) {
+              badge.className = 'badge-estado inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps';
+              badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-secondary"></span> Activo';
+            }
+            if (iconSpan) {
+              iconSpan.textContent = 'block';
+              btn.classList.remove('hover:text-primary');
+              btn.classList.add('hover:text-error');
+            }
+          }
+          filtrarTabla();
+        });
+      });
+
+      // Botón editar fila (carga datos en el modal)
+      document.querySelectorAll('.btn-editar-fila').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const row = btn.closest('.fila-enlace');
+          if (!row) return;
+
+          const titulo = row.querySelector('.titulo-enlace')?.textContent || '';
+          const url = row.querySelector('.url-enlace')?.textContent || '';
+          const pantalla = row.getAttribute('data-pantalla') || 'Bancos';
+          const subdivision = row.getAttribute('data-subdivision') || 'Bancos Nacionales';
+          const estado = row.getAttribute('data-estado') || 'Activo';
+
+          document.getElementById('modal-enlace-titulo-texto').textContent = 'Editar Enlace';
+          document.getElementById('input-enlace-titulo').value = titulo;
+          document.getElementById('input-enlace-url').value = url;
+          document.getElementById('select-enlace-pantalla').value = pantalla;
+          document.getElementById('select-enlace-subdivision').value = subdivision;
+          
+          const radios = document.getElementsByName('radio-estado');
+          radios.forEach(r => {
+            r.checked = (r.value === estado);
+          });
+
+          abrirModal(modalEnlace);
+        });
+      });
+
+      // Simulación de guardado de formularios
+      document.getElementById('form-enlace')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        cerrarModal(modalEnlace);
+      });
+
+      document.getElementById('form-subdivision')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        cerrarModal(modalSubdivision);
+      });
+
+      document.getElementById('form-pantalla')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        cerrarModal(modalPantalla);
+      });
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low text-on-surface py-space-xl"><div class="max-w-[1280px] mx-auto px-margin"><div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-space-xl"><div><h4 class="font-headline-sm text-headline-sm text-primary mb-space-sm">Mesa de Ayuda TI</h4><p class="font-body-md text-body-md text-on-surface-variant mb-space-xs">Soporte técnico para estaciones de trabajo y accesos a plataformas corporativas.</p><div class="space-y-space-xs"><p class="font-body-sm text-body-sm text-on-surface-variant"><span class="font-label-md text-label-md text-on-surface">Extensión:</span> 4400 / 4402</p><p class="font-body-sm text-body-sm text-on-surface-variant"><span class="font-label-md text-label-md text-on-surface">Email:</span> mesadeayuda@hidroven.gob.ve</p><p class="font-body-sm text-body-sm text-on-surface-variant"><span class="font-label-md text-label-md text-on-surface">Horario:</span> Lunes a Viernes 07:30 - 17:00</p></div></div><div><h4 class="font-headline-sm text-headline-sm text-primary mb-space-sm">Normativas &amp; Marco Legal</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors" href="#">Ley Orgánica para la Prestación de los Servicios de Agua</a></li><li><a class="hover:text-primary transition-colors" href="#">Reglamento Interno de Seguridad de la Información</a></li><li><a class="hover:text-primary transition-colors" href="#">Código de Ética y Conducta del Servidor Público</a></li><li><a class="hover:text-primary transition-colors" href="#">Manual de Procedimientos y Gobernanza Operativa</a></li></ul></div><div><h4 class="font-headline-sm text-headline-sm text-primary mb-space-sm">Canales Corporativos</h4><p class="font-body-md text-body-md text-on-surface-variant mb-space-xs">Comunicación oficial y enlaces del Ministerio del Poder Popular para la Atención de las Aguas.</p><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors" href="#">Portal Institucional MPPAAguas</a></li><li><a class="hover:text-primary transition-colors" href="#">Sala Situacional de Monitoreo Hidrológico</a></li><li><a class="hover:text-primary transition-colors" href="#">Boletines Hidrometeorológicos HidroVen</a></li><li><a class="hover:text-primary transition-colors" href="#">Atención al Ciudadano (0800-AGUAS)</a></li></ul></div></div><div class="pt-space-md border-t border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-tertiary"><p>© 2024 C.A. Hidrológica Venezolana (HidroVen). Todos los derechos reservados.</p><p>Gerencia de Tecnologías de Información y Comunicación</p></div></div></footer>
+
+</body></html>

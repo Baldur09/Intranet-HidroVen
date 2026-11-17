@@ -39,20 +39,28 @@
               </div>
             </div>
           </div>
-          <div class="flex flex-wrap items-center gap-2.5">
-            <button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary transition-all font-label-lg text-label-lg shadow-sm hover:shadow cursor-pointer flex-shrink-0 whitespace-nowrap" id="btn-abrir-modal">
-              <span class="material-symbols-outlined text-[20px]">person_add</span>
-              <span>Añadir Usuario</span>
-            </button>
-            <button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface transition-all font-label-lg text-label-lg cursor-pointer flex-shrink-0 whitespace-nowrap" id="btn-editar-rapido">
-              <span class="material-symbols-outlined text-[18px]">edit</span>
-              <span>Editar Usuario</span>
-            </button>
-            <button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-surface-container-low hover:bg-error-container text-on-surface hover:text-error transition-all font-label-lg text-label-lg cursor-pointer flex-shrink-0 whitespace-nowrap" id="btn-eliminar-seleccion">
-              <span class="material-symbols-outlined text-[18px]">person_off</span>
-              <span>Desactivar / Baja</span>
-            </button>
-          </div>
+          <div class="flex flex-col items-end gap-2 shrink-0">
+  <!-- Fila Superior: Añadir Usuario (izquierda) y Editar Usuario (derecha) -->
+  <div class="flex items-center gap-2">
+    <button id="btn-abrir-modal" type="button" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-on-primary font-label-lg text-label-lg shadow-sm hover:shadow transition-all cursor-pointer flex-shrink-0 whitespace-nowrap">
+      <span class="material-symbols-outlined text-[20px]">person_add</span>
+      <span>Añadir Usuario</span>
+    </button>
+
+    <button id="btn-editar-rapido" type="button" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary-fixed/70 hover:bg-secondary-fixed text-on-secondary-fixed font-label-lg text-label-lg transition-all cursor-pointer flex-shrink-0 whitespace-nowrap">
+      <span class="material-symbols-outlined text-[20px]">edit</span>
+      <span>Editar Usuario</span>
+    </button>
+  </div>
+
+  <!-- Fila Inferior: Desactivar / Baja centrado exactamente debajo de los dos superiores -->
+  <div class="w-full flex justify-center">
+    <button id="btn-eliminar-seleccion" type="button" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-error-container/60 hover:bg-error-container text-on-error-container font-label-lg text-label-lg transition-all cursor-pointer flex-shrink-0 whitespace-nowrap">
+      <span class="material-symbols-outlined text-[20px]">person_off</span>
+      <span>Desactivar / Baja</span>
+    </button>
+  </div>
+</div>
         </div>
 
         <!-- Indicadores Numéricos y Métricas (KPIs) -->
