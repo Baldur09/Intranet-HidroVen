@@ -1,0 +1,113 @@
+<div id="modal-carrusel" class="fixed inset-0 z-50 hidden items-center justify-center bg-on-surface/50 backdrop-blur-xs p-4 overflow-y-auto">
+  <div class="bg-surface-container-lowest w-full max-w-2xl rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden my-auto">
+    <!-- Encabezado del Modal -->
+    <div class="px-6 py-4 bg-surface-container-low border-b border-outline-variant/30 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <span class="material-symbols-outlined text-primary text-[22px]" translate="no">add_photo_alternate</span>
+        <h2 id="modal-carrusel-titulo" class="font-headline-sm text-headline-sm text-on-surface font-bold">
+          Añadir Foto al Carrusel
+        </h2>
+      </div>
+      <button type="button" id="btn-cerrar-modal-carrusel-x" class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container cursor-pointer" translate="no">
+        <span class="material-symbols-outlined text-[20px]" translate="no">close</span>
+      </button>
+    </div>
+
+    <!-- Formulario -->
+    <form id="form-carrusel" enctype="multipart/form-data" class="p-6 space-y-5">
+      <input type="hidden" id="carrusel-id-editar" value="">
+      <input type="hidden" id="carrusel-imagen-actual" value="">
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-start">
+        <div class="md:col-span-7 space-y-4">
+          <div>
+            <label for="input-carrusel-titulo" class="block font-label-md text-label-md text-on-surface font-semibold mb-1.5">
+              Nombre del embalse, planta o instalación *
+            </label>
+            <input
+              type="text"
+              id="input-carrusel-titulo"
+              required
+              maxlength="150"
+              placeholder="Ej. Embalse Los Quediches"
+              class="w-full h-11 px-3.5 rounded-lg bg-surface-container-low border border-outline-variant/50 text-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all"
+            />
+          </div>
+
+          <div>
+            <label for="input-carrusel-ubicacion" class="block font-label-md text-label-md text-on-surface font-semibold mb-1.5">
+              Ubicación *
+            </label>
+            <input
+              type="text"
+              id="input-carrusel-ubicacion"
+              required
+              maxlength="150"
+              placeholder="Ej. ESTADO LARA • SISTEMA HIDRÁULICO OCCIDENTE"
+              class="w-full h-11 px-3.5 rounded-lg bg-surface-container-low border border-outline-variant/50 text-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all"
+            />
+          </div>
+
+          <div>
+            <label for="input-carrusel-archivo" id="label-carrusel-archivo" class="block font-label-md text-label-md text-on-surface font-semibold mb-1.5">
+              Subir foto desde PC *
+            </label>
+            <input
+              type="file"
+              id="input-carrusel-archivo"
+              accept="image/jpeg,image/jpg,image/png,image/webp"
+              class="w-full text-body-sm text-on-surface-variant file:mr-3 file:py-2 file:px-3.5 file:rounded-lg file:border-0 file:text-label-md file:font-semibold file:bg-primary-fixed file:text-primary hover:file:bg-primary hover:file:text-on-primary file:transition-colors file:cursor-pointer cursor-pointer bg-surface-container-low rounded-lg border border-outline-variant/50"
+            />
+            <p class="text-body-sm text-outline mt-1">JPG, PNG o WEBP (máx. 5 MB).</p>
+          </div>
+
+          <div>
+            <span class="block font-label-md text-label-md text-on-surface font-semibold mb-1.5">Estado</span>
+            <div class="flex items-center gap-5">
+              <label class="inline-flex items-center gap-2 cursor-pointer text-body-md">
+                <input type="radio" name="radio-estado-carrusel" value="Activo" checked class="text-primary focus:ring-primary">
+                <span>Activo</span>
+              </label>
+              <label class="inline-flex items-center gap-2 cursor-pointer text-body-md">
+                <input type="radio" name="radio-estado-carrusel" value="Inactivo" class="text-primary focus:ring-primary">
+                <span>Inactivo</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vista previa -->
+        <div class="md:col-span-5">
+          <span class="block font-label-caps text-label-caps text-tertiary uppercase font-semibold mb-2">
+            Vista Previa
+          </span>
+          <div class="relative h-48 w-full rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/40">
+            <div id="preview-carrusel-img" class="w-full h-full bg-cover bg-center flex items-center justify-center text-outline">
+              <div id="preview-carrusel-placeholder" class="flex flex-col items-center gap-1 text-center px-3">
+                <span class="material-symbols-outlined text-[28px]" translate="no">image</span>
+                <span class="text-body-sm">Sin imagen</span>
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-2.5 left-2.5 right-2.5">
+              <p id="preview-carrusel-titulo" class="text-white text-xs font-bold truncate bg-on-surface/75 px-2.5 py-1.5 rounded-md">
+                Nombre del embalse o planta
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="pt-4 border-t border-outline-variant/30 flex items-center justify-end gap-3">
+        <button type="button" id="btn-cerrar-modal-carrusel" class="px-4 py-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-label-lg text-label-lg cursor-pointer">
+          Cancelar
+        </button>
+        <button type="submit" id="btn-submit-carrusel" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-on-primary font-label-lg text-label-lg font-semibold shadow-sm cursor-pointer">
+          <span class="material-symbols-outlined text-[18px]" translate="no">save</span>
+          <span id="texto-btn-submit-carrusel">Guardar Foto</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

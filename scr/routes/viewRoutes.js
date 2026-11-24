@@ -55,12 +55,41 @@ function renderizarVistaEnlaces(res, slug, vistaEjs) {
 }
 
 router.get('/inicio', verificarSesion, (req, res) => {
-    res.render('inicio');
+    const queryCarrusel = `
+        SELECT Id AS id, titulo, ubicacion, imagen
+        FROM carrusel
+        WHERE estado = 'Activo'
+        ORDER BY Id ASC
+    `;
+
+    conexion.query(queryCarrusel, (err, slides) => {
+        if (err) {
+            console.error('Error al cargar slides del carrusel:', err);
+            return res.render('inicio', { slides: [] });
+        }
+        res.render('inicio', { slides: slides || [] });
+    });
 });
 
 // Rutas exclusivas de Administrador
 router.get('/dashboard', verificarSesion, esAdmin, (req, res) => {
-    res.render('dashboard');
+    const queryConteo = `SELECT COUNT(*) AS totalActivos FROM carrusel WHERE estado = 'Activo'`;
+
+    conexion.query(queryConteo, (err, results) => {
+        const carruselActivos = (!err && results && results.length > 0)
+            ? Number(results[0].totalActivos) || 0
+            : 0;
+
+        if (err) {
+            console.error('Error al obtener conteo de carrusel:', err);
+        }
+
+        res.render('dashboard', { carruselActivos });
+    });
+});
+
+router.get('/gestion-carrusel', verificarSesion, esAdmin, (req, res) => {
+    res.render('gestion-carrusel');
 });
 
 router.get('/usuarios', verificarSesion, esAdmin, (req, res) => {
@@ -83,7 +112,12 @@ router.get('/bancos', verificarSesion, (req, res) => {
 router.get('/organismos', verificarSesion, (req, res) => {
     renderizarVistaEnlaces(res, 'organismos', 'organismos');
 });
-
+router.get('/universidades', verificarSesion, (req, res) => {
+    renderizarVistaEnlaces(res, 'universidades', 'universidades');
+});
+router.get('/medios', verificarSesion, (req, res) => {
+    renderizarVistaEnlaces(res, 'medios', 'medios');
+});
 router.get('/nosotros', verificarSesion, (req, res) => {
     res.render('nosotros');
 });

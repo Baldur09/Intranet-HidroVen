@@ -52,8 +52,11 @@
 
         <!-- Campo Contraseña -->
         <div class="space-y-1.5">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between gap-2">
                 <label class="font-label-md text-xs font-semibold text-on-surface" for="password">Contraseña</label>
+                <button type="button" id="btnAbrirRecuperar" class="text-[11.5px] font-semibold text-primary hover:underline focus:outline-none">
+                    ¿Olvidaste tu contraseña?
+                </button>
             </div>
             <div class="relative flex items-center">
                 <span class="material-symbols-outlined absolute left-3.5 text-tertiary text-[18px] pointer-events-none">lock</span>
@@ -111,6 +114,106 @@
     </form>
 </div>
 
+<!-- ================= CONTENEDOR 3: RECUPERAR CONTRASEÑA (OCULTO INICIALMENTE) ================= -->
+<div id="seccionRecuperarClave" class="hidden space-y-4">
+    <div class="text-center mb-3">
+        <h1 class="font-headline-md text-xl font-bold text-on-surface tracking-tight">Recuperar Contraseña</h1>
+        <p id="subtituloRecuperar" class="font-body-sm text-xs text-on-surface-variant mt-1">
+            Verifica tu cédula y los últimos 4 dígitos de tu teléfono
+        </p>
+    </div>
+
+    <div id="mensajeErrorRecuperar" class="hidden text-xs font-semibold text-red-700 bg-red-50 border border-red-200 p-2.5 rounded-lg"></div>
+    <div id="mensajeInfoRecuperar" class="hidden text-xs font-semibold text-primary bg-primary-fixed/30 border border-primary/20 p-2.5 rounded-lg"></div>
+    <div id="mensajeExitoRecuperar" class="hidden text-xs font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 p-2.5 rounded-lg"></div>
+
+    <!-- PASO 1: Cédula + últimos 4 dígitos del teléfono -->
+    <form id="formRecPaso1" class="space-y-3.5">
+        <div class="space-y-1.5">
+            <label class="block font-label-md text-xs font-semibold text-on-surface" for="recCedula">Cédula de Identidad</label>
+            <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-3.5 text-tertiary text-[18px] pointer-events-none">badge</span>
+                <input class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-surface-container-low border border-transparent text-on-surface placeholder:text-outline/70 font-body-sm text-sm outline-none focus:bg-surface-container-lowest focus:border-primary focus:ring-2 focus:ring-primary/20" id="recCedula" placeholder="Ej. 12345678" required type="text">
+            </div>
+        </div>
+
+        <div class="space-y-1.5">
+            <label class="block font-label-md text-xs font-semibold text-on-surface" for="recUltimos4">Últimos 4 dígitos del teléfono</label>
+            <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-3.5 text-tertiary text-[18px] pointer-events-none">phone_iphone</span>
+                <input class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-surface-container-low border border-transparent text-on-surface placeholder:text-outline/70 font-body-sm text-sm outline-none focus:bg-surface-container-lowest focus:border-primary focus:ring-2 focus:ring-primary/20" id="recUltimos4" placeholder="Ej. 3636" maxlength="4" minlength="4" required type="text" inputmode="numeric">
+            </div>
+        </div>
+
+        <button class="w-full py-3 px-4 rounded-lg bg-primary hover:bg-[#005691] text-on-primary font-label-lg text-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition-all" id="btnRecPaso1" type="submit">
+            <span>Continuar</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+    </form>
+
+    <!-- PASO 1B: Solo si el empleado no tiene correo registrado -->
+    <form id="formRecCorreoNuevo" class="hidden space-y-3.5">
+        <div class="space-y-1.5">
+            <label class="block font-label-md text-xs font-semibold text-on-surface" for="recCorreoNuevo">Correo electrónico para recibir el código</label>
+            <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-3.5 text-tertiary text-[18px] pointer-events-none">mail</span>
+                <input class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-surface-container-low border border-transparent text-on-surface placeholder:text-outline/70 font-body-sm text-sm outline-none focus:bg-surface-container-lowest focus:border-primary focus:ring-2 focus:ring-primary/20" id="recCorreoNuevo" placeholder="correo@ejemplo.com" required type="email">
+            </div>
+        </div>
+
+        <button class="w-full py-3 px-4 rounded-lg bg-primary hover:bg-[#005691] text-on-primary font-label-lg text-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition-all" id="btnRecCorreoNuevo" type="submit">
+            <span>Enviar Código de 6 Dígitos</span>
+            <span class="material-symbols-outlined text-[18px]">send</span>
+        </button>
+    </form>
+
+    <!-- PASO 2: Código de 6 dígitos -->
+    <form id="formRecCodigo" class="hidden space-y-3.5">
+        <div class="space-y-1.5">
+            <label class="block font-label-md text-xs font-semibold text-on-surface" for="recCodigo">Código de 6 dígitos</label>
+            <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-3.5 text-tertiary text-[18px] pointer-events-none">pin</span>
+                <input class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-surface-container-low border border-transparent text-on-surface placeholder:text-outline/70 font-body-sm text-sm tracking-[0.25em] font-semibold outline-none focus:bg-surface-container-lowest focus:border-primary focus:ring-2 focus:ring-primary/20" id="recCodigo" placeholder="000000" maxlength="6" minlength="6" required type="text" inputmode="numeric">
+            </div>
+        </div>
+
+        <button class="w-full py-3 px-4 rounded-lg bg-primary hover:bg-[#005691] text-on-primary font-label-lg text-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition-all" id="btnRecCodigo" type="submit">
+            <span>Verificar Código</span>
+            <span class="material-symbols-outlined text-[18px]">verified</span>
+        </button>
+    </form>
+
+    <!-- PASO 3: Nueva contraseña -->
+    <form id="formRecNuevaClave" class="hidden space-y-3.5">
+        <div class="space-y-1.5">
+            <label class="block font-label-md text-xs font-semibold text-on-surface" for="recNuevaPassword">Nueva Contraseña</label>
+            <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-3.5 text-tertiary text-[18px] pointer-events-none">lock_reset</span>
+                <input class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-surface-container-low border border-transparent text-on-surface placeholder:text-outline/70 font-body-sm text-sm outline-none focus:bg-surface-container-lowest focus:border-primary focus:ring-2 focus:ring-primary/20" id="recNuevaPassword" placeholder="Mínimo 8 caracteres" minlength="8" required type="password">
+            </div>
+        </div>
+
+        <div class="space-y-1.5">
+            <label class="block font-label-md text-xs font-semibold text-on-surface" for="recConfirmarPassword">Confirmar Nueva Contraseña</label>
+            <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-3.5 text-tertiary text-[18px] pointer-events-none">lock_reset</span>
+                <input class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-surface-container-low border border-transparent text-on-surface placeholder:text-outline/70 font-body-sm text-sm outline-none focus:bg-surface-container-lowest focus:border-primary focus:ring-2 focus:ring-primary/20" id="recConfirmarPassword" placeholder="Repite tu contraseña" minlength="8" required type="password">
+            </div>
+        </div>
+
+        <button class="w-full py-3 px-4 rounded-lg bg-primary hover:bg-[#005691] text-on-primary font-label-lg text-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition-all" id="btnRecNuevaClave" type="submit">
+            <span>Restablecer Contraseña</span>
+            <span class="material-symbols-outlined text-[18px]">check_circle</span>
+        </button>
+    </form>
+
+    <div class="pt-1 text-center">
+        <button type="button" id="btnVolverLogin" class="text-xs font-semibold text-tertiary hover:text-primary transition-colors">
+            ← Volver a Iniciar Sesión
+        </button>
+    </div>
+</div>
+
 </div>
 </div>
 </main>
@@ -136,8 +239,7 @@
         }
     }
 
-    // 1. Envío del Formulario de Login
-   // Función auxiliar para mostrar la alerta roja con estilo
+    // Función auxiliar para mostrar la alerta roja con estilo
     function mostrarErrorLogin(mensaje) {
         const divError = document.getElementById('mensajeError');
         const tituloError = document.getElementById('tituloError');
@@ -154,30 +256,6 @@
 
         divError.classList.remove('animate-pulse');
         void divError.offsetWidth;
-        divError.classList.add('animate-pulse');
-        setTimeout(() => divError.classList.remove('animate-pulse'), 600);
-    }
-
-    // 1. Envío del Formulario de Login
-  // Función auxiliar para mostrar la alerta roja con estilo
-    function mostrarErrorLogin(mensaje) {
-        const divError = document.getElementById('mensajeError');
-        const tituloError = document.getElementById('tituloError');
-        const textoError = document.getElementById('textoError');
-
-        // Personalizamos el título según el tipo de error
-        if (mensaje.toLowerCase().includes('inactivo')) {
-            tituloError.textContent = 'Cuenta Inactiva';
-        } else {
-            tituloError.textContent = 'No se pudo iniciar sesión';
-        }
-
-        textoError.textContent = mensaje;
-        divError.classList.remove('hidden');
-
-        // Pequeña animación de pulso para llamar la atención si ya estaba visible
-        divError.classList.remove('animate-pulse');
-        void divError.offsetWidth; // Reinicia el flujo de animación
         divError.classList.add('animate-pulse');
         setTimeout(() => divError.classList.remove('animate-pulse'), 600);
     }
@@ -223,6 +301,7 @@
             btn.innerHTML = originalText;
         }
     });
+
     // 2. Envío del Formulario de Cambio Obligatorio de Contraseña
     document.getElementById('formCambioClave').addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -256,7 +335,6 @@
             if (resultado.success) {
                 divExito.textContent = resultado.message;
                 divExito.classList.remove('hidden');
-                // Después de 3 segundos, limpiamos y recargamos para que inicie sesión normalmente
                 setTimeout(() => {
                     window.location.reload();
                 }, 3500);
@@ -272,6 +350,255 @@
             divError.classList.remove('hidden');
             btn.disabled = false;
             btn.innerHTML = '<span>Guardar y Acceder</span><span class="material-symbols-outlined text-[18px]">check_circle</span>';
+        }
+    });
+
+    // ================= 3. FLUJO RECUPERAR CONTRASEÑA =================
+    let estadoRecuperacion = {
+        cedula: '',
+        ultimos4: '',
+        recuperacionId: null,
+        codigo: ''
+    };
+
+    const errRec = document.getElementById('mensajeErrorRecuperar');
+    const infoRec = document.getElementById('mensajeInfoRecuperar');
+    const okRec = document.getElementById('mensajeExitoRecuperar');
+    const subRec = document.getElementById('subtituloRecuperar');
+
+    function limpiarAvisosRecuperar() {
+        errRec.classList.add('hidden');
+        infoRec.classList.add('hidden');
+        okRec.classList.add('hidden');
+        errRec.textContent = '';
+        infoRec.textContent = '';
+        okRec.textContent = '';
+    }
+
+    function mostrarPasoRecuperar(paso) {
+        document.getElementById('formRecPaso1').classList.toggle('hidden', paso !== 'paso1');
+        document.getElementById('formRecCorreoNuevo').classList.toggle('hidden', paso !== 'correoNuevo');
+        document.getElementById('formRecCodigo').classList.toggle('hidden', paso !== 'codigo');
+        document.getElementById('formRecNuevaClave').classList.toggle('hidden', paso !== 'nuevaClave');
+    }
+
+    function reiniciarFlujoRecuperar() {
+        estadoRecuperacion = { cedula: '', ultimos4: '', recuperacionId: null, codigo: '' };
+        document.getElementById('formRecPaso1').reset();
+        document.getElementById('formRecCorreoNuevo').reset();
+        document.getElementById('formRecCodigo').reset();
+        document.getElementById('formRecNuevaClave').reset();
+        subRec.textContent = 'Verifica tu cédula y los últimos 4 dígitos de tu teléfono';
+        limpiarAvisosRecuperar();
+        mostrarPasoRecuperar('paso1');
+    }
+
+    document.getElementById('btnAbrirRecuperar').addEventListener('click', () => {
+        reiniciarFlujoRecuperar();
+        document.getElementById('seccionLogin').classList.add('hidden');
+        document.getElementById('seccionRecuperarClave').classList.remove('hidden');
+    });
+
+    document.getElementById('btnVolverLogin').addEventListener('click', () => {
+        reiniciarFlujoRecuperar();
+        document.getElementById('seccionRecuperarClave').classList.add('hidden');
+        document.getElementById('seccionLogin').classList.remove('hidden');
+    });
+
+    // Paso 1: Solicitar recuperación con cédula + últimos 4 dígitos del teléfono
+    document.getElementById('formRecPaso1').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        limpiarAvisosRecuperar();
+
+        const cedula = document.getElementById('recCedula').value.trim();
+        const ultimos4 = document.getElementById('recUltimos4').value.trim();
+        const btn = document.getElementById('btnRecPaso1');
+        const textoOriginal = btn.innerHTML;
+
+        btn.disabled = true;
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">sync</span><span>Verificando...</span>';
+
+        try {
+            const resp = await fetch('/recuperar/solicitar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ cedula, ultimos4 })
+            });
+            const data = await resp.json();
+
+            if (!data.success) {
+                errRec.textContent = data.message;
+                errRec.classList.remove('hidden');
+                btn.disabled = false;
+                btn.innerHTML = textoOriginal;
+                return;
+            }
+
+            estadoRecuperacion.cedula = cedula;
+            estadoRecuperacion.ultimos4 = ultimos4;
+
+            if (data.requiereCorreo) {
+                subRec.textContent = 'No tienes un correo registrado aún';
+                infoRec.textContent = data.message;
+                infoRec.classList.remove('hidden');
+                mostrarPasoRecuperar('correoNuevo');
+            } else {
+                estadoRecuperacion.recuperacionId = data.recuperacionId;
+                subRec.textContent = `Código enviado a ${data.correoEnmascarado}`;
+                infoRec.textContent = data.message;
+                infoRec.classList.remove('hidden');
+                mostrarPasoRecuperar('codigo');
+            }
+        } catch (error) {
+            console.error(error);
+            errRec.textContent = 'Error de conexión con el servidor.';
+            errRec.classList.remove('hidden');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = textoOriginal;
+        }
+    });
+
+    // Paso 1B: Enviar código a correo nuevo (cuando el empleado no tenía correo)
+    document.getElementById('formRecCorreoNuevo').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        limpiarAvisosRecuperar();
+
+        const correo = document.getElementById('recCorreoNuevo').value.trim();
+        const btn = document.getElementById('btnRecCorreoNuevo');
+        const textoOriginal = btn.innerHTML;
+
+        btn.disabled = true;
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">sync</span><span>Enviando...</span>';
+
+        try {
+            const resp = await fetch('/recuperar/correo-nuevo', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    cedula: estadoRecuperacion.cedula,
+                    ultimos4: estadoRecuperacion.ultimos4,
+                    correo
+                })
+            });
+            const data = await resp.json();
+
+            if (!data.success) {
+                errRec.textContent = data.message;
+                errRec.classList.remove('hidden');
+            } else {
+                estadoRecuperacion.recuperacionId = data.recuperacionId;
+                subRec.textContent = `Código enviado a ${data.correoEnmascarado}`;
+                infoRec.textContent = data.message;
+                infoRec.classList.remove('hidden');
+                mostrarPasoRecuperar('codigo');
+            }
+        } catch (error) {
+            console.error(error);
+            errRec.textContent = 'Error de conexión con el servidor.';
+            errRec.classList.remove('hidden');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = textoOriginal;
+        }
+    });
+
+    // Paso 2: Verificar código OTP de 6 dígitos
+    document.getElementById('formRecCodigo').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        limpiarAvisosRecuperar();
+
+        const codigo = document.getElementById('recCodigo').value.trim();
+        const btn = document.getElementById('btnRecCodigo');
+        const textoOriginal = btn.innerHTML;
+
+        btn.disabled = true;
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">sync</span><span>Validando...</span>';
+
+        try {
+            const resp = await fetch('/recuperar/verificar-codigo', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    recuperacionId: estadoRecuperacion.recuperacionId,
+                    codigo
+                })
+            });
+            const data = await resp.json();
+
+            if (!data.success) {
+                errRec.textContent = data.message;
+                errRec.classList.remove('hidden');
+            } else {
+                estadoRecuperacion.codigo = codigo;
+                subRec.textContent = 'Establece tu nueva contraseña';
+                infoRec.textContent = data.message;
+                infoRec.classList.remove('hidden');
+                mostrarPasoRecuperar('nuevaClave');
+            }
+        } catch (error) {
+            console.error(error);
+            errRec.textContent = 'Error de conexión con el servidor.';
+            errRec.classList.remove('hidden');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = textoOriginal;
+        }
+    });
+
+    // Paso 3: Restablecer contraseña
+    document.getElementById('formRecNuevaClave').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        limpiarAvisosRecuperar();
+
+        const nuevaPassword = document.getElementById('recNuevaPassword').value;
+        const confirmarPassword = document.getElementById('recConfirmarPassword').value;
+
+        if (nuevaPassword !== confirmarPassword) {
+            errRec.textContent = 'Las contraseñas no coinciden.';
+            errRec.classList.remove('hidden');
+            return;
+        }
+
+        const btn = document.getElementById('btnRecNuevaClave');
+        const textoOriginal = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">sync</span><span>Guardando...</span>';
+
+        try {
+            const resp = await fetch('/recuperar/restablecer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    recuperacionId: estadoRecuperacion.recuperacionId,
+                    codigo: estadoRecuperacion.codigo,
+                    nuevaPassword,
+                    confirmarPassword
+                })
+            });
+            const data = await resp.json();
+
+            if (!data.success) {
+                errRec.textContent = data.message;
+                errRec.classList.remove('hidden');
+                btn.disabled = false;
+                btn.innerHTML = textoOriginal;
+            } else {
+                okRec.textContent = data.message;
+                okRec.classList.remove('hidden');
+                mostrarPasoRecuperar('ninguno');
+                setTimeout(() => {
+                    reiniciarFlujoRecuperar();
+                    document.getElementById('seccionRecuperarClave').classList.add('hidden');
+                    document.getElementById('seccionLogin').classList.remove('hidden');
+                }, 2500);
+            }
+        } catch (error) {
+            console.error(error);
+            errRec.textContent = 'Error de conexión con el servidor.';
+            errRec.classList.remove('hidden');
+            btn.disabled = false;
+            btn.innerHTML = textoOriginal;
         }
     });
 </script>

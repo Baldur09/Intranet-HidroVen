@@ -43,6 +43,11 @@
     return limpio;
   }
 
+  function construirUrlLogoAutomatico(dominioBase) {
+    const googleFavicon = encodeURIComponent(`https://www.google.com/s2/favicons?domain=${dominioBase}&sz=128`);
+    return `https://unavatar.io/${dominioBase}?fallback=${googleFavicon}`;
+  }
+
   // ================= CARGA DE DATOS DESDE API =================
   async function inicializarDatos() {
     await Promise.all([cargarPantallas(), cargarSubdivisiones(), cargarEnlaces()]);
@@ -170,8 +175,9 @@
       return;
     }
 
-    // 2. URL manual, logo local guardado o favicon automático
+    // 2. URL manual, logo local guardado o logo automático con respaldo
     let srcFinal = '';
+    let fallbackUrl = '';
     if (logoManual) {
       srcFinal = logoManual;
     } else if (logoActual && logoActual.startsWith('/images/logos/')) {
@@ -181,14 +187,19 @@
         const urlConProtocolo = /^https?:\/\//i.test(urlSitio) ? urlSitio : `https://${urlSitio}`;
         const hostname = new URL(urlConProtocolo).hostname;
         const dominioBase = extraerDominioBase(hostname);
-        srcFinal = `https://www.google.com/s2/favicons?domain=${dominioBase}&sz=128`;
+        srcFinal = construirUrlLogoAutomatico(dominioBase);
+        fallbackUrl = `https://www.google.com/s2/favicons?domain=${dominioBase}&sz=128`;
       } catch (e) {
         srcFinal = '';
       }
     }
 
     if (srcFinal) {
-      previewBox.innerHTML = `<img src="${srcFinal}" alt="Logo" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\\'material-symbols-outlined text-outline text-[22px]\\'>broken_image</span>'">`;
+      const manejarErrorImg = fallbackUrl
+        ? `if (!this.dataset.fallbackUsed) { this.dataset.fallbackUsed = '1'; this.src = '${fallbackUrl}'; } else { this.parentElement.innerHTML = '<span class=\\'material-symbols-outlined text-outline text-[22px]\\'>broken_image</span>'; }`
+        : `this.parentElement.innerHTML='<span class=\\'material-symbols-outlined text-outline text-[22px]\\'>broken_image</span>'`;
+
+      previewBox.innerHTML = `<img src="${srcFinal}" alt="Logo" class="w-full h-full object-contain" onerror="${manejarErrorImg}">`;
     } else {
       previewBox.innerHTML = `<span class="material-symbols-outlined text-outline text-[22px]">language</span>`;
     }
@@ -475,7 +486,8 @@
       } else {
         if (spanNombreArchivo) spanNombreArchivo.textContent = '';
         btnQuitarArchivo?.classList.add('hidden');
-        document.getElementById('input-enlace-logo').value = enlace.logo.includes('google.com/s2/favicons') ? '' : enlace.logo;
+        const esAutomatico = enlace.logo.includes('google.com/s2/favicons') || enlace.logo.includes('unavatar.io/');
+        document.getElementById('input-enlace-logo').value = esAutomatico ? '' : enlace.logo;
       }
 
       document.getElementsByName('radio-estado').forEach(r => {

@@ -323,6 +323,11 @@ function extraerDominioBase(hostname) {
     return limpio;
 }
 
+function construirUrlLogoAutomatico(dominioBase) {
+    const googleFavicon = encodeURIComponent(`https://www.google.com/s2/favicons?domain=${dominioBase}&sz=128`);
+    return `https://unavatar.io/${dominioBase}?fallback=${googleFavicon}`;
+}
+
 function resolverLogo(url, logoIngresado, archivoSubido) {
     // 1. Archivo subido con Multer
     if (archivoSubido) {
@@ -332,11 +337,11 @@ function resolverLogo(url, logoIngresado, archivoSubido) {
     if (logoIngresado && logoIngresado.trim() !== '') {
         return logoIngresado.trim();
     }
-    // 3. Automático: Favicon del dominio base
+    // 3. Automático: unavatar.io con respaldo de Google Favicons
     try {
         const hostname = new URL(url).hostname;
         const dominioBase = extraerDominioBase(hostname);
-        return `https://www.google.com/s2/favicons?domain=${dominioBase}&sz=128`;
+        return construirUrlLogoAutomatico(dominioBase);
     } catch (e) {
         return '/images/default-link.png';
     }
@@ -448,5 +453,178 @@ router.patch('/enlaces/:id/estado', verificarSesion, esAdmin, (req, res) => {
         res.json({ success: true, message: `Enlace marcado como ${estado || 'Inactivo'}.` });
     });
 });
+// =========================================================================
+// MÓDULO DE GESTIÓN DE CARRUSEL DE FOTOS (CON MULTER)
+// =========================================================================
 
+const dirCarrusel = path.join(__dirname, '../../public/images/carrusel');
+if (!fs.existsSync(dirCarrusel)) {
+    fs.mkdirSync(dirCarrusel, { recursive: true });
+}
+
+const storageCarrusel = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, dirCarrusel);
+    },
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname).toLowerCase();
+        const nombreUnico = `slide-${Date.now()}-${Math.round(Math.random() * 1e6)}${ext}`;
+        cb(null, nombreUnico);
+    }
+});
+
+const uploadCarrusel = multer({
+    storage: storageCarrusel,
+    limits: { fileSize: 5 * 1024 * 1024 }, // Máximo 5MB por foto
+    fileFilter: (req, file, cb) => {
+        const permitidos = /\/(jpeg|jpg|png|webp)$/i;
+        const extOk = /\.(jpeg|jpg|png|webp)$/i.test(path.extname(file.originalname));
+        const mimeOk = permitidos.test(file.mimetype);
+        if (extOk || mimeOk) {
+            return cb(null, true);
+        }
+        cb(new Error('Solo se permiten imágenes JPG, JPEG, PNG o WEBP para el carrusel.'));
+    }
+});
+
+function eliminarArchivoCarruselSiEsLocal(rutaImagen) {
+    if (!rutaImagen || typeof rutaImagen !== 'string') return;
+    if (rutaImagen.startsWith('/images/carrusel/')) {
+        const nombreArchivo = path.basename(rutaImagen);
+        const rutaFisica = path.join(dirCarrusel, nombreArchivo);
+        if (fs.existsSync(rutaFisica)) {
+            fs.unlink(rutaFisica, (err) => {
+                if (err) console.error('No se pudo eliminar archivo del carrusel:', err);
+            });
+        }
+    }
+}
+
+// 15. OBTENER FOTOS DEL CARRUSEL (GET)
+router.get('/carrusel', verificarSesion, (req, res) => {
+    const query = `
+        SELECT Id AS id, titulo, ubicacion, imagen, estado, creado_en
+        FROM carrusel
+        ORDER BY Id ASC
+    `;
+    conexion.query(query, (err, results) => {
+        if (err) {
+            console.error('Error al cargar el carrusel:', err);
+            return res.status(500).json({ success: false, message: 'Error al cargar las fotos del carrusel.' });
+        }
+        res.json({ success: true, slides: results });
+    });
+});
+
+// 16. CREAR FOTO EN CARRUSEL (POST con Multer)
+router.post('/carrusel', verificarSesion, esAdmin, (req, res) => {
+    uploadCarrusel.single('imagenArchivo')(req, res, (errUpload) => {
+        if (errUpload) {
+            return res.status(400).json({ success: false, message: errUpload.message || 'Error al subir la imagen.' });
+        }
+
+        const { titulo, ubicacion, estado } = req.body;
+        if (!titulo || !titulo.trim() || !ubicacion || !ubicacion.trim()) {
+            if (req.file) eliminarArchivoCarruselSiEsLocal(`/images/carrusel/${req.file.filename}`);
+            return res.status(400).json({ success: false, message: 'El título y la ubicación son obligatorios.' });
+        }
+
+        if (!req.file) {
+            return res.status(400).json({ success: false, message: 'Debes seleccionar una foto desde tu PC.' });
+        }
+
+        const rutaImagen = `/images/carrusel/${req.file.filename}`;
+        const estadoValido = estado === 'Inactivo' ? 'Inactivo' : 'Activo';
+
+        const query = `INSERT INTO carrusel (titulo, ubicacion, imagen, estado) VALUES (?, ?, ?, ?)`;
+        conexion.query(query, [titulo.trim(), ubicacion.trim(), rutaImagen, estadoValido], (err, result) => {
+            if (err) {
+                eliminarArchivoCarruselSiEsLocal(rutaImagen);
+                console.error('Error al guardar foto en carrusel:', err);
+                return res.status(500).json({ success: false, message: 'Error al guardar la foto en la base de datos.' });
+            }
+            res.json({ success: true, message: 'Foto agregada al carrusel exitosamente.', id: result.insertId });
+        });
+    });
+});
+
+// 17. ACTUALIZAR FOTO DEL CARRUSEL (PUT con Multer)
+router.put('/carrusel/:id', verificarSesion, esAdmin, (req, res) => {
+    uploadCarrusel.single('imagenArchivo')(req, res, (errUpload) => {
+        if (errUpload) {
+            return res.status(400).json({ success: false, message: errUpload.message || 'Error al subir la imagen.' });
+        }
+
+        const { id } = req.params;
+        const { titulo, ubicacion, estado } = req.body;
+
+        if (!titulo || !titulo.trim() || !ubicacion || !ubicacion.trim()) {
+            if (req.file) eliminarArchivoCarruselSiEsLocal(`/images/carrusel/${req.file.filename}`);
+            return res.status(400).json({ success: false, message: 'El título y la ubicación son obligatorios.' });
+        }
+
+        conexion.query(`SELECT imagen FROM carrusel WHERE Id = ?`, [id], (errSelect, rows) => {
+            if (errSelect || rows.length === 0) {
+                if (req.file) eliminarArchivoCarruselSiEsLocal(`/images/carrusel/${req.file.filename}`);
+                return res.status(404).json({ success: false, message: 'La foto indicada no existe.' });
+            }
+
+            const imagenAnterior = rows[0].imagen;
+            const nuevaImagen = req.file ? `/images/carrusel/${req.file.filename}` : imagenAnterior;
+            const estadoValido = estado === 'Inactivo' ? 'Inactivo' : 'Activo';
+
+            const queryUpdate = `UPDATE carrusel SET titulo = ?, ubicacion = ?, imagen = ?, estado = ? WHERE Id = ?`;
+            conexion.query(queryUpdate, [titulo.trim(), ubicacion.trim(), nuevaImagen, estadoValido, id], (errUpdate) => {
+                if (errUpdate) {
+                    if (req.file) eliminarArchivoCarruselSiEsLocal(nuevaImagen);
+                    console.error('Error al actualizar foto del carrusel:', errUpdate);
+                    return res.status(500).json({ success: false, message: 'Error al actualizar la foto.' });
+                }
+
+                if (req.file && imagenAnterior !== nuevaImagen) {
+                    eliminarArchivoCarruselSiEsLocal(imagenAnterior);
+                }
+
+                res.json({ success: true, message: 'Foto actualizada correctamente.' });
+            });
+        });
+    });
+});
+
+// 18. CAMBIAR ESTADO DE FOTO DEL CARRUSEL (PATCH)
+router.patch('/carrusel/:id/estado', verificarSesion, esAdmin, (req, res) => {
+    const { id } = req.params;
+    const estadoValido = req.body.estado === 'Inactivo' ? 'Inactivo' : 'Activo';
+
+    const query = `UPDATE carrusel SET estado = ? WHERE Id = ?`;
+    conexion.query(query, [estadoValido, id], (err) => {
+        if (err) {
+            console.error('Error al cambiar estado de foto:', err);
+            return res.status(500).json({ success: false, message: 'Error al cambiar el estado.' });
+        }
+        res.json({ success: true, message: `Foto marcada como ${estadoValido}.` });
+    });
+});
+
+// 19. ELIMINAR FOTO DEL CARRUSEL (DELETE)
+router.delete('/carrusel/:id', verificarSesion, esAdmin, (req, res) => {
+    const { id } = req.params;
+
+    conexion.query(`SELECT imagen FROM carrusel WHERE Id = ?`, [id], (errSelect, rows) => {
+        if (errSelect || rows.length === 0) {
+            return res.status(404).json({ success: false, message: 'La foto no fue encontrada.' });
+        }
+
+        const imagenGuardada = rows[0].imagen;
+        conexion.query(`DELETE FROM carrusel WHERE Id = ?`, [id], (errDelete) => {
+            if (errDelete) {
+                console.error('Error al eliminar foto del carrusel:', errDelete);
+                return res.status(500).json({ success: false, message: 'Error al eliminar la foto.' });
+            }
+
+            eliminarArchivoCarruselSiEsLocal(imagenGuardada);
+            res.json({ success: true, message: 'Foto eliminada del carrusel.' });
+        });
+    });
+});
 module.exports = router;

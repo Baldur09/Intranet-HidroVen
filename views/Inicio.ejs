@@ -33,7 +33,7 @@
             <div class="flex flex-wrap sm:flex-nowrap items-center gap-space-sm relative z-10">
               <div class="bg-surface-container-low px-space-md py-2.5 rounded-lg flex items-center gap-3">
                 <div class="w-9 h-9 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
-                  <span class="material-symbols-outlined text-[20px]">water_drop</span>
+                  <span class="material-symbols-outlined text-[20px]" translate="no">water_drop</span>
                 </div>
                 <div>
                   <div class="flex items-center gap-1.5">
@@ -49,60 +49,9 @@
 
         <!-- Hero Facility Showcase & Operational News Ticker -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
-          <!-- Main Visual Showcase (Embalse Los Quediches reference) -->
-          <div class="rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm flex flex-col relative group lg:col-span-12">
-            <div class="relative h-80 sm:h-96 w-full overflow-hidden">
-              <div class="w-full h-full bg-cover bg-center transition-all duration-700 ease-out transform group-hover:scale-105" data-alt="Photographic drone view of Venezuelan hydraulic infrastructure Embalse Los Quediches reservoir..." id="hero-carousel-slide" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBdTwU31t1t-DkR-cFcktoJ5aw0_u6BlEjvLGlSA4b9FnH18KwvLvfptKdEuK8yTDjEx0vRu1EjsPXNLxL_LJOaSoPtiWc3uOc3aR6RK7n4QSALgTUtlh0O-qjCtdDbxtSLUBTNk1_lslPHeJHypwC87io11SKvG43jzvQ8mqntdYjsnYf9UoRTCH7ZpNBKtaD0-1Qui53gyOb1ZtWe-SaOGmISOBEhRIdvPCxxFztR3_ce8ZqAPBaP&quot;); opacity: 1;">
-                <div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/30 to-transparent"></div>
-              </div>
-              <!-- Glass Tags -->
-              <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-                <div class="backdrop-blur-md bg-surface/90 px-3 py-1 rounded-full text-on-surface flex items-center gap-1.5 shadow-sm">
-                  <span class="material-symbols-outlined text-[16px] text-primary">pin_drop</span>
-                  <span class="font-label-caps text-label-caps text-primary font-bold" id="slide-location">ESTADO LARA • SISTEMA HIDRÁULICO OCCIDENTE</span>
-                </div>
-                <div class="backdrop-blur-md bg-surface/90 px-3 py-1 rounded-full text-secondary flex items-center gap-1.5 shadow-sm">
-                  <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-                  <span class="font-label-caps text-label-caps font-bold" id="slide-status">Operación Normal</span>
-                </div>
-              </div>
-              <!-- Slide Controls -->
-              <div class="absolute top-4 right-4 flex items-center gap-1">
-                <button aria-label="Anterior" class="w-8 h-8 rounded-full bg-surface/85 backdrop-blur-md text-on-surface hover:bg-surface flex items-center justify-center transition-colors shadow-sm" id="prev-slide-btn">
-                  <span class="material-symbols-outlined text-[18px]">chevron_left</span>
-                </button>
-                <button aria-label="Siguiente" class="w-8 h-8 rounded-full bg-surface/85 backdrop-blur-md text-on-surface hover:bg-surface flex items-center justify-center transition-colors shadow-sm" id="next-slide-btn">
-                  <span class="material-symbols-outlined text-[18px]">chevron_right</span>
-                </button>
-              </div>
-              <!-- Caption Container -->
-              <div class="absolute bottom-4 left-4 right-4 text-on-primary">
-                <div class="backdrop-blur-md bg-on-surface/70 p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
-                  <div>
-                    <h2 class="font-headline-md text-headline-md text-surface-container-lowest font-bold" id="slide-title">Embalse Los Quediches</h2>
-                    <p class="font-body-sm text-body-sm text-surface-container-high" id="slide-desc">Cota actual en nivel óptimo de bombeo. Abastecimiento sostenido a la red alta de Carora y zonas aledañas.</p>
-                  </div>
-                  <div class="flex items-center gap-3 shrink-0">
-                    <div class="text-right">
-                      <div class="font-label-caps text-label-caps text-secondary-fixed">Capacidad Activa</div>
-                      <div class="font-headline-sm text-headline-sm text-surface-container-lowest font-bold" id="slide-metric">84.2%</div>
-                    </div>
-                    <div class="w-12 h-12 rounded-lg bg-primary-container/80 flex items-center justify-center text-on-primary-container">
-                      <span class="material-symbols-outlined text-[24px]">waves</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Carousel Micro-indicators -->
-            <div class="px-space-md py-3 bg-surface-container-lowest flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <button class="slide-indicator h-1.5 rounded-full transition-all w-8 bg-primary" data-index="0"></button>
-                <button class="slide-indicator h-1.5 rounded-full transition-all w-3 bg-surface-container-highest" data-index="1"></button>
-                <button class="slide-indicator h-1.5 rounded-full transition-all w-3 bg-surface-container-highest" data-index="2"></button>
-              </div>
-              <span class="font-label-caps text-label-caps text-tertiary">Actualización hidrométrica continua</span>
-            </div>
+          <!-- Carrusel de Fotos Dinámico -->
+          <div class="lg:col-span-12">
+            <%- include('partials/carrusel-inicio', { slides: typeof slides !== 'undefined' ? slides : [] }) %>
           </div>
 
           <!-- Live Broadcast / Operational Ticker & Priority Notices -->
@@ -111,14 +60,14 @@
             <a class="bg-primary-container text-on-primary-container rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex items-center justify-between group" href="https://correo.hidroven.gob.ve" rel="noopener" target="_blank">
               <div class="flex items-center gap-3">
                 <div class="w-11 h-11 rounded-lg bg-surface-container-lowest text-primary flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
-                  <span class="material-symbols-outlined text-[24px]">forward_to_inbox</span>
+                  <span class="material-symbols-outlined text-[24px]" translate="no">forward_to_inbox</span>
                 </div>
                 <div>
                   <div class="font-headline-sm text-headline-sm text-on-primary font-bold">Buzón Zimbra</div>
                   <div class="font-body-sm text-body-sm text-on-primary/80">Acceso oficial a mensajería corporativa</div>
                 </div>
               </div>
-              <span class="material-symbols-outlined text-on-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              <span class="material-symbols-outlined text-on-primary group-hover:translate-x-1 transition-transform" translate="no">arrow_forward</span>
             </a>
           </div>
         </div>
@@ -137,7 +86,7 @@
             <a class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col justify-between group cursor-pointer border border-surface-container" href="/apps">
               <div>
                 <div class="w-12 h-12 rounded-xl bg-surface-container-low text-primary flex items-center justify-center mb-space-md group-hover:bg-primary group-hover:text-on-primary transition-all">
-                  <span class="material-symbols-outlined text-[28px]">apps</span>
+                  <span class="material-symbols-outlined text-[28px]" translate="no">apps</span>
                 </div>
                 <span class="font-label-caps text-label-caps text-secondary font-bold">Servicios Digitales</span>
                 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1">Aplicaciones Corporativas</h3>
@@ -147,14 +96,14 @@
               </div>
               <div class="pt-space-md flex items-center gap-1 text-primary font-label-lg text-label-lg group-hover:gap-2 transition-all">
                 <span>Abrir catálogo de aplicaciones</span>
-                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                <span class="material-symbols-outlined text-[18px]" translate="no">arrow_forward</span>
               </div>
             </a>
             <!-- Pillar 2: Phone Directory -->
             <a class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between group" href="/directorio">
               <div>
                 <div class="w-12 h-12 rounded-xl bg-surface-container-low text-primary flex items-center justify-center mb-space-md group-hover:bg-primary group-hover:text-on-primary transition-all">
-                  <span class="material-symbols-outlined text-[28px]">contact_phone</span>
+                  <span class="material-symbols-outlined text-[28px]" translate="no">contact_phone</span>
                 </div>
                 <span class="font-label-caps text-label-caps text-secondary font-bold">Comunicaciones Internas</span>
                 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1">Directorio Telefónico</h3>
@@ -164,14 +113,14 @@
               </div>
               <div class="pt-space-md flex items-center gap-1 text-primary font-label-lg text-label-lg group-hover:gap-2 transition-all">
                 <span>Consultar extensiones activas</span>
-                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                <span class="material-symbols-outlined text-[18px]" translate="no">arrow_forward</span>
               </div>
             </a>
             <!-- Pillar 3: Documentation -->
             <a class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between group" href="#documentacion">
               <div>
                 <div class="w-12 h-12 rounded-xl bg-surface-container-low text-primary flex items-center justify-center mb-space-md group-hover:bg-primary group-hover:text-on-primary transition-all">
-                  <span class="material-symbols-outlined text-[28px]">folder_special</span>
+                  <span class="material-symbols-outlined text-[28px]" translate="no">folder_special</span>
                 </div>
                 <span class="font-label-caps text-label-caps text-secondary font-bold">Repositorio Normativo</span>
                 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1">Documentación Organizacional</h3>
@@ -181,7 +130,7 @@
               </div>
               <div class="pt-space-md flex items-center gap-1 text-primary font-label-lg text-label-lg group-hover:gap-2 transition-all">
                 <span>Descargar manuales y guías</span>
-                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                <span class="material-symbols-outlined text-[18px]" translate="no">arrow_forward</span>
               </div>
             </a>
           </div>
@@ -199,15 +148,15 @@
             <div class="rounded-xl shadow-sm bg-surface-container-lowest p-space-md lg:p-space-lg flex flex-col gap-space-md border border-outline-variant/30">
               <div class="space-y-1">
                 <div class="flex items-center gap-2.5">
-                  <span class="material-symbols-outlined text-[22px] text-primary">account_balance</span>
+                  <span class="material-symbols-outlined text-[22px] text-primary" translate="no">account_balance</span>
                   <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Banca Nacional</h3>
                 </div>
                 <p class="font-body-sm text-body-sm text-on-surface-variant">Plataformas financieras para pago de beneficios salariales, fideicomisos y trámites de tesorería corporativa.</p>
               </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-sm">
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- BDV -->
-                <a class="px-3.5 py-3 rounded-lg bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center gap-3 border border-outline-variant/15 group" href="https://www.bancodevenezuela.com" rel="noopener" target="_blank">
-                  <div class="w-10 h-10 rounded-lg bg-white border border-outline-variant/30 flex items-center justify-center p-1.5 flex-shrink-0">
+                <a class="px-4 py-4 rounded-xl bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center gap-3.5 border border-outline-variant/15 group" href="https://www.bancodevenezuela.com" rel="noopener" target="_blank">
+                  <div class="w-12 h-12 rounded-xl bg-white border border-outline-variant/30 flex items-center justify-center p-2 flex-shrink-0">
                     <img src="https://unavatar.io/bancodevenezuela.com" alt="BDV" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
                     <span class="hidden font-headline-sm text-label-caps font-bold text-primary">BDV</span>
                   </div>
@@ -217,8 +166,8 @@
                   </div>
                 </a>
                 <!-- BBVA Provincial -->
-                <a class="px-3.5 py-3 rounded-lg bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center gap-3 border border-outline-variant/15 group" href="https://www.provincial.com" rel="noopener" target="_blank">
-                  <div class="w-10 h-10 rounded-lg bg-white border border-outline-variant/30 flex items-center justify-center p-1.5 flex-shrink-0">
+                <a class="px-4 py-4 rounded-xl bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center gap-3.5 border border-outline-variant/15 group" href="https://www.provincial.com" rel="noopener" target="_blank">
+                  <div class="w-12 h-12 rounded-xl bg-white border border-outline-variant/30 flex items-center justify-center p-2 flex-shrink-0">
                     <img src="https://unavatar.io/provincial.com" alt="BP" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
                     <span class="hidden font-headline-sm text-label-caps font-bold text-secondary">BP</span>
                   </div>
@@ -228,8 +177,8 @@
                   </div>
                 </a>
                 <!-- Banesco -->
-                <a class="px-3.5 py-3 rounded-lg bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center gap-3 border border-outline-variant/15 group" href="https://www.banesco.com" rel="noopener" target="_blank">
-                  <div class="w-10 h-10 rounded-lg bg-white border border-outline-variant/30 flex items-center justify-center p-1.5 flex-shrink-0">
+                <a class="px-4 py-4 rounded-xl bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center gap-3.5 border border-outline-variant/15 group" href="https://www.banesco.com" rel="noopener" target="_blank">
+                  <div class="w-12 h-12 rounded-xl bg-white border border-outline-variant/30 flex items-center justify-center p-2 flex-shrink-0">
                     <img src="https://unavatar.io/banesco.com" alt="BAN" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
                     <span class="hidden font-headline-sm text-label-caps font-bold text-primary">BAN</span>
                   </div>
@@ -243,7 +192,7 @@
                 <span>Operaciones de Nómina Centralizada</span>
                 <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/10 hover:bg-primary text-primary hover:text-on-primary transition-all font-label-md text-label-md font-semibold cursor-pointer" href="/bancos">
                   <span>Abrir catálogo de bancos</span>
-                  <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  <span class="material-symbols-outlined text-[16px]" translate="no">arrow_forward</span>
                 </a>
               </div>
             </div>
@@ -252,74 +201,51 @@
             <div class="rounded-xl shadow-sm bg-surface-container-lowest p-space-md lg:p-space-lg flex flex-col gap-space-md border border-outline-variant/30">
               <div class="space-y-1">
                 <div class="flex items-center gap-2.5">
-                  <span class="material-symbols-outlined text-[22px] text-primary">assured_workload</span>
+                  <span class="material-symbols-outlined text-[22px] text-primary" translate="no">assured_workload</span>
                   <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Organismos Gubernamentales</h3>
                 </div>
                 <p class="font-body-sm text-body-sm text-on-surface-variant">Enlaces institucionales oficiales del Poder Popular de Atención de las Aguas y entes de control fiscal.</p>
               </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- MinAguas -->
-                <a class="px-4 py-3 rounded-lg bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center justify-between border border-outline-variant/15 group" href="http://minaguas.gob.ve" rel="noopener" target="_blank">
-                  <div class="flex items-center gap-3 min-w-0">
-                    <div class="w-10 h-10 rounded-lg bg-white border border-outline-variant/30 flex items-center justify-center p-1.5 flex-shrink-0">
-                      <img src="https://unavatar.io/minaguas.gob.ve" alt="MA" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
-                      <span class="hidden font-headline-sm text-label-caps font-bold text-primary">MA</span>
-                    </div>
-                    <div class="min-w-0">
-                      <div class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors">MinAguas</div>
-                      <div class="font-body-sm text-body-sm text-outline">Órgano Rector Nacional</div>
-                    </div>
+                <a class="px-4 py-4 rounded-xl bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center gap-3.5 border border-outline-variant/15 group" href="http://minaguas.gob.ve" rel="noopener" target="_blank">
+                  <div class="w-12 h-12 rounded-xl bg-white border border-outline-variant/30 flex items-center justify-center p-2 flex-shrink-0">
+                    <img src="https://unavatar.io/minaguas.gob.ve" alt="MA" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                    <span class="hidden font-headline-sm text-label-caps font-bold text-primary">MA</span>
                   </div>
-                  <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[18px]">open_in_new</span>
+                  <div class="min-w-0">
+                    <div class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors">MinAguas</div>
+                    <div class="font-body-sm text-body-sm text-outline">Órgano Rector Nacional</div>
+                  </div>
                 </a>
                 <!-- SENIAT Portal -->
-                <a class="px-4 py-3 rounded-lg bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center justify-between border border-outline-variant/15 group" href="https://seniatenlinea.seniat.gob.ve/" rel="noopener" target="_blank">
-                  <div class="flex items-center gap-3 min-w-0">
-                    <div class="w-10 h-10 rounded-lg bg-white border border-outline-variant/30 flex items-center justify-center p-1.5 flex-shrink-0">
-                      <img src="/images/logos/logo-1794945947390-20901.jpg" alt="SN" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
-                      <span class="hidden font-headline-sm text-label-caps font-bold text-primary">SN</span>
-                    </div>
-                    <div class="min-w-0">
-                      <div class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors">SENIAT Portal</div>
-                      <div class="font-body-sm text-body-sm text-outline">Declaraciones Tributarias</div>
-                    </div>
+                <a class="px-4 py-4 rounded-xl bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center gap-3.5 border border-outline-variant/15 group" href="https://seniatenlinea.seniat.gob.ve/" rel="noopener" target="_blank">
+                  <div class="w-12 h-12 rounded-xl bg-white border border-outline-variant/30 flex items-center justify-center p-2 flex-shrink-0">
+                    <img src="/images/logos/logo-1794945947390-20901.jpg" alt="SN" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                    <span class="hidden font-headline-sm text-label-caps font-bold text-primary">SN</span>
                   </div>
-                  <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[18px]">open_in_new</span>
+                  <div class="min-w-0">
+                    <div class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors">SENIAT Portal</div>
+                    <div class="font-body-sm text-body-sm text-outline">Declaraciones Tributarias</div>
+                  </div>
                 </a>
                 <!-- IVSS Seguro Social -->
-                <a class="px-4 py-3 rounded-lg bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center justify-between border border-outline-variant/15 group" href="http://www.ivss.gob.ve" rel="noopener" target="_blank">
-                  <div class="flex items-center gap-3 min-w-0">
-                    <div class="w-10 h-10 rounded-lg bg-white border border-outline-variant/30 flex items-center justify-center p-1.5 flex-shrink-0">
-                      <img src="https://unavatar.io/ivss.gob.ve" alt="IV" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
-                      <span class="hidden font-headline-sm text-label-caps font-bold text-primary">IV</span>
-                    </div>
-                    <div class="min-w-0">
-                      <div class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors">IVSS Seguro Social</div>
-                      <div class="font-body-sm text-body-sm text-outline">Cuenta Individual y Solvencias</div>
-                    </div>
+                <a class="px-4 py-4 rounded-xl bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center gap-3.5 border border-outline-variant/15 group" href="http://www.ivss.gob.ve" rel="noopener" target="_blank">
+                  <div class="w-12 h-12 rounded-xl bg-white border border-outline-variant/30 flex items-center justify-center p-2 flex-shrink-0">
+                    <img src="https://unavatar.io/ivss.gob.ve" alt="IV" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                    <span class="hidden font-headline-sm text-label-caps font-bold text-primary">IV</span>
                   </div>
-                  <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[18px]">open_in_new</span>
-                </a>
-                <!-- MPPE Educación -->
-                <a class="px-4 py-3 rounded-lg bg-surface-container-low/70 hover:bg-surface-container transition-colors flex items-center justify-between border border-outline-variant/15 group" href="http://mppe.gob.ve" rel="noopener" target="_blank">
-                  <div class="flex items-center gap-3 min-w-0">
-                    <div class="w-10 h-10 rounded-lg bg-white border border-outline-variant/30 flex items-center justify-center p-1.5 flex-shrink-0">
-                      <img src="https://unavatar.io/mppe.gob.ve" alt="MP" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
-                      <span class="hidden font-headline-sm text-label-caps font-bold text-primary">MP</span>
-                    </div>
-                    <div class="min-w-0">
-                      <div class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors">MPPE Educación</div>
-                      <div class="font-body-sm text-body-sm text-outline">Programas de Acreditación</div>
-                    </div>
+                  <div class="min-w-0">
+                    <div class="font-label-md text-label-md text-on-surface font-bold group-hover:text-primary transition-colors">IVSS Seguro Social</div>
+                    <div class="font-body-sm text-body-sm text-outline">Cuenta Individual y Solvencias</div>
                   </div>
-                  <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[18px]">open_in_new</span>
                 </a>
               </div>
               <div class="pt-2 border-t border-surface-container flex items-center justify-between text-outline font-body-sm text-body-sm">
                 <span>Marco Legal &amp; Regulaciones Sectoriales</span>
                 <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/10 hover:bg-primary text-primary hover:text-on-primary transition-all font-label-md text-label-md font-semibold cursor-pointer" href="/organismos">
                   <span>Abrir catálogo de organismos</span>
-                  <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  <span class="material-symbols-outlined text-[16px]" translate="no">arrow_forward</span>
                 </a>
               </div>
             </div>
@@ -331,7 +257,7 @@
                 <div class="space-y-space-md">
                   <div class="space-y-1">
                     <div class="flex items-center gap-2.5">
-                      <span class="material-symbols-outlined text-[22px] text-primary">school</span>
+                      <span class="material-symbols-outlined text-[22px] text-primary" translate="no">school</span>
                       <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Universidades&nbsp;</h3>
                     </div>
                     <p class="font-body-sm text-body-sm text-on-surface-variant">Convenios de profesionalización técnica en ingeniería sanitaria, hidrología y gestión ambiental.</p>
@@ -354,9 +280,9 @@
                   </div>
                 </div>
                 <div class="pt-2">
-                  <a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-bold hover:underline" href="#">
+                  <a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-bold hover:underline" href="/universidades">
                     <span>Ver convocatorias de becas para personal</span>
-                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    <span class="material-symbols-outlined text-[16px]" translate="no">arrow_forward</span>
                   </a>
                 </div>
               </div>
@@ -366,7 +292,7 @@
                 <div class="space-y-space-md">
                   <div class="space-y-1">
                     <div class="flex items-center gap-2.5">
-                      <span class="material-symbols-outlined text-[22px] text-primary">newspaper</span>
+                      <span class="material-symbols-outlined text-[22px] text-primary" translate="no">newspaper</span>
                       <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Medios de Comunicación</h3>
                     </div>
                     <p class="font-body-sm text-body-sm text-on-surface-variant">Boletines informativos de gestión pública del agua, sala de prensa y cobertura de obras nacionales.</p>
@@ -375,7 +301,7 @@
                     <div class="p-3.5 rounded-lg bg-surface-container-low/70 border border-outline-variant/15 flex items-center justify-between gap-3">
                       <div class="flex items-center gap-3 min-w-0">
                         <div class="w-9 h-9 rounded-lg bg-primary-fixed flex items-center justify-center text-primary shrink-0">
-                          <span class="material-symbols-outlined text-[18px]">campaign</span>
+                          <span class="material-symbols-outlined text-[18px]" translate="no">campaign</span>
                         </div>
                         <div class="min-w-0">
                           <div class="font-label-md text-label-md text-on-surface font-bold truncate">Boletín Hidrológico Semanal (N° 108)</div>
@@ -387,7 +313,7 @@
                     <div class="p-3.5 rounded-lg bg-surface-container-low/70 border border-outline-variant/15 flex items-center justify-between gap-3">
                       <div class="flex items-center gap-3 min-w-0">
                         <div class="w-9 h-9 rounded-lg bg-primary-fixed flex items-center justify-center text-primary shrink-0">
-                          <span class="material-symbols-outlined text-[18px]">podcasts</span>
+                          <span class="material-symbols-outlined text-[18px]" translate="no">podcasts</span>
                         </div>
                         <div class="min-w-0">
                           <div class="font-label-md text-label-md text-on-surface font-bold truncate">Podcast "Gota a Gota" HidroVen</div>
@@ -399,9 +325,9 @@
                   </div>
                 </div>
                 <div class="pt-2">
-                  <a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-bold hover:underline" href="#">
+                  <a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-bold hover:underline" href="/medios">
                     <span>Visitar Sala de Prensa y Multimedia</span>
-                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    <span class="material-symbols-outlined text-[16px]" translate="no">arrow_forward</span>
                   </a>
                 </div>
               </div>
@@ -425,86 +351,6 @@
         } catch (e) {
           console.error(e);
         }
-
-        const slides = [
-          {
-            title: "Embalse Los Quediches",
-            desc: "Cota actual en nivel óptimo de bombeo. Abastecimiento sostenido a la red alta de Carora y zonas aledañas.",
-            location: "ESTADO LARA • SISTEMA HIDRÁULICO OCCIDENTE",
-            status: "Operación Normal",
-            metric: "84.2%",
-            alt: "Photographic drone view of Venezuelan hydraulic infrastructure Embalse Los Quediches reservoir..."
-          },
-          {
-            title: "Planta Potabilizadora Ciudad Barquisimeto",
-            desc: "Proceso de clarificación y filtración rápida operando a 2.400 litros por segundo bajo estricto control fisicoquímico.",
-            location: "ESTADO LARA • PLANTA CENTRAL MACUTO",
-            status: "99.1% Eficiencia",
-            metric: "2.400 L/s",
-            alt: "Clean modern industrial architectural view of a water treatment clarification plant..."
-          },
-          {
-            title: "Estación de Bombeo y Acueducto Metropolitano",
-            desc: "Monitoreo telemetrado de motores de 3.000 HP y sistemas de protección contra golpe de ariete.",
-            location: "SISTEMA REGIONAL DEL CENTRO • ETAPA II",
-            status: "Guardia 24/7",
-            metric: "98.5%",
-            alt: "Modern hydraulic pumping station hall with massive blue industrial water pumps..."
-          }
-        ];
-
-        let currentSlideIdx = 0;
-        const heroSlide = document.getElementById('hero-carousel-slide');
-        const slideTitle = document.getElementById('slide-title');
-        const slideDesc = document.getElementById('slide-desc');
-        const slideLocation = document.getElementById('slide-location');
-        const slideStatus = document.getElementById('slide-status');
-        const slideMetric = document.getElementById('slide-metric');
-        const indicators = document.querySelectorAll('.slide-indicator');
-
-        function updateSlide(index) {
-          currentSlideIdx = (index + slides.length) % slides.length;
-          const data = slides[currentSlideIdx];
-
-          if (heroSlide) {
-            heroSlide.style.opacity = '0.4';
-            setTimeout(() => {
-              heroSlide.setAttribute('data-alt', data.alt);
-              if (slideTitle) slideTitle.textContent = data.title;
-              if (slideDesc) slideDesc.textContent = data.desc;
-              if (slideLocation) slideLocation.textContent = data.location;
-              if (slideStatus) slideStatus.textContent = data.status;
-              if (slideMetric) slideMetric.textContent = data.metric;
-              heroSlide.style.opacity = '1';
-            }, 180);
-          }
-
-          indicators.forEach((ind, i) => {
-            if (i === currentSlideIdx) {
-              ind.classList.remove('w-3', 'bg-surface-container-highest');
-              ind.classList.add('w-8', 'bg-primary');
-            } else {
-              ind.classList.remove('w-8', 'bg-primary');
-              ind.classList.add('w-3', 'bg-surface-container-highest');
-            }
-          });
-        }
-
-        const prevBtn = document.getElementById('prev-slide-btn');
-        const nextBtn = document.getElementById('next-slide-btn');
-
-        if (prevBtn) prevBtn.addEventListener('click', () => updateSlide(currentSlideIdx - 1));
-        if (nextBtn) nextBtn.addEventListener('click', () => updateSlide(currentSlideIdx + 1));
-
-        indicators.forEach((indicator, idx) => {
-          indicator.addEventListener('click', () => {
-            updateSlide(idx);
-          });
-        });
-
-        setInterval(() => {
-          updateSlide(currentSlideIdx + 1);
-        }, 8000);
       })();
     </script>
   </main>

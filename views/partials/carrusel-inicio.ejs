@@ -1,0 +1,173 @@
+<% const listaSlides = Array.isArray(slides) ? slides : []; %>
+
+<% if (listaSlides.length === 0) { %>
+  <div class="rounded-xl bg-surface-container-lowest p-8 shadow-sm border border-outline-variant/30 text-center flex flex-col items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-outline text-[32px]" translate="no">view_carousel</span>
+    <p class="font-headline-sm text-headline-sm text-on-surface font-bold">No hay fotos configuradas en el carrusel</p>
+    <p class="font-body-sm text-body-sm text-on-surface-variant">Las imágenes activas aparecerán aquí automáticamente.</p>
+  </div>
+<% } else { %>
+  <div class="rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm flex flex-col relative group" id="carrusel-principal">
+    <div class="relative h-80 sm:h-96 w-full overflow-hidden">
+      <div
+        id="hero-carousel-slide"
+        class="w-full h-full bg-cover bg-center transition-all duration-700 ease-out transform group-hover:scale-105"
+        style="background-image: url(&quot;<%= listaSlides[0].imagen %>&quot;); opacity: 1;"
+      >
+        <div class="absolute inset-0 bg-gradient-to-t from-on-surface/85 via-on-surface/20 to-transparent"></div>
+      </div>
+
+      <!-- Ubicación arriba a la izquierda -->
+      <div class="absolute top-4 left-4 z-10 max-w-[65%] sm:max-w-md">
+        <div class="backdrop-blur-md bg-surface/90 px-3.5 py-1.5 rounded-full text-on-surface flex items-center gap-1.5 shadow-sm">
+          <span class="material-symbols-outlined text-[16px] text-primary shrink-0" translate="no">pin_drop</span>
+          <span class="font-label-caps text-label-caps text-primary font-bold truncate" id="slide-location">
+            <%= listaSlides[0].ubicacion %>
+          </span>
+        </div>
+      </div>
+
+      <!-- Flechas arriba a la derecha -->
+      <div class="absolute top-4 right-4 flex items-center gap-1.5 z-10">
+        <button
+          type="button"
+          aria-label="Anterior"
+          id="prev-slide-btn"
+          translate="no"
+          class="w-9 h-9 rounded-full bg-surface/90 backdrop-blur-md text-on-surface hover:bg-surface flex items-center justify-center transition-colors shadow-sm cursor-pointer"
+        >
+          <span class="material-symbols-outlined text-[20px]" translate="no">chevron_left</span>
+        </button>
+        <button
+          type="button"
+          aria-label="Siguiente"
+          id="next-slide-btn"
+          translate="no"
+          class="w-9 h-9 rounded-full bg-surface/90 backdrop-blur-md text-on-surface hover:bg-surface flex items-center justify-center transition-colors shadow-sm cursor-pointer"
+        >
+          <span class="material-symbols-outlined text-[20px]" translate="no">chevron_right</span>
+        </button>
+      </div>
+
+      <!-- Título abajo -->
+      <div class="absolute bottom-4 left-4 right-4 text-on-primary z-10">
+        <div class="backdrop-blur-md bg-on-surface/75 px-4 py-3 rounded-lg">
+          <h2 class="font-headline-md text-headline-md text-surface-container-lowest font-bold" id="slide-title">
+            <%= listaSlides[0].titulo %>
+          </h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicadores inferiores -->
+    <div class="px-space-md py-3 bg-surface-container-lowest flex items-center justify-between">
+      <div class="flex items-center gap-2" id="carousel-indicators">
+        <% listaSlides.forEach((slide, idx) => { %>
+          <button
+            type="button"
+            aria-label="Ir a diapositiva <%= idx + 1 %>"
+            data-index="<%= idx %>"
+            class="slide-indicator h-1.5 rounded-full transition-all cursor-pointer <%= idx === 0 ? 'w-8 bg-primary' : 'w-3 bg-surface-container-highest' %>"
+          ></button>
+        <% }) %>
+      </div>
+      <span class="font-label-caps text-label-caps text-tertiary" id="slide-counter">
+        1 / <%= listaSlides.length %>
+      </span>
+    </div>
+  </div>
+
+  <script id="carrusel-slides-json" type="application/json"><%- JSON.stringify(listaSlides) %></script>
+  <script>
+    (function() {
+      const jsonTag = document.getElementById('carrusel-slides-json');
+      let slidesData = [];
+      try {
+        slidesData = jsonTag ? JSON.parse(jsonTag.textContent || '[]') : [];
+      } catch (e) {
+        slidesData = [];
+      }
+
+      if (!Array.isArray(slidesData) || slidesData.length === 0) return;
+
+      let currentIdx = 0;
+      let autoPlayTimer = null;
+
+      const heroSlide = document.getElementById('hero-carousel-slide');
+      const slideTitle = document.getElementById('slide-title');
+      const slideLocation = document.getElementById('slide-location');
+      const slideCounter = document.getElementById('slide-counter');
+      const indicators = document.querySelectorAll('.slide-indicator');
+      const prevBtn = document.getElementById('prev-slide-btn');
+      const nextBtn = document.getElementById('next-slide-btn');
+
+      function renderSlide(index) {
+        currentIdx = (index + slidesData.length) % slidesData.length;
+        const item = slidesData[currentIdx];
+
+        if (heroSlide) {
+          heroSlide.style.opacity = '0.35';
+          setTimeout(() => {
+            heroSlide.style.backgroundImage = `url("${item.imagen}")`;
+            if (slideTitle) slideTitle.textContent = item.titulo;
+            if (slideLocation) slideLocation.textContent = item.ubicacion;
+            if (slideCounter) slideCounter.textContent = `${currentIdx + 1} / ${slidesData.length}`;
+            heroSlide.style.opacity = '1';
+          }, 180);
+        }
+
+        indicators.forEach((btn, i) => {
+          if (i === currentIdx) {
+            btn.classList.remove('w-3', 'bg-surface-container-highest');
+            btn.classList.add('w-8', 'bg-primary');
+          } else {
+            btn.classList.remove('w-8', 'bg-primary');
+            btn.classList.add('w-3', 'bg-surface-container-highest');
+          }
+        });
+      }
+
+      function startAutoPlay() {
+        stopAutoPlay();
+        if (slidesData.length > 1) {
+          autoPlayTimer = setInterval(() => {
+            renderSlide(currentIdx + 1);
+          }, 7000);
+        }
+      }
+
+      function stopAutoPlay() {
+        if (autoPlayTimer) {
+          clearInterval(autoPlayTimer);
+          autoPlayTimer = null;
+        }
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          renderSlide(currentIdx - 1);
+          startAutoPlay();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          renderSlide(currentIdx + 1);
+          startAutoPlay();
+        });
+      }
+
+      indicators.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const idx = Number(btn.getAttribute('data-index'));
+          if (!Number.isNaN(idx)) {
+            renderSlide(idx);
+            startAutoPlay();
+          }
+        });
+      });
+
+      startAutoPlay();
+    })();
+  </script>
+<% } %>

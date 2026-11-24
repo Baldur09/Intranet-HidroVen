@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+  <!-- Head reutilizable de la intranet -->
+  <%- include('partials/head', { titulo: pantalla.nombre + ' | Portal Intranet' }) %>
+
+<body class="bg-background text-on-surface antialiased font-body-md flex flex-col min-h-screen">
+  <!-- Encabezado principal -->
+  <%- include('partials/header') %>
+
+  <main class="w-full pt-20 bg-background min-h-screen flex-1">
+    <div class="flex flex-col w-full">
+      <div class="max-w-[1280px] w-full mx-auto px-margin-mobile lg:px-margin space-y-space-xl pb-space-xl">
+
+      <!-- 1. Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+        <a class="hover:text-primary transition-colors flex items-center gap-1" href="/inicio">
+          <span class="material-symbols-outlined text-[16px]" translate="no">domain</span>
+          <span>Portal Intranet</span>
+        </a>
+        <span class="material-symbols-outlined text-[14px] text-outline" translate="no">chevron_right</span>
+        <span class="text-primary font-semibold"><%= pantalla.nombre %></span>
+      </nav>
+
+      <!-- 2. Encabezado Corporativo Compacto y Sutil -->
+      <section class="relative overflow-hidden rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary px-5 py-4 sm:px-6 sm:py-5 shadow-sm">
+        <div class="absolute -right-8 -top-10 w-44 h-44 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-[24px] text-white" translate="no">newspaper</span>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="font-headline-md text-[22px] sm:text-[24px] text-white font-bold leading-tight">
+                  <%= pantalla.nombre %>
+                </h1>
+                <span class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/15 text-white font-label-caps text-[9px] tracking-wider uppercase">
+                  Difusión y Prensa
+                </span>
+              </div>
+              <p class="font-body-sm text-body-sm text-white/85 mt-0.5">
+                Portales informativos, medios nacionales, prensa institucional y canales de difusión sectorial.
+              </p>
+            </div>
+          </div>
+
+          <!-- Buscador rápido -->
+          <div class="relative w-full md:w-72 flex-shrink-0">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/75 text-[18px] pointer-events-none" translate="no">search</span>
+            <input
+              id="buscador-portal"
+              type="text"
+              placeholder="Buscar medio o portal..."
+              class="w-full h-10 pl-9 pr-3.5 bg-white/15 backdrop-blur-sm border border-white/25 rounded-lg text-body-sm text-white placeholder:text-white/75 focus:outline-none focus:bg-white focus:text-on-surface focus:placeholder:text-outline transition-all"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Contenedor Dinámico de Subdivisiones y Enlaces -->
+      <% const conEnlaces = subdivisiones.filter(s => s.enlaces && s.enlaces.length > 0); %>
+
+      <% if (conEnlaces.length === 0) { %>
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-surface-container-high p-10 text-center flex flex-col items-center gap-2.5">
+          <div class="w-12 h-12 rounded-xl bg-primary-fixed/50 text-primary flex items-center justify-center">
+            <span class="material-symbols-outlined text-[26px]" translate="no">newspaper</span>
+          </div>
+          <h2 class="font-headline-sm text-headline-sm text-on-surface">No hay medios de comunicación registrados aún</h2>
+          <p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">
+            Los accesos directos aparecerán organizados por categoría en cuanto sean agregados desde el módulo de administración.
+          </p>
+        </div>
+      <% } else { %>
+        <div id="contenedor-subdivisiones" class="space-y-8">
+          <% conEnlaces.forEach(sub => { %>
+            <section class="bloque-subdivision space-y-4">
+              
+              <!-- Título de la Subdivisión -->
+              <div class="flex items-center justify-between pb-2.5 border-b border-outline-variant/40">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-primary-fixed/70 text-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]" translate="no">campaign</span>
+                  </div>
+                  <h2 class="font-headline-sm text-[18px] text-on-surface font-bold"><%= sub.nombre %></h2>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-surface-container-low border border-outline-variant/30 text-tertiary font-label-caps text-label-caps">
+                  <%= sub.enlaces.length %> <%= sub.enlaces.length === 1 ? 'medio' : 'medios' %>
+                </span>
+              </div>
+
+              <!-- Cuadrícula de Tarjetas -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <% sub.enlaces.forEach(enlace => { 
+                     let dominioLimpio = enlace.url;
+                     try { dominioLimpio = new URL(enlace.url).hostname.replace(/^www\./, ''); } catch (e) {}
+                %>
+                  <a
+                    href="<%= enlace.url %>"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-titulo="<%= enlace.titulo.toLowerCase() %>"
+                    class="tarjeta-enlace group relative overflow-hidden bg-surface-container-lowest rounded-xl p-4 border border-surface-container-high shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_20px_-6px_rgba(0,97,148,0.15)] hover:border-primary/40 hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between gap-3.5"
+                  >
+                    <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-secondary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+
+                    <div class="flex items-start justify-between gap-3">
+                      <!-- Contenedor del Logo Ampliado y Rígidamente Acotado -->
+                      <div class="w-14 h-14 min-w-[3.5rem] min-h-[3.5rem] rounded-xl bg-surface-container-low border border-outline-variant/25 flex items-center justify-center p-2 flex-shrink-0 group-hover:bg-white transition-all overflow-hidden">
+                        <img
+                          src="<%= enlace.logo %>"
+                          alt="<%= enlace.titulo %>"
+                          loading="lazy"
+                          class="w-full h-full object-contain block group-hover:scale-105 transition-transform"
+                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        />
+                        <span class="material-symbols-outlined text-primary text-[24px] hidden items-center justify-center w-full h-full" translate="no">newspaper</span>
+                      </div>
+
+                      <span class="w-7 h-7 rounded-full bg-surface-container-low group-hover:bg-primary group-hover:text-on-primary text-tertiary flex items-center justify-center transition-colors shrink-0" translate="no">
+                        <span class="material-symbols-outlined text-[15px]" translate="no">north_east</span>
+                      </span>
+                    </div>
+
+                    <div class="space-y-0.5 min-w-0">
+                      <h3 class="font-headline-sm text-[15px] text-on-surface group-hover:text-primary transition-colors line-clamp-2 leading-snug">
+                        <%= enlace.titulo %>
+                      </h3>
+                      <p class="font-body-sm text-body-sm text-outline truncate" translate="no">
+                        <%= dominioLimpio %>
+                      </p>
+                    </div>
+                  </a>
+                <% }) %>
+              </div>
+            </section>
+          <% }) %>
+        </div>
+
+        <div id="sin-resultados-busqueda" class="hidden bg-surface-container-lowest rounded-xl shadow-sm p-8 text-center">
+          <span class="material-symbols-outlined text-outline text-[34px]" translate="no">search_off</span>
+          <p class="font-headline-sm text-headline-sm text-on-surface mt-2">No se encontró ningún medio de comunicación con ese nombre</p>
+          <p class="font-body-sm text-body-sm text-tertiary mt-1">Verifica la escritura o limpia el buscador superior.</p>
+        </div>
+      <% } %>
+
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <div id="sidebar-overlay" class="hidden fixed inset-0 bg-transparent z-40 pointer-events-none" onclick="toggleSidebar()"></div>
+  <script src="/Sidebar.js"></script>
+
+  <!-- Buscador instantáneo en cliente -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const inputBuscar = document.getElementById('buscador-portal');
+      const bloques = document.querySelectorAll('.bloque-subdivision');
+      const msgVacio = document.getElementById('sin-resultados-busqueda');
+
+      if (!inputBuscar || bloques.length === 0) return;
+
+      inputBuscar.addEventListener('input', (e) => {
+        const termino = e.target.value.toLowerCase().trim();
+        let totalVisibles = 0;
+
+        bloques.forEach(bloque => {
+          const tarjetas = bloque.querySelectorAll('.tarjeta-enlace');
+          let visiblesEnBloque = 0;
+
+          tarjetas.forEach(tarjeta => {
+            const titulo = tarjeta.getAttribute('data-titulo') || '';
+            const coincide = titulo.includes(termino);
+            tarjeta.classList.toggle('hidden', !coincide);
+            if (coincide) {
+              visiblesEnBloque++;
+              totalVisibles++;
+            }
+          });
+
+          bloque.classList.toggle('hidden', visiblesEnBloque === 0);
+        });
+
+        if (msgVacio) {
+          msgVacio.classList.toggle('hidden', totalVisibles > 0);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

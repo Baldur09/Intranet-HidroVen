@@ -100,7 +100,7 @@
                 </div>
               </div>
             </div>
-            <a class="w-full inline-flex items-center justify-center gap-2 py-3 px-space-md bg-secondary text-on-secondary font-label-lg text-label-lg rounded-lg shadow-sm hover:bg-on-secondary-container hover:text-surface-container-lowest transition-all" href="#">
+            <a class="w-full inline-flex items-center justify-center gap-2 py-3 px-space-md bg-secondary text-on-secondary font-label-lg text-label-lg rounded-lg shadow-sm hover:bg-on-secondary-container hover:text-surface-container-lowest transition-all" href="/gestion-enlaces">
               <span>Administrar Enlaces</span>
               <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </a>
@@ -125,7 +125,9 @@
                 <div>
                   <span class="block font-label-caps text-label-caps text-tertiary uppercase font-semibold">Exhibición Activa</span>
                   <div class="flex items-baseline gap-1.5 mt-0.5">
-                    <span class="font-headline-lg text-headline-lg text-primary font-bold">5</span>
+                    <span class="font-headline-lg text-headline-lg text-primary font-bold" id="dashboard-carrusel-count">
+                      <%= typeof carruselActivos !== 'undefined' ? carruselActivos : 0 %>
+                    </span>
                     <span class="font-label-md text-label-md text-on-surface-variant font-medium">banners activos</span>
                   </div>
                 </div>
@@ -134,7 +136,7 @@
                 </div>
               </div>
             </div>
-            <a class="w-full inline-flex items-center justify-center gap-2 py-3 px-space-md bg-primary text-on-primary font-label-lg text-label-lg rounded-lg shadow-sm hover:bg-primary-container hover:text-on-primary-container transition-all" href="#">
+            <a class="w-full inline-flex items-center justify-center gap-2 py-3 px-space-md bg-primary text-on-primary font-label-lg text-label-lg rounded-lg shadow-sm hover:bg-primary-container hover:text-on-primary-container transition-all" href="/gestion-carrusel">
               <span>Configurar Carrusel</span>
               <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </a>
